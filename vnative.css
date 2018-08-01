@@ -1,0 +1,9 @@
+#vnative h1{
+	padding: 0;
+}
+#vnative .menu-content img{
+	width: 150px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
