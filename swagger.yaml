@@ -1,0 +1,359 @@
+openapi: 3.0.0
+info:
+  title: vNative API Documentation
+  description: >
+    # Introduction
+
+    The vNative API is designed for developers, engineers, or anyone else who’s 
+    comfortable creating custom-coded solutions or integrating with RESTful APIs.
+
+    # Authorization
+
+    Some endpoints do not require any authentication, pretty much anything else 
+    will require you to be authenticated.
+    <br>To become authenticated you will need to create an API Key from the web panel.
+    <br>Once you have your API Key you can pass it in the header like this:
+
+    # HTTP Status Code
+
+    Review all global errors for the vNative API so you can get back to work fast.
+    <hr><b>401 - API Key Invalid</b>
+    <br>Your API key may be invalid, or you’ve 
+    attempted to access the wrong data center.
+    <br>The current request requires user authentication. 
+    For example, the user does not have the necessary credentials.
+    <hr><b>403 - No permissions visit this resource</b>
+    <br>You are not permitted to access this resource.
+    <br>The request was a valid request, but the server is refusing to respond to it. 
+    For example, the user does not have the necessary permissions for the resource.
+    <hr><b>404 - Resource Not Found</b>
+    <br>The requested resource could not be found.
+    <br>This error tells you a specific resource doesn’t exist. 
+    It’s possible that the resource has been moved or deleted, or that there’s a typo 
+    in your request.<hr><b>500 - Server error, Please contact your administrator</b>
+    <br>A generic error message, given when an unexpected condition was encountered and 
+    no more specific message is suitable.Please contact Support for more information.
+    <br>This error lets you know our servers have experienced a problem. 
+    Although this is rare, please contact support@vnative.com to let us know that 
+    you’ve encountered this error.<hr><b>501 - Resource URI not found</b>
+    <br>The requested uri resource could not be found.\n\nThe server either does 
+    not recognize the request method, or it lacks the ability to fulfill the request."
+
+    # Authentication
+
+    vNative offers authentication via Header:
+      - API Key
+
+  version: 2.0
+  termsOfService: 'https://vnative.com/terms-of-service/'
+  contact:
+    name: API Support
+    email: support@vnative.com
+  x-logo:
+    url: 'https://vnative.com/blog/wp-content/uploads/2018/05/vnative-copy.png'
+
+servers:
+  - url: https://api.vnative.com/v2
+    description: Main server
+
+tags:
+  - name: Campaign
+    description: Campaign End points
+
+x-tagGroups:
+  - name: Publisher
+    tags:
+      - Campaign
+
+paths:
+  '/affiliate/campaigns':
+    get:
+      tags:
+        - Campaign
+      summary: Fetch All Campaigns
+      description: Returns all publisher campaigns
+      operationId: campaigns
+      parameters:
+        - in: query
+          name: page
+          description: Page number result to fetch
+          schema:
+            type: integer
+        - in: query
+          name: limit
+          description: Number of result to fetch in one call
+          schema:
+            type: integer
+        - in: query
+          name: apiKey
+          description: Publisher API Key
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublisherCampaignData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+    Payout:
+      type: object
+      properties:
+        payout:
+          description: Payout of the campaign
+          type: integer
+          format: float
+          example: 1.87
+        geo:
+          description: List of all Payout geo
+          type: array
+          example: ['US', 'IN']
+    OsVer:
+      type: object
+      properties:
+        min:
+          type: string
+          example: 4.1
+          description: Minimum OS version
+        max:
+          type: string
+          example: 9.0
+          description: Maximum OS version
+    PublisherCampaign:
+      type: object
+      properties:
+        id:
+          description: Campaign/Offer ID
+          type: integer
+          example: 18
+        title:
+          description: Campaign name
+          type: string
+          example: AppAttribution CPI-Incent
+        description:
+          description: Campaign Description
+          type: string
+          nullable: true
+          example: AppAttribution mobile app platform
+        currency:
+          description: Currency Code e.g INR, USD, EUR
+          type: string
+          nullable: true
+          example: USD
+        categories:
+          description: Campaign categories
+          type: array
+          nullable: true
+          example: [Technology, Bollynews]
+        preview_url:
+          description: Destination url of the campaign
+          type: string
+          nullable: true
+          example: https://play.google.com/store/apps/details?id=io.appattribution.device
+        model:
+          description: Offer type
+          type: string
+          example: cpi
+          enum:
+            - cpa
+            - cpi
+            - cpc
+            - cpm
+            - cps
+        device:
+          description: List of all supported devices
+          type: array
+          nullable: true
+          example: ['mobile', 'tablet']
+          enum:
+            - mobile
+            - tablet
+            - desktop
+            - all
+        os:
+          description: List of all operating system supported
+          type: array
+          nullable: true
+          example: ['android']
+          enum:
+            - android
+            - ios
+            - windowsphone
+            - all
+        os_version:
+          description: List of all supported os version
+          type: object
+          nullable: true
+          properties:
+            ios:
+              type: object
+              nullable: true
+              description: iOS OS supported version information
+              $ref: '#/components/schemas/OsVer'
+            android:
+              type: object
+              nullable: true
+              description: Android OS supported version information
+              $ref: '#/components/schemas/OsVer'
+            windowsphone:
+              type: object
+              nullable: true
+              description: Windows Phone OS supported version information
+              $ref: '#/components/schemas/OsVer'
+            all:
+              type: object
+              nullable: true
+              description: All OS supported version information
+              $ref: '#/components/schemas/OsVer'
+        app_id:
+          description: Application id, e.g com.example.android (Android) or id4298877253 (iOS)
+          type: string
+          nullable: true
+          example: io.appattribution.app
+        app_name:
+          description: Application name
+          type: string
+          nullable: true
+          example: AppAttribution - Mobile App Tracking
+        tracking_link:
+          description: Tracking link of the campaign/offer
+          type: string
+          example: https://trk.vnative.com/5acdefeadcxwe3dsad
+        countries:
+          description: List of all supported countries
+          type: array
+          example: ['US', 'IN']
+        payouts:
+          description: List of payouts
+          type: array
+          items:
+            $ref: '#/components/schemas/Payout'
+        creatives:
+          description: List of creatives associated with campaign
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Creatives'
+        cap:
+          type: object
+          description: CAP information
+          properties:
+            type:
+              type: string
+              example: conversion
+            daily:
+              type: string
+              example: 0
+            monthly:
+              type: string
+              example: 928
+            lifetime:
+              type: string
+              example: 0
+    
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Response status
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              description: Error code
+              type: integer
+              example: 13
+            message:
+              description: Error message
+              type: string
+              example: Invalid API Key
+    
+    Creatives:
+      type: object
+      properties:
+        mime_type:
+          description: File type
+          type: string
+          example: image/png
+        file_name:
+          description: Name of the file
+          type: string
+          example: 5b505e7d8213e.png
+        title:
+          description: Title of the file
+          type: string
+          nullable: true
+          example: Static Image 
+        full_url:
+          description: Full URL of the file
+          type: string
+          example: https://static.vnative.co/images/5b505e7d8213e.png
+        dimensions:
+          description: Creatives dimensions
+          type: object
+          nullable: true
+          properties:
+            width:
+              description: Width of the creative (If creative is image)
+              type: number
+              format: integer
+              nullable: true
+              example: 200
+            height:
+              description: Height of the creative (If creative is image)
+              type: number
+              format: integer
+              nullable: true
+              example: 400
+
+    PublisherCampaignData:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Response status
+          example: true
+        data:
+          type: object
+          properties:
+            campaigns:
+              type: array
+              items:
+                $ref: '#/components/schemas/PublisherCampaign'
+            page:
+              type: number
+              format: integer
+              description: Current retrieved page
+              example: 1
+            count:
+              type: number
+              format: integer
+              description: Total number of campaigns
+              example: 251
+
+  securitySchemes:
+    API Key:
+      type: apiKey
+      name: X-Api-Key
+      in: header
