@@ -7,3 +7,15 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+#vnative .redoc-wrap{
+	width: 100%;
+}
+#vnative .redoc-wrap div:last-child{
+	/*width: 100%;*/
+}
+#vnative .api-content{
+	width:80%;
+}
+#vnative .menu-content{
+	width: 20%
+}
