@@ -19,3 +19,17 @@
 #vnative .menu-content{
 	width: 20%
 }
+@media (max-width: 85rem){
+	#vnative .jNfgsK{
+		width:calc(60%);
+	}
+	#vnative .redoc-wrap>div:last-child{
+		display: block;
+	}
+	#vnative .fLhGnD{
+		width:calc(40%);
+	}
+	#vnative .iBZrxR{
+		flex-direction: row;
+	}
+}
