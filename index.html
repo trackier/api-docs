@@ -16,10 +16,21 @@
   </head>
   <body id='vnative'>
     <div class='row'>
-      <div class="col-md-12">
-        <redoc spec-url='swagger.yaml' hide-hostname="true" suppress-warnings="true" hide-download-button lazy-rendering></redoc>
+      <div id='my-doc-root' class="col-md-12">
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+   <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      Redoc.init("swagger.yaml",{'hideHostname':true,suppressWarnings:true ,'hideDownloadButton':true, 'lazyRendering':true, 'expandResponses':'all',docExpansion : 'full'},document.getElementById('my-doc-root'),function(){
+        $("[kind='field']").trigger('click');
+        setTimeout(function(){$("[title=campaigns]").click()},1000);
+      });
+    });
+  </script>
   </body>
 </html>
