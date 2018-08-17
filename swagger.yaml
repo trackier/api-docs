@@ -14,6 +14,10 @@ info:
     <br>To become authenticated you will need to create an API Key from the web panel.
     <br>Once you have your API Key you can pass it in the header like this:
 
+    # Base Url
+      <li>Url : https://api.vnative.com/v2</li>
+      <li>Description : Main server</li>
+
     # HTTP Status Code
 
     Review all global errors for the vNative API so you can get back to work fast.
@@ -54,7 +58,7 @@ info:
 
 servers:
   - url: https://api.vnative.com/v2
-    description: Main server
+    description: 'Base Url: https://api.vnative.com/v2'
 
 tags:
   - name: Campaign
