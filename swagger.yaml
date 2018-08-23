@@ -159,10 +159,15 @@ components:
           nullable: true
           example: AppAttribution mobile app platform
         currency:
-          description: Currency Code e.g INR, USD, EUR
+          description: <span class='description'>If currency is present then the payout shown by the API for that campaign is in that currency.</span>
+                       <span class='description'>If no currency then it should be assumed as USD and accordingly payout is also in USD</span>
           type: string
-          nullable: true
+          nullable : true 
           example: USD
+          enum:
+            - INR
+            - USD
+            - EUR
         categories:
           description: Campaign categories
           type: array
@@ -174,7 +179,7 @@ components:
           nullable: true
           example: https://play.google.com/store/apps/details?id=io.appattribution.device
         model:
-          description: Offer type
+          description: "<span class='description'>Also if model is CPS then the payout is in percentage (Example: if payout = 70 and model = CPS, then it means payout is 70% of the sale amount not $70)</span>"
           type: string
           example: cpi
           enum:
