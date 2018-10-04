@@ -24,6 +24,15 @@
 	margin-top: 10px;
 }
 @media (max-width: 85rem){
+	#vnative div[data-section-id]{
+		width:60%;
+	}
+	#vnative div[data-section-id="operation/campaigns"]{
+		width:100%;
+	}
+	#vnative div[data-section-id="operation/campaigns"] *{
+		width:inherit;
+	}
 	#vnative .jNfgsK{
 		width:calc(60%);
 	}
@@ -35,5 +44,8 @@
 	}
 	#vnative .iBZrxR{
 		flex-direction: row;
+	}
+	#vnative .redoc-wrap div:last-child {
+	    flex-direction: row;
 	}
 }
