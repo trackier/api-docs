@@ -255,7 +255,7 @@ components:
         tracking_link:
           description: Tracking link of the campaign/offer
           type: string
-          example: https://trk.vnative.com/5acdefeadcxwe3dsad
+          example: https://trk.vnative.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
         countries:
           description: List of all supported countries
           type: array
