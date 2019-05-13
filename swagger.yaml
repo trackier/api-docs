@@ -256,6 +256,11 @@ components:
           description: Tracking link of the campaign/offer
           type: string
           example: https://trk.vnative.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
+        bot_check_url:
+          description: Botman Bot Check URL
+          nullable: true
+          type: string
+          example: https://a762.botninja.js?https://trk.vnative.com/5acdefeadcxwe3dsad
         countries:
           description: List of all supported countries
           type: array
