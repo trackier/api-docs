@@ -140,6 +140,30 @@ components:
           description: List of all Payout geo
           type: array
           example: ['US', 'IN']
+    Goal:
+      type: object
+      properties:
+        id:
+          description: Goal ID
+          type: string
+          example: 5cebd00db6920d7e89622ccf
+        title:
+          description: Goal Title
+          type: string
+          example: Purchased
+        value:
+          description: Goal Value
+          type: string
+          example: Purchased
+        payout_model:
+          description: Payout Model
+          type: string
+          example: fixed
+        payouts:
+          description: List of Goal Payouts
+          type: array
+          items:
+            $ref: '#/components/schemas/Payout'
     OsVer:
       type: object
       properties:
@@ -270,6 +294,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payout'
+        goals:
+          description: List of goals
+          type: array
+          items:
+            $ref: '#/components/schemas/Goal'
         creatives:
           description: List of creatives associated with campaign
           type: array
