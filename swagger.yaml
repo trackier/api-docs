@@ -136,6 +136,11 @@ components:
           type: integer
           format: float
           example: 1.87
+        fixedPayout:
+          description: Payout of the campaign
+          type: integer
+          format: float
+          example: 1.87
         geo:
           description: List of all Payout geo
           type: array
@@ -280,6 +285,10 @@ components:
           description: Tracking link of the campaign/offer
           type: string
           example: https://trk.vnative.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
+        impressionUrl:
+          description: Impression Url of the campaign/offer
+          type: string
+          example: https://demo.vnative.net/imp?campaign_id=20931&pub_id=31
         bot_check_url:
           description: Botman Bot Check URL
           nullable: true
