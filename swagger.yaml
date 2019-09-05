@@ -298,6 +298,10 @@ components:
           description: List of all supported countries
           type: array
           example: ['US', 'IN']
+        isps:
+          description: Allowed ISPs List
+          type: array
+          example: ['SpectraNet', 'ASN']
         payouts:
           description: List of payouts
           type: array
