@@ -236,6 +236,11 @@ components:
             - tablet
             - desktop
             - all
+        flow:
+          description: Conversion Flow
+          type: array
+          nullable: true
+          example: ['MO Flow']
         os:
           description: List of all operating system supported
           type: array
