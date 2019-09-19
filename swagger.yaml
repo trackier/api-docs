@@ -154,12 +154,25 @@ components:
           type: array
           example: ['Punjab']
         allowedValues:
-          description: List of Allowed Values
+          description: List of Allowed Values corresponding to the variable
           type: array
           example: ['sub1-testing', 'sub2-testing']
         variable:
           type: string
           example: source
+           enum:
+            - p1
+            - p2
+            - p3
+            - p4
+            - p5
+            - p6
+            - p7
+            - p8
+            - p9
+            - p10
+            - source
+
     Goal:
       type: object
       properties:
