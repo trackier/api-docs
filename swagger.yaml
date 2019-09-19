@@ -160,7 +160,7 @@ components:
         variable:
           type: string
           example: source
-           enum:
+          enum:
             - p1
             - p2
             - p3
