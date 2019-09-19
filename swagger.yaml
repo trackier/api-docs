@@ -145,6 +145,21 @@ components:
           description: List of all Payout geo
           type: array
           example: ['US', 'IN']
+        city:
+          description: List of Cities
+          type: array
+          example: ['Mohali']
+        region:
+          description: List of Region
+          type: array
+          example: ['Punjab']
+        allowedValues:
+          description: List of Allowed Values
+          type: array
+          example: ['sub1-testing', 'sub2-testing']
+        variable:
+          type: string
+          example: source
     Goal:
       type: object
       properties:
