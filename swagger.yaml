@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  title: vNative API Documentation
+  title: Trackier API Documentation
   description: >
     # Introduction
 
-    The vNative API is designed for developers, engineers, or anyone else who’s
+    The Trackier API is designed for developers, engineers, or anyone else who’s
     comfortable creating custom-coded solutions or integrating with RESTful APIs.
 
     # Authorization
@@ -54,7 +54,7 @@ info:
     name: API Support
     email: support@vnative.com
   x-logo:
-    url: 'https://vnative.com/blog/wp-content/uploads/2018/05/vnative-copy.png'
+    url: 'https://trackier.com/blog/wp-content/uploads/2019/02/dark-logo.png'
 
 servers:
   - url: https://api.vnative.com/v2
