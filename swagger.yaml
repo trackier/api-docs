@@ -15,7 +15,7 @@ info:
     <br>Once you have your API Key you can pass it in the header like this:
 
     # Base Url
-      <li>Url : https://api.vnative.com/v2</li>
+      <li>Url : https://api.trackier.com/v2</li>
       <li>Description : Main server</li>
 
     # HTTP Status Code
@@ -38,7 +38,7 @@ info:
     <br>A generic error message, given when an unexpected condition was encountered and
     no more specific message is suitable.Please contact Support for more information.
     <br>This error lets you know our servers have experienced a problem.
-    Although this is rare, please contact support@vnative.com to let us know that
+    Although this is rare, please contact support@trackier.com to let us know that
     you’ve encountered this error.<hr><b>501 - Resource URI not found</b>
     <br>The requested uri resource could not be found.\n\nThe server either does
     not recognize the request method, or it lacks the ability to fulfill the request."
@@ -49,16 +49,16 @@ info:
       - API Key
 
   version: 2.0
-  termsOfService: 'https://vnative.com/terms-of-service/'
+  termsOfService: 'https://trackier.com/terms-of-service/'
   contact:
     name: API Support
-    email: support@vnative.com
+    email: support@trackier.com
   x-logo:
     url: 'https://trackier.com/blog/wp-content/uploads/2019/02/dark-logo.png'
 
 servers:
-  - url: https://api.vnative.com/v2
-    description: 'Base Url: https://api.vnative.com/v2'
+  - url: https://api.trackier.com/v2
+    description: 'Base Url: https://api.trackier.com/v2'
 
 tags:
   - name: Campaign
@@ -317,11 +317,11 @@ components:
         tracking_link:
           description: Tracking link of the campaign/offer
           type: string
-          example: https://trk.vnative.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
+          example: https://trk.trackier.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
         impressionUrl:
           description: Impression Url of the campaign/offer
           type: string
-          example: https://demo.vnative.net/imp?campaign_id=20931&pub_id=31
+          example: https://demo.trackier.net/imp?campaign_id=20931&pub_id=31
         bot_check_url:
           description: Botman Bot Check URL
           nullable: true
