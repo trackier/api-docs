@@ -239,6 +239,16 @@ components:
           type: array
           nullable: true
           example: [Technology, Bollynews]
+        subIdsBlock:
+          description: List of Blocked Sub IDs
+          type: array
+          nullable: true
+          example: [XF152asd, TF152asd]
+        subIdsAllow:
+          description: List of Allowed Sub IDs
+          type: array
+          nullable: true
+          example: [XF152asd, TF152asd]
         preview_url:
           description: Destination url of the campaign
           type: string
