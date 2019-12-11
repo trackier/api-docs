@@ -345,6 +345,18 @@ components:
           description: Allowed ISPs List
           type: array
           example: ['SpectraNet', 'ASN']
+        citiesInclude:
+          description: Allowed  Cities List
+          type: array
+          example: ['Kolkata', 'Delhi']
+        citiesExclude:
+          description: Blocked Cities List
+          type: array
+          example: ['Kolkata', 'Delhi']
+        defaultGoal:
+          description: Default Goal name
+          type: string
+          example: Install
         payouts:
           description: List of payouts
           type: array
