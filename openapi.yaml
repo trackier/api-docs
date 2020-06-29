@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Trackier Publisher API Documentation
+  title: Trackier Publisher API Docs
   description: >
     # Introduction
 
@@ -43,7 +43,7 @@ info:
 
     Admin API can be found here [Admin API](/admin)
 
-  version: 2.0
+  version: 'v2'
   termsOfService: 'https://trackier.com/terms-of-service/'
   contact:
     name: API Support
