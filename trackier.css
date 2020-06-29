@@ -4,3 +4,9 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+#trackier .menu-content{
+	width: 20%;
+	top: 0 !important;
+	height: calc(100vh - 0px) !important;
+}

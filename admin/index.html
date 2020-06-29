@@ -3,10 +3,9 @@
   <head>
     <title>Trackier Admin API Documentation</title>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
-    <link href = '/trackier.css' rel='stylesheet'>
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/trackier.css' rel='stylesheet'>
     <style>
       body {
         margin: 0;
@@ -15,19 +14,12 @@
     </style>
   </head>
   <body id='trackier'>
-    <div class='row'>
-      <div id='my-doc-root' class="col-md-12">
-      </div>
-    </div>
+    <div id="container"></div>
     <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
-   <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function() {
-      Redoc.init("/admin/openapi.yaml", {'hideHostname':true,suppressWarnings:true ,'hideDownloadButton':true, 'lazyRendering':true, 'expandResponses':'all',docExpansion : 'full'},document.getElementById('my-doc-root'));
-    });
-  </script>
+    <script>
+      Redoc.init('/admin/openapi.yaml', {
+        scrollYOffset: 50
+      }, document.getElementById('container'))
+    </script>
   </body>
 </html>
