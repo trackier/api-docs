@@ -7,20 +7,13 @@ info:
     The Trackier API is designed for developers, engineers, or anyone else who’s
     comfortable creating custom-coded solutions or integrating with RESTful APIs.
 
-    # Authorization
-
-    Some endpoints do not require any authentication, pretty much anything else
-    will require you to be authenticated.
-    <br>To become authenticated you will need to create an API Key from the web panel.
-    <br>Once you have your API Key you can pass it in the header like this:
-
-    # Base Url
-      <li>Url : https://api.trackier.com/v2</li>
+    Base URL
+      <li>URL : https://api.trackier.com</li>
       <li>Description : Main server</li>
 
     # HTTP Status Code
 
-    Review all global errors for the vNative API so you can get back to work fast.
+    Review all global errors for the Trackier API so you can get back to work fast.
     <hr><b>401 - API Key Invalid</b>
     <br>Your API key may be invalid, or you’ve
     attempted to access the wrong data center.
@@ -45,7 +38,7 @@ info:
 
     # Authentication
 
-    vNative offers authentication via Header:
+    Trackier API endpoints can be authenticated via Header:
       - API Key
 
   version: 2.0
@@ -57,8 +50,8 @@ info:
     url: 'https://trackier.com/blog/wp-content/uploads/2019/02/dark-logo.png'
 
 servers:
-  - url: https://api.trackier.com/v2
-    description: 'Base Url: https://api.trackier.com/v2'
+  - url: https://api.trackier.com/
+    description: 'Base URL: https://api.trackier.com'
 
 tags:
   - name: Campaign
@@ -66,7 +59,7 @@ tags:
     <h4>GET the next page of results</h4>
     You can then make a call to any page by just page number <code>?page={5}</code>. The page parameter in the next link is 5, so the results will show campagians of  page 5.
     The call will be as follows:
-    <br/>eg. <code>/publisher/campaigns?limit={limit}&page={5}</code>
+    <br/>eg. <code>/v2/publisher/campaigns?limit={limit}&page={5}</code>
     <br/>
     <br/>
     <h4>How do I know if there are more pages?</h4>
@@ -79,7 +72,7 @@ x-tagGroups:
       - Campaign
 
 paths:
-  '/publisher/campaigns':
+  '/v2/publisher/campaigns':
     get:
       tags:
         - Campaign
@@ -329,14 +322,14 @@ components:
           type: string
           example: https://trk.trackier.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
         impressionUrl:
-          description: Impression Url of the campaign/offer
+          description: Impression URL of the campaign/offer
           type: string
           example: https://demo.trackier.net/imp?campaign_id=20931&pub_id=31
         bot_check_url:
           description: Botman Bot Check URL
           nullable: true
           type: string
-          example: https://a762.botninja.js?https://trk.vnative.com/5acdefeadcxwe3dsad
+          example: https://a762.botninja.js?https://demo.trackier.net/5acdefeadcxwe3dsad
         countries:
           description: List of all supported countries
           type: array
