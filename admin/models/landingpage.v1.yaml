@@ -1,0 +1,44 @@
+title: Landing Page Model
+type: object
+properties:
+  _id:
+    type: string
+  displayId:
+    type: integer
+  title:
+    type: string
+  previewLink:
+    type: string
+    format: uri
+  url:
+    type: string
+    format: uri
+  lpType:
+    type: string
+    enum:
+      - landing
+      - prelanding
+  description:
+    type: string
+  ruleVariable:
+    type: string
+  ruleValue:
+    type: string
+  status:
+    type: string
+    enum:
+      - active
+      - paused
+  created:
+    type: string
+    format: date-time
+  modified:
+    type:
+      - string
+      - 'null'
+    format: date-time
+required:
+  - title
+  - url
+x-tags:
+  - Models

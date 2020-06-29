@@ -1,0 +1,200 @@
+title: Campaign Model
+type: object
+description: Campaign Model
+x-tags:
+  - Models
+properties:
+  id:
+    type: integer
+  advertiserId:
+    type: string
+  hashId:
+    type: string
+  title:
+    type: string
+  description:
+    type: string
+  ques:
+    type: string
+  url:
+    type: string
+    format: uri
+  previewUrl:
+    type: string
+    format: uri
+  categories:
+    type: array
+    items:
+      type: string
+  currency:
+    type: string
+  commModel:
+    type: string
+    enum:
+      - cpa
+      - cpi
+      - cpl
+      - cps
+      - cpm
+      - cpc
+  geo:
+    type: array
+    items:
+      type: string
+  device:
+    type: array
+    items:
+      type: string
+  status:
+    type: string
+    enum:
+      - active
+      - pending
+      - paused
+      - disabled
+      - expired
+  os:
+    type: array
+    items:
+      type: string
+  os_ver:
+    type: object
+    properties:
+      ios:
+        type: object
+        properties:
+          min:
+            type: string
+          max:
+            type: string
+      android:
+        type: object
+        properties:
+          min:
+            type: string
+          max:
+            type: string
+  cities:
+    type: string
+  citiesExclude:
+    type: string
+  isps:
+    type: string
+  inactiveReason:
+    type: string
+  blockedPubs:
+    type: array
+    items:
+      type: integer
+  fallbackUrl:
+    type: string
+  fallbackCampaign:
+    type: string
+  appName:
+    type: string
+  appId:
+    type: string
+  defaultGoalName:
+    type: string
+  trackMultiConv:
+    type: integer
+  convTracking:
+    type: string
+    enum:
+      - postback
+      - iframe_https
+      - image_https
+  convTrackingDomain:
+    type: string
+  visibility:
+    type: string
+    default: public
+    enum:
+      - public
+      - private
+      - permission
+  subIdsBlocked:
+    type: array
+    items:
+      type: string
+  subIdsAllowed:
+    type: array
+    items:
+      type: string
+  region:
+    type: array
+    items:
+      type: string
+  blacklistPostbackPubs:
+    type: array
+    items:
+      type: integer
+  whitelistPostbackPubs:
+    type: array
+    items:
+      type: integer
+  allowSpilloverConv:
+    type: integer
+    default: 0
+  cancelFallbackConv:
+    type: integer
+  redirectType:
+    type: string
+    enum:
+      - '302'
+      - 302_hrf
+      - '200'
+      - 200_hrf
+  showGlobalTargeting:
+    type: integer
+    default: 0
+  allowImp:
+    type: integer
+    default: 0
+  iurl:
+    type: string
+  cancelBlockedPbConv:
+    type: integer
+    default: 1
+  hops:
+    type: integer
+  convPending:
+    type: integer
+  defaultLpName:
+    type: string
+  scheduleZone:
+    type: string
+  schduleStartHour:
+    type: integer
+    minimum: 0
+    maximum: 23
+  scheduleEndHour:
+    type: integer
+    minimum: 0
+    maximum: 23
+  flow:
+    type: array
+    items:
+      type: string
+  attributionWindow:
+    type: integer
+  allowLPTrafficSplit:
+    type: integer
+  primaryTrackingDomain:
+    type: string
+  created:
+    type: string
+    format: date-time
+  modified:
+    type: string
+    format: date-time
+  payouts:
+    type: array
+    items:
+      $ref: ./payout.v1.yaml
+required:
+  - id
+  - advertiserId
+  - hashId
+  - title
+  - url

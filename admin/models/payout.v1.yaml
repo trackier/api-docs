@@ -1,0 +1,75 @@
+title: Payout Model
+type: object
+properties:
+  _id:
+    type: string
+  campaignId:
+    type: string
+  goalId:
+    type: string
+  landingPages:
+    type: array
+    items:
+      type: string
+  pubIds:
+    type: string
+  currency:
+    type: string
+  model:
+    type: string
+  payout:
+    type: number
+    minimum: 0
+  revenue:
+    type: number
+    minimum: 0
+  geo:
+    type: array
+    items:
+      type: string
+  region:
+    type: array
+    items:
+      type: string
+  city:
+    type: array
+    items:
+      type: string
+  variable:
+    type: string
+    enum:
+      - p1
+      - p2
+      - p3
+      - p4
+      - p5
+      - p6
+      - p7
+      - p8
+      - p9
+      - p10
+      - sub1
+      - sub2
+      - sub3
+      - sub4
+      - sub5
+      - sub6
+      - sub7
+      - sub8
+      - sub9
+      - sub10
+      - source
+  allowedValues:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+  overrideRevenue:
+    type: string
+  fixedPayout:
+    type: number
+  created:
+    type: string
+x-tags:
+  - Models
+description: Payout Model

@@ -1,0 +1,122 @@
+title: Advertiser Model
+type: object
+x-examples:
+  sample advertiser object:
+    tags: null
+    blocked_pubs: null
+    name: Demo Advertiser
+    email: inf@vnative.com
+    currency: INR
+    meta:
+      security_token: b50346a1c529c82dac33
+    created: '1970-01-01T00:00:00.000Z'
+    modified: '2019-10-17T18:32:59.608Z'
+    username: Vnative
+    phone: '998855644'
+    region:
+      currency: USD
+      lang: en
+      country: ''
+    login: '2017-10-30T08:39:27.000Z'
+    login_attempts: null
+    signup_ip: null
+    status: active
+    company: Demo
+    unique_conv_ip: '0'
+    check_links: null
+    fallback_url: 'http://vnative.com/advertiser-fallback-url2?utm_source={publisher_id}&amp;utm_campaign={camp_id}&amp;utm_traffic={publisher_id}_{source}'
+    redirect_type: '302'
+    hashId: 57c4738434243dc57d8b456d
+    id: 3
+x-tags:
+  - Models
+description: Advertiser Model Schema
+properties:
+  id:
+    type: number
+  name:
+    type: string
+  redirectType:
+    type: string
+  modified:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  created:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  blockedPubs:
+    type: array
+    items:
+      type: number
+  fallbackUrl:
+    type:
+      - string
+      - 'null'
+    format: uri
+  meta:
+    type: object
+    properties:
+      afields:
+        type: object
+      security_token:
+        type: string
+  status:
+    type: string
+    enum:
+      - active
+      - pending
+      - disabled
+      - rejected
+  company:
+    type: string
+  signup_ip:
+    type: string
+    format: ipv4
+  tags:
+    type: array
+    items:
+      type: string
+  region:
+    type: object
+    properties:
+      currency:
+        type: string
+      lang:
+        type: string
+      country:
+        type: string
+      address:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      zipcode:
+        type: string
+  currency:
+    type: string
+  login_attempts:
+    type: integer
+  login:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  phone:
+    type: string
+  email:
+    type: string
+    format: email
+  username:
+    type: string
+  hashId:
+    type: string
+required:
+  - id
+  - name
+  - created
+  - email
+  - hashId

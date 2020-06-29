@@ -1,0 +1,176 @@
+title: Publisher Model
+type: object
+description: Publisher Model Schema
+x-examples:
+  sample publisher object:
+    tags:
+      - hemant
+    name: account
+    email: hemant@vnative.com
+    phone: '9999885566'
+    region:
+      currency: USD
+      lang: en
+    created: '2017-08-29T11:05:15.000Z'
+    unsubscribe: false
+    status: active
+    modified: '2019-12-13T05:06:34.030Z'
+    manager_id: 5c6e4af3b6920d6a02002f53
+    username: vNative Account
+    tier_id: 5943b5d6b6920d248f26fd37
+    login: null
+    login_attempts: null
+    signup_ip: null
+    company: vNative Account
+    is_demo: false
+    hide_camp: null
+    macro:
+      source: hemant
+      p1: test
+    hashId: 59a54a6b89d4465afb339a32
+    id: 31
+    whitelistAdv: null
+    blockedSources:
+      - hemant_testing
+      - p1
+      - p2
+    conversionsPending: null
+x-tags:
+  - Models
+properties:
+  id:
+    type: integer
+  modified:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  created:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  conversionsPending:
+    type: integer
+  blockedSources:
+    type: array
+    items:
+      type: string
+  macro:
+    type: object
+    properties:
+      p1:
+        type: string
+      p2:
+        type: string
+      p3:
+        type: string
+      p4:
+        type: string
+      p5:
+        type: string
+      p6:
+        type: string
+      p7:
+        type: string
+      p8:
+        type: string
+      p9:
+        type: string
+      p10:
+        type: string
+      source:
+        type: string
+      app_name:
+        type: string
+      app_id:
+        type: string
+      gaid:
+        type: string
+  whitelistAdv:
+    type: array
+    items:
+      type: integer
+  is_demo:
+    type: boolean
+  unsubscribe:
+    type: string
+  tier_id:
+    type: string
+  manager_id:
+    type: string
+  hashId:
+    type: string
+  meta:
+    type: object
+    properties:
+      afields:
+        type: object
+      bank:
+        type: object
+        properties:
+          name:
+            type: string
+          ifsc:
+            type: string
+          account_no:
+            type: string
+          account_owner:
+            type: string
+  status:
+    type: string
+    enum:
+      - active
+      - pending
+      - disabled
+      - rejected
+  company:
+    type: string
+  signup_ip:
+    type:
+      - string
+      - 'null'
+    format: ipv4
+  tags:
+    type: array
+    items:
+      type: string
+  region:
+    type: object
+    properties:
+      currency:
+        type: string
+      lang:
+        type: string
+      country:
+        type: string
+      address:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      zipcode:
+        type: string
+  currency:
+    type: string
+  login:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  phone:
+    type: string
+  email:
+    type: string
+    format: email
+  name:
+    type: string
+  username:
+    type: string
+required:
+  - id
+  - created
+  - hashId
+  - status
+  - email
+  - name

@@ -1,0 +1,25 @@
+title: Error Model
+type: object
+properties:
+  message:
+    type: string
+  codeMsg:
+    type: string
+  code:
+    type: string
+  statusCode:
+    type: integer
+required:
+  - statusCode
+  - code
+  - codeMsg
+  - message
+x-examples:
+  error code sample:
+    statusCode: 400
+    code: '101'
+    codeMsg: API_KEY_MISSING
+    message: API Key is not found in request headers or query params
+description: Error Model Schema
+x-tags:
+  - Models

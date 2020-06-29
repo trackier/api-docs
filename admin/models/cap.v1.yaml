@@ -1,0 +1,68 @@
+title: Cap model
+type: object
+description: Cap schema
+x-tags:
+  - Models
+properties:
+  _id:
+    type: string
+  campaignId:
+    type: string
+  goalId:
+    type: string
+  publisherIds:
+    type: array
+    items:
+      type: string
+  pubCapType:
+    type: string
+    enum:
+      - each
+      - group
+  landingPageIds:
+    type: array
+    items:
+      type: string
+  type:
+    type: string
+    enum:
+      - conversion
+      - approvedConv
+      - click
+      - payout
+      - revenue
+      - pendingPayout
+      - pendingRevenue
+  daily:
+    type:
+      - number
+      - 'null'
+    minimum: 0
+  monthly:
+    type:
+      - number
+      - 'null'
+    minimum: 0
+  lifetime:
+    type:
+      - number
+      - 'null'
+    minimum: 0
+  pauseResources:
+    type: integer
+    default: 1
+  visibility:
+    type: string
+    enum:
+      - public
+      - private
+  created:
+    type: string
+  modified:
+    type: string
+  geo:
+    type: array
+    items:
+      type: string
+required:
+  - campaignId

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Trackier Publisher API Documentation</title>
+    <title>Trackier Admin API Documentation</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
@@ -25,11 +25,8 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function(){
-      Redoc.init("/swagger.yaml", {'hideHostname':true,suppressWarnings:true ,'hideDownloadButton':true, 'lazyRendering':true, 'expandResponses':'all',docExpansion : 'full'},document.getElementById('my-doc-root'),function(){
-        $("[kind='field']").trigger('click');
-        setTimeout(function(){$("[title=campaigns]").click()},1000);
-      });
+    $(document).ready(function() {
+      Redoc.init("/admin/openapi.yaml", {'hideHostname':true,suppressWarnings:true ,'hideDownloadButton':true, 'lazyRendering':true, 'expandResponses':'all',docExpansion : 'full'},document.getElementById('my-doc-root'));
     });
   </script>
   </body>

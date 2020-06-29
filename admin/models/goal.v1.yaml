@@ -1,0 +1,85 @@
+title: Goal Model
+type: object
+x-tags:
+  - Models
+x-examples:
+  sample goal:
+    _id: 5e53bb7c6521726f70abe632
+    title: CREATING GOAL using v2 api
+    value: apiv2_goal2
+    type: public
+    created: '2020-02-24T12:03:08.587Z'
+    modified: '2020-02-24T12:03:08.610Z'
+    __v: 0
+    campaignId: 58551c30b6920d760817f711
+    blacklistPostbackPubs: []
+    whitelistPostbackPubs: []
+    trackMultiConv: 0
+    payouts:
+      - _id: 5e53bb7c6521726f70abe634
+        payout: 2
+        revenue: 4
+        currency: USD
+        payout_model: fixed
+        geo:
+          - IN
+        created: '2020-02-24T12:03:08.597Z'
+properties:
+  _id:
+    type: string
+  title:
+    type: string
+  value:
+    type: string
+  type:
+    type: string
+    enum:
+      - public
+      - private
+      - pub_specific
+  blacklistPostbackPubs:
+    type: array
+    items:
+      type: integer
+  whitelistPostbackPubs:
+    type: array
+    items:
+      type: integer
+  trackMultiConv:
+    type: integer
+    minimum: 0
+    maximum: 1
+  payouts:
+    type: array
+    items:
+      type: object
+      properties:
+        payout:
+          type: number
+        revenue:
+          type: number
+        currency:
+          type: string
+        payout_model:
+          type: string
+          enum:
+            - fixed
+            - percentage
+        geo:
+          type: array
+          items:
+            type: string
+        created:
+          type: string
+          format: date-time
+          example: '2020-02-24T12:03:08.610Z'
+        _id:
+          type: string
+  created:
+    type: string
+    format: date-time
+    example: '2020-02-24T12:03:08.610Z'
+  modified:
+    type: string
+    format: date-time
+    example: '2020-02-24T12:03:08.610Z'

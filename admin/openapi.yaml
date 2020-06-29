@@ -1,0 +1,1236 @@
+openapi: 3.0.0
+info:
+  title: Trackier API v2
+  version: '1.0'
+  description: Trackier v2 API
+  contact:
+    name: Support
+    url: 'https://trackier.com/support'
+    email: support@trackier.com
+servers:
+  - url: 'https://api.trackier.com'
+paths:
+  '/v2/publishers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Find Publisher by ID
+      tags:
+        - Publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publisher:
+                    $ref: ./models/publisher.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    publisher:
+                      region:
+                        currency: USD
+                        zone: Asia/Kolkata
+                        lang: en
+                        address: D-96 Flat no -112 5th Floor Munirika Village
+                        city: New Delhi
+                        zipcode: '110067'
+                        country: IN
+                      meta:
+                        bank:
+                          name: ''
+                          ifsc: ''
+                          account_no: ''
+                          account_owner: ''
+                      tags:
+                        - top publisher
+                        - demo account
+                      name: test pub
+                      email: support@trackier.com
+                      country: IN
+                      currency: INR
+                      created: '2016-09-19T18:30:00.000Z'
+                      modified: '2019-12-13T05:06:32.406Z'
+                      username: '#PiedPiper'
+                      phone: '8811576958'
+                      login: '2017-10-28T06:27:06.000Z'
+                      login_attempts: 1
+                      manager_id: 5d25b773b6920d39cf195611
+                      tier_id: 594400fa17c452060005e362
+                      status: active
+                      unsubscribe: false
+                      signup_ip: 1.1.1.1
+                      company: Pied piper
+                      is_demo: false
+                      macro:
+                        source: '{aff_id}'
+                        p1: '{transaction_id}'
+                        p8: '{aff_sub8}'
+                        p9: '{aff_sub9}'
+                        p10: '{aff_sub10}'
+                      hashId: 57c6c75934243d930c8b4581
+                      id: 2
+                      whitelistAdv: []
+                      blockedSources:
+                        - hemant_testing
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: publisher-findById
+      description: Get a single publisher
+      parameters: []
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete a publisher
+      operationId: publisher-delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: 'Publisher Removed!'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Delete a publisher with given ID
+      parameters: []
+      tags:
+        - Publishers
+      security:
+        - API Key Param: []
+    post:
+      summary: Edit a publisher
+      operationId: publisher-edit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publisher:
+                    $ref: ./models/publisher.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    publisher:
+                      region:
+                        currency: USD
+                        zone: Asia/Kolkata
+                        lang: en
+                        address: D-96 Flat no -112 5th Floor Munirika Village
+                        city: New Delhi
+                        zipcode: '110067'
+                        country: IN
+                      meta:
+                        bank:
+                          name: ''
+                          ifsc: ''
+                          account_no: ''
+                          account_owner: ''
+                        payout:
+                          paypal: ''
+                          payquicker: ''
+                          payoneer: ''
+                          paytm: alb_magji@hotmail.uk
+                          mobicash: ''
+                          easypaisa: ''
+                        tdomain: []
+                      tags:
+                        - top publisher
+                        - demo account
+                      name: Pied Piper
+                      email: subhomoy@trackier.com
+                      country: IN
+                      currency: INR
+                      created: '2016-09-19T18:30:00.000Z'
+                      modified: '2019-12-13T05:06:32.406Z'
+                      username: '#PiedPiper'
+                      phone: '8811576958'
+                      login: '2017-10-28T06:27:06.000Z'
+                      login_attempts: 1
+                      manager_id: 5d25b773b6920d39cf195611
+                      tier_id: 594400fa17c452060005e362
+                      status: active
+                      unsubscribe: false
+                      signup_ip: 1.1.1.1
+                      company: Pied piper
+                      is_demo: false
+                      macro:
+                        source: '{aff_id}'
+                        p1: '{transaction_id}'
+                        p8: '{aff_sub8}'
+                        p9: '{aff_sub9}'
+                        p10: '{aff_sub10}'
+                      hashId: 57c6c75934243d930c8b4581
+                      id: 2
+                      whitelistAdv: []
+                      blockedSources:
+                        - hemant_testing
+      description: Edit a publisher
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserEdit'
+            examples:
+              example-1:
+                value:
+                  name: himanshu4
+                  status: active
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: Properties to be sent in request
+      tags:
+        - Publishers
+      security:
+        - API Key Param: []
+  /v2/login:
+    post:
+      summary: Basic Login Endpoint
+      operationId: login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          hashId:
+                            type: string
+                          name:
+                            type: string
+                          email:
+                            type: string
+                          username:
+                            type: string
+                          company:
+                            type: string
+                          created:
+                            type: string
+                          modified:
+                            type: string
+                      type:
+                        type: string
+                  success:
+                    type: boolean
+              examples:
+                sample example:
+                  value:
+                    success: true
+                    data:
+                      key: xxxxxxxxxxxxxxxxxxxx
+                      user:
+                        meta:
+                          afields:
+                            testing: ''
+                            country: IN
+                        tags: []
+                        username: Himanshu Tiwari
+                        name: Himanshu Tiwari
+                        email: mastionmind@gmail.com
+                        region:
+                          currency: INR
+                          lang: en
+                          country: IN
+                          address: ''
+                          state: ''
+                          city: ''
+                          zipcode: ''
+                        unsubscribe: false
+                        is_demo: false
+                        macro:
+                          p1: '{your-transaction-id}'
+                          source: '{your-sub-aff-id}'
+                        status: active
+                        created: '2020-01-07T11:10:09.000Z'
+                        modified: '2020-02-17T11:09:54.243Z'
+                        company: Himanshu Tiwari
+                        hashId: 5e146711b6920d697c4326dc
+                        id: 1302
+                        whitelistAdv: []
+                        blockedSources: []
+                      type: publisher
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Login endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                networkUrl:
+                  type: string
+              required:
+                - email
+                - password
+                - networkUrl
+            examples:
+              basic login example:
+                value:
+                  password: xxxx
+                  email: xxx@gmail.com
+                  networkUrl: 'http://demo.trackier.com'
+      tags:
+        - Network
+  /v2/campaigns:
+    get:
+      summary: Get All Campaigns
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: ./models/campaign.v1.yaml
+                  lastId:
+                    type:
+                      - integer
+                      - 'null'
+                required:
+                  - campaigns
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: campaigns-findAll
+      description: This endpoint will return the campaigns sorted based on the id. The limit of campaigns returned in one request is 1000. Send the lastId query parameter to fetch more campaigns
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: lastId
+    post:
+      summary: Create Campaign
+      operationId: campaign-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaign:
+                    $ref: ./models/campaign.v1.yaml
+                  payouts:
+                    type: array
+                    items:
+                      $ref: ./models/payout.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - Campaigns
+      description: Create a new campaign
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: 'null'
+        description: ''
+  '/v2/campaigns/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign Id - numeric or hash ID
+    get:
+      summary: Find Campaign by ID
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaign:
+                    $ref: ./models/campaign.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: campaign-findOne
+      security:
+        - API Key Param: []
+      description: Find a campaign using id
+    post:
+      summary: Edit a campaign
+      operationId: campaign-updateOne
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaign:
+                    $ref: ./models/campaign.v1.yaml
+                  payouts:
+                    type: array
+                    items:
+                      $ref: ./models/payout.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      description: Edit a campaign
+    delete:
+      summary: Delete a campaign
+      operationId: campaign-deleteOne
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: Delete a campaign with given id
+  '/v2/campaigns/{id}/caps/{capId}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: capId
+        in: path
+        required: true
+        description: Cap ID
+    post:
+      summary: Edit a Cap
+      operationId: edit-campaign-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  cap:
+                    $ref: ./models/cap.v1.yaml
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/cap.v1.yaml
+        description: ''
+      tags:
+        - Caps
+        - Campaigns
+      description: Edit a campaign cap
+    delete:
+      summary: Delete a Cap
+      operationId: delete-campaign-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - Caps
+      description: Delete a campaign cap
+  '/v2/campaigns/{id}/lps':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+    get:
+      summary: FindAll landing pages
+      tags:
+        - LandingPages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  landingPages:
+                    type: array
+                    items:
+                      $ref: ./models/landingpage.v1.yaml
+      operationId: landingpages-findAll
+      security:
+        - API Key Param: []
+      description: Find all landing pages for a campaign
+    post:
+      summary: Create a Landing Page
+      operationId: landingpage-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  landingPage:
+                    $ref: ./models/landingpage.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - LandingPages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LandingPage'
+        description: ''
+      description: Create a landing page
+  '/v2/campaigns/{id}/lps/{lpId}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: campaign id
+      - schema:
+          type: string
+        name: lpId
+        in: path
+        required: true
+        description: landing page id
+    post:
+      summary: Edit a Landing Page
+      operationId: edit-landingPage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  landingPage:
+                    $ref: ./models/landingpage.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - LandingPages
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LandingPage'
+      description: Edit a landing page
+    delete:
+      summary: Delete a Landing Page
+      operationId: delete-landingPage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - LandingPages
+      security:
+        - API Key Param: []
+      description: Delete a landing page
+components:
+  schemas:
+    UserCreate:
+      title: UserCreate
+      type: object
+      description: Schema to create a publisher or advertiser
+      x-examples:
+        user create sample:
+          name: Hemant
+          email: hemant@gmail.com
+          password: '12345678'
+      x-tags:
+        - Publishers
+        - Advertisers
+      properties:
+        username:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+        country:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+            - rejected
+        region:
+          type: object
+          properties:
+            lang:
+              type: string
+            currency:
+              type: string
+            address:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zipcode:
+              type: string
+        customFields:
+          type: object
+      required:
+        - name
+        - email
+        - password
+    UserEdit:
+      title: UserEdit
+      type: object
+      x-examples:
+        user edit example:
+          name: Hemant
+          status: pending
+      x-tags:
+        - Publishers
+        - Advertisers
+      properties:
+        username:
+          type: string
+        name:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+          format: email
+        company:
+          type: string
+        phone:
+          type: string
+        country:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+            - rejected
+        region:
+          type: object
+          properties:
+            lang:
+              type: string
+            currency:
+              type: string
+            country:
+              type: string
+            address:
+              type: string
+            state:
+              type: string
+            city:
+              type: string
+            zipcode:
+              type: string
+        customFields:
+          type: object
+      description: Schema to edit a publisher or advertiser
+    Campaign:
+      title: Campaign
+      type: object
+      x-examples:
+        sample camp create:
+          title: API node v2 campaign create
+          previewUrl: 'http://google.com'
+          url: 'http://www.google.com/?click_id={click_id}&pub_id={publisher_id}'
+          currency: USD
+          advertiserId: '3'
+          status: active
+          convTracking: iframe_https
+          convTrackingDomain: demo.gotrackier.com
+          payouts:
+            - payout: 1.2
+              revenue: 1.5
+              currency: USD
+              geo:
+                - US
+      x-tags:
+        - Campaigns
+      description: ''
+      properties:
+        advertiserId:
+          type:
+            - string
+            - integer
+          description: Integer Id or hash ID
+        title:
+          type: string
+        description:
+          type: string
+        previewUrl:
+          type: string
+        url:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          default: active
+          enum:
+            - active
+            - pending
+            - paused
+            - disabled
+            - expired
+        commModel:
+          type: string
+          default: cpa
+          enum:
+            - cpa
+            - cpl
+            - cps
+            - cpi
+            - cpc
+            - cpm
+        device:
+          type: string
+        defaultGoalName:
+          type: string
+        defaultLpName:
+          type: string
+        flow:
+          type: array
+          items:
+            type: string
+        subIdsBlocked:
+          type: array
+          items:
+            type: string
+        subIdsAllowed:
+          type: array
+          items:
+            type: string
+        appName:
+          type: string
+        appId:
+          type: string
+        os:
+          type: array
+          items:
+            type: string
+            enum:
+              - android
+              - ios
+              - all
+        scheduleZone:
+          type: string
+        schduleStartHour:
+          type: string
+        scheduleEndHour:
+          type: string
+        visibility:
+          type: string
+          default: public
+          enum:
+            - public
+            - private
+            - permission
+        allowSpilloverConv:
+          type: integer
+          default: 1
+          minimum: 0
+          maximum: 1
+        holdPeriod:
+          type: integer
+          nullable: true
+        cancelFallbackConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        redirectType:
+          type: string
+          default: 302
+          enum:
+            - '302'
+            - 302_hrf
+            - '200'
+            - 200_hrf
+        trackMultiConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        convPending:
+          type: integer
+          minimum: 0
+          maximum: 1
+        cancelBlockedPbConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        allowImp:
+          type: integer
+          minimum: 0
+          maximum: 1
+        iurl:
+          type: string
+        blacklistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        whitelistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        convTracking:
+          type: string
+          enum:
+            - postback
+            - iframe_https
+            - image_https
+        convTrackingDomain:
+          type: string
+        attributionWindow:
+          type: integer
+        fallbackCampaign:
+          type: string
+        fallbackUrl:
+          type: string
+        showGlobalTargeting:
+          type: integer
+          minimum: 0
+          maximum: 1
+        blockedPubs:
+          type: array
+          items:
+            type: integer
+        primaryTrackingDomain:
+          type: string
+        payouts:
+          type: array
+          items:
+            type: object
+            properties:
+              payout:
+                type: number
+              revenue:
+                type:
+                  - string
+                  - number
+              geo:
+                type: array
+                items:
+                  type: string
+            required:
+              - payout
+              - revenue
+              - geo
+      required:
+        - advertiserId
+        - title
+        - url
+        - currency
+        - convTracking
+        - payouts
+    Cap:
+      title: Cap
+      type: object
+      x-examples:
+        example-1:
+          type: conversion
+          visibility: public
+          publisherIds:
+            - 31
+          pubCapType: each
+          daily: '10'
+          geo:
+            - ALL
+      properties:
+        type:
+          type: string
+        goalId:
+          type: string
+        publisherIds:
+          type: array
+          items:
+            type:
+              - string
+              - integer
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        pubCapType:
+          type: string
+          enum:
+            - each
+            - group
+        landingPageIds:
+          type: array
+          items:
+            type:
+              - string
+              - integer
+        daily:
+          type: number
+        monthly:
+          type: number
+        lifetime:
+          type: number
+        geo:
+          type: array
+          items:
+            type: string
+      required:
+        - type
+        - visibility
+        - pubCapType
+        - daily
+      x-tags:
+        - Caps
+      description: Cap Model to create/edit cap
+    LandingPage:
+      title: LandingPage
+      type: object
+      x-tags:
+        - LandingPages
+      properties:
+        title:
+          type: string
+        previewLink:
+          type: string
+        url:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - paused
+        lpType:
+          type: string
+          enum:
+            - landing
+            - prelanding
+        description:
+          type: string
+      required:
+        - title
+        - url
+        - status
+        - lpType
+      description: ''
+    Payout:
+      title: Payout
+      type: object
+      properties:
+        payout:
+          type: number
+        revenue:
+          type: number
+        geo:
+          type: array
+          items:
+            type: string
+        pubIds:
+          type: array
+          items:
+            type:
+              - number
+              - string
+        landingPages:
+          type: array
+          items:
+            type:
+              - string
+              - number
+        currency:
+          type: string
+        region:
+          type: array
+          items:
+            type: string
+        city:
+          type: array
+          items:
+            type: string
+        goalId:
+          type: string
+      required:
+        - payout
+        - revenue
+        - geo
+      x-tags:
+        - Payouts
+      description: ''
+    Goal:
+      title: Goal
+      type: object
+      x-examples:
+        example-1:
+          title: CREATING GOAL using v2 api
+          value: apiv2_goal2
+          type: public
+          payout_model: fixed
+          payouts:
+            - payout: 2
+              revenue: 4
+              geo:
+                - IN
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        payout_model:
+          type: string
+          enum:
+            - fixed
+            - percentage
+        payouts:
+          type: array
+          items:
+            type: object
+            properties:
+              payout:
+                type: number
+              revenue:
+                type: number
+              geo:
+                type: array
+                items:
+                  type: string
+      required:
+        - title
+        - value
+      x-tags:
+        - Campaign Goal
+      description: Goal Model to create/edit goal
+  securitySchemes:
+    API Key Param:
+      name: apiKey
+      type: apiKey
+      in: query
+      description: API Key for making the requests
+tags:
+  - name: Publishers
+  - name: Caps
+  - name: Campaigns
