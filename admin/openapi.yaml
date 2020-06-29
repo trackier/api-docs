@@ -226,6 +226,197 @@ paths:
         - Publishers
       security:
         - API Key Param: []
+  /v2/advertisers:
+    get:
+      summary: Find All Advertisers
+      tags:
+        - Advertisers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  advertisers:
+                    type: array
+                    items:
+                      $ref: ./models/av.v1.yaml
+                  lastId:
+                    type:
+                      - 'null'
+                      - integer
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: advertiser-findAll
+      description: Get 1000 advertisers in a single request then to find the next set of results pass the lastId received in the body
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: lastId
+      security:
+        - API Key Param: []
+    post:
+      summary: Create an advertiser
+      operationId: advertiser-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  advertiser:
+                    $ref: ./models/av.v1.yaml
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        description: ''
+      description: Create an advertiser
+      tags:
+        - Advertisers
+      security:
+        - API Key Param: []
+  '/v2/advertisers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Find a single advertiser
+      tags:
+        - Advertisers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  advertiser:
+                    $ref: ./models/av.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: advertiser-findOne
+      description: Get a single advertiser
+      security:
+        - API Key Param: []
+    post:
+      summary: Update an Advertiser
+      operationId: advertiser-edit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  advertiser:
+                    $ref: ./models/av.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserEdit'
+            examples: {}
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UserEdit'
+        description: ''
+      description: Edit a single advertiser
+      tags:
+        - Advertisers
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete an Advertiser
+      operationId: advertiser-delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: '{id}'
+      description: Delete an advertiser
+      tags:
+        - Advertisers
+      security:
+        - API Key Param: []
   /v2/login:
     post:
       summary: Basic Login Endpoint
