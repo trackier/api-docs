@@ -817,6 +817,161 @@ paths:
       security:
         - API Key Param: []
       description: Delete a landing page
+  '/v2/campaigns/{id}/payouts':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+    get:
+      summary: Get Campaign Payouts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payouts:
+                    type: array
+                    items:
+                      $ref: ./models/payout.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-campaigns-id-payouts
+      security:
+        - API Key Param: []
+      requestBody:
+        description: ''
+      tags:
+        - Payouts
+      description: Get campaign payouts
+    post:
+      summary: Add new campaign payout
+      operationId: post-v2-campaigns-id-payouts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payout:
+                    $ref: ./models/payout.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payout'
+        description: ''
+      tags:
+        - Payouts
+      description: Add a new campaign payout
+  '/v2/campaigns/{id}/payouts/{payoutId}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: payoutId
+        in: path
+        required: true
+        description: Payout ID
+    post:
+      summary: Edit a payout
+      operationId: post-v2-campaigns-id-payouts-payoutId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payout:
+                    $ref: ./models/payout.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payout'
+      tags:
+        - Payouts
+      description: Edit a campaign payout
+    delete:
+      summary: Delete a payout
+      operationId: delete-v2-campaigns-id-payouts-payoutId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - Payouts
+      description: Delete a campaign payout
   '/v2/campaigns/{id}/goals':
     parameters:
       - schema:
@@ -1479,15 +1634,15 @@ components:
         pubIds:
           type: array
           items:
-            type:
-              - number
-              - string
+            oneOf:
+              - type: integer
+              - type: string
         landingPages:
           type: array
           items:
-            type:
-              - string
-              - number
+            oneOf:
+              - type: integer
+              - type: string
         currency:
           type: string
         region:
