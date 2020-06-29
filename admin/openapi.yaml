@@ -567,7 +567,40 @@ paths:
       description: Find caps for campaign
       security:
         - API Key Param: []
-
+    post:
+      summary: Create Campaign Cap
+      operationId: cap-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cap:
+                    $ref: ./models/cap.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Caps
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cap'
+      description: Create cap for a campaign
   '/v2/campaigns/{id}/caps/{capId}':
     parameters:
       - schema:
@@ -1364,9 +1397,9 @@ components:
         publisherIds:
           type: array
           items:
-            type:
-              - string
-              - integer
+            oneOf:
+              - type: string
+              - type: integer
         visibility:
           type: string
           enum:
@@ -1380,9 +1413,9 @@ components:
         landingPageIds:
           type: array
           items:
-            type:
-              - string
-              - integer
+            oneOf:
+              - type: string
+              - type: integer
         daily:
           type: number
         monthly:
