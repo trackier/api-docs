@@ -60,7 +60,7 @@ paths:
     get:
       summary: Find Publisher by ID
       tags:
-        - Publishers
+        - Manage Publishers
       responses:
         '200':
           description: OK
@@ -170,7 +170,7 @@ paths:
       description: Delete a publisher with given ID
       parameters: []
       tags:
-        - Publishers
+        - Manage Publishers
       security:
         - API Key Param: []
     post:
@@ -261,14 +261,14 @@ paths:
               properties: {}
         description: Properties to be sent in request
       tags:
-        - Publishers
+        - Manage Publishers
       security:
         - API Key Param: []
   /v2/advertisers:
     get:
       summary: Find All Advertisers
       tags:
-        - Advertisers
+        - Manage Advertisers
       responses:
         '200':
           description: OK
@@ -341,7 +341,7 @@ paths:
         description: ''
       description: Create an advertiser
       tags:
-        - Advertisers
+        - Manage Advertisers
       security:
         - API Key Param: []
   '/v2/advertisers/{id}':
@@ -354,7 +354,7 @@ paths:
     get:
       summary: Find a single advertiser
       tags:
-        - Advertisers
+        - Manage Advertisers
       responses:
         '200':
           description: OK
@@ -416,7 +416,7 @@ paths:
         description: ''
       description: Edit a single advertiser
       tags:
-        - Advertisers
+        - Manage Advertisers
       security:
         - API Key Param: []
     delete:
@@ -452,7 +452,7 @@ paths:
           name: '{id}'
       description: Delete an advertiser
       tags:
-        - Advertisers
+        - Manage Advertisers
       security:
         - API Key Param: []
   /v2/login:
@@ -767,7 +767,7 @@ paths:
     get:
       summary: Find Campaign Caps
       tags:
-        - Caps
+        - Campaign Caps
         - Campaigns
       responses:
         '200':
@@ -821,7 +821,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       tags:
-        - Caps
+        - Campaign Caps
       security:
         - API Key Param: []
       requestBody:
@@ -868,7 +868,7 @@ paths:
               $ref: ./models/cap.v1.yaml
         description: ''
       tags:
-        - Caps
+        - Campaign Caps
         - Campaigns
       description: Edit a campaign cap
     delete:
@@ -900,7 +900,7 @@ paths:
       security:
         - API Key Param: []
       tags:
-        - Caps
+        - Campaign Caps
       description: Delete a campaign cap
   '/v2/campaigns/{id}/lps':
     parameters:
@@ -913,7 +913,7 @@ paths:
     get:
       summary: FindAll landing pages
       tags:
-        - LandingPages
+        - Landing Pages
       responses:
         '200':
           description: OK
@@ -957,7 +957,7 @@ paths:
       security:
         - API Key Param: []
       tags:
-        - LandingPages
+        - Landing Pages
       requestBody:
         content:
           application/json:
@@ -1006,7 +1006,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       tags:
-        - LandingPages
+        - Landing Pages
       security:
         - API Key Param: []
       requestBody:
@@ -1042,7 +1042,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       tags:
-        - LandingPages
+        - Landing Pages
       security:
         - API Key Param: []
       description: Delete a landing page
@@ -1387,7 +1387,7 @@ paths:
     get:
       summary: Find all publishers
       tags:
-        - Publishers
+        - Manage Publishers
       responses:
         '200':
           description: OK
@@ -1443,7 +1443,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       tags:
-        - Publishers
+        - Manage Publishers
       description: Create a new publisher
       security:
         - API Key Param: []
@@ -1465,8 +1465,8 @@ components:
           email: hemant@gmail.com
           password: '12345678'
       x-tags:
-        - Publishers
-        - Advertisers
+        - Manage Publishers
+        - Manage Advertisers
       properties:
         username:
           type: string
@@ -1519,8 +1519,8 @@ components:
           name: Hemant
           status: pending
       x-tags:
-        - Publishers
-        - Advertisers
+        - Manage Publishers
+        - Manage Advertisers
       properties:
         username:
           type: string
@@ -1816,13 +1816,13 @@ components:
         - pubCapType
         - daily
       x-tags:
-        - Caps
+        - Campaign Caps
       description: Cap Model to create/edit cap
     LandingPage:
       title: LandingPage
       type: object
       x-tags:
-        - LandingPages
+        - Landing Pages
       properties:
         title:
           type: string
@@ -1943,6 +1943,6 @@ components:
       in: query
       description: API Key for making the requests
 tags:
-  - name: Publishers
-  - name: Caps
+  - name: Manage Publishers
+  - name: Campaign Caps
   - name: Campaigns
