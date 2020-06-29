@@ -527,6 +527,47 @@ paths:
       security:
         - API Key Param: []
       description: Delete a campaign with given id
+  '/v2/campaigns/{id}/caps':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+    get:
+      summary: Find Campaign Caps
+      tags:
+        - Caps
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  caps:
+                    type: array
+                    items:
+                      $ref: ./models/cap.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: caps-findAll
+      description: Find caps for campaign
+      security:
+        - API Key Param: []
+
   '/v2/campaigns/{id}/caps/{capId}':
     parameters:
       - schema:
@@ -872,6 +913,129 @@ paths:
       tags:
         - Campaign Goal
       description: Delete a campaign goal
+  /v2/campaigns/status:
+    post:
+      summary: Bulk Campaign Status Change
+      operationId: post-v2-campaigns-status
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      description: Use this endpoint to change the status of multiple campaigns in one request
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                campaignIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - pending
+                    - paused
+                    - disabled
+                    - expired
+              required:
+                - campaignIds
+                - status
+  /v2/publishers:
+    get:
+      summary: Find all publishers
+      tags:
+        - Publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publishers:
+                    type: array
+                    items:
+                      $ref: ./models/publisher.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-publishers
+      description: Find all publishers
+    post:
+      summary: Create a new publisher
+      operationId: post-v2-publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  publisher:
+                    $ref: ./models/publisher.v1.yaml
+          headers: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Publishers
+      description: Create a new publisher
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        description: schema to create a publisher
 components:
   schemas:
     UserCreate:
