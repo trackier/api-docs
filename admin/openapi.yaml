@@ -297,12 +297,23 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: advertiser-findAll
-      description: Get 1000 advertisers in a single request then to find the next set of results pass the lastId received in the body
+      description: |-
+        Get 1000 advertisers in a single request then to find the next set of results pass the lastId received in the body
+
+        To find advertiser using name,email,company or ids use filters param
+        - &filters[name]=Demo
+        - &filters[company]=Test
+        - &filters[ids][]=31&filters[ids][]=54
       parameters:
         - schema:
             type: string
           in: query
           name: lastId
+        - schema:
+            type: array
+          in: query
+          name: filters
+          description: Filters param to apply search filter
       security:
         - API Key Param: []
     post:
@@ -603,7 +614,12 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: campaigns-findAll
-      description: This endpoint will return the campaigns sorted based on the id. The limit of campaigns returned in one request is 1000. Send the lastId query parameter to fetch more campaigns
+      description: |-
+        This endpoint will return the campaigns sorted based on the id. The limit of campaigns returned in one request is 1000. Send the lastId query parameter to fetch more campaigns
+
+        To see campaigns for a particular status use the filters query param
+
+        - &filters[status]=active
       security:
         - API Key Param: []
       parameters:
@@ -611,6 +627,10 @@ paths:
             type: integer
           in: query
           name: lastId
+        - schema:
+            type: array
+          in: query
+          name: filters
     post:
       summary: Create Campaign
       operationId: campaign-create
@@ -1412,7 +1432,25 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: get-v2-publishers
-      description: Find all publishers
+      description: |-
+        Find all publishers
+
+        To find publishers using name,email,company or ids use filters param
+        - &filters[name]=Demo
+        - &filters[company]=Test
+        - &filters[ids][]=31&filters[ids][]=54
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: lastId
+          description: Last publisher id
+        - schema:
+            type: array
+          in: query
+          name: filters
     post:
       summary: Create a new publisher
       operationId: post-v2-publishers
@@ -1606,6 +1644,19 @@ paths:
                           type: string
                         status:
                           type: string
+                          enum:
+                            - approved
+                            - pending
+                            - denied
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
         '400':
           description: Bad Request
           content:
@@ -1618,9 +1669,22 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: get-v2-campaigns-access
-      description: Find private and permission required campaigns access list
+      description: |-
+        Find private and permission required campaigns access list
+
+        To see data for particular campaign or publishers use the filters query param like
+
+        - &filters[campaignIds][]=34&filters[campaignIds][]=43
+        - &filters[publisherIds][]=28
+        - &filters[accessStatus]=pending
       security:
         - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: filters
+          description: Apply filters to see data for particular campaign or publishers
     post:
       summary: Update Campaign Access
       operationId: post-v2-campaigns-access
