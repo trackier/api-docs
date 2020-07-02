@@ -50,6 +50,108 @@ info:
 servers:
   - url: 'https://api.trackier.com'
 paths:
+  /v2/publishers:
+    get:
+      summary: Find all publishers
+      tags:
+        - Manage Publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publishers:
+                    type: array
+                    items:
+                      $ref: ./models/publisher.v1.yaml
+                  lastId:
+                    type: integer
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-publishers
+      description: |-
+        Find all publishers
+
+        To find publishers using name,email,company or ids use filters param
+        - &filters[name]=Demo
+        - &filters[company]=Test
+        - &filters[ids][]=31&filters[ids][]=54
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: lastId
+          description: Last publisher id
+        - schema:
+            type: array
+          in: query
+          name: filters
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limit the number of records (default: 5000)'
+    post:
+      summary: Create a new publisher
+      operationId: post-v2-publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  publisher:
+                    $ref: ./models/publisher.v1.yaml
+          headers: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Manage Publishers
+      description: Create a new publisher
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        description: schema to create a publisher
   '/v2/publishers/{id}':
     parameters:
       - schema:
@@ -1415,108 +1517,6 @@ paths:
               required:
                 - campaignIds
                 - status
-  /v2/publishers:
-    get:
-      summary: Find all publishers
-      tags:
-        - Manage Publishers
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  publishers:
-                    type: array
-                    items:
-                      $ref: ./models/publisher.v1.yaml
-                  lastId:
-                    type: integer
-                  pagination:
-                    type: object
-                    properties:
-                      totalCount:
-                        type: integer
-                      perPage:
-                        type: integer
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      $ref: ./models/error.v1.yaml
-      operationId: get-v2-publishers
-      description: |-
-        Find all publishers
-
-        To find publishers using name,email,company or ids use filters param
-        - &filters[name]=Demo
-        - &filters[company]=Test
-        - &filters[ids][]=31&filters[ids][]=54
-      security:
-        - API Key Param: []
-      parameters:
-        - schema:
-            type: integer
-          in: query
-          name: lastId
-          description: Last publisher id
-        - schema:
-            type: array
-          in: query
-          name: filters
-        - schema:
-            type: integer
-          in: query
-          name: limit
-          description: 'Limit the number of records (default: 5000)'
-    post:
-      summary: Create a new publisher
-      operationId: post-v2-publishers
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
-                  publisher:
-                    $ref: ./models/publisher.v1.yaml
-          headers: {}
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      $ref: ./models/error.v1.yaml
-      tags:
-        - Manage Publishers
-      description: Create a new publisher
-      security:
-        - API Key Param: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserCreate'
-        description: schema to create a publisher
   /v2/signupfields/publisher:
     get:
       summary: Publisher Signup Questions
