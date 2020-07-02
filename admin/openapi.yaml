@@ -1621,6 +1621,71 @@ paths:
       description: Find private and permission required campaigns access list
       security:
         - API Key Param: []
+    post:
+      summary: Update Campaign Access
+      operationId: post-v2-campaigns-access
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Bulk assign or remove publisher access to private or permission required campaigns
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                campaign_ids:
+                  type: array
+                  items:
+                    type: integer
+                publisher_ids:
+                  type: array
+                  items:
+                    type: integer
+                type:
+                  type: string
+                  enum:
+                    - assign
+                    - remove
+              required:
+                - campaign_ids
+                - publisher_ids
+                - type
+            examples:
+              example-1:
+                value:
+                  campaign_ids:
+                    - 1
+                    - 2
+                  publisher_ids:
+                    - 5
+                    - 6
+                  type: assign
+        description: Body contains array of campaign ids and publisher ids
+      tags:
+        - Campaigns
 components:
   schemas:
     UserCreate:
