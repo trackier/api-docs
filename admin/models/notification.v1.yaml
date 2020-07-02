@@ -1,0 +1,31 @@
+title: Notification
+type: object
+description: Network notification model
+x-tags:
+  - Network
+properties:
+  _id:
+    type: string
+  org_id:
+    type: string
+  message:
+    type: string
+  resourceLink:
+    type: string
+  relatedObject:
+    type: object
+    properties:
+      resource:
+        type: string
+      resourceId:
+        type: string
+  target:
+    type: string
+    enum:
+      - admins
+      - afms
+      - adms
+      - publishers
+      - advertisers
+  created:
+    type: string

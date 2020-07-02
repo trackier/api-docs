@@ -1769,6 +1769,62 @@ paths:
         description: Body contains array of campaign ids and publisher ids
       tags:
         - Campaigns
+  /v2/network/notifications:
+    get:
+      summary: Get Notifications
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notifications:
+                    type: array
+                    items:
+                      $ref: ./models/notification.v1.yaml
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-network-notificatoins
+      description: Get Network notifications
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: End date in YYYY-MM-DD format
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Limit of records per page
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Page number for pagination
+    parameters: []
 components:
   schemas:
     UserCreate:
