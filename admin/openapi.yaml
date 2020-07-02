@@ -1453,6 +1453,104 @@ paths:
             schema:
               $ref: '#/components/schemas/UserCreate'
         description: schema to create a publisher
+  /v2/signupfields/publisher:
+    get:
+      summary: Publisher Signup Questions
+      tags:
+        - Manage Publishers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        options:
+                          type: array
+                          items:
+                            type: string
+                        label:
+                          type: string
+                        type:
+                          type: string
+                        name:
+                          type: string
+                        required:
+                          type: boolean
+                        id:
+                          type: string
+                        hide:
+                          type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-signupfields-publisher
+      description: Get custom signup question fields for publisher
+      security:
+        - API Key Param: []
+  /v2/signupfields/advertiser:
+    get:
+      summary: Advertiser SignUp Questions
+      tags:
+        - Manage Advertisers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        options:
+                          type: array
+                          items:
+                            type: string
+                        label:
+                          type: string
+                        type:
+                          type: string
+                        name:
+                          type: string
+                        required:
+                          type: boolean
+                        id:
+                          type: string
+                        hide:
+                          type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-signupfields-advertiser
+      description: Get custom signup question fields for advertiser
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:
