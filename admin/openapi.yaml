@@ -285,6 +285,13 @@ paths:
                     type:
                       - 'null'
                       - integer
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
         '400':
           description: Bad Request
           content:
@@ -314,6 +321,11 @@ paths:
           in: query
           name: filters
           description: Filters param to apply search filter
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limit the number of records (default: 5000)'
       security:
         - API Key Param: []
     post:
@@ -1420,6 +1432,15 @@ paths:
                     type: array
                     items:
                       $ref: ./models/publisher.v1.yaml
+                  lastId:
+                    type: integer
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
         '400':
           description: Bad Request
           content:
@@ -1451,6 +1472,11 @@ paths:
             type: array
           in: query
           name: filters
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limit the number of records (default: 5000)'
     post:
       summary: Create a new publisher
       operationId: post-v2-publishers
@@ -1649,14 +1675,7 @@ paths:
                             - pending
                             - denied
                   pagination:
-                    type: object
-                    properties:
-                      perPage:
-                        type: integer
-                      currentPage:
-                        type: integer
-                      total:
-                        type: integer
+                    $ref: '#/components/schemas/Pagination'
         '400':
           description: Bad Request
           content:
@@ -2145,6 +2164,17 @@ components:
         - status
         - lpType
       description: ''
+    Pagination:
+      title: Pagination
+      type: object
+      properties:
+        perPage:
+          type: integer
+        currentPage:
+          type: integer
+        total:
+          type: integer
+      description: Pagination model
     Payout:
       title: Payout
       type: object
