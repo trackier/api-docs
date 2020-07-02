@@ -1551,6 +1551,76 @@ paths:
       description: Get custom signup question fields for advertiser
       security:
         - API Key Param: []
+  /v2/campaigns/access:
+    get:
+      summary: Find Campaign Access
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                            - private
+                            - permission
+                        created:
+                          type: string
+                        campaign:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            status:
+                              type: string
+                            hashId:
+                              type: string
+                            id:
+                              type: integer
+                        publisher:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            company:
+                              type: string
+                            hashId:
+                              type: string
+                            id:
+                              type: integer
+                        campaignId:
+                          type: string
+                        publisherId:
+                          type: string
+                        status:
+                          type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-campaigns-access
+      description: Find private and permission required campaigns access list
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:
