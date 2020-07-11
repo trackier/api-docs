@@ -1,0 +1,37 @@
+title: Postback Model
+type: object
+description: Postback Model Schema
+properties:
+  id:
+    type: string
+  event:
+    type: string
+  eventId:
+    type:
+      - string
+      - 'null'
+  type:
+    type: string
+  data:
+    type: string
+  status:
+    type: string
+  allowedConvStatus:
+    type: string
+  publisherId:
+    type: string
+  campaignId:
+    type: string
+  blockZeroPayoutPb:
+    type: boolean
+  http:
+    type: object
+    properties:
+      method:
+        type: string
+      body:
+        type: string
+      headers:
+        type: object
+  created:
+    type: string

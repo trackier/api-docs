@@ -1,46 +1,20 @@
 openapi: 3.0.0
 info:
   title: Trackier Admin API Docs
-  version: 'v2'
-  description: >
+  version: v2
+  description: |
     # Introduction
-
-    The Trackier API is designed for developers, engineers, or anyone else who’s
-    comfortable creating custom-coded solutions or integrating with RESTful APIs.
-
+    The Trackier API is designed for developers, engineers, or anyone else who’s comfortable creating custom-coded solutions or integrating with RESTful APIs.
     Base URL
       <li>URL : https://api.trackier.com</li>
       <li>Description : Main server</li>
 
     # HTTP Status Code
-
-    Review all global errors for the Trackier API so you can get back to work fast.
-    <hr><b>401 - API Key Invalid</b>
-    <br>Your API key may be invalid, or you’ve
-    attempted to access the wrong data center.
-    <br>The current request requires user authentication.
-    For example, the user does not have the necessary credentials.
-    <hr><b>403 - No permissions visit this resource</b>
-    <br>You are not permitted to access this resource.
-    <br>The request was a valid request, but the server is refusing to respond to it.
-    For example, the user does not have the necessary permissions for the resource.
-    <hr><b>404 - Resource Not Found</b>
-    <br>The requested resource could not be found.
-    <br>This error tells you a specific resource doesn’t exist.
-    It’s possible that the resource has been moved or deleted, or that there’s a typo
-    in your request.<hr><b>500 - Server error, Please contact administrator</b>
-    <br>A generic error message, given when an unexpected condition was encountered and
-    no more specific message is suitable.Please contact Support for more information.
-    <br>This error lets you know our servers have experienced a problem.
-    Although this is rare, please contact support@trackier.com to let us know that
-    you’ve encountered this error
-
+    Review all global errors for the Trackier API so you can get back to work fast. <hr><b>401 - API Key Invalid</b> <br>Your API key may be invalid, or you’ve attempted to access the wrong data center. <br>The current request requires user authentication. For example, the user does not have the necessary credentials. <hr><b>403 - No permissions visit this resource</b> <br>You are not permitted to access this resource. <br>The request was a valid request, but the server is refusing to respond to it. For example, the user does not have the necessary permissions for the resource. <hr><b>404 - Resource Not Found</b> <br>The requested resource could not be found. <br>This error tells you a specific resource doesn’t exist. It’s possible that the resource has been moved or deleted, or that there’s a typo in your request.<hr><b>500 - Server error, Please contact administrator</b> <br>A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.Please contact Support for more information. <br>This error lets you know our servers have experienced a problem. Although this is rare, please contact support@trackier.com to let us know that you’ve encountered this error
     # Authentication
-
     Trackier API endpoints can be authenticated via:
       - Header: x-api-key
       - Query Param: ?apiKey=
-
   termsOfService: 'https://trackier.com/terms-of-service/'
   contact:
     name: API Support
@@ -394,6 +368,7 @@ paths:
                         type: integer
                       perPage:
                         type: integer
+              examples: {}
         '400':
           description: Bad Request
           content:
@@ -1825,6 +1800,220 @@ paths:
           name: page
           description: Page number for pagination
     parameters: []
+  /v2/postback:
+    get:
+      summary: Get All Postbacks
+      tags:
+        - Manage Postbacks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      postbacks:
+                        type: array
+                        items:
+                          $ref: ./models/postback.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-postback
+      description: Find all publishers postback
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+          description: ''
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit number of records to fetch
+    post:
+      summary: Create Postback
+      operationId: post-v2-postback
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      postback:
+                        $ref: ./models/postback.v1.yaml
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Add publisher Postback
+      security:
+        - API Key Param: []
+      tags:
+        - Manage Postbacks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostbackCreate'
+  '/v2/postback/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get Postback by ID
+      tags:
+        - Manage Postbacks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      postback:
+                        $ref: ./models/postback.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-postback-id
+      description: Get Postback by ID
+      security:
+        - API Key Param: []
+    patch:
+      summary: Update Postback
+      operationId: patch-v2-postback-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      postback:
+                        $ref: ./models/postback.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Update Postback
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostbackEdit'
+        description: ''
+      tags:
+        - Manage Postbacks
+    delete:
+      summary: Delete Postback
+      operationId: delete-v2-postback-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Delete Postback by ID
+      security:
+        - API Key Param: []
+      tags:
+        - Manage Postbacks
 components:
   schemas:
     UserCreate:
@@ -2319,6 +2508,179 @@ components:
       x-tags:
         - Campaign Goal
       description: Goal Model to create/edit goal
+    PostbackCreate:
+      title: PostbackCreate
+      type: object
+      description: Schema to create a publisher postback
+      x-examples:
+        Postback Create Sample:
+          type: url
+          event: goal
+          eventId: all
+          data: 'http://google.com?click_id={click_id}'
+          status: active
+          allowedConvStatus: approved
+          campaignId: 5f042f509dfea2354c5c7af3
+          publisherId: all
+          blockZeroPayoutPb: true
+          http:
+            method: patch
+            body: '{"Key": "Value"}'
+            headers:
+              x-Api-Key: abhay
+              name: abhay
+      x-tags:
+        - Manage Postbacks
+      properties:
+        type:
+          type: string
+          enum:
+            - url
+            - iframe_pixel
+            - image_pixel
+            - javascript_pixel
+        event:
+          type: string
+          enum:
+            - conversion
+            - goal
+            - conversion_goal
+        eventId:
+          type: string
+          default: all
+          enum:
+            - all
+            - 24 Digit goal ID
+        data:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+        allowedConvStatus:
+          type: string
+          enum:
+            - approved
+            - pending
+        campaignId:
+          type:
+            - string
+            - number
+          enum:
+            - all
+            - Campaign Long ID
+            - Campaign Short ID
+        publisherId:
+          type:
+            - string
+            - number
+          enum:
+            - all
+            - Publisher Long ID
+            - Publisher Short ID
+        blockZeroPayoutPb:
+          type: boolean
+        http:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+                - GET
+                - PUT
+                - PATCH
+                - POST
+                - DELETE
+            body:
+              type: string
+            headers:
+              type: object
+      required:
+        - type
+        - event
+        - data
+        - status
+        - allowedConvStatus
+        - campaignId
+        - publisherId
+        - blockZeroPayoutPb
+    PostbackEdit:
+      title: PostbackEdit
+      type: object
+      description: Schema to edit a publisher postback
+      x-examples:
+        Postback Edit Schema:
+          type: iframe_pixel
+          event: goal
+          eventId: all
+          data: 'http://google.com?click_id={click_id}'
+          status: pending
+          allowedConvStatus: approved
+          campaignId: all
+          publisherId: 4
+          blockZeroPayoutPb: false
+          http:
+            method: post
+            body: '{"Abhay": "Hey"}'
+            headers:
+              name: abhaychauhan
+      properties:
+        type:
+          type: string
+          enum:
+            - url
+            - iframe_pixel
+            - image_pixel
+            - javascript_pixel
+        event:
+          type: string
+          enum:
+            - conversion
+            - goal
+            - conversion_goal
+        eventId:
+          type: string
+          enum:
+            - all
+            - Goal Long ID
+        data:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+        allowedConvStatus:
+          type: string
+          enum:
+            - approved
+            - pending
+        campaignId:
+          type: string
+          enum:
+            - all
+            - Campaign Long ID
+            - Campaign Short ID
+        publisherId:
+          type: string
+          enum:
+            - all
+            - Publisher Long ID
+            - Publisher Short ID
+        blockZeroPayoutPb:
+          type: boolean
+        http:
+          type: object
+          properties:
+            method:
+              type: string
+            body:
+              type: string
+            headers:
+              type: object
+      x-tags:
+        - Manage Postbacks
   securitySchemes:
     API Key Param:
       name: apiKey
