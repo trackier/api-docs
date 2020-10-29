@@ -2014,6 +2014,328 @@ paths:
         - API Key Param: []
       tags:
         - Manage Postbacks
+  /v2/reports/campaign:
+    get:
+      summary: Campaign Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        campaign_name:
+                          type: string
+                        campaign_id:
+                          type: integer
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - campaign_name: test
+                        campaign_id: 21585
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-campaign
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+  /v2/reports/publisher:
+    get:
+      summary: Publisher Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        publisher:
+                          type: string
+                        publisher_id:
+                          type: integer
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - publisher: test
+                        publisher_id: 21
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-publisher
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+  /v2/reports/advertiser:
+    get:
+      summary: Advertiser Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        advertiser:
+                          type: string
+                        advertiser_id:
+                          type: integer
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - advertiser: demo
+                        advertiser_id: 3
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-advertiser
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+  /v2/reports/daily:
+    get:
+      summary: Daily Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created:
+                          type: string
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - created: '2020-10-20'
+                        advertiser_id: 3
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-daily
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
 components:
   schemas:
     UserCreate:
