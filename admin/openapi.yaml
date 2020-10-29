@@ -2019,6 +2019,14 @@ paths:
       summary: Campaign Report
       tags:
         - Reports
+      description: |-
+        Campaign Report
+
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+        To update the KPI in response add the kpi in query paramters like this:
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -2087,6 +2095,11 @@ paths:
           in: query
           name: adv_ids
         - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+        - schema:
             type: string
           in: query
           name: start
@@ -2101,6 +2114,14 @@ paths:
       summary: Publisher Report
       tags:
         - Reports
+      description: |-
+        Publisher Report
+
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+        To update the KPI in response add the kpi in query paramters like this:
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -2169,6 +2190,11 @@ paths:
           in: query
           name: adv_ids
         - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+        - schema:
             type: string
           in: query
           name: start
@@ -2183,6 +2209,14 @@ paths:
       summary: Advertiser Report
       tags:
         - Reports
+      description: |-
+        Advertiser Report
+
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+        To update the KPI in response add the kpi in query paramters like this:
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -2251,6 +2285,11 @@ paths:
           in: query
           name: adv_ids
         - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+        - schema:
             type: string
           in: query
           name: start
@@ -2265,6 +2304,14 @@ paths:
       summary: Daily Report
       tags:
         - Reports
+      description: |-
+        Daily Report
+
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+        To update the KPI in response add the kpi in query paramters like this:
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -2330,6 +2377,11 @@ paths:
           in: query
           name: adv_ids
         - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+        - schema:
             type: string
           in: query
           name: start
@@ -2344,6 +2396,14 @@ paths:
       summary: Goal Report
       tags:
         - Reports
+      description: |-
+        Goal Report
+
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+        To update the KPI in response add the kpi in query paramters like this:
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -2418,6 +2478,11 @@ paths:
             type: array
           in: query
           name: adv_ids
+        - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
