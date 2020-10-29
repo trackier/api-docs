@@ -2077,6 +2077,7 @@ paths:
             type: array
           in: query
           name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
         - schema:
             type: array
           in: query
@@ -2158,6 +2159,7 @@ paths:
             type: array
           in: query
           name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
         - schema:
             type: array
           in: query
@@ -2239,6 +2241,7 @@ paths:
             type: array
           in: query
           name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
         - schema:
             type: array
           in: query
@@ -2294,7 +2297,6 @@ paths:
                   value:
                     records:
                       - created: '2020-10-20'
-                        advertiser_id: 3
                         currency: USD
                         clicks: 1
                         approvedConversions: 8
@@ -2318,6 +2320,96 @@ paths:
             type: array
           in: query
           name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+  /v2/reports/goal:
+    get:
+      summary: Goal Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        campaign_name:
+                          type: string
+                        campaign_id:
+                          type: string
+                        goal_name:
+                          type: string
+                        goal_id:
+                          type: string
+                          nullable: true
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - campaign_name: 'test'
+                        campaign_id: 35
+                        goal_name: 'Default'
+                        goal_id: null
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-goal
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
         - schema:
             type: array
           in: query
