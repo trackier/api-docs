@@ -2085,7 +2085,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
@@ -2180,7 +2180,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
@@ -2275,7 +2275,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
@@ -2367,7 +2367,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
@@ -2469,7 +2469,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
@@ -2579,7 +2579,7 @@ paths:
             type: array
           in: query
           name: camp_ids
-          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]30'
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
             type: array
           in: query
