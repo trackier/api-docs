@@ -2598,6 +2598,515 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  /v2/network/conversions:
+    get:
+      summary: Conversion Report Logs
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversions:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      click_id:
+                        type: string
+                      campaign_id:
+                        type: integer
+                      campaign_name:
+                        type: string
+                      publisher_id:
+                        type: string
+                      publisher_name:
+                        type: string
+                      advertiser_id:
+                        type: string
+                      advertiser_name:
+                        type: string
+                      goal_id:
+                        type: string
+                      goal_name:
+                        type: string
+                      url_id:
+                        type: string
+                      url_title:
+                        type: string
+                      currency:
+                        type: string
+                      payout:
+                        type: string
+                      revenue:
+                        type: string
+                      sale:
+                        type: string
+                      status:
+                        type: string
+                      click_time:
+                        type: string
+                      created:
+                        type: string
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+                  columns:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      click_id:
+                        type: string
+                      source:
+                        type: string
+                      elapsed_time:
+                        type: string
+                      click_time:
+                        type: string
+                      method:
+                        type: string
+                      ipaddr:
+                        type: string
+                      click_ip:
+                        type: string
+                      city:
+                        type: string
+                      region:
+                        type: string
+                      isp:
+                        type: string
+                      p1:
+                        type: string
+                      p2:
+                        type: string
+                      p3:
+                        type: string
+                      p4:
+                        type: string
+                      p5:
+                        type: string
+                      p6:
+                        type: string
+                      p7:
+                        type: string
+                      p8:
+                        type: string
+                      p9:
+                        type: string
+                      p10:
+                        type: string
+                      sub1:
+                        type: string
+                      sub2:
+                        type: string
+                      sub3:
+                        type: string
+                      sub4:
+                        type: string
+                      sub5:
+                        type: string
+                      sub6:
+                        type: string
+                      sub7:
+                        type: string
+                      sub8:
+                        type: string
+                      sub9:
+                        type: string
+                      sub10:
+                        type: string
+                      os:
+                        type: string
+                      txn_id:
+                        type: string
+                      device_id:
+                        type: string
+                      note:
+                        type: string
+                      referer:
+                        type: string
+                      click_ref:
+                        type: string
+                      currency:
+                        type: string
+                      payout:
+                        type: string
+                      revenue:
+                        type: string
+                      sale:
+                        type: string
+                      gaid:
+                        type: string
+                      idfa:
+                        type: string
+                      app_id:
+                        type: string
+                      app_name:
+                        type: string
+                      android_id:
+                        type: string
+                      cr_name:
+                        type: string
+                      sl:
+                        type: string
+                      brand:
+                        type: string
+                      conn:
+                        type: string
+                      click_ua:
+                        type: string
+                      lat:
+                        type: string
+                      long:
+                        type: string
+                      country:
+                        type: string
+                      browser:
+                        type: string
+                      device:
+                        type: string
+                      created:
+                        type: string
+                      status:
+                        type: string
+                      advertiser_id:
+                        type: string
+                      advertiser_long_id:
+                        type: string
+                      advertiser_name:
+                        type: string
+                      advertiser_manager_id:
+                        type: string
+                      advertiser_manager_name:
+                        type: string
+                      publisher_id:
+                        type: string
+                      publisher_long_id:
+                        type: string
+                      publisher_name:
+                        type: string
+                      publisher_company:
+                        type: string
+                      publisher_manager_id:
+                        type: string
+                      publisher_manager_name:
+                        type: string
+                      campaign_id:
+                        type: string
+                      campaign_long_id:
+                        type: string
+                      campaign_name:
+                        type: string
+                      external_offer_id:
+                        type: string
+                      goal_id:
+                        type: string
+                      goal_name:
+                        type: string
+                      goal_value:
+                        type: string
+                      url_id:
+                        type: string
+                      url_long_id:
+                        type: string
+                      url_title:
+                        type: string
+                      coupon:
+                        type: string
+                      dl:
+                        type: string
+                      user_id:
+                        type: string
+              examples:
+                sample-conversion-log-resp:
+                  value:
+                    conversions:
+                      - id: 5fc776b022098a06b16fdd4d
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:12:48.000Z'
+                      - id: 5fc77751b7dfd906ba282960
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:15:29.000Z'
+                      - id: 5fc7765222098a06b16fd357
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:11:14.000Z'
+                      - id: 5fc776a25f66d106a418a51b
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:12:34.000Z'
+                      - id: 5fc77aef5f66d106a4191a5f
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:30:55.000Z'
+                      - id: 5fc777d9b7dfd906ba2837c9
+                        click_id: 5fc775b41c37da0490305cd4
+                        campaign_id: 21607
+                        campaign_name: Test extra
+                        publisher_id: 2
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: Default
+                        url_id: null
+                        url_title: Default
+                        currency: INR
+                        payout: 0
+                        revenue: 0
+                        sale: 0
+                        status: approved
+                        click_time: '2020-12-02T11:08:36.000Z'
+                        created: '2020-12-02T11:17:45.000Z'
+                      - id: 5fd9c27530c60e07404dd402
+                        click_id: 5fd9ad3df29e1a282b6e5a58
+                        campaign_id: 16
+                        campaign_name: Traffic Arbitrage Book 2
+                        publisher_id: 31
+                        publisher_name: account
+                        advertiser_id: 3
+                        advertiser_name: Demo Advertiser
+                        goal_id: ''
+                        goal_name: CPA
+                        url_id: null
+                        url_title: Default
+                        currency: USD
+                        payout: 5.5
+                        revenue: 1.5
+                        sale: 0
+                        status: pending
+                        click_time: '2020-12-16T06:46:21.000Z'
+                        created: '2020-12-16T08:16:53.000Z'
+                        modified: '2020-12-16T08:17:30.000Z'
+                    columns:
+                      id: Conversion ID
+                      click_id: Click ID
+                      source: Source
+                      elapsed_time: Click to Conversion Time
+                      click_time: Click Time
+                      method: Conversion Method
+                      ipaddr: Conversion IP
+                      click_ip: Click IP
+                      city: City
+                      region: Region
+                      isp: Carrier (ISP)
+                      p1: P1
+                      p2: P2
+                      p3: P3
+                      p4: P4
+                      p5: P5
+                      p6: P6
+                      p7: P7
+                      p8: P8
+                      p9: P9
+                      p10: P10
+                      sub1: SUB1
+                      sub2: SUB2
+                      sub3: SUB3
+                      sub4: SUB4
+                      sub5: SUB5
+                      sub6: SUB6
+                      sub7: SUB7
+                      sub8: SUB8
+                      sub9: SUB9
+                      sub10: SUB10
+                      os: Operating System (OS)
+                      txn_id: Txn ID
+                      device_id: Device ID
+                      note: Note
+                      referer: Pixel Referer
+                      click_ref: Click Referer
+                      currency: Currency
+                      payout: Payout
+                      revenue: Revenue
+                      sale: Sale Amount
+                      gaid: GAID
+                      idfa: IDFA
+                      app_id: App ID
+                      app_name: App Name
+                      android_id: Android ID
+                      cr_name: Creative Name
+                      sl: Smart Link ID
+                      brand: Device Brand
+                      conn: Connection Type
+                      click_ua: Click User Agent
+                      lat: Latitude
+                      long: Longitude
+                      country: Country (GEO)
+                      browser: Browser
+                      device: Device
+                      created: Created
+                      status: Status
+                      advertiser_id: Advertiser ID
+                      advertiser_long_id: Advertiser Long ID
+                      advertiser_name: Advertiser Name
+                      advertiser_manager_id: Advertiser Manager ID
+                      advertiser_manager_name: Advertiser Manager Name
+                      publisher_id: Publisher ID
+                      publisher_long_id: Publisher Long ID
+                      publisher_name: Publisher Name
+                      publisher_company: Publisher Company
+                      publisher_manager_id: Publisher Manager ID
+                      publisher_manager_name: Publisher Manager Name
+                      campaign_id: Campaign ID
+                      campaign_long_id: Campaign Long ID
+                      campaign_name: Campaign Name
+                      external_offer_id: External Offer ID
+                      goal_id: Goal ID
+                      goal_name: Goal Name
+                      goal_value: Goal Value
+                      url_id: Landing Page ID
+                      url_long_id: Landing Page Long ID
+                      url_title: Landing Page Title
+                      coupon: Coupon Code
+                      dl: Device Language
+                      user_id: External User ID
+                    pagination:
+                      perPage: 100
+                      currentPage: 2
+                      total: 107
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-network-conversions
+      description: |-
+        This api returns the conversion logs
+
+        To fetch additional columns add query param fields like this
+
+        &fields[]=id
+        &fields[]=click_id
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'No of records per page. Min: 100, Max: 10000'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Current page number
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: columns to be displayed in the api
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: 'Start date in Y-m-d H:i:s format (URL encoded) Required'
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: 'End date in Y-m-d H:i:s format (url encoded) Required'
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: zone
+          description: 'A valid timezone like: Europe/London can be found here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
 components:
   schemas:
     UserCreate:
