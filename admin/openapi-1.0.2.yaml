@@ -3094,13 +3094,13 @@ paths:
             type: string
           in: query
           name: start
-          description: 'Start date in Y-m-d H:i:s format (URL encoded) Required'
+          description: 'Start date in YYYY-MM-DD HH:mm:ss format (URL encoded) Required'
           required: true
         - schema:
             type: string
           in: query
           name: end
-          description: 'End date in Y-m-d H:i:s format (url encoded) Required'
+          description: 'End date in YYYY-MM-DD HH:mm:ss format (url encoded) Required'
           required: true
         - schema:
             type: string
