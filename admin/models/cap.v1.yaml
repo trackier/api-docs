@@ -64,5 +64,10 @@ properties:
     type: array
     items:
       type: string
+  redirect:
+    type: string
+    enum:
+      - blank
+      - fallback_link
 required:
   - campaignId

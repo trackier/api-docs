@@ -3430,6 +3430,14 @@ components:
       properties:
         type:
           type: string
+          enum:
+            - conversion
+            - approvedConv
+            - click
+            - payout
+            - revenue
+            - pendingPayout
+            - pendingRevenue
         goalId:
           type: string
         publisherIds:
@@ -3464,6 +3472,11 @@ components:
           type: array
           items:
             type: string
+        redirect:
+          type: string
+          enum:
+            - blank
+            - fallback_link
       required:
         - type
         - visibility
