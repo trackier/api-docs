@@ -3107,6 +3107,21 @@ paths:
           in: query
           name: zone
           description: 'A valid timezone like: Europe/London can be found here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+        - schema:
+            type: array
+          in: query
+          name: campaignIds
+          description: 'To filter the report for particular campaigns add campaign id in query parameters like: &campaignIds[]=16&campaignIds[]=30'
+        - schema:
+            type: array
+          in: query
+          name: publisherIds
+          description: 'To filter the report for particular publi add publisher id in query parameters like: &publisherIds[]=16&publisherIds[]=30'
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+          description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
 components:
   schemas:
     UserCreate:

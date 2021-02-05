@@ -41,7 +41,7 @@ info:
 
     # Admin API
 
-    Admin API can be found here [Admin API](/admin)
+    Admin API can be found here [Admin API](/admin?v=1)
 
   version: 'v2'
   termsOfService: 'https://trackier.com/terms-of-service/'
