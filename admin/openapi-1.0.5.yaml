@@ -3122,6 +3122,471 @@ paths:
           in: query
           name: adv_ids
           description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
+  '/v2/campaigns/{id}/targetings':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign ID
+    get:
+      summary: Get All Campaign Targetings
+      tags:
+        - Campaign Targetings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  ruleblocks:
+                    type: array
+                    items:
+                      $ref: ./models/rb.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    ruleblocks:
+                      - _id: 5f8eb719f83a5d03656e2f3e
+                        name: p8-targeting-block
+                        condition: or
+                        event: all
+                        created: '2020-10-20T10:08:25.072Z'
+                        __v: 5
+                        modified: '2021-02-10T07:08:12.087Z'
+                        publisherIds: null
+                        excludedPubIds: null
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: targeting-findAll
+      description: This endpoint will return the targeting blocks for the campaign
+      security:
+        - API Key Param: []
+    post:
+      summary: Create Campaign Targeting
+      operationId: create-campaign-targeting
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  ruleblock:
+                    $ref: ./models/ruleblock.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaign Targetings
+      description: Create Campaign Targeting
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                condition:
+                  type: string
+                  enum:
+                    - and
+                    - or
+                event:
+                  type: string
+                  enum:
+                    - all
+                    - click
+                    - conversion
+                    - conversion_goal
+                    - goal
+                publisherIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                excludedPubIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                rules:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Rule'
+              required:
+                - name
+                - condition
+                - event
+                - rules
+            examples:
+              example-1:
+                value:
+                  name: api-source-targeting
+                  condition: or
+                  event: all
+                  rules:
+                    - variable: source
+                      logic: deny
+                      condition: equals
+                      values:
+                        - abcdefgh
+                        - foobar
+                    - variable: os
+                      logic: deny
+                      condition: regex
+                      values:
+                        - ios
+  '/v2/campaigns/{campId}/targetings/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Targeting Block ID
+    get:
+      summary: Get Campaign Targeting Rules
+      tags:
+        - Campaign Targetings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  ruleblock:
+                    $ref: ./models/ruleblock.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    ruleblock:
+                      _id: 5f8eb719f83a5d03656e2f3e
+                      name: p8-targeting-block
+                      condition: or
+                      event: all
+                      created: '2020-10-20T10:08:25.072Z'
+                      __v: 5
+                      modified: '2021-02-10T07:08:12.087Z'
+                      publisherIds: null
+                      excludedPubIds: null
+                      rules:
+                        - _id: 5f8eb719f83a5d03656e2f3f
+                          variable: p9
+                          logic: deny
+                          condition: regex
+                          created: '2020-10-20T10:08:25.000Z'
+                          modified: '2021-02-10T07:32:22.023Z'
+                          values:
+                            - deny
+                            - blah
+      operationId: get-v2-campaigns-campId-targetings-id
+      description: This endpoint returns the rules for a targeting block
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete Campaign Targeting
+      operationId: delete-v2-campaigns-campId-targetings-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: This endpoint will remove the targeting block and its rules
+      security:
+        - API Key Param: []
+      tags:
+        - Campaign Targetings
+    post:
+      summary: Edit Campaign Targeting Block
+      operationId: post-v2-campaigns-campId-targetings-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  ruleblock:
+                    $ref: ./models/rb.v1.yaml
+      description: Use this endpoint to update the targeting block
+      tags:
+        - Campaign Targetings
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                condition:
+                  type: string
+                  enum:
+                    - and
+                    - or
+                event:
+                  type: string
+                  enum:
+                    - all
+                    - click
+                    - conversion
+                    - conversion_goal
+                    - goal
+                publisherIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                excludedPubIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+            examples:
+              example-1:
+                value:
+                  name: targeting-block
+                  condition: and
+                  publisherIds:
+                    - 2
+                  excludedPubIds: []
+  '/v2/campaigns/{campId}/targetings/{id}/rules/{ruleId}':
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Targeting Block ID
+      - schema:
+          type: string
+        name: ruleId
+        in: path
+        required: true
+        description: Targeting Rule ID
+    post:
+      summary: Edit Targeting Rule
+      operationId: post-v2-campaigns-campId-targetings-id-rules-ruleId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  rule:
+                    $ref: ./models/rule.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaign Targetings
+      description: Edit a rule inside targeting block
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rule'
+    delete:
+      summary: Delete Targeting Rule
+      operationId: delete-v2-campaigns-campId-targetings-id-rules-ruleId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaign Targetings
+      description: 'Delete a targeting rule from a targeting block. Note: If there is only 1 rule inside the block, the targeting block will also be deleted'
+      security:
+        - API Key Param: []
+  '/v2/campaigns/{campId}/targetings/{id}/rules':
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Targeting Block ID
+    post:
+      summary: Add Rules to targeting block
+      operationId: post-v2-campaigns-campId-targetings-id-rules
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  ruleblock:
+                    $ref: ./models/ruleblock.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaign Targetings
+      description: 'Add rules inside a targeting block. Note: there can be max 100 rules inside a targeting block'
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Rule'
+            examples:
+              example-1:
+                value:
+                  rules:
+                    - variable: source
+                      logic: deny
+                      condition: starts_with
+                      values:
+                        - '549_434_'
+                        - 983393_3393u3i3_
+        description: ''
 components:
   schemas:
     UserCreate:
@@ -3802,6 +4267,86 @@ components:
               type: object
       x-tags:
         - Manage Postbacks
+    Rule:
+      title: Rule
+      type: object
+      description: Targeting Rule Model
+      x-examples:
+        example-1:
+          variable: p9
+          logic: deny
+          condition: regex
+          values:
+            - deny
+            - blah
+      properties:
+        variable:
+          type: string
+          enum:
+            - source
+            - os
+            - device
+            - city
+            - region
+            - country
+            - isp
+            - gaid
+            - idfa
+            - app_name
+            - app_id
+            - aid
+            - cr_name
+            - sale
+            - browser
+            - p1
+            - p2
+            - p3
+            - p4
+            - p5
+            - p6
+            - p7
+            - p8
+            - p9
+            - p10
+            - sub1
+            - sub2
+            - sub3
+            - sub4
+            - sub5
+            - sub6
+            - sub7
+            - sub8
+            - sub9
+            - sub10
+            - txnId
+            - userId
+            - referer
+            - ipaddr
+            - conv_ip
+        logic:
+          type: string
+          enum:
+            - allow
+            - deny
+        condition:
+          type: string
+          enum:
+            - equals
+            - empty
+            - contains
+            - regex
+            - starts_with
+            - ends_with
+            - bigger_than
+            - less_than
+        values:
+          type: array
+          items:
+            type: string
+      required:
+        - variable
+        - logic
+        - condition
   securitySchemes:
     API Key Param:
       name: apiKey

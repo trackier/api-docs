@@ -1,0 +1,96 @@
+title: Rule Model
+type: object
+properties:
+  _id:
+    type: string
+  variable:
+    type: string
+    enum:
+      - source
+      - os
+      - device
+      - city
+      - region
+      - country
+      - isp
+      - gaid
+      - idfa
+      - app_name
+      - app_id
+      - aid
+      - cr_name
+      - sale
+      - browser
+      - p1
+      - p2
+      - p3
+      - p4
+      - p5
+      - p6
+      - p7
+      - p8
+      - p9
+      - p10
+      - sub1
+      - sub2
+      - sub3
+      - sub4
+      - sub5
+      - sub6
+      - sub7
+      - sub8
+      - sub9
+      - sub10
+      - txnId
+      - userId
+      - referer
+      - ipaddr
+      - conv_ip
+  logic:
+    type: string
+    enum:
+      - allow
+      - deny
+  condition:
+    type: string
+    enum:
+      - equals
+      - empty
+      - contains
+      - regex
+      - starts_with
+      - ends_with
+      - bigger_than
+      - less_than
+  created:
+    type: string
+    format: date-time
+    example: '2021-02-10T07:32:22.023Z'
+  modified:
+    type: string
+    example: '2021-02-10T07:32:22.023Z'
+    format: date-time
+  values:
+    type: array
+    items:
+      type: string
+required:
+  - _id
+  - variable
+  - logic
+  - condition
+  - created
+x-examples:
+  example-1:
+    _id: 5f8eb719f83a5d03656e2f3f
+    variable: p9
+    logic: deny
+    condition: regex
+    created: '2020-10-20T10:08:25.000Z'
+    modified: '2021-02-10T07:32:22.023Z'
+    values:
+      - deny
+      - blah
+description: Targeting rule model
+x-tags:
+  - Models
