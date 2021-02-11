@@ -89,7 +89,7 @@ paths:
             type: integer
         - in: query
           name: limit
-          description: Number of result to fetch in one call
+          description: Number of result to fetch in one call (Default => 1000)
           schema:
             type: integer
         - in: query
