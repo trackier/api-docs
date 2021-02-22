@@ -757,7 +757,7 @@ paths:
         content:
           application/json:
             schema:
-              type: 'null'
+              $ref: '#/components/schemas/Campaign'
         description: ''
   '/v2/campaigns/{id}':
     parameters:
