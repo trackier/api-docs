@@ -1441,7 +1441,7 @@ paths:
       description: Delete a campaign goal
   /v2/campaigns/categories:
     get:
-      summary: Get all categories of all campaigns
+      summary: Get all campaigns categories
       tags:
         - Campaigns
       responses:
