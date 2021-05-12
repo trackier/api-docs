@@ -1452,7 +1452,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  campaigns:
+                  categories:
                     type: array
                     items:
                       $ref: './models/category.v1.yaml'
