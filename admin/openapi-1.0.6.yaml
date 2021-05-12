@@ -1439,6 +1439,32 @@ paths:
       tags:
         - Campaign Goal
       description: Delete a campaign goal
+  /v2/campaigns/categories:
+    get:
+      summary: Get all campaigns categories
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: './models/category.v1.yaml'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: './models/error.v1.yaml'
   /v2/campaigns/status:
     post:
       summary: Bulk Campaign Status Change

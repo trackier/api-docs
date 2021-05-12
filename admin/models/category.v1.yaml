@@ -1,0 +1,14 @@
+title: Category Model
+type: object
+description: Category Model
+x-tags:
+  - Models
+properties:
+  _id:
+    type: string
+  name:
+    type: string
+  created:
+    type: string
+    format: date-time
+    example: '2020-02-24T12:03:08.610Z'
