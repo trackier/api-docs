@@ -3105,7 +3105,7 @@ paths:
             type: integer
           in: query
           name: limit
-          description: 'No of records per page. Min: 100, Max: 10000'
+          description: 'No of records per page. Min: 100, Max: 1000'
         - schema:
             type: integer
           in: query
@@ -3126,7 +3126,7 @@ paths:
             type: string
           in: query
           name: end
-          description: 'End date in YYYY-MM-DD HH:mm:ss format (url encoded) Required'
+          description: 'End date in YYYY-MM-DD HH:mm:ss format (URL encoded) Required'
           required: true
         - schema:
             type: string
