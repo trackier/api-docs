@@ -1518,6 +1518,71 @@ paths:
               required:
                 - campaignIds
                 - status
+  /v2/campaigns/bulkEdit:
+    post:
+      summary: Bulk Campaign Edit
+      operationId: post-v2-bulk-campaign-edit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      description: Use this endpoint to change the status, visibility and currency of multiple campaigns in one request
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                campaignIds:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                fields:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                        - active
+                        - pending
+                        - paused
+                        - disabled
+                        - expired
+                    vis:
+                      type: string
+                      enum:
+                        - public
+                        - private
+                        - permission
+                    currency:
+                      type: string
+                      description: 3 Letter Currency Code
+              required:
+                - campaignIds
+                - fields
   /v2/signupfields/publisher:
     get:
       summary: Publisher Signup Questions
@@ -1753,6 +1818,8 @@ paths:
                   enum:
                     - assign
                     - remove
+                    - block
+                    - unblock
               required:
                 - campaign_ids
                 - publisher_ids
