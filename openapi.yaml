@@ -72,6 +72,7 @@ x-tagGroups:
   - name: Publisher
     tags:
       - Campaign
+      - Coupon Codes
 
 paths:
   '/v2/publisher/campaigns':
@@ -104,6 +105,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublisherCampaignData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/v2/publisher/coupons':
+    get:
+      tags:
+        - Coupon Codes
+      summary: Fetch All Coupons
+      description: Returns all coupon codes for all campaigns
+      operationId: coupons
+      parameters:
+        - in: query
+          name: pageToken
+          description: Token to traverse through paginated data (Default => first page)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublisherCouponCodeData'
         '400':
           description: Invalid API Key
           content:
@@ -466,6 +493,45 @@ components:
               format: integer
               description: Total number of campaigns
               example: 251
+
+    PublisherCouponCodeData:
+      type: object
+      properties:
+        coupons:
+          type: array
+          items:
+            type: object
+            properties:
+              _id:
+                type: string
+              adid:
+                type: string
+              code:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              status:
+                type: string
+                enum:
+                  - active
+                  - pending
+                  - future
+                  - expired
+              type:
+                type: string
+                enum:
+                  - generic
+                  - exclusive
+                  - one_time
+        pageToken:
+          type: string
+          description: Token to access next page
 
   securitySchemes:
     API Key:
