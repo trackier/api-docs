@@ -67,6 +67,18 @@ tags:
     <h4>How do I know if there are more pages?</h4>
     When the response doesn’t contain a campaign data in results, you know that you’ve reached the end.
     '
+  - name: 'Coupon Codes'
+    description: '
+    <h4>GET the next page of results</h4>
+    You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page.
+    In the response body, the <code>pageToken</code> to access the next page is provided.
+    The call will be as follows:
+    <br/>eg. <code>/v2/publisher/campaigns?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
+    <br/>
+    <br/>
+    <h4>How do I know if there are more pages?</h4>
+    When the response doesn’t contain the coupon data in results, you know that you’ve reached the end.
+    '
 
 x-tagGroups:
   - name: Publisher
@@ -121,7 +133,7 @@ paths:
       parameters:
         - in: query
           name: pageToken
-          description: Token to traverse through paginated data (Default => first page)
+          description: Token to traverse through paginated data (returns first page if not passed)
           schema:
             type: string
       responses:
