@@ -2919,6 +2919,8 @@ paths:
                         type: string
                       dl:
                         type: string
+                      vta:
+                        type: number
                       user_id:
                         type: string
               examples:
@@ -3141,6 +3143,7 @@ paths:
                       url_title: Landing Page Title
                       coupon: Coupon Code
                       dl: Device Language
+                      vta: View Through Attribution
                       user_id: External User ID
                     pagination:
                       perPage: 100
@@ -3172,7 +3175,7 @@ paths:
             type: integer
           in: query
           name: limit
-          description: 'No of records per page. Min: 100, Max: 1000'
+          description: 'No of records per page. Min: 100, Max: 10000'
         - schema:
             type: integer
           in: query
