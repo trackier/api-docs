@@ -1,0 +1,50 @@
+title: Tracking Domain
+type: object
+description: Tracking Domain model
+properties:
+  _id:
+    type: string
+  org_id:
+    type: string
+  user_id:
+    type: string
+  adv_id:
+    type: string
+  ads:
+    type: array
+    items:
+      oneOf:
+        - type: integer
+        - type: string
+  pubs:
+    type: array
+    items:
+      oneOf:
+        - type: integer
+        - type: string
+  host:
+    type: string
+  protocol:
+    type: string
+  visibility:
+    type: string
+    enum:
+      - private
+      - public
+  type:
+    type: string
+  status:
+    type: string
+  check_count:
+    type: integer
+  def:
+    type: integer
+    default: 0
+    minimum: 0
+    maximum: 1
+  statusCode:
+    type: integer
+  modified:
+    type: string
+  created:
+    type: string
