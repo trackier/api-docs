@@ -3520,6 +3520,187 @@ paths:
                   publisherIds:
                     - 2
                   excludedPubIds: []
+  '/v2/trackingDomains':
+    post:
+      summary: Create Tracking Domain
+      operationId: post-v2-trackingDomains
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create tracking domain
+      tags:
+        - Tracking Domain
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                protocol:
+                  type: string
+                  enum:
+                    - http
+                    - https
+                def:
+                  type: integer
+                  default: 0
+                  minimum: 0
+                  maximum: 1
+                pubs:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+              required:
+                - host
+    get:
+      summary: Fetch Tracking Domain
+      operationId: get-v2-trackingDomains
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trackingDomains:
+                    type: array
+                    items:
+                      $ref: ./models/trackingDomain.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all tracking domain
+      tags:
+        - Tracking Domain
+      security:
+        - API Key Param: []
+  '/v2/trackingDomains/:domain':
+    parameters:
+      - schema:
+          type: string
+        name: domain
+        in: path
+        required: true
+        description: Domain
+    post:
+      summary: Create Tracking Domain
+      operationId: post-v2-trackingDomains-domain
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update tracking domain
+      tags:
+        - Tracking Domain
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                protocol:
+                  type: string
+                  enum:
+                    - http
+                    - https
+                def:
+                  type: integer
+                  default: 0
+                  minimum: 0
+                  maximum: 1
+                pubs:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+    delete:
+      summary: Delete Tracking Domain
+      operationId: delete-v2-trackingDomains-domain
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to delete tracking domain
+      tags:
+        - Tracking Domain
+      security:
+        - API Key Param: []
   '/v2/campaigns/{campId}/targetings/{id}/rules/{ruleId}':
     parameters:
       - schema:
