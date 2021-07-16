@@ -4,12 +4,6 @@ description: Tracking Domain model
 properties:
   _id:
     type: string
-  org_id:
-    type: string
-  user_id:
-    type: string
-  adv_id:
-    type: string
   pubs:
     type: array
     items:
@@ -29,15 +23,11 @@ properties:
     type: string
   status:
     type: string
-  check_count:
-    type: integer
-  def:
+  isDefault:
     type: integer
     default: 0
     minimum: 0
     maximum: 1
-  statusCode:
-    type: integer
   modified:
     type: string
   created:
