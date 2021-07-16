@@ -10,12 +10,6 @@ properties:
     type: string
   adv_id:
     type: string
-  ads:
-    type: array
-    items:
-      oneOf:
-        - type: integer
-        - type: string
   pubs:
     type: array
     items:
