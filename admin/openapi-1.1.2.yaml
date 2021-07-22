@@ -717,7 +717,14 @@ paths:
           in: query
           name: lastId
         - schema:
-            type: array
+            type: object
+            properties:
+              status:
+                type: string
+              geo:
+                type: array
+                items:
+                  type: string
           in: query
           name: filters
     post:
