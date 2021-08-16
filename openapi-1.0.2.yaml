@@ -79,12 +79,18 @@ tags:
     <h4>How do I know if there are more pages?</h4>
     When the response doesn’t contain the coupon data in results, you know that you’ve reached the end.
     '
+  
 
 x-tagGroups:
   - name: Publisher
     tags:
       - Campaign
       - Coupon Codes
+      - Publisher Profile
+      - Publisher Profile Edit
+      - Campaign Request Access
+      - Allowed Campaign Count
+      - Performance Report
 
 paths:
   '/v2/publisher/campaigns':
@@ -123,6 +129,62 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  
+  '/v2/publishers/profile':
+    get:
+      tags:
+        - Publisher Profile
+      summary: Fetch Publisher Profile
+      description: Returns publisher profile
+      operationId: profile
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile:
+                    $ref: '#/components/schemas/PublisherProfile'
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - Publisher Profile Edit
+      summary: Edit Publisher Profile
+      description: Updates Publisher Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileEdit'
+      operationId: profile-edit
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  publisher:
+                    $ref: '#/components/schemas/PublisherProfile'
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
   '/v2/publishers/coupons':
     get:
       tags:
@@ -149,6 +211,170 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  
+  '/v2/publishers/campaign/{id}/access':
+    post:
+      tags:
+        - Campaign Request Access
+      summary: Create campaign request access
+      description: Create campaign request access
+      operationId: campaign-request-access
+      parameters:
+        - schema:
+            type: string
+          name: id
+          in: path
+          required: true
+          description: Campaign Id - numeric or hash ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  '/v2/publishers/:pubId/campaignsCount':
+    get:
+      tags:
+        - Allowed Campaign Count
+      summary: Get campaign access count for publisher
+      description: Get campaign access count for publisher
+      operationId: campaign-count
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  '/v2/publishers/reports':
+    get:
+      summary: Performance Report
+      tags:
+          - Performance Report
+      description: |-
+          Performance Report
+
+          Default Grouping: campaign_name, campaign_id
+          Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+
+          To update the report grouping or kpi:
+          - &group[]=campaign_id&group[]=publisher_id
+          - List of grouping parameters can be found below
+          - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+          - List of KPI can be found in query parameter section below
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        campaign_name:
+                          type: string
+                        campaign_id:
+                          type: integer
+                        currency:
+                          type: string
+                        clicks:
+                          type: integer
+                        approvedConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+                        profit:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - campaign_name: test
+                        campaign_id: 21585
+                        currency: USD
+                        clicks: 1
+                        approvedConversions: 8
+                        payout: 2
+                        revenue: 4
+                        profit: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      operationId: get-v2-reports-custom
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: group
+          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, campaign_status, campaign_geo, objective, publisher, publisher_id, publisher_long_id, source, advertiser, advertiser_id, goal_name, goal_id, ref_camp, ref_camp_id, lp_title, lp_id, os, country, hour, created, month'
+        - schema:
+            type: array
+          in: query
+          name: kpi
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+
 
 components:
   schemas:
@@ -442,6 +668,34 @@ components:
               description: Error message
               type: string
               example: Invalid API Key
+
+    PublisherProfile:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+        hashId:
+          type: string
+        company:
+          type: string
+        id:
+          type: string
+    
+    ProfileEdit:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        company:
+          type: string
 
     Creatives:
       type: object
