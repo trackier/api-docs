@@ -764,7 +764,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Campaign'
+              $ref: '#/components/schemas/CampaignCreate'
         description: ''
   '/v2/campaigns/{id}':
     parameters:
@@ -839,7 +839,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Campaign'
+              $ref: '#/components/schemas/CampaignEdit'
       description: Edit a campaign
     delete:
       summary: Delete a campaign
@@ -1358,7 +1358,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Goal'
+              $ref: '#/components/schemas/GoalCreate'
             examples: {}
       security:
         - API Key Param: []
@@ -1413,7 +1413,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Goal'
+              $ref: '#/components/schemas/GoalEdit'
       description: Edit campaign goal
     delete:
       summary: Delete a campaign goal
@@ -4092,7 +4092,7 @@ components:
         customFields:
           type: object
       description: Schema to edit a publisher or advertiser
-    Campaign:
+    CampaignCreate:
       title: Campaign
       type: object
       x-examples:
@@ -4288,6 +4288,195 @@ components:
         - currency
         - convTracking
         - payouts
+    CampaignEdit:
+      title: Campaign
+      type: object
+      x-examples:
+        sample camp create:
+          title: API node v2 campaign edit
+          previewUrl: 'http://google.com'
+          url: 'http://www.google.com/?click_id={click_id}&pub_id={publisher_id}'
+          currency: USD
+          advertiserId: '3'
+          status: active
+          convTracking: iframe_https
+          convTrackingDomain: demo.gotrackier.com
+          payouts:
+            - payout: 1.2
+              revenue: 1.5
+              currency: USD
+              geo:
+                - US
+      x-tags:
+        - Campaigns
+      description: ''
+      properties:
+        advertiserId:
+          type:
+            - string
+            - integer
+          description: Integer Id or hash ID
+        title:
+          type: string
+        description:
+          type: string
+        previewUrl:
+          type: string
+        url:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          default: active
+          enum:
+            - active
+            - pending
+            - paused
+            - disabled
+            - expired
+        commModel:
+          type: string
+          default: cpa
+          enum:
+            - cpa
+            - cpl
+            - cps
+            - cpi
+            - cpc
+            - cpm
+        device:
+          type: string
+        defaultGoalName:
+          type: string
+        defaultLpName:
+          type: string
+        flow:
+          type: array
+          items:
+            type: string
+        subIdsBlocked:
+          type: array
+          items:
+            type: string
+        subIdsAllowed:
+          type: array
+          items:
+            type: string
+        appName:
+          type: string
+        appId:
+          type: string
+        os:
+          type: array
+          items:
+            type: string
+            enum:
+              - android
+              - ios
+              - all
+        scheduleZone:
+          type: string
+        schduleStartHour:
+          type: string
+        scheduleEndHour:
+          type: string
+        visibility:
+          type: string
+          default: public
+          enum:
+            - public
+            - private
+            - permission
+        allowSpilloverConv:
+          type: integer
+          default: 1
+          minimum: 0
+          maximum: 1
+        holdPeriod:
+          type: integer
+          nullable: true
+        cancelFallbackConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        redirectType:
+          type: string
+          default: 302
+          enum:
+            - '302'
+            - 302_hrf
+            - '200'
+            - 200_hrf
+        trackMultiConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        convPending:
+          type: integer
+          minimum: 0
+          maximum: 1
+        cancelBlockedPbConv:
+          type: integer
+          minimum: 0
+          maximum: 1
+        allowImp:
+          type: integer
+          minimum: 0
+          maximum: 1
+        iurl:
+          type: string
+        blacklistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        whitelistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        convTracking:
+          type: string
+          enum:
+            - postback
+            - iframe_https
+            - image_https
+        convTrackingDomain:
+          type: string
+        attributionWindow:
+          type: integer
+        fallbackCampaign:
+          type: string
+        fallbackUrl:
+          type: string
+        showGlobalTargeting:
+          type: integer
+          minimum: 0
+          maximum: 1
+        blockedPubs:
+          type: array
+          items:
+            type: integer
+        primaryTrackingDomain:
+          type: string
+        payouts:
+          type: array
+          items:
+            type: object
+            properties:
+              payout:
+                type: number
+              revenue:
+                type:
+                  - string
+                  - number
+              geo:
+                type: array
+                items:
+                  type: string
+            required:
+              - payout
+              - revenue
+              - geo
     Cap:
       title: Cap
       type: object
@@ -4443,12 +4632,60 @@ components:
       x-tags:
         - Payouts
       description: ''
-    Goal:
+    GoalCreate:
       title: Goal
       type: object
       x-examples:
         example-1:
           title: CREATING GOAL using v2 api
+          value: apiv2_goal2
+          type: public
+          payout_model: fixed
+          payouts:
+            - payout: 2
+              revenue: 4
+              geo:
+                - IN
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        payout_model:
+          type: string
+          enum:
+            - fixed
+            - percentage
+        payouts:
+          type: array
+          items:
+            type: object
+            properties:
+              payout:
+                type: number
+              revenue:
+                type: number
+              geo:
+                type: array
+                items:
+                  type: string
+      required:
+        - title
+        - value
+        - type
+        - payout_model
+        - payouts
+      x-tags:
+        - Campaign Goal
+      description: Goal Model to create/edit goal
+    GoalEdit:
+      title: Goal
+      type: object
+      x-examples:
+        example-1:
+          title: EDITING GOAL using v2 api
           value: apiv2_goal2
           type: public
           payout_model: fixed
