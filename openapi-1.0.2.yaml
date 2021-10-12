@@ -391,16 +391,19 @@ paths:
               schema:
                 type: object
                 properties:
-                  success:
-                    type: boolean
-                  count:
-                    type: integer
+                  categories:
+                    type:string
         '400':
           description: Bad Request
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
 
 components:
   schemas:
