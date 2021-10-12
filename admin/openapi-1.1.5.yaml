@@ -4011,34 +4011,16 @@ paths:
       description: Use this endpoint to create Categories
       tags:
         - Categories
-      security:
-        - API Key Param: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                host:
+                category:
                   type: string
-                protocol:
-                  type: string
-                  enum:
-                    - http
-                    - https
-                def:
-                  type: integer
-                  default: 0
-                  minimum: 0
-                  maximum: 1
-                pubs:
-                  type: array
-                  items:
-                    oneOf:
-                      - type: integer
-                      - type: string
-              required:
-                - host
+                
+                
     get:
       summary: Fetch Catgeories
       operationId: get-v2-categories
@@ -4050,10 +4032,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  catgeories:
+                  Category:
                     type: array
-                    items:
-                      $ref:
         '400':
           description: Bad Request
           content:
@@ -4068,8 +4048,6 @@ paths:
       description: Use this endpoint to fetch all categories
       tags:
         - Catgeories
-      security:
-        - API Key Param: []
   '/v2/categories/:id':
      parameters:
       - schema:
@@ -4115,22 +4093,9 @@ paths:
             schema:
               type: object
               properties:
-                protocol:
-                  type: string
-                  enum:
-                    - http
-                    - https
-                def:
-                  type: integer
-                  default: 0
-                  minimum: 0
-                  maximum: 1
-                pubs:
-                  type: array
-                  items:
-                    oneOf:
-                      - type: integer
-                      - type: string
+                Category:
+                    type: array
+                
     get:
       summary: Fetch Catgeories
       operationId: get-v2-categories-id
@@ -4142,10 +4107,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  catgeories:
+                  Category:
                     type: array
-                    items:
-                      $ref:
+                      
         '400':
           description: Bad Request
           content:
@@ -4157,11 +4121,9 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to fetch one categorie
+      description: Use this endpoint to fetch one Category
       tags:
-        - Catgeories
-      security:
-        - API Key Param: []                  
+        - Catgeories                
     delete:
       summary: Delete Catgeories
       operationId: delete-v2-catgeories-id
@@ -4191,8 +4153,6 @@ paths:
       description: Use this endpoint to delete catgeories
       tags:
         - Catgeories
-      security:
-        - API Key Param: []
 
 components:
   schemas:
