@@ -91,6 +91,7 @@ x-tagGroups:
       - Campaign Request Access
       - Allowed Campaign Count
       - Performance Report
+      - Publisher Categories
 
 paths:
   '/v2/publisher/campaigns':
@@ -374,7 +375,32 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
-
+          
+  '/v2/publishers/categories':
+   get:
+      tags:
+        - Publisher Categories
+      summary: Fetch All Categories
+      description: Fetch All Categories
+      operationId: Publisher Categories
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
