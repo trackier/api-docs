@@ -3981,6 +3981,219 @@ paths:
                         - '549_434_'
                         - 983393_3393u3i3_
         description: ''
+  '/v2/categories':
+    post:
+      summary: Creating Categories
+      operationId: post-v2-categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create Categories
+      tags:
+        - Categories
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                protocol:
+                  type: string
+                  enum:
+                    - http
+                    - https
+                def:
+                  type: integer
+                  default: 0
+                  minimum: 0
+                  maximum: 1
+                pubs:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+              required:
+                - host
+    get:
+      summary: Fetch Catgeories
+      operationId: get-v2-categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  catgeories:
+                    type: array
+                    items:
+                      $ref:
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all categories
+      tags:
+        - Catgeories
+      security:
+        - API Key Param: []
+  '/v2/categories/:id':
+     parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id
+    post:
+      summary: Create Catgeories
+      operationId: post-v2-catgeories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update Catgeories
+      tags:
+        - Catgeories
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                protocol:
+                  type: string
+                  enum:
+                    - http
+                    - https
+                def:
+                  type: integer
+                  default: 0
+                  minimum: 0
+                  maximum: 1
+                pubs:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: integer
+                      - type: string
+    get:
+      summary: Fetch Catgeories
+      operationId: get-v2-categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  catgeories:
+                    type: array
+                    items:
+                      $ref:
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch one categorie
+      tags:
+        - Catgeories
+      security:
+        - API Key Param: []                  
+    delete:
+      summary: Delete Catgeories
+      operationId: delete-v2-catgeories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to delete catgeories
+      tags:
+        - Catgeories
+      security:
+        - API Key Param: []
+
 components:
   schemas:
     UserCreate:
