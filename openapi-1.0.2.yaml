@@ -381,7 +381,6 @@ paths:
       tags:
         - Publisher Categories
       summary: Fetch All Categories
-      description: Fetch All Categories
       operationId: Publisher Categories
       responses:
         '200':
@@ -392,18 +391,18 @@ paths:
                 type: object
                 properties:
                   categories:
-                    type:string
+                    type: string
         '400':
           description: Bad Request
           content: 
             application/json:
               schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      $ref: ./models/error.v1.yaml
+                $ref: '#/components/schemas/Error'
+      # parameters:
+      #   - schema:
+      #       type: array
+      #     in: query
+      #     name: Categories
 
 components:
   schemas:
