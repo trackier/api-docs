@@ -3983,7 +3983,7 @@ paths:
         description: ''
   '/v2/categories':
     post:
-      summary: Creating Categories
+      summary: Create Categories
       operationId: post-v2-categories
       responses:
         '200':
@@ -4022,7 +4022,7 @@ paths:
                 
                 
     get:
-      summary: Fetch Catgeories
+      summary: Fetch All Categories
       operationId: get-v2-categories
       responses:
         '200':
@@ -4045,11 +4045,11 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to fetch all categories
+      description: Use this endpoint to fetch all Categories
       tags:
-        - Catgeories
+        - Categories
   '/v2/categories/:id':
-     parameters:
+    parameters:
       - schema:
           type: string
         name: id
@@ -4057,8 +4057,8 @@ paths:
         required: true
         description: id
     post:
-      summary: Create Catgeories
-      operationId: post-v2-catgeories-id
+      summary: Update Categories
+      operationId: post-v2-categories-id
       responses:
         '200':
           description: OK
@@ -4082,11 +4082,9 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to update Catgeories
+      description: Use this endpoint to update Categories
       tags:
-        - Catgeories
-      security:
-        - API Key Param: []
+        - Categories
       requestBody:
         content:
           application/json:
@@ -4097,7 +4095,7 @@ paths:
                     type: array
                 
     get:
-      summary: Fetch Catgeories
+      summary: Fetch Category
       operationId: get-v2-categories-id
       responses:
         '200':
@@ -4123,10 +4121,10 @@ paths:
                       $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch one Category
       tags:
-        - Catgeories                
+        - Categories                
     delete:
-      summary: Delete Catgeories
-      operationId: delete-v2-catgeories-id
+      summary: Delete Categories
+      operationId: delete-v2-categories-id
       responses:
         '200':
           description: OK
@@ -4150,9 +4148,9 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to delete catgeories
+      description: Use this endpoint to delete categories
       tags:
-        - Catgeories
+        - Categories
 
 components:
   schemas:
