@@ -3996,8 +3996,20 @@ paths:
                   success:
                     type: boolean
                   message:
-                    type: string 
-                  
+                    type: string
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      name:
+                        type: string
+                      live:
+                        type: boolean  
+                      created:
+                        type: string
+                      org_id:
+                        type: string          
         '400':
           description: Bad Request
           content:
@@ -4020,15 +4032,8 @@ paths:
             schema:
               type: object
               properties:
-                _id:
-                  type: string
                 name:
-                  type: string
-                categories:
-                  type: array
-                
-                
-                
+                  type: string           
     get:
       summary: Fetch All Categories
       operationId: get-v2-categories
@@ -4040,11 +4045,10 @@ paths:
               schema:
                 type: object
                 properties:
-                  Category:
+                  categories:
                     type: array
                     items:
-                      $ref: ./models/categories.v1.yaml
-                      
+                      $ref: ./models/categories.v1.yaml               
         '400':
           description: Bad Request
           content:
@@ -4084,6 +4088,15 @@ paths:
                     type: boolean
                   message:
                     type: string
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      name:
+                        type: string  
+                      created:
+                        type: string              
         '400':
           description: Bad Request
           content:
@@ -4106,11 +4119,8 @@ paths:
             schema:
               type: object
               properties:
-                org_id:
-                  type: string
-                Category:
-                  type: array
-                
+                name:
+                  type: string             
     get:
       summary: Fetch Category
       operationId: get-v2-categories-id
@@ -4122,11 +4132,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  Category:
+                  success:
+                    type: boolean
+                  category:
                     type: array
                     items:
-                      $ref: ./models/categories.v1.yaml
-                      
+                      $ref: ./models/categories.v1.yaml               
         '400':
           description: Bad Request
           content:
