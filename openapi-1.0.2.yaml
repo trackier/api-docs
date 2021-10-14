@@ -390,14 +390,22 @@ paths:
               schema:
                 type: object
                 properties:
-                  categories:
-                    type: string
+                  success:
+                    type: boolean
+                  message:
+                    type: string  
         '400':
           description: Bad Request
-          content: 
+          content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      description: Use this endpoint to fetch all Categories              
+      security:
+        - API Key Param: []         
 
 components:
   schemas:

@@ -3996,7 +3996,8 @@ paths:
                   success:
                     type: boolean
                   message:
-                    type: string
+                    type: string 
+                  
         '400':
           description: Bad Request
           content:
@@ -4011,14 +4012,21 @@ paths:
       description: Use this endpoint to create Categories
       tags:
         - Categories
+      security:
+        - API Key Param: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                category:
+                _id:
                   type: string
+                name:
+                  type: string
+                categories:
+                  type: array
+                
                 
                 
     get:
@@ -4034,6 +4042,9 @@ paths:
                 properties:
                   Category:
                     type: array
+                    items:
+                      $ref: ./models/categories.v1.yaml
+                      
         '400':
           description: Bad Request
           content:
@@ -4048,6 +4059,8 @@ paths:
       description: Use this endpoint to fetch all Categories
       tags:
         - Categories
+      security:
+        - API Key Param: []
   '/v2/categories/:id':
     parameters:
       - schema:
@@ -4085,14 +4098,18 @@ paths:
       description: Use this endpoint to update Categories
       tags:
         - Categories
+      security:
+        - API Key Param: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
+                org_id:
+                  type: string
                 Category:
-                    type: array
+                  type: array
                 
     get:
       summary: Fetch Category
@@ -4107,6 +4124,8 @@ paths:
                 properties:
                   Category:
                     type: array
+                    items:
+                      $ref: ./models/categories.v1.yaml
                       
         '400':
           description: Bad Request
@@ -4121,7 +4140,9 @@ paths:
                       $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch one Category
       tags:
-        - Categories                
+        - Categories
+      security:
+        - API Key Param: []                
     delete:
       summary: Delete Categories
       operationId: delete-v2-categories-id
@@ -4151,6 +4172,8 @@ paths:
       description: Use this endpoint to delete categories
       tags:
         - Categories
+      security:
+        - API Key Param: [] 
 
 components:
   schemas:
