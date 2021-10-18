@@ -3983,7 +3983,7 @@ paths:
         description: ''
   '/v2/categories':
     post:
-      summary: Create Categories
+      summary: Create Category
       operationId: post-v2-categories
       responses:
         '200':
@@ -4021,7 +4021,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to create Categories
+      description: Use this endpoint to create a category
       tags:
         - Categories
       security:
@@ -4074,7 +4074,7 @@ paths:
         required: true
         description: id
     post:
-      summary: Update Categories
+      summary: Update Category
       operationId: post-v2-categories-id
       responses:
         '200':
@@ -4155,7 +4155,7 @@ paths:
       security:
         - API Key Param: []                
     delete:
-      summary: Delete Categories
+      summary: Delete Category
       operationId: delete-v2-categories-id
       responses:
         '200':
