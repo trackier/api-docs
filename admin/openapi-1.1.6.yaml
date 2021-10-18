@@ -3981,6 +3981,211 @@ paths:
                         - '549_434_'
                         - 983393_3393u3i3_
         description: ''
+  '/v2/categories':
+    post:
+      summary: Create Category
+      operationId: post-v2-categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      name:
+                        type: string
+                      live:
+                        type: boolean  
+                      created:
+                        type: string
+                      org_id:
+                        type: string          
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create a category
+      tags:
+        - Categories
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string           
+    get:
+      summary: Fetch All Categories
+      operationId: get-v2-categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      $ref: ./models/categories.v1.yaml               
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Categories
+      tags:
+        - Categories
+      security:
+        - API Key Param: []
+  '/v2/categories/:id':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id
+    post:
+      summary: Update Category
+      operationId: post-v2-categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  category:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      name:
+                        type: string  
+                      created:
+                        type: string              
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update Categories
+      tags:
+        - Categories
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string             
+    get:
+      summary: Fetch Category
+      operationId: get-v2-categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  category:
+                    type: array
+                    items:
+                      $ref: ./models/categories.v1.yaml               
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch one Category
+      tags:
+        - Categories
+      security:
+        - API Key Param: []                
+    delete:
+      summary: Delete Category
+      operationId: delete-v2-categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to delete categories
+      tags:
+        - Categories
+      security:
+        - API Key Param: [] 
+
 components:
   schemas:
     UserCreate:

@@ -91,6 +91,7 @@ x-tagGroups:
       - Campaign Request Access
       - Allowed Campaign Count
       - Performance Report
+      - Publisher Categories
 
 paths:
   '/v2/publisher/campaigns':
@@ -373,8 +374,44 @@ paths:
             type: string
           in: query
           name: end
-          description: Report end date in YYYY-MM-DD format
-
+          description: Report end date in YYYY-MM-DD format        
+  '/v2/publishers/categories':
+   get:
+      tags:
+        - Publisher Categories
+      summary: Fetch All Categories
+      operationId: Publisher Categories
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        name:
+                          type: string
+                        created:
+                          type: string           
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      description: Use this endpoint to fetch all Publisher Categories              
+      security:
+        - API Key Param: []         
 
 components:
   schemas:

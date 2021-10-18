@@ -1,0 +1,11 @@
+title: Categories
+type: object
+description: Categories model
+properties:
+  _id:
+    type: string
+  name:
+    type: string
+  created:
+    type: string
+                
