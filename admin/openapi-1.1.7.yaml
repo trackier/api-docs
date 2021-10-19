@@ -1590,6 +1590,381 @@ paths:
               required:
                 - campaignIds
                 - fields
+  /v2/productFeed:
+    post:
+      summary: Create new product feed setting
+      operationId: post-v2-create-product-feed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      tags:
+        - Product Feed
+      description: Use this endpoint to create product feed
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                org_id:
+                  type: string
+                user_id:
+                  type: string
+                adv_id:
+                  type: string
+                src:
+                  type: string
+                  enum:
+                    - feed
+                    - api
+                feed_config:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                api_config:
+                  type: object
+                data_mapping:
+                  type: object
+                sample_file_name:
+                  type: string
+                sample_file_path:
+                  type: string
+                frequency:
+                  type: integer
+                whitelist_pubs:
+                  type: array
+                  items:
+                    type: string
+                blacklist_pubs:
+                  type: array
+                  items:
+                    type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - inactive
+                rt:
+                  type: string
+              required:
+                - org_id
+                - user_id
+                - adv_id
+                - src
+                - frequency
+                - status
+                - rt
+  /v2/productFeed/:id:
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: productFeedId
+    get:
+      summary: Get Product Feed
+      operationId: get-v2-product-feed
+      tags:
+        - Product Feed
+      description: Use this endpoint to get Product Feed
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_feed:
+                    type: object
+                    properties:
+                      org_id:
+                        type: string
+                      user_id:
+                        type: string
+                      adv_id:
+                        type: string
+                      src:
+                        type: string
+                        enum:
+                          - feed
+                          - api
+                      feed_config:
+                        type: object
+                        properties:
+                            url:
+                              type: string
+                            username:
+                              type: string
+                            password:
+                              type: string
+                      api_config:
+                        type: object
+                      sample_file_name:
+                        type: string
+                      sample_file_path:
+                        type: string
+                      data_mapping:
+                        type: object
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - inactive
+                      frequency:
+                        type: integer
+                      whitelist_pubs:
+                        type: array
+                        items:
+                          type: string
+                      blacklist_pubs:
+                        type: array
+                        items:
+                          type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+    delete:
+      summary: Delete Product Feed
+      operationId: delete-v2-product-feed
+      tags:
+        - Product Feed
+      description: Use this endpoint to delete Product Feed
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+    post:
+      summary: Edit Product Feed
+      operationId: update-v2-product-feed
+      tags:
+        - Product Feed
+      description: Use this endpoint to edit Product Feed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  product_feed:
+                    type: object
+                    properties:
+                      org_id:
+                        type: string
+                      user_id:
+                        type: string
+                      adv_id:
+                        type: string
+                      src:
+                        type: string
+                        enum:
+                          - feed
+                          - api
+                      feed_config:
+                        type: object
+                        properties:
+                            url:
+                              type: string
+                            username:
+                              type: string
+                            password:
+                              type: string
+                      api_config:
+                        type: object
+                      sample_file_name:
+                        type: string
+                      sample_file_path:
+                        type: string
+                      data_mapping:
+                        type: object
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - inactive
+                      frequency:
+                        type: integer
+                      whitelist_pubs:
+                        type: array
+                        items:
+                          type: string
+                      blacklist_pubs:
+                        type: array
+                        items:
+                          type: string
+                      rt:
+                        type: string
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                feed_config:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                api_config:
+                  type: object
+                data_mapping:
+                  type: object
+                sample_file_name:
+                  type: string
+                sample_file_path:
+                  type: string
+                frequency:
+                  type: integer
+                whitelist_pubs:
+                  type: array
+                  items:
+                    type: string
+                blacklist_pubs:
+                  type: array
+                  items:
+                    type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - inactive
+  /v2/productFeeds:
+    get:
+      summary: Get Product Feeds
+      operationId: get-v2-product-feeds
+      tags:
+        - Product Feed
+      description: Use this endpoint to fetch Product Feeds
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product_feeds:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        org_id:
+                          type: string
+                        user_id:
+                          type: string
+                        adv_id:
+                          type: string
+                        src:
+                          type: string
+                          enum:
+                            - feed
+                            - api
+                        feed_config:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                            username:
+                              type: string
+                            password:
+                              type: string
+                        api_config:
+                          type: object
+                        sample_file_name:
+                          type: string
+                        sample_file_path:
+                          type: string
+                        data_mapping:
+                          type: object
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - inactive
+                        frequency:
+                          type: integer
+                        whitelist_pubs:
+                          type: array
+                          items:
+                            type: string
+                        blacklist_pubs:
+                          type: array
+                          items:
+                            type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
   /v2/signupfields/publisher:
     get:
       summary: Publisher Signup Questions
