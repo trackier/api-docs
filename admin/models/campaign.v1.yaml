@@ -176,6 +176,8 @@ properties:
     type: array
     items:
       type: string
+  convLcFlow:
+    type: object
   attributionWindow:
     type: integer
   allowLPTrafficSplit:
