@@ -178,6 +178,47 @@ properties:
       type: string
   convLcFlow:
     type: object
+    properties:
+      en:
+        type: array
+        items:
+          type: string
+      de:
+        type: array
+        items:
+          type: string
+      es:
+        type: array
+        items:
+          type: string
+      fr:
+        type: array
+        items:
+          type: string
+      pt_br:
+        type: array
+        items:
+          type: string
+      it:
+        type: array
+        items:
+          type: string
+      ru:
+        type: array
+        items:
+          type: string
+      cn:
+        type: array
+        items:
+          type: string
+      vi:
+        type: array
+        items:
+          type: string
+      ar:
+        type: array
+        items:
+          type: string
   attributionWindow:
     type: integer
   allowLPTrafficSplit:
