@@ -1067,7 +1067,7 @@ components:
         pagination:
           type: object
           properties:
-            perpage:
+            perPage:
               type: integer
               default: 100
             nextPageToken:
@@ -1096,7 +1096,6 @@ components:
               type: string
               example: API Key supplied with the request is invalid. Please cross verify the API Key!
 
-              
   securitySchemes:
     API Key:
       type: apiKey
