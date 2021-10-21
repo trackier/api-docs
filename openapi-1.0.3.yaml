@@ -92,6 +92,9 @@ x-tagGroups:
       - Allowed Campaign Count
       - Performance Report
       - Publisher Categories
+  - name: Advertiser
+    tags:
+      - Camapigns
 
 paths:
   '/v2/publisher/campaigns':
@@ -411,7 +414,35 @@ paths:
                     $ref: '#/components/schemas/Error'
       description: Use this endpoint to fetch all Publisher Categories              
       security:
-        - API Key Param: []         
+        - API Key Param: [] 
+
+  'v2/advertisers/campaigns':
+   get:
+      tags:
+        - Camapigns
+      summary: Fetch All Campaigns
+      description: Returns all Advetriser campaigns
+      operationId: campaigns
+      parameters:
+        - in: query
+          name: apiKey
+          description: Advetriser API Key
+          schema:
+            type: string
+          
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdvertiserCampaignData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindAllCampaignError'
 
 components:
   schemas:
@@ -836,6 +867,236 @@ components:
           type: string
           description: Token to access next page
 
+    AdvertiserCampaign:
+      type: object
+      properties:
+        device:
+          type: array
+          items:
+            type: string
+        os:
+          type: array
+          items:
+            type: string
+        cities:
+          type: array
+          items:
+            type: string
+        citiesExclude:
+          type: array
+          items:
+            type: string
+        isps:
+          type: array
+          items:
+            type: string
+        region:
+          type: array
+          items:
+            type: string
+        flow:
+          type: array  
+          items:
+            type: string                               
+        title:
+          type: string
+          items:
+            type: string
+        url:
+          type: string
+          format: uri
+        currency:
+          type: string
+          example: USD
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - paused
+            - disabled
+            - expired
+        cshp: 
+          type: string
+          example: approved
+        dcla: 
+          type: string
+          example: none
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time 
+        payouts:
+          type: array
+          items:
+              type: object
+              properties:
+                region:
+                  type: array
+                  items:
+                    type: string
+                city:
+                  type: array
+                  items:
+                    type: string
+                _id:
+                  type: string
+                model:
+                  type: string
+                revenue:
+                  type: number
+                  minimum: 0
+                created:
+                  type: string
+                currency:
+                  type: string  
+                campaignId:
+                  type: string
+                landingPages:
+                  type: array
+                  items:
+                    type: string
+                pubIds:
+                  type: array
+                  items:
+                    type: string
+                payout:
+                  type: number
+                  minimum: 0
+                geo:
+                  type: array
+                  items:
+                    type: string
+                allowedValues:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    type: string
+        creatives:
+          description: List of creatives associated with campaign
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Creatives'
+        iurl:
+          type: string
+        hashId:
+          type: string
+        advertiserId:
+          type: string
+        id:
+          type: integer
+        previewUrl:
+          type: string
+          format: uri
+        categories:
+          type: array
+          items:
+            type: string
+        commModel:
+          type: string
+        geo:
+          type: array
+          items:
+           type: string
+        blockedPubs:
+          type: array
+          items:
+            type: integer
+        fallbackUrl:
+          type: string
+        convTracking:
+          type: string
+          enum:
+            - postback
+            - iframe_https
+            - image_https
+        convTrackingDomain:
+          type: string
+        visibility:
+          type: string
+          default: public
+          enum:
+            - public
+            - private
+            - permission
+        subIdsBlocked:
+          type: array
+          items:
+            type: string
+        subIdsAllowed:
+          type: array
+          items:
+            type: string
+        blacklistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        whitelistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        redirectType:
+          type: string
+          enum:
+            - '302'
+            - 302_hrf
+            - '200'
+            - 200_hrf
+        cancelBlockedPbConv:
+          type: integer
+          default: 1
+        defaultLpName:
+          type: string
+        allowTrafficDiversion:
+          type: integer
+    
+    AdvertiserCampaignData:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Response status
+          example: true
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdvertiserCampaign'
+        pagination:
+          type: object
+          properties:
+            perpage:
+              type: integer
+              default: 100
+            nextPageToken:
+              type: string
+
+    FindAllCampaignError:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Response status
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              description: Error code
+              type: integer
+              example: 102
+            codeMsg:
+              description: Error code message
+              type: string
+              example: Invalid API Key
+            message:
+              description: Error message
+              type: string
+              example: API Key supplied with the request is invalid. Please cross verify the API Key!
+
+              
   securitySchemes:
     API Key:
       type: apiKey
