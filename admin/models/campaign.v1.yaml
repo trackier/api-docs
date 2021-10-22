@@ -219,6 +219,10 @@ properties:
         type: array
         items:
           type: string
+      ja:
+        type: array
+        items:
+          type: string
   attributionWindow:
     type: integer
   allowLPTrafficSplit:
