@@ -422,7 +422,7 @@ paths:
         - Camapigns
       summary: Fetch All Campaigns
       description: Returns all Advetriser campaigns
-      operationId: campaigns
+      operationId: adv-campaigns
       parameters:
         - in: query
           name: apiKey
@@ -922,6 +922,8 @@ components:
         dcla: 
           type: string
           example: none
+        extOfferId: 
+          type: string
         created:
           type: string
           format: date-time
