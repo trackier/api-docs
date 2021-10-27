@@ -4240,6 +4240,17 @@ components:
               type: string
         customFields:
           type: object
+        bank:
+          type: object
+          properties:
+            name:
+              type: string
+            ifsc:
+              type: string
+            account_no:
+              type: string
+            account_owner:
+              type: string
       required:
         - name
         - email
@@ -4296,6 +4307,17 @@ components:
               type: string
         customFields:
           type: object
+        bank:
+          type: object
+          properties:
+            name:
+              type: string
+            ifsc:
+              type: string
+            account_no:
+              type: string
+            account_owner:
+              type: string
       description: Schema to edit a publisher or advertiser
     CampaignCreate:
       title: Campaign
