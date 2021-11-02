@@ -3580,7 +3580,7 @@ paths:
                       sl: Smart Link ID
                       brand: Device Brand
                       conn: Connection Type
-                      ua: Click User Agent
+                      ua: User Agent
                       lat: Latitude
                       long: Longitude
                       country: Country (GEO)
