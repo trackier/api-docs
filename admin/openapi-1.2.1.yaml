@@ -3335,6 +3335,342 @@ paths:
           in: query
           name: adv_ids
           description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
+  /v2/network/impressions:
+    get:
+      summary: Impressions Report Logs
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  impressions:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      campaign_id:
+                        type: integer
+                      campaign_long_id:
+                        type: string
+                      campaign_name:
+                        type: string
+                      publisher_id:
+                        type: integer
+                      publisher_long_id:
+                        type: string
+                      publisher_name:
+                        type: string
+                      advertiser_id:
+                        type: integer
+                      advertiser_long_id:
+                        type: string
+                      advertiser_name:
+                        type: string
+                      source:
+                        type: string
+                      ipaddr:
+                        type: string
+                      city:
+                        type: string
+                      region:
+                        type: string
+                      country:
+                        type: string
+                      isp:
+                        type: string
+                      os:
+                        type: string
+                      device:
+                        type: string
+                      browser:
+                        type: string
+                      p1:
+                        type: string
+                      app_id:
+                        type: string
+                      app_name:
+                        type: string
+                      gaid:
+                        type: string
+                      idfa:
+                        type: string
+                      url_id:
+                        type: string
+                      url_title:
+                        type: string
+                      created:
+                        type: string
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+                  columns:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      source:
+                        type: string
+                      ipaddr:
+                        type: string
+                      city:
+                        type: string
+                      region:
+                        type: string
+                      isp:
+                        type: string
+                      p1:
+                        type: string
+                      p2:
+                        type: string
+                      p3:
+                        type: string
+                      p4:
+                        type: string
+                      p5:
+                        type: string
+                      p6:
+                        type: string
+                      p7:
+                        type: string
+                      p8:
+                        type: string
+                      p9:
+                        type: string
+                      p10:
+                        type: string
+                      os:
+                        type: string
+                      referer:
+                        type: string
+                      currency:
+                        type: string
+                      payout:
+                        type: string
+                      revenue:
+                        type: string
+                      gaid:
+                        type: string
+                      idfa:
+                        type: string
+                      app_id:
+                        type: string
+                      app_name:
+                        type: string
+                      android_id:
+                        type: string
+                      cr_name:
+                        type: string
+                      sl:
+                        type: string
+                      brand:
+                        type: string
+                      conn:
+                        type: string
+                      ua:
+                        type: string
+                      lat:
+                        type: string
+                      long:
+                        type: string
+                      country:
+                        type: string
+                      browser:
+                        type: string
+                      device:
+                        type: string
+                      created:
+                        type: string
+                      advertiser_id:
+                        type: string
+                      advertiser_long_id:
+                        type: string
+                      advertiser_name:
+                        type: string
+                      publisher_id:
+                        type: string
+                      publisher_long_id:
+                        type: string
+                      publisher_name:
+                        type: string
+                      publisher_company:
+                        type: string
+                      campaign_id:
+                        type: string
+                      campaign_long_id:
+                        type: string
+                      campaign_name:
+                        type: string
+                      external_offer_id:
+                        type: string
+                      url_id:
+                        type: string
+                      url_long_id:
+                        type: string
+                      url_title:
+                        type: string
+              examples:
+                sample-conversion-log-resp:
+                  value:
+                    impressions:
+                      - id: 6162d7e1410407033d19e50b
+                        campaign_id: 21812
+                        campaign_name: testing coupon code 
+                        publisher_id: 2
+                        publisher_long_id: 57c6c75934243d930c8b4581
+                        publisher_name: Pied Piper
+                        advertiser_id: 3
+                        advertiser_long_id: 57c4738434243dc57d8b456d
+                        advertiser_name: Demo Advertiser
+                        source: 
+                        url_id: null
+                        url_title: Default
+                        ipaddr: 103.211.54.87
+                        city: New Delhi
+                        region: Delhi
+                        country: IN
+                        isp: Excitel
+                        os: Mac OS 10.15
+                        device: desktop
+                        browser: Safari 15
+                        p1: test3
+                        app_id: 
+                        app_name: 
+                        gaid: 
+                        idfa: 
+                        created: 2021-10-10T12:09:05.000Z
+                    columns:
+                      id: Impression ID
+                      source: Source
+                      ipaddr: IP
+                      city: City
+                      region: Region
+                      isp: Carrier (ISP)
+                      p1: P1
+                      p2: P2
+                      p3: P3
+                      p4: P4
+                      p5: P5
+                      p6: P6
+                      p7: P7
+                      p8: P8
+                      p9: P9
+                      p10: P10
+                      os: Operating System (OS)
+                      referer: Referer
+                      currency: Currency
+                      payout: Payout
+                      revenue: Revenue
+                      gaid: GAID
+                      idfa: IDFA
+                      app_id: App ID
+                      app_name: App Name
+                      android_id: Android ID
+                      cr_name: Creative Name
+                      sl: Smart Link ID
+                      brand: Device Brand
+                      conn: Connection Type
+                      ua: Click User Agent
+                      lat: Latitude
+                      long: Longitude
+                      country: Country (GEO)
+                      browser: Browser
+                      device: Device
+                      created: Created
+                      advertiser_id: Advertiser ID
+                      advertiser_long_id: Advertiser Long ID
+                      advertiser_name: Advertiser Name
+                      publisher_id: Publisher ID
+                      publisher_long_id: Publisher Long ID
+                      publisher_name: Publisher Name
+                      publisher_company: Publisher Company
+                      campaign_id: Campaign ID
+                      campaign_long_id: Campaign Long ID
+                      campaign_name: Campaign Name
+                      external_offer_id: External Offer ID
+                      url_id: Landing Page ID
+                      url_long_id: Landing Page Long ID
+                      url_title: Landing Page Title
+                    pagination:
+                      perPage: 100
+                      currentPage: 2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-network-impressions
+      description: |-
+        This api returns the impressions logs
+
+        To fetch additional columns add query param fields like this
+
+        &fields[]=id
+        &fields[]=external_offer_id
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'No of records per page. Min: 100, Max: 10000'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Current page number
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: columns to be displayed in the api
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: 'Start date in YYYY-MM-DD'
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: 'End date in YYYY-MM-DD'
+        - schema:
+            type: string
+          in: query
+          name: zone
+          description: 'A valid timezone like: Europe/London can be found here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+          description: 'To filter the report for particular campaigns add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+          description: 'To filter the report for particular publi add publisher id in query parameters like: &pub_ids[]=16&pub_ids[]=30'
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+          description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
   '/v2/campaigns/{id}/targetings':
     parameters:
       - schema:
