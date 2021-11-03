@@ -340,6 +340,400 @@ paths:
         - Manage Publishers
       security:
         - API Key Param: []
+  '/v2/publishers/{parentId}/subaccount':
+    parameters:
+      - schema:
+          type: string
+        name: parentId
+        in: path
+        description: Id or Hash Id of Publisher
+        required: true
+    get:
+      summary: Get All Sub User Accounts of Publisher
+      operationId: get-v2-publisher-subaccount
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccounts:
+                    type: array
+                    items:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Create Sub User Account for Publisher
+      operationId: post-v2-publisher-subaccount
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubUserCreate'
+        description: Schema To Create a Sub User Account For Publisher
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  '/v2/publishers/{parentId}/subaccount/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: parentId
+        in: path
+        description: Id or Hash Id of Publisher
+        required: true
+      - schema:
+          type: string
+        name: Id
+        in: path
+        description: Id or Hash Id of Sub User Account
+        required: true
+    get:
+      summary: Find Sub Accounts of Publisher By Id
+      operationId: publisher-sub-account-findById
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccount:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Edit Sub User Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub User Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubUserEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete:
+      summary: Delete Sub User Account of Publisher
+      operationId: publisher-sub-account-delete
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub User Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  '/v2/advertisers/{parentId}/subaccount':
+    parameters:
+      - schema:
+          type: string
+        name: parentId
+        in: path
+        description: Id or Hash Id of Advertiser
+        required: true
+    get:
+      summary: Get All Sub User Accounts of Advertiser
+      operationId: get-v2-advertiser-subaccount
+      tags:
+        - Manage Advertisers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccounts:
+                    type: array
+                    items:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Create Sub User Account for Advertiser
+      operationId: post-v2-advertiser-subaccount
+      tags:
+        - Manage Advertisers
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubUserCreate'
+        description: Schema To Create a Sub User Account For Advertiser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  '/v2/advertisers/{parentId}/subaccount/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: parentId
+        in: path
+        description: Id or Hash Id of Advertiser
+        required: true
+      - schema:
+          type: string
+        name: Id
+        in: path
+        description: Id or Hash Id of Sub User Account
+        required: true
+    get:
+      summary: Find Sub Accounts of Advertiser By Id
+      operationId: advertiser-sub-account-findById
+      tags:
+        - Manage Advertisers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccount:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Edit Sub User Account of Advertiser
+      operationId: advertiser-sub-account-edit
+      tags:
+        - Manage Advertisers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub User Account of Advertiser
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubUserEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete:
+      summary: Delete Sub User Account of Advertiser
+      operationId: advertiser-sub-account-delete
+      tags:
+        - Manage Advertisers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub User Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml                 
   /v2/advertisers:
     get:
       summary: Find All Advertisers
@@ -4655,6 +5049,83 @@ components:
             account_owner:
               type: string
       description: Schema to edit a publisher or advertiser
+    SubUserCreate:
+      title: SubUserCreate
+      type: object
+      description: Schema to create a Sub User of publisher or advertiser
+      x-examples:
+        user create sample:
+          name: Hemant
+          email: hemant@gmail.com
+          password: '12345678'
+          status: active
+          phone: '9876544567'
+      x-tags:
+        - Manage Publishers
+        - Manage Advertisers
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+            - paused
+        meta:
+          type: object
+          properties:
+            skype:
+              type: string
+      required:
+        - name
+        - email
+        - phone
+        - status
+    SubUserEdit:
+      title: SubUserEdit
+      type: object
+      description: Schema to Edit a Sub User of publisher or advertiser
+      x-examples:
+        user create sample:
+          name: Hemant
+          email: hemant@gmail.com
+          password: '12345678'
+          status: active
+          phone: '9876544567'
+      x-tags:
+        - Manage Publishers
+        - Manage Advertisers
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+            - paused
+        meta:
+          type: object
+          properties:
+            skype:
+              type: string
     CampaignCreate:
       title: Campaign
       type: object
