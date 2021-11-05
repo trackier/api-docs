@@ -340,16 +340,16 @@ paths:
         - Manage Publishers
       security:
         - API Key Param: []
-  '/v2/publishers/{parentId}/subaccount':
+  '/v2/publishers/{publisherId}/subaccount':
     parameters:
       - schema:
           type: string
-        name: parentId
+        name: Publisher ID
         in: path
-        description: Id or Hash Id of Publisher
+        description: Publisher ID in numeric or hash id format
         required: true
     get:
-      summary: Get All Sub User Accounts of Publisher
+      summary: Get All Sub Accounts of Publisher
       operationId: get-v2-publisher-subaccount
       tags:
         - Manage Publishers
@@ -381,7 +381,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     post:
-      summary: Create Sub User Account for Publisher
+      summary: Create Sub Account for Publisher
       operationId: post-v2-publisher-subaccount
       tags:
         - Manage Publishers
@@ -392,8 +392,8 @@ paths:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/SubUserCreate'
-        description: Schema To Create a Sub User Account For Publisher
+              $ref: '#/components/schemas/SubAccountCreate'
+        description: Schema To Create a Sub Account For Publisher
       responses:
         '200':
           description: OK
@@ -419,22 +419,22 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/publishers/{parentId}/subaccount/{id}':
+  '/v2/publishers/{publisherId}/subaccount/{id}':
     parameters:
       - schema:
           type: string
-        name: parentId
+        name: Publisher ID
         in: path
-        description: Id or Hash Id of Publisher
+        description: Publisher ID in numeric or hash id format
         required: true
       - schema:
           type: string
         name: Id
         in: path
-        description: Id or Hash Id of Sub User Account
+        description: Sub Account ID in numeric or hash id format
         required: true
     get:
-      summary: Find Sub Accounts of Publisher By Id
+      summary: Find Sub Account of Publisher By Id
       operationId: publisher-sub-account-findById
       tags:
         - Manage Publishers
@@ -464,19 +464,19 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     post:
-      summary: Edit Sub User Account of Publisher
+      summary: Edit Sub Account of Publisher
       operationId: publisher-sub-account-edit
       tags:
         - Manage Publishers
       security:
         - API Key Param: []
       requestBody:
-        description: Schema To Edit a Sub User Account of Publisher
+        description: Schema To Edit a Sub Account of Publisher
         content:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/SubUserEdit'
+              $ref: '#/components/schemas/SubAccountEdit'
       responses:
         '200':
           description: OK
@@ -503,7 +503,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     delete:
-      summary: Delete Sub User Account of Publisher
+      summary: Delete Sub Account of Publisher
       operationId: publisher-sub-account-delete
       tags:
         - Manage Publishers
@@ -525,7 +525,7 @@ paths:
                 example-1:
                   value:
                     success: true
-                    message: Sub User Deleted!
+                    message: Sub Account Deleted!
         '400':
           description: Bad Request
           content:
@@ -537,16 +537,16 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/advertisers/{parentId}/subaccount':
+  '/v2/advertisers/{advertiserId}/subaccount':
     parameters:
       - schema:
           type: string
-        name: parentId
+        name: Advertiser ID
         in: path
-        description: Id or Hash Id of Advertiser
+        description: Advertiser ID in numeric or hash id format
         required: true
     get:
-      summary: Get All Sub User Accounts of Advertiser
+      summary: Get All Sub Accounts of Advertiser
       operationId: get-v2-advertiser-subaccount
       tags:
         - Manage Advertisers
@@ -578,7 +578,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     post:
-      summary: Create Sub User Account for Advertiser
+      summary: Create Sub Account for Advertiser
       operationId: post-v2-advertiser-subaccount
       tags:
         - Manage Advertisers
@@ -589,8 +589,8 @@ paths:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/SubUserCreate'
-        description: Schema To Create a Sub User Account For Advertiser
+              $ref: '#/components/schemas/SubAccountCreate'
+        description: Schema To Create a Sub Account For Advertiser
       responses:
         '200':
           description: OK
@@ -616,22 +616,22 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/advertisers/{parentId}/subaccount/{id}':
+  '/v2/advertisers/{advertiserId}/subaccount/{id}':
     parameters:
       - schema:
           type: string
-        name: parentId
+        name: Advertiser ID
         in: path
-        description: Id or Hash Id of Advertiser
+        description: Advertiser ID in numeric or hash id format
         required: true
       - schema:
           type: string
         name: Id
         in: path
-        description: Id or Hash Id of Sub User Account
+        description: Sub Account ID in numeric or hash id format
         required: true
     get:
-      summary: Find Sub Accounts of Advertiser By Id
+      summary: Find Sub Account of Advertiser By Id
       operationId: advertiser-sub-account-findById
       tags:
         - Manage Advertisers
@@ -661,19 +661,19 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     post:
-      summary: Edit Sub User Account of Advertiser
+      summary: Edit Sub Account of Advertiser
       operationId: advertiser-sub-account-edit
       tags:
         - Manage Advertisers
       security:
         - API Key Param: []
       requestBody:
-        description: Schema To Edit a Sub User Account of Advertiser
+        description: Schema To Edit a Sub Account of Advertiser
         content:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/SubUserEdit'
+              $ref: '#/components/schemas/SubAccountEdit'
       responses:
         '200':
           description: OK
@@ -700,7 +700,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
     delete:
-      summary: Delete Sub User Account of Advertiser
+      summary: Delete Sub Account of Advertiser
       operationId: advertiser-sub-account-delete
       tags:
         - Manage Advertisers
@@ -722,7 +722,7 @@ paths:
                 example-1:
                   value:
                     success: true
-                    message: Sub User Deleted!
+                    message: Sub Account Deleted!
         '400':
           description: Bad Request
           content:
@@ -5049,10 +5049,10 @@ components:
             account_owner:
               type: string
       description: Schema to edit a publisher or advertiser
-    SubUserCreate:
-      title: SubUserCreate
+    SubAccountCreate:
+      title: SubAccountCreate
       type: object
-      description: Schema to create a Sub User of publisher or advertiser
+      description: Schema to Create a Sub Account of Publisher or Advertiser
       x-examples:
         user create sample:
           name: Hemant
@@ -5088,12 +5088,11 @@ components:
       required:
         - name
         - email
-        - phone
         - status
-    SubUserEdit:
-      title: SubUserEdit
+    SubAccountEdit:
+      title: SubAccountEdit
       type: object
-      description: Schema to Edit a Sub User of publisher or advertiser
+      description: Schema to Edit a Sub Account of Publisher or Advertiser
       x-examples:
         user create sample:
           name: Hemant
