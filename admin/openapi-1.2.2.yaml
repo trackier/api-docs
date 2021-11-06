@@ -344,7 +344,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: Publisher ID
+        name: publisherId
         in: path
         description: Publisher ID in numeric or hash id format
         required: true
@@ -423,13 +423,13 @@ paths:
     parameters:
       - schema:
           type: string
-        name: Publisher ID
+        name: publisherId
         in: path
         description: Publisher ID in numeric or hash id format
         required: true
       - schema:
           type: string
-        name: Id
+        name: id
         in: path
         description: Sub Account ID in numeric or hash id format
         required: true
@@ -541,7 +541,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: Advertiser ID
+        name: advertiserId
         in: path
         description: Advertiser ID in numeric or hash id format
         required: true
@@ -620,13 +620,13 @@ paths:
     parameters:
       - schema:
           type: string
-        name: Advertiser ID
+        name: advertiserId
         in: path
         description: Advertiser ID in numeric or hash id format
         required: true
       - schema:
           type: string
-        name: Id
+        name: id
         in: path
         description: Sub Account ID in numeric or hash id format
         required: true
