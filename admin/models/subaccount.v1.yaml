@@ -1,0 +1,48 @@
+title: Sub Account Model
+type: object
+description: Sub Account schema
+x-tags:
+  - Models
+properties:
+  id:
+    type: string
+  hashId:
+    type: string
+  name:
+    type: string
+  email:
+    type: string
+    format: email
+  phone:
+    type: string
+  type:
+    type: string
+    enum:
+      - sub_pub
+      - sub_adv
+  status:
+    type: string
+    enum:
+      - active
+      - disabled
+      - paused
+      - pending
+  live:
+    type: boolean
+  modified:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  created:
+    type: string
+    format: date-time
+    example: '2020-01-07T11:10:09.000Z'
+  meta:
+    type: object
+    properties:
+      skype:
+        type: string
+required:
+  - name
+  - email
+  - status
