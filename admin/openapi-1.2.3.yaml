@@ -3244,14 +3244,10 @@ paths:
                           type: string
                         hour:
                           type: number
-                        currency:
-                          type: string
-                        approvedConversions:
+                        rejectedConversions:
                           type: integer
-                        sale:
-                          type: number
-                        cc: 
-                          type: number
+                        grossConversions:
+                          type: integer
                         payout:
                           type: number
                         revenue:
@@ -3282,7 +3278,7 @@ paths:
             type: array
           in: query
           name: group
-          description: 'Allowed Group parameters: campaign_id, adid, campaign_long_id, external_offer_id, publisher, publisher_id, publisher_long_id, advertiser, advertiser_id, currency, goalName, goalId, sl, ro, ro_id, urlTitle, urlId, os, country, created, month'
+          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, publisher, publisher_id, publisher_long_id, advertiser, advertiser_id, advertiser_long_id, goal_name, goal_id, sl, ref_camp, ref_camp_id, lp_title, lp_id, os, country, hour, created, month'
         - schema:
             type: array
           in: query
