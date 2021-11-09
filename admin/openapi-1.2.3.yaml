@@ -3202,6 +3202,106 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  /v2/reports/fraud:
+    get:
+      summary: Fraud Report
+      tags:
+        - Reports
+      description:
+        Fraud Report
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        campaign_name:
+                          type: string
+                        campaign_id:
+                          type: integer
+                        publisher_id:
+                          type: integer
+                        advertiser_id:
+                          type: integer
+                        ro:
+                          type: integer
+                        goal_id: 
+                          type: integer
+                        sl: 
+                          type: string
+                        url_id:
+                          type: integer
+                        country:
+                          type: string
+                        os:
+                          type: string
+                        hour:
+                          type: number
+                        rejectedConversions:
+                          type: integer
+                        grossConversions:
+                          type: integer
+                        payout:
+                          type: number
+                        revenue:
+                          type: number
+              examples:
+                example-1:
+                  value:
+                    records:
+                      - campaign_name: test
+                        campaign_id: 21585
+                        currency: USD
+                        rejectedConversions: 1
+                        grossConversions: 8
+                        payout: 2
+                        revenue: 4
+        '400':
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    errors:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-reports-fraud
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: group
+          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, publisher, publisher_id, publisher_long_id, advertiser, advertiser_id, advertiser_long_id, goal_name, goal_id, sl, ref_camp, ref_camp_id, lp_title, lp_id, os, country, hour, created, month'
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+          description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+        - schema:
+            type: array
+          in: query
+          name: adv_ids
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
   /v2/network/conversions:
     get:
       summary: Conversion Report Logs
