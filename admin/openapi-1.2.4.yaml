@@ -340,7 +340,7 @@ paths:
         - Manage Publishers
       security:
         - API Key Param: []
-  '/v2/publishers/{publisherId}/subaccount':
+  '/v2/publishers/{publisherId}/subaccounts':
     parameters:
       - schema:
           type: string
@@ -419,7 +419,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/publishers/{publisherId}/subaccount/{id}':
+  '/v2/publishers/{publisherId}/subaccounts/{id}':
     parameters:
       - schema:
           type: string
@@ -537,7 +537,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/advertisers/{advertiserId}/subaccount':
+  '/v2/advertisers/{advertiserId}/subaccounts':
     parameters:
       - schema:
           type: string
@@ -616,7 +616,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  '/v2/advertisers/{advertiserId}/subaccount/{id}':
+  '/v2/advertisers/{advertiserId}/subaccounts/{id}':
     parameters:
       - schema:
           type: string
