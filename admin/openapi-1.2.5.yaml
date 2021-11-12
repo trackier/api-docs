@@ -5114,10 +5114,10 @@ paths:
                   type: string
                 startDate:
                   type: string
-                  format: date-time
+                  format: date
                 endDate:
                   type: string
-                  format: date-time
+                  format: date
                 payouts:
                   type: array
                   items: 
@@ -5173,7 +5173,7 @@ paths:
                               type: array
                               items: 
                                 type: string
-  '/v2/coupon/:code':
+  '/v2/coupons/:code':
     parameters:
       - schema:
           type: string
@@ -5279,10 +5279,10 @@ paths:
                   type: string
                 startDate:
                   type: string
-                  format: date-time
+                  format: date
                 endDate:
                   type: string
-                  format: date-time
+                  format: date
                 payouts:
                   type: array
                   items: 
