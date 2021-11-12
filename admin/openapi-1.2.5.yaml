@@ -5015,7 +5015,362 @@ paths:
         - Categories
       security:
         - API Key Param: [] 
-
+  '/v2/coupons': 
+    get:
+      summary: Fetch All Coupon Codes
+      operationId: get-v2-coupons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  coupons:
+                    type: array
+                    items: 
+                      $ref: ./models/coupon.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Categories
+      tags:
+        - Coupons
+      security:
+        - API Key Param: []
+    post:
+      summary: Create Coupon Code
+      operationId: post-v2-coupons
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  coupon:
+                    $ref: ./models/coupon.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create a new coupon code
+      tags:
+        - Coupons
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - pending
+                    - expired
+                type:
+                  type: string
+                  enum:
+                    - generic
+                    - exclusive
+                    - one_time
+                campaignId:
+                  type: string
+                publisherIds:
+                  type: array
+                  items:
+                    type: string
+                excludedPubIds:
+                  type: array
+                  items:
+                    type: string
+                description:
+                  type: string
+                startDate:
+                  type: string
+                  format: date
+                endDate:
+                  type: string
+                  format: date
+                payouts:
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      model:
+                        type: string
+                        enum:
+                          - cpa
+                          - cps
+                      currency:
+                        type: string
+                      payout:
+                        type: integer
+                      revenue:
+                        type: integer
+                      fixedPayout:
+                        type: integer
+                      fixedRevenue:
+                        type: integer
+                      rules:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            variable:
+                              type: string
+                              enum:
+                                - sale
+                                - sub1
+                                - sub2
+                                - sub3
+                                - sub4
+                                - sub5
+                                - sub6
+                                - sub7
+                                - sub8
+                                - sub9
+                                - sub10
+                            op: 
+                              type: string
+                              enum:
+                                - exact_match
+                                - is_empty
+                                - is_not_empty
+                                - contains
+                                - regex
+                                - starts_with
+                                - ends_with
+                                - bigger_than
+                                - less_than
+                            values:
+                              type: array
+                              items: 
+                                type: string
+  '/v2/coupons/:code':
+    parameters:
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+        description: coupon code
+    get:
+      summary: Fetch Coupon Code
+      operationId: get-v2-coupon-code
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  coupon:
+                    $ref: ./models/coupon.v1.yaml
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch a coupon code
+      tags:
+        - Coupons
+      security:
+        - API Key Param: []
+    post:
+      summary: Edit Coupon Code
+      operationId: post-v2-coupon-code
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  coupon:
+                    $ref: ./models/coupon.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update a coupon code
+      tags:
+        - Coupons
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - pending
+                    - expired
+                type:
+                  type: string
+                  enum:
+                    - generic
+                    - exclusive
+                    - one_time
+                campaignId:
+                  type: string
+                publisherId:
+                  type: array
+                  items:
+                    type: string
+                excludedPubIds:
+                  type: array
+                  items:
+                    type: string
+                description:
+                  type: string
+                startDate:
+                  type: string
+                  format: date
+                endDate:
+                  type: string
+                  format: date
+                payouts:
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      model:
+                        type: string
+                        enum:
+                          - cpa
+                          - cps
+                      currency:
+                        type: string
+                      payout:
+                        type: integer
+                      revenue:
+                        type: integer
+                      fixedPayout:
+                        type: integer
+                      fixedRevenue:
+                        type: integer
+                      rules:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            variable:
+                              type: string
+                              enum:
+                                - sale
+                                - sub1
+                                - sub2
+                                - sub3
+                                - sub4
+                                - sub5
+                                - sub6
+                                - sub7
+                                - sub8
+                                - sub9
+                                - sub10
+                            op: 
+                              type: string
+                              enum:
+                                - exact_match
+                                - is_empty
+                                - is_not_empty
+                                - contains
+                                - regex
+                                - starts_with
+                                - ends_with
+                                - bigger_than
+                                - less_than
+                            values:
+                              type: array
+                              items: 
+                                type: string
+    delete:
+      summary: Delete Coupon Code
+      operationId: delete-v2-coupon-code
+      responses:
+        '200':
+          description: OK
+          content: 
+           application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                message:
+                  type: string
+                coupon:
+                  $ref: ./models/coupon.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml    
+      description: Use this endpoint to delete a coupon code
+      tags: 
+        - Coupons
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:
