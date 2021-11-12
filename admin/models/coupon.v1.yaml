@@ -1,0 +1,94 @@
+title: Coupon Code
+type: object
+description: Coupon Code Model
+properties:
+  _id:
+    type: string
+  org_id:
+    type: string
+  av:
+    type: string
+  campaignId:
+    type: string
+  publisherIds:
+    type: array
+    items:
+      type: string
+  epublisherIds:
+    type: array
+    items:
+      type: string
+  code:
+    type: string
+  description:
+    type: string
+  startDate:
+    type: string
+    format: date-time
+  endDate:
+    type: string
+    format: date-time
+  status:
+    type: string
+    enum:
+      - active
+      - pending
+      - future
+  type:
+    type: string
+    enum: 
+      - generic
+      - exclusive
+      - one_time
+  payouts:
+    type: array
+    items:
+      type: object
+      properties: 
+        model:
+          type: string
+        currency:
+          type: string
+        payout:
+          type: integer
+        revenue:
+          type: integer
+        fixedPayout:
+          type: integer
+        fixedRevenue:
+          type: integer
+        rules:
+          type: array
+          items:
+            type: object
+            properties:
+              variable:
+                type: string
+                enum:
+                  - sale
+                  - sub1
+                  - sub2
+                  - sub3
+                  - sub4
+                  - sub5
+                  - sub6
+                  - sub7
+                  - sub8
+                  - sub9
+                  - sub10
+              op:
+                type: string
+                enum:
+                  - exact_match
+                  - is_empty
+                  - is_not_empty
+                  - contains
+                  - regex
+                  - starts_with
+                  - ends_with
+                  - bigger_than
+                  - less_than
+              values:
+                type: array
+                items:
+                  type: string
