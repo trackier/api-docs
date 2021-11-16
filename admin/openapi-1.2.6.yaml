@@ -3829,6 +3829,11 @@ paths:
           in: query
           name: adv_ids
           description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
+        - schema:
+            type: string
+          in: query
+          name: source
+          description: 'To filter the report for particular source in query parameters like: &source=20223'
   /v2/network/impressions:
     get:
       summary: Impressions Report Logs
