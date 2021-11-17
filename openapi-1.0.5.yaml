@@ -390,7 +390,7 @@ paths:
           Default KPI in response: clicks, approvedConversions, payout, revenue, profit
 
           To update the report grouping or kpi:
-          - &group[]=campaign_id&group[]=publisher_id
+          - &group[]=campaign_id
           - List of grouping parameters can be found below
           - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
           - List of KPI can be found in query parameter section below
@@ -440,21 +440,17 @@ paths:
             type: array
           in: query
           name: group
-          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, campaign_status, campaign_geo, objective, publisher, publisher_id, publisher_long_id, source: Source (Sub Publisher), aff_manager, advertiser_long_id, adv_manager, goal_name, goal_id, sl, ref_camp, ref_camp_id, rlo_id, lp_title, lp_id, os, country: Country (GEO), hour, created, month'
+          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, campaign_status, campaign_geo, objective, publisher_id, publisher_long_id, aff_manager, advertiser_long_id, adv_manager, goal_name, goal_id, sl, ref_camp, ref_camp_id, rlo_id, lp_title, lp_id, os, country, hour, created, month'
         - schema:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: payout, campaign_payout, pendingPayout, rejectedConversions, rejPayout, cancelPayout,rjsa, sampledConversions, sampPayout, spsa, sampledRevenue, grossConversions, profit, epc, elapsedRange1, elapsedRange2, elapsedRange3, elapsedRange4, elapsedRange5, grossRevenue, grossProfit, grossSaleAmount, extPayout, extRev, rjrev, carev, totalConversions, pendingTotalConversions, cancelledConversions, casa, pendingRevenue, pendingSaleAmount, extsa'
+          description: 'Allowed KPIs: payout, campaign_payout, pendingPayout, rejectedConversions, rejPayout, cancelPayout,rjsa, grossConversions, profit, epc, elapsedRange1, elapsedRange2, elapsedRange3, elapsedRange4, elapsedRange5, grossRevenue, grossProfit, grossSaleAmount, extPayout, extRev, rjrev, carev, totalConversions, pendingTotalConversions, cancelledConversions, casa, pendingRevenue, pendingSaleAmount, extsa'
         - schema:
             type: array
           in: query
           name: camp_ids
           description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
-        - schema:
-            type: array
-          in: query
-          name: pub_ids
         - schema:
             type: string
           in: query
