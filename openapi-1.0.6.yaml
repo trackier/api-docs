@@ -95,6 +95,7 @@ x-tagGroups:
   - name: Advertiser
     tags:
       - Camapigns
+      - Advertiser Performance Report
 
 paths:
   '/v2/publisher/campaigns':
@@ -377,14 +378,79 @@ paths:
             type: string
           in: query
           name: end
-          description: Report end date in YYYY-MM-DD format        
-  '/v2/advertisers/reports':
-    get:
-      summary: Advertiser Performance Report
+          description: Report end date in YYYY-MM-DD format
+  '/v2/publishers/categories':
+   get:
       tags:
-        - Performance Report
+        - Publisher Categories
+      summary: Fetch All Categories
+      operationId: Publisher Categories
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        name:
+                          type: string
+                        created:
+                          type: string           
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      description: Use this endpoint to fetch all Publisher Categories              
+      security:
+        - API Key Param: [] 
+
+  'v2/advertisers/campaigns':
+   get:
+      tags:
+        - Camapigns
+      summary: Fetch All Campaigns
+      description: Returns all Advetriser campaigns
+      operationId: adv-campaigns
+      parameters:
+        - in: query
+          name: apiKey
+          description: Advetriser API Key
+          schema:
+            type: string
+          
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdvertiserCampaignData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindAllCampaignError'
+  'v2/advertisers/reports':
+    get:
+      summary: Performance Report
+      tags:
+        - Advertiser Performance Report
       description: |-
-          Advertiser Performance Report
+          Performance Report
 
           Default Grouping: campaign_name, campaign_id
           Default KPI in response: clicks, approvedConversions, payout, revenue, profit
@@ -461,72 +527,6 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
-  '/v2/publishers/categories':
-   get:
-      tags:
-        - Publisher Categories
-      summary: Fetch All Categories
-      operationId: Publisher Categories
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  categories:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        _id:
-                          type: string
-                        name:
-                          type: string
-                        created:
-                          type: string           
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    $ref: '#/components/schemas/Error'
-      description: Use this endpoint to fetch all Publisher Categories              
-      security:
-        - API Key Param: [] 
-
-  'v2/advertisers/campaigns':
-   get:
-      tags:
-        - Camapigns
-      summary: Fetch All Campaigns
-      description: Returns all Advetriser campaigns
-      operationId: adv-campaigns
-      parameters:
-        - in: query
-          name: apiKey
-          description: Advetriser API Key
-          schema:
-            type: string
-          
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCampaignData'
-        '400':
-          description: Invalid API Key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FindAllCampaignError'
-
 components:
   schemas:
     ApiResponse:
