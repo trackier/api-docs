@@ -4816,6 +4816,102 @@ paths:
                         - '549_434_'
                         - 983393_3393u3i3_
         description: ''
+  '/v2/targetingdata/devices': 
+    get:
+      summary: Fetch All Devices
+      operationId: get-v2-devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  devices:
+                    type: array
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Devices
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
+  '/v2/targetingdata/os': 
+    get:
+      summary: Fetch All Operating System
+      operationId: get-v2-os
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  os:
+                    type: array
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Operating System
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
+  '/v2/targetingdata/countries': 
+    get:
+      summary: Fetch All Countries
+      operationId: get-v2-countries
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  countries:
+                    type: array
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Countries
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
   '/v2/categories':
     post:
       summary: Create Category
