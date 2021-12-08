@@ -18,12 +18,22 @@ properties:
     enum:
       - landing
       - prelanding
+      - targeting_group
   description:
     type: string
   ruleVariable:
     type: string
   ruleValue:
     type: string
+  urls:
+    type: array
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+        percentage:
+          type: integer
   status:
     type: string
     enum:

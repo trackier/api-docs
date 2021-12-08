@@ -6253,8 +6253,28 @@ components:
           enum:
             - landing
             - prelanding
+            - targeting_group
         description:
           type: string
+        ruleVariable:
+          type: string
+          enum:
+            - city
+            - region
+            - country
+        ruleValue:
+          type: string
+          description: When lpType is targeting_group you need to pass the targeting block ID in this field
+        urls:
+          type: array
+          description: System will only accept this key when lpType is targeting_group
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              percentage:
+                type: integer
       required:
         - title
         - url
