@@ -5043,21 +5043,21 @@ paths:
             type: string
           in: query
           name: q
-          description: 'To filter the regions for name'
+          description: 'To filter the cities for name'
         - schema:
             type: string
           in: query
           name: country
-          description: 'To filter the regions for country'
+          description: 'To filter the cities for country'
         - schema:
             type: integer
           in: query
           name: page
           description: 'Page number for pagination'
-  '/v2/targetingdata/Isp': 
+  '/v2/targetingdata/isps': 
     get:
-      summary: Fetch All Isp
-      operationId: get-v2-isp
+      summary: Fetch All Isps
+      operationId: get-v2-isps
       responses:
         '200':
           description: OK
@@ -5068,7 +5068,7 @@ paths:
                 properties: 
                   success:
                     type: boolean
-                  Isp:
+                  isps:
                     type: array
                     items: 
                       type: object
@@ -5105,7 +5105,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml  
-      description: Use this endpoint to fetch all Isp
+      description: Use this endpoint to fetch all Isps
       tags:
         - Targeting Data
       security:
@@ -5115,12 +5115,12 @@ paths:
             type: string
           in: query
           name: q
-          description: 'To filter the regions for name'
+          description: 'To filter the isps for name'
         - schema:
             type: string
           in: query
           name: country
-          description: 'To filter the regions for country'
+          description: 'To filter the isps for country'
         - schema:
             type: integer
           in: query
