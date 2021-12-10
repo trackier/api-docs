@@ -4912,6 +4912,220 @@ paths:
         - Targeting Data
       security:
         - API Key Param: []
+  '/v2/targetingdata/regions': 
+    get:
+      summary: Fetch All Regions
+      operationId: get-v2-regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  regions:
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        country:
+                          type: string
+                        created:
+                          type: string
+                  pagination:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currentPage:
+                          type: number
+                          example: 1
+                        perPage: 
+                          type: number
+                          example: 100
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Regions
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: 'To filter the regions for name'
+        - schema:
+            type: string
+          in: query
+          name: country
+          description: 'To filter the regions for country'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: 'Page number for pagination'
+  '/v2/targetingdata/cities': 
+    get:
+      summary: Fetch All Cities
+      operationId: get-v2-cities
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  cities:
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        region:
+                          type: string
+                        country:
+                          type: string
+                        created:
+                          type: string
+                  pagination:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currentPage:
+                          type: number
+                          example: 1
+                        perPage: 
+                          type: number
+                          example: 100
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Cities
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: 'To filter the regions for name'
+        - schema:
+            type: string
+          in: query
+          name: country
+          description: 'To filter the regions for country'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: 'Page number for pagination'
+  '/v2/targetingdata/Isp': 
+    get:
+      summary: Fetch All Isp
+      operationId: get-v2-isp
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  Isp:
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        region:
+                          type: string
+                        country:
+                          type: string
+                        created:
+                          type: string
+                  pagination:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currentPage:
+                          type: number
+                          example: 1
+                        perPage: 
+                          type: number
+                          example: 100
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml  
+      description: Use this endpoint to fetch all Isp
+      tags:
+        - Targeting Data
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: 'To filter the regions for name'
+        - schema:
+            type: string
+          in: query
+          name: country
+          description: 'To filter the regions for country'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: 'Page number for pagination'
   '/v2/categories':
     post:
       summary: Create Category
