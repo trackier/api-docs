@@ -6891,6 +6891,13 @@ components:
           type: array
           items:
             type: string
+        osVersion:
+          type: object
+          properties:
+            min:
+              type: number
+            max:
+              type: number
       required:
         - variable
         - logic
