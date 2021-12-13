@@ -1,0 +1,29 @@
+title: Invoices model
+type: object
+description: Invoice schema
+x-tags:
+  - Models
+properties:
+  id:
+    type: number
+  hash_id:
+    type: string
+  status:
+    type: string
+  item:
+    type: string
+  item_id:
+    type: string
+  from_date:
+    type: string
+  to_date:
+    type: string
+  currency:
+    type: String
+  amount:
+    type:
+      - number
+      - 'null'
+    minimum: 0
+  created:
+    type: string

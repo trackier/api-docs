@@ -1984,6 +1984,256 @@ paths:
               required:
                 - campaignIds
                 - fields
+  '/v2/invoices':
+    get:
+      summary: Get Invoices List
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoices:
+                    type: array
+                    items:
+                      $ref: ./models/invoices.v1.yaml
+      parameters:
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: Start Date (YYYY-MM-DD)
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: End Date (YYYY-MM-DD)
+      - schema:
+          type: string
+          enum:
+          - publisher
+          - advertiser
+        name: utype
+        in: path
+        required: true
+        description: User Type
+      operationId: get-v2-invoices-list
+      security:
+        - API Key Param: []
+      requestBody: {}
+      description: Get Invoices list for publisher or advertiser.
+    post:
+      summary: Post Invoice
+      operationId: post-v2-invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+      '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Invoices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoicesCreate'
+      security:
+        - API Key Param: []
+      description: Create invoices for advertiser or publisher
+  '/v2/invoices/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get Invoice By ID
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      invoice:
+                        $ref: ''
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-invoice-id
+      description: Get Invoice by ID
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete Invoice
+      operationId: delete-v2-postback-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Delete Invoice by ID
+      security:
+        - API Key Param: []
+      tags:
+        - Invoices
+  '/v2/invoices/preivew':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+        description: User hash ID
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: Start Date (YYYY-MM-DD)
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: End Date (YYYY-MM-DD)
+      - schema:
+          type: string
+          enum:
+          - publisher
+          - advertiser
+        name: utype
+        in: path
+        required: true
+        description: User Type
+      - schema:
+          type: string
+          enum:
+          - campaign
+          - date_wise
+          - month_wise
+        name: prefType
+        in: path
+        required: true
+        description: 'Preference Type'
+      - schema:
+          type: string
+          enum:
+          - INR
+          - USD
+          - ...
+        name: invCurrency
+        in: path
+        required: true
+        description: 'Invoice Currency'
+      - schema:
+          type: boolean
+        name: skipZeroPayouts
+        in: path
+        description: 'Skip Zero Payouts'
+      - schema:
+          type: string
+        name: payoutField
+        in: path
+        description: 'Custom Payout Field Name'
+    get:
+      summary: Get Invoice Preview
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-invoice-preivew
+      description: Get Invoice Preivew
+      security:
+        - API Key Param: []
   /v2/signupfields/publisher:
     get:
       summary: Publisher Signup Questions
@@ -6902,6 +7152,67 @@ components:
         - variable
         - logic
         - condition
+    InvoicesCreate:
+      title: Invoices
+      type: object
+      x-examples:
+        example-1:
+          title: CREATING Invoices using v2 api
+          value: apiv2_invoices2
+          type: public
+          payout_model: fixed
+          payouts:
+            - payout: 2
+              revenue: 4
+              geo:
+                - IN
+      properties:
+        user_id:
+          type: string
+        prefType:
+          type: string
+          enum:
+            - campaign
+            - date_wise
+            - month_wise
+        start:
+          type: string
+          enum:
+            - Start Date (YYYY-MM-DD)
+        end:
+          type: string
+          enum:
+            - End Date (YYYY-MM-DD)
+        uType:
+          type: string
+          enum:
+            - publisher
+            - advertiser
+        invCurrency:
+          type: String
+          enum:
+            - INR
+            - USD
+            - ...
+        skipZeroPayouts:
+          type: string
+        payoutField:
+          type: string
+        exRate:
+          type: string
+        adjust_inv:
+          type: string
+      required:
+        - user_id
+        - prefType
+        - start
+        - end
+        - uType
+        - title
+        - invCurrency
+      x-tags:
+        - Invoices List
+      description: Invoices Model
   securitySchemes:
     API Key Param:
       name: apiKey
