@@ -1,6 +1,6 @@
 title: Invoices model
 type: object
-description: Cap schema
+description: Invoice schema
 x-tags:
   - Models
 properties:
