@@ -2029,7 +2029,7 @@ paths:
       requestBody: {}
       description: Get Invoices list for publisher or advertiser.
     post:
-      summary: Post Invoice
+      summary: Create Invoice
       operationId: post-v2-invoices
       responses:
         '200':
