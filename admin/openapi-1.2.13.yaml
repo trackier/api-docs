@@ -1266,6 +1266,87 @@ paths:
       security:
         - API Key Param: []
       description: Delete a campaign with given id
+  '/v2/campaigns/{id}/thumbnail':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        operationId: campaign-thumbnail-update
+        description: Campaign ID (Integer Id or hash ID)
+    post:
+      summary: Edit Campaign Thumbnail
+      requestBody:
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: file
+                  description: jpeg | gif | bmp | png | ico | tif
+                  
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Thumbnail was updated!
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: Edit thumbnail in a campaign with given id
+    delete:
+      summary: Delete Campaign Thumbnail
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Thumbnail was removed!
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: Delete thumbnail in a campaign with given id
   '/v2/campaigns/{id}/caps':
     parameters:
       - schema:
