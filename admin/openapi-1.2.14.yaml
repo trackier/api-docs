@@ -2223,7 +2223,7 @@ paths:
         - API Key Param: []
       tags:
         - Invoices
-  '/v2/invoices/preivew':
+  '/v2/invoices/preview':
     parameters:
       - schema:
           type: string
@@ -2311,8 +2311,8 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      operationId: get-v2-invoice-preivew
-      description: Get Invoice Preivew
+      operationId: get-v2-invoice-preview
+      description: Get Invoice Preview
       security:
         - API Key Param: []
   /v2/signupfields/publisher:
