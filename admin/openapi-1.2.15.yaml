@@ -2246,15 +2246,6 @@ paths:
       - schema:
           type: string
           enum:
-          - publisher
-          - advertiser
-        name: utype
-        in: path
-        required: true
-        description: User Type
-      - schema:
-          type: string
-          enum:
           - campaign
           - date_wise
           - month_wise
@@ -2312,6 +2303,42 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: get-v2-invoice-preview
+      description: Get Invoice Preview
+      security:
+        - API Key Param: []
+  '/v2/publishers/{id}/transactions':
+    get:
+      summary: Transactions & Payments
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  transactions:
+                    type: array
+                  payments:
+                    type: array
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-transactions-&-payments
       description: Get Invoice Preview
       security:
         - API Key Param: []
