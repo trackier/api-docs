@@ -506,7 +506,7 @@ paths:
             type: array
           in: query
           name: group
-          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, campaign_status, campaign_geo, objective, publisher_id, publisher_long_id, aff_manager, advertiser_long_id, adv_manager, goal_name, goal_id, sl, ref_camp, ref_camp_id, rlo_id, lp_title, lp_id, os, country, hour, created, month'
+          description: 'Allowed Group parameters: campaign_name, campaign_id, campaign_long_id, external_offer_id, campaign_status, campaign_geo, objective, publisher_id, publisher_long_id, source, aff_manager, advertiser_long_id, adv_manager, goal_name, goal_id, sl, ref_camp, ref_camp_id, rlo_id, lp_title, lp_id, os, country, hour, created, month'
         - schema:
             type: array
           in: query
