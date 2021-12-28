@@ -7301,8 +7301,6 @@ components:
           type: string
         payoutField:
           type: string
-        exRate:
-          type: string
         adjust_inv:
           type: string
       required:
