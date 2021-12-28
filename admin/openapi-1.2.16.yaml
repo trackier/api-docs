@@ -7291,11 +7291,6 @@ components:
           type: string
           enum:
             - End Date (YYYY-MM-DD)
-        uType:
-          type: string
-          enum:
-            - publisher
-            - advertiser
         invCurrency:
           type: String
           enum:
