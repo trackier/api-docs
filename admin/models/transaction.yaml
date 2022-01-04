@@ -1,0 +1,28 @@
+title: Transaction model
+type: object
+description: Transaction schema
+x-tags:
+  - Models
+properties:
+  credit:
+    type: number
+  debit:
+    type: number
+  system:
+    type: string
+  _id:
+    type: string
+  user_id:
+    type: string
+  org_id:
+    type: string
+  type:
+    type: string
+  note:
+    type: string
+  live:
+    type: boolean
+  created:
+    type: string
+  modified:
+    type: string
