@@ -1,0 +1,33 @@
+title: Payment model
+type: object
+description: Payment schema
+x-tags:
+  - Models
+properties:
+  invoices:
+    type: array
+    items:
+      type: string
+  _id:
+    type: string
+  org_id:
+    type: string
+  user_id:
+    type: string
+  utype:
+    type: string
+  type:
+    type: string
+  amount:
+    type: number
+  live:
+    type: boolean
+  meta:
+    type: object
+    properties:
+      refer_id:
+        type: string
+      note:
+        type: string
+  modified:
+    created: string
