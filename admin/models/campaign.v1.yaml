@@ -239,6 +239,12 @@ properties:
     type: array
     items:
       $ref: ./payout.v1.yaml
+  startTime:
+    type: string
+    format: date-time
+  endTime:
+    type: string
+    format: date-time
 required:
   - id
   - advertiserId
