@@ -6493,6 +6493,14 @@ components:
               - payout
               - revenue
               - geo
+        startTime:
+          type: string
+          format: "YYYY-MM-DDTHH:MM:ssZ"
+          example: "2020-01-01T10:30:00Z"
+        endTime:
+          type: string
+          format: "YYYY-MM-DD HH:MM:ssZ"
+          example: "2020-02-02T21:00:00Z"
       required:
         - advertiserId
         - title
@@ -6736,6 +6744,14 @@ components:
               - payout
               - revenue
               - geo
+        startTime:
+          type: string
+          format: "YYYY-MM-DDTHH:MM:ssZ"
+          example: "2020-01-01T10:30:00Z"
+        endTime:
+          type: string
+          format: "YYYY-MM-DD HH:MM:ssZ"
+          example: "2020-02-02T21:00:00Z"
     Cap:
       title: Cap
       type: object
