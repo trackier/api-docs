@@ -239,10 +239,10 @@ properties:
     type: array
     items:
       $ref: ./payout.v1.yaml
-  startTime:
+  startDate:
     type: string
     format: date-time
-  endTime:
+  endDate:
     type: string
     format: date-time
 required:
