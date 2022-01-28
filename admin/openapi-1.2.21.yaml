@@ -6113,6 +6113,10 @@ components:
               type: string
             account_owner:
               type: string
+        tags:
+          type: array
+          items:
+            type: string
       required:
         - name
         - email
@@ -6180,6 +6184,10 @@ components:
               type: string
             account_owner:
               type: string
+        tags:
+          type: array
+          items:
+            type: string
       description: Schema to edit a publisher or advertiser
     SubAccountCreate:
       title: SubAccountCreate
