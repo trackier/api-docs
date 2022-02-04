@@ -6366,7 +6366,7 @@ components:
     BulkConversionUpload:
       title: BulkConversionUpload
       type: object
-      description: Schema to Create a Sub Account of Publisher or Advertiser
+      description: Schema to Upload Bulk Conversions
       properties:
         data:
           type: array
