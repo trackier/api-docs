@@ -2656,6 +2656,140 @@ paths:
           name: page
           description: Page number for pagination
     parameters: []
+  /v2/conversions/bulkUpload:
+    post:
+      summary: Bulk Conversion Upload
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message :
+                    type: string
+                  job:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      org_id:
+                        type: string
+                      user_id:
+                        type: string
+                      status:
+                        type: string
+                      result:
+                        type: object
+                        properties:
+                          rows:
+                           type: string
+                      type:
+                        type: string
+                      created:
+                        type: string
+                      __v:
+                        type: integer
+                      id:
+                        type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description:  Upload Bulk Conversion
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/BulkConversionUpload'
+  /v2/jobs:
+    get:
+      summary: Find All Jobs
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  success:
+                    type: boolean
+                  jobs:
+                    type: array
+                    items: 
+                      $ref: ./models/job.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all jobs
+      security:
+        - API Key Param: []
+  /v2/jobs/:id:
+    get:
+      summary: Find Job By Id
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  job:
+                    $ref: ./models/job.v1.yaml
+                  log:
+                    type: array
+                    items:
+                      type: object
+                      properties: 
+                        message:
+                          type: string
+                        created:
+                          type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch job
+      security:
+        - API Key Param: []
   /v2/postback:
     get:
       summary: Get All Postbacks
@@ -6229,6 +6363,52 @@ components:
         - name
         - email
         - status
+    BulkConversionUpload:
+      title: BulkConversionUpload
+      type: object
+      description: Schema to Create a Sub Account of Publisher or Advertiser
+      x-examples:
+        user create sample:
+          name: Hemant
+          email: hemant@gmail.com
+          password: '12345678'
+          status: active
+          phone: '9876544567'
+      x-tags:
+        - Manage Publishers
+        - Manage Advertisers
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              campaign_id:
+                type: string
+                description: Campaign Id - numeric or hash ID
+              publisher_id:
+                type: string
+                description: Publisher Id - numeric or hash ID
+              payout:
+                type: number
+                minimum: 0
+              revenue:
+                type: number
+                minimum: 0
+              currency:
+                type: string
+              country:
+                type: string
+              sub1:
+                type: string
+              goal_id:
+                type: string
+              txn_id:
+                type: string
+              created:
+                type: string
+      required:
+        - data
     SubAccountEdit:
       title: SubAccountEdit
       type: object
