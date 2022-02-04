@@ -1,0 +1,38 @@
+title: Job
+type: object
+description: Job Model
+properties:
+  result:
+    type: object
+    properties: 
+      rows:
+        type: integer
+      errors:
+        type: integer
+      inserted:
+        type: integer
+      processed:
+        type: integer
+      updated:
+        type: integer
+  _id:
+    type: string
+  org_id:
+    type: string
+  user_id:
+    type: string
+  status:
+    type: string
+  type:
+    type: string
+  created:
+    type: string
+  __v:
+    type: integer
+  started_at:
+    type: string
+  finished_at:
+    type: string
+  id:
+    type: string
+  
