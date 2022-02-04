@@ -6367,45 +6367,68 @@ components:
       title: BulkConversionUpload
       type: object
       description: Schema to Create a Sub Account of Publisher or Advertiser
-      x-examples:
-        user create sample:
-          name: Hemant
-          email: hemant@gmail.com
-          password: '12345678'
-          status: active
-          phone: '9876544567'
-      x-tags:
-        - Manage Publishers
-        - Manage Advertisers
       properties:
         data:
           type: array
           items:
             type: object
             properties:
+              click_id:
+                type: string
               campaign_id:
                 type: string
                 description: Campaign Id - numeric or hash ID
               publisher_id:
                 type: string
                 description: Publisher Id - numeric or hash ID
+              created:
+                type: string
               payout:
                 type: number
                 minimum: 0
               revenue:
                 type: number
                 minimum: 0
+              sale_amount:
+                type: number
+                minimum: 0
               currency:
                 type: string
               country:
                 type: string
-              sub1:
-                type: string
               goal_id:
+                type: string
+              goal_value:
+                type: string
+              user_id:
                 type: string
               txn_id:
                 type: string
-              created:
+              conversion_id:
+                type: string
+              sub1:
+                type: string
+              sub2:
+                type: string
+              sub3:
+                type: string
+              sub4:
+                type: string
+              sub5:
+                type: string
+              sub6:
+                type: string
+              sub7:
+                type: string
+              sub8:
+                type: string
+              sub9:
+                type: string
+              sub10:
+                type: string
+              app_id:
+                type: string
+              app_name:
                 type: string
       required:
         - data
