@@ -103,7 +103,14 @@ paths:
       tags:
         - Campaign
       summary: Fetch All Campaigns
-      description: Returns all publisher campaigns
+      description: |-
+          Returns all publisher campaigns
+
+          Goal: Any additional event added in the campaign is goal
+
+          Default Goal: Default event of the campaign
+          
+          *Note: There will be no goal value in default goal, only goal have the goal values*.
       operationId: campaigns
       parameters:
         - in: query
