@@ -156,6 +156,9 @@ properties:
   cancelBlockedPbConv:
     type: integer
     default: 1
+  overrideAppNameWithCsvValues:
+    type: integer
+    default: Null
   hops:
     type: integer
   convPending:
