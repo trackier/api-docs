@@ -33,6 +33,7 @@ properties:
       - revenue
       - pendingPayout
       - pendingRevenue
+      - saleAmount
   daily:
     type:
       - number
