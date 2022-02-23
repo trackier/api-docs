@@ -1921,6 +1921,96 @@ paths:
       tags:
         - Campaign Goal
       description: Delete a campaign goal
+  '/v2/campaigns/{campaignId}/postback-settings':
+    parameters:
+      - schema:
+          type: string
+        name: campaignId
+        in: path
+        required: true
+        description: Campaign ID
+    post:
+      summary: Edit Campaign PostBack Setting
+      operationId: edit-campaign-postback-setting
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      requestBody:
+        description: 'Note: Array of BlacklistPostbackPubs and WhitelistPostbackPubs Will Replace The Old Values'
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                goals:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      goalId:
+                        type: string
+                        enum:
+                          - default
+                          - Goal Hash Id
+                      blacklistPostbackPubs:
+                        oneOf:
+                          - type: array
+                            items:
+                              type: number
+                          - type: array
+                            items:
+                              type: string
+                              enum:
+                                - all
+                        description: ID's of Publisher
+                      whitelistPostbackPubs:
+                        type: array
+                        items:
+                          type: number
+                        description: ID's of Publisher
+            example:
+              [
+                {
+                  goalId: default,
+                  blacklistPostbackPubs: [13, 14],
+                  whitelistPostbackPubs: [14, 15]
+                },
+                {
+                  goalId: 5f0be9f461770401a87a0016,
+                  blacklistPostbackPubs: [13, 14],
+                  whitelistPostbackPubs: [14, 15]
+                },
+                {
+                  goalId: 6202bcd5f42a00036d1e0755,
+                  blacklistPostbackPubs: ['all'],
+                  whitelistPostbackPubs: [14, 15]
+                }
+              ]
+      description: Edit Campaign PostBack Setting
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sucess:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   /v2/campaigns/categories:
     get:
       summary: Get all campaigns categories
