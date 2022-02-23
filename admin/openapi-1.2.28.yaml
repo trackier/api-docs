@@ -1937,6 +1937,7 @@ paths:
       security:
         - API Key Param: []
       requestBody:
+        description: 'Note: Array of BlacklistPostbackPubs and WhitelistPostbackPubs Will Replace The Old Values'
         content:
           application/json:
             schema:
@@ -1953,9 +1954,15 @@ paths:
                           - default
                           - Goal Hash Id
                       blacklistPostbackPubs:
-                        type: array
-                        items:
-                          type: number
+                        oneOf:
+                          - type: array
+                            items:
+                              type: number
+                          - type: array
+                            items:
+                              type: string
+                              enum:
+                                - all
                         description: ID's of Publisher
                       whitelistPostbackPubs:
                         type: array
@@ -1972,6 +1979,11 @@ paths:
                 {
                   goalId: 5f0be9f461770401a87a0016,
                   blacklistPostbackPubs: [13, 14],
+                  whitelistPostbackPubs: [14, 15]
+                },
+                {
+                  goalId: 6202bcd5f42a00036d1e0755,
+                  blacklistPostbackPubs: ['all'],
                   whitelistPostbackPubs: [14, 15]
                 }
               ]
