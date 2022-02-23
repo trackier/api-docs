@@ -1921,7 +1921,7 @@ paths:
       tags:
         - Campaign Goal
       description: Delete a campaign goal
-  '/v2/campaigns/{campaignId}/postback':
+  '/v2/campaigns/{campaignId}/postback-settings':
     parameters:
       - schema:
           type: string
