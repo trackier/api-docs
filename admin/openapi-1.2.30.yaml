@@ -7646,7 +7646,20 @@ components:
         payoutField:
           type: string
         adjust_inv:
-          type: string
+          type: array
+          description: (Adjust invoice type credit/debit)
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - credit
+                  - debit
+              note:
+                type: string
+              amount:
+                type: number
       required:
         - user_id
         - prefType
