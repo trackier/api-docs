@@ -1102,7 +1102,7 @@ paths:
 
         To see campaigns for a particular status use the filters query param
 
-        - &filters[status]=active
+        - &filters[status]=active&filters[objective][]=cpa&filters[objective][]=cpi
       security:
         - API Key Param: []
       parameters:
@@ -1119,6 +1119,17 @@ paths:
                 type: array
                 items:
                   type: string
+              objective:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - cpa
+                    - cpl
+                    - cpi
+                    - cps
+                    - cpc
+                    - cpm
           in: query
           name: filters
     post:
