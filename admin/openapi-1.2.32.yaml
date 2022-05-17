@@ -3799,6 +3799,199 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  /v2/reports/clicks:
+    get:
+      summary: Clicks Report
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples:
+                sample-click-report:
+                  value:
+                    clicks:
+                      - click_id: 6201b350f2960303437bbfb2
+                        org_id: 58d24f4d17c4520e59658aba
+                        campaign_long_id: 5ff8479d57b90d5907548486
+                        publisher_long_id: 5df22a4db6920d5c773640a6
+                        adv_id: 5e99864ae12f1207e76f1130
+                        landing_page_long_id: 
+                        source: 570_92_
+                        ipaddr: 78.183.154.148
+                        country: TR
+                        region: Ankara
+                        city: Aksemsettin mah.
+                        isp: Turk Telekom
+                        device: mobile
+                        browser: Chrome 81
+                        os: Android 11.0
+                        user_agent: Mozilla/5.0 (Linux; Android 11.0.0; LG G PRO 2 Build/F350K) AppleWebKit/537.36 (KHTML like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36
+                        referer: 
+                        is_bot: 1
+                        is_unique: 0
+                        p1: 6201b34a5b427c000108e29c
+                        p2: 
+                        p3: 
+                        p4: 
+                        p5: 
+                        p6: 
+                        p7: 
+                        p8: 
+                        p9: 
+                        p10: 
+                        created: 2022-02-08 00:03:28
+                        note: 
+                        referrer_campaign: 
+                        gaid: 
+                        idfa: 
+                        app_id: 
+                        app_name: 
+                        android_id: 
+                        curr: 
+                        creative_name: 
+                        smart_link: 
+                        payout: 0
+                        revenue: 0
+                        is_rejected: 0
+                        brand: 
+                        conn: Cable/DSL
+                        lat: 39.9
+                        long: 32.94
+                        pub_impression_id: 
+                        rr: 
+                        device_lang: tr
+                        pub_campaign_id: 
+                        sub_source: 
+                        click_domain: 
+                        release_order_id: 
+                      - click_id: 6201b3792d8ef6035766a19c
+                        org_id: 58d24f4d17c4520e59658aba
+                        campaign_long_id: 5ff8479d57b90d5907548486
+                        publisher_long_id: 5df22a4db6920d5c773640a6
+                        adv_id: 5e99864ae12f1207e76f1130
+                        landing_page_long_id: 
+                        source: 570_92_
+                        ipaddr: 78.189.86.36
+                        country: TR
+                        region: Izmir
+                        city: Camdibi
+                        isp: Turk Telekom
+                        device: mobile
+                        browser: Safari 10
+                        os: iOS 10.1
+                        user_agent: Mozilla/5.0 (iPhone; CPU iPhone OS 10_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML like Gecko) Version/10.0 Mobile/14B72
+                        referer: 
+                        is_bot: 1
+                        is_unique: 0
+                        p1: 6201b376808bd40001959394
+                        p2: 
+                        p3: 
+                        p4: 
+                        p5: 
+                        p6: 
+                        p7: 
+                        p8: 
+                        p9: 
+                        p10: 
+                        created: 2022-02-09 00:04:09
+                        note: 
+                        referrer_campaign: 
+                        gaid: 
+                        idfa: 
+                        app_id: 
+                        app_name: 
+                        android_id: 
+                        curr: 
+                        creative_name: 
+                        smart_link: 
+                        payout: 0
+                        revenue: 0
+                        is_rejected: 0
+                        brand: 
+                        conn: Cable/DSL
+                        lat: 38.44
+                        long: 27.17
+                        pub_impression_id: 
+                        rr: 
+                        device_lang: tr
+                        pub_campaign_id: 
+                        sub_source: 
+                        click_domain: 
+                        release_order_id: 
+                    pagination:
+                      perPage: 100
+                    nextPageToken: eyJsYXN0VHMiOiIyMDIyLTAyLTA5IDAwOjA0OjA5IiwicGFnZVRva2VuX3NraXAiOjJ9
+                    hasNextPage: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-report-clicks
+      description: |-
+        This api returns the clicks logs
+
+        To fetch additional columns add query param fields like this
+
+        &fields[]=id
+        &fields[]=pid
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'No of records per page. Min: 100, Max: 5000'
+        - schema:
+            type: boolean
+          in: query
+          name: hasNextPage
+          description: 'if next page true else false'
+        - schema:
+            type: string
+          in: query
+          name: pageToken
+          description: 'Provided in api for next page acess'
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: 'Allowed Fields parameters: click_id, source, ipaddr, ua, os, is_rejected, is_unique, city, region, isp, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, note, ro, gaid, idfa, app_id, app_name, android_id, creative_name, smart_link, payout, revenue, brand, conn, lat, long, pub_impression_id, device_lang, pub_campaign_id, sub_source, click_domain, release_order_id, country, browser, referer, device, created, campaign_id, campaign_long_id, campaign_title, publisher_id, publisher_long_id, publisher_name, landing_page, landing_page_id, landing_page_long_id'
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: 'Start date in YYYY-MM-DD HH:mm:ss or YYYY-MM-DD'
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: 'End date in YYYY-MM-DD HH:mm:ss or YYYY-MM-DD'
+        - schema:
+            type: string
+          in: query
+          name: zone
+          description: 'A valid timezone like: Europe/London can be found here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+        - schema:
+            type: array
+          in: query
+          name: camp_ids
+          description: 'To filter the report for particular campaigns add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
+        - schema:
+            type: array
+          in: query
+          name: pub_ids
+          description: 'To filter the report for particular publi add publisher id in query parameters like: &pub_ids[]=16&pub_ids[]=30'
   /v2/reports/fraud:
     get:
       summary: Fraud Report
