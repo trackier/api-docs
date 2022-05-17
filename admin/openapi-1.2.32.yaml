@@ -3966,7 +3966,7 @@ paths:
             type: array
           in: query
           name: fields
-          description: 'Allowed Fields parameters: click_id, source, ipaddr, ua, os, is_rejected, is_unique, city, region, isp, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, note, ro, gaid, idfa, app_id, app_name, android_id, creative_name, smart_link, payout, revenue, brand, conn, lat, long, pub_impression_id, device_lang, pub_campaign_id, sub_source, click_domain, release_order_id, country, browser, referer, device, created, campaign_id, campaign_long_id, campaign_title, publisher_id, publisher_long_id, publisher_name, landing_page, landing_page_id, landing_page_long_id'
+          description: 'Allowed Fields parameters: id, source, ipaddr, ua, os, is_rejected, is_unique, city, region, isp, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, note, ro, gaid, idfa, app_id, app_name, android_id, creative_name, smart_link, payout, revenue, brand, conn, lat, long, pub_impression_id, device_lang, pub_campaign_id, sub_source, click_domain, release_order_id, country, browser, referer, device, created, campaign_id, campaign_long_id, campaign_title, publisher_id, publisher_long_id, publisher_name, landing_page, landing_page_id, landing_page_long_id'
         - schema:
             type: string
           in: query
