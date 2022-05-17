@@ -3813,7 +3813,7 @@ paths:
                 sample-click-report:
                   value:
                     clicks:
-                      - click_id: 6201b350f2960303437bbfb2
+                      - id: 6201b350f2960303437bbfb2
                         org_id: 58d24f4d17c4520e59658aba
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
@@ -3867,7 +3867,7 @@ paths:
                         sub_source: 
                         click_domain: 
                         release_order_id: 
-                      - click_id: 6201b3792d8ef6035766a19c
+                      - id: 6201b3792d8ef6035766a19c
                         org_id: 58d24f4d17c4520e59658aba
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
@@ -3961,7 +3961,7 @@ paths:
             type: string
           in: query
           name: pageToken
-          description: 'Provided in api for next page acess'
+          description: 'Provided in api for accessing next page'
         - schema:
             type: array
           in: query
