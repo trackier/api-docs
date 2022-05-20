@@ -6278,6 +6278,75 @@ paths:
                               type: array
                               items: 
                                 type: string
+                    required:
+                      - model
+                      - currency
+                      - payout
+                      - revenue
+                futurePayouts:
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      fromDate:
+                        type: string
+                        description: Example - 2022-06-01
+                      model:
+                        type: string
+                        enum:
+                          - cpa
+                          - cps
+                      currency:
+                        type: string
+                      payout:
+                        type: integer
+                      revenue:
+                        type: integer
+                      fixedPayout:
+                        type: integer
+                      fixedRevenue:
+                        type: integer
+                      rules:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            variable:
+                              type: string
+                              enum:
+                                - sale
+                                - sub1
+                                - sub2
+                                - sub3
+                                - sub4
+                                - sub5
+                                - sub6
+                                - sub7
+                                - sub8
+                                - sub9
+                                - sub10
+                            op: 
+                              type: string
+                              enum:
+                                - exact_match
+                                - is_empty
+                                - is_not_empty
+                                - contains
+                                - regex
+                                - starts_with
+                                - ends_with
+                                - bigger_than
+                                - less_than
+                            values:
+                              type: array
+                              items: 
+                                type: string
+                    required:
+                      - fromDate
+                      - model
+                      - currency
+                      - payout
+                      - revenue
   '/v2/coupons/:code':
     parameters:
       - schema:
@@ -6443,6 +6512,75 @@ paths:
                               type: array
                               items: 
                                 type: string
+                    required:
+                      - model
+                      - currency
+                      - payout
+                      - revenue
+                futurePayouts:
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      fromDate:
+                        type: string
+                        description: Example - 2022-06-01
+                      model:
+                        type: string
+                        enum:
+                          - cpa
+                          - cps
+                      currency:
+                        type: string
+                      payout:
+                        type: integer
+                      revenue:
+                        type: integer
+                      fixedPayout:
+                        type: integer
+                      fixedRevenue:
+                        type: integer
+                      rules:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            variable:
+                              type: string
+                              enum:
+                                - sale
+                                - sub1
+                                - sub2
+                                - sub3
+                                - sub4
+                                - sub5
+                                - sub6
+                                - sub7
+                                - sub8
+                                - sub9
+                                - sub10
+                            op: 
+                              type: string
+                              enum:
+                                - exact_match
+                                - is_empty
+                                - is_not_empty
+                                - contains
+                                - regex
+                                - starts_with
+                                - ends_with
+                                - bigger_than
+                                - less_than
+                            values:
+                              type: array
+                              items: 
+                                type: string
+                    required:
+                      - fromDate
+                      - model
+                      - currency
+                      - payout
+                      - revenue
     delete:
       summary: Delete Coupon Code
       operationId: delete-v2-coupon-code
