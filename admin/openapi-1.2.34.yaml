@@ -3981,12 +3981,12 @@ paths:
             type: string
           in: query
           name: start
-          description: 'Start date in YYYY-MM-DD HH:mm:ss or YYYY-MM-DD'
+          description: 'Start date in YYYY-MM-DD HH:mm:ss'
         - schema:
             type: string
           in: query
           name: end
-          description: 'End date in YYYY-MM-DD HH:mm:ss or YYYY-MM-DD'
+          description: 'End date in YYYY-MM-DD HH:mm:ss'
         - schema:
             type: string
           in: query
