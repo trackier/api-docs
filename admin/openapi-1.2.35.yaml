@@ -6782,6 +6782,8 @@ components:
       properties:
         name:
           type: string
+        username:
+          type: string
         email:
           type: string
           format: email
@@ -6908,6 +6910,8 @@ components:
         - Manage Advertisers
       properties:
         name:
+          type: string
+        username:
           type: string
         email:
           type: string
