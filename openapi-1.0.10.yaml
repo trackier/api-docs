@@ -386,6 +386,78 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  '/v2/publishers/reports-kpi':
+    get:
+      summary: Performance Report GET KPI
+      tags:
+          - Performance Report 
+      description: |-
+          Performance Report GET KPI Method
+  
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedGrouping:
+                    type: array
+                  allowedKpi:
+                    type: array
+                  groupingMap:
+                    type: object
+                  kpiMap:
+                    type: object
+                    
+              examples:
+                example-1:
+                  value:
+                    allowedGrouping:
+                       [
+                        "campaign_name",
+                        "campaign_id",
+                        "campaign_long_id",
+                        "campaign_status"
+                       ] 
+                    allowedKpi:
+                       [
+                        "uniqueClicks",
+                        "clicks",
+                        "grossClicks",
+                        "impressions",
+                        "payout"
+                       ] 
+                    groupingMap:
+                      {
+                        "campaign_name": "Campaign",
+                        "campaign_id": "Campaign ID",
+                        "campaign_long_id": "Campaign Long ID",
+                        "campaign_status": "Campaign Status",
+                        "campaign_geo": "Campaign GEO",
+                      }
+                    kpiMap:
+                      {
+                        "uniqueClicks": "Unique Clicks",
+                        "clicks": "Clicks",
+                        "grossClicks": "Gross Clicks",
+                        "impressions": "Impressions",
+                        "payout": "Payout",
+                      }
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      operationId: get-v2-reports-get-kpi
+      security:
+        - API Key Param: []
+     
   '/v2/publishers/categories':
    get:
       tags:
