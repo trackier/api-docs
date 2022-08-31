@@ -590,7 +590,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: rejectedConversions, rjsa, grossConversions, epc, grossRevenue, grossSaleAmount, extRev, rjrev, carev, approvedConversions, pendinglConversions, cancelledConversions, pendingRevenue, pendingSaleAmount, extsa'
+          description: 'Allowed KPIs: rejectedConversions, rjsa, grossConversions, epc, grossRevenue, grossSaleAmount, extRev, rjrev, carev, approvedConversions, pendingConversions, cancelledConversions, pendingRevenue, pendingSaleAmount, extsa'
         - schema:
             type: array
           in: query
