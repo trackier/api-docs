@@ -4634,6 +4634,11 @@ paths:
           in: query
           name: source
           description: 'To filter the report for particular source in query parameters like: &source=20223'
+        - schema:
+            type: string
+          in: query
+          name: status
+          description: 'To see conversions based on a particular status like: &status=pending'
   /v2/network/impressions:
     get:
       summary: Impressions Report Logs
@@ -6842,6 +6847,13 @@ components:
                 type: string
               country:
                 type: string
+              status:
+                type: string
+                enum:
+                  - approved
+                  - pending
+                  - cancelled
+                  - rejected
               conn:
                 type: string
                 enum:
