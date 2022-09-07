@@ -4638,7 +4638,7 @@ paths:
             type: string
           in: query
           name: status
-          description: 'To see conversions based on a particular status like: &status=pending'
+          description: 'To see conversions based on a particular status like: &status=pending. Allowed values: approved, pending, cancelled, rejected, extended'
   /v2/network/impressions:
     get:
       summary: Impressions Report Logs
@@ -6854,6 +6854,7 @@ components:
                   - pending
                   - cancelled
                   - rejected
+                  - extended
               conn:
                 type: string
                 enum:
