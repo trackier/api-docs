@@ -4975,6 +4975,77 @@ paths:
           in: query
           name: adv_ids
           description: 'To filter the report for particular advertisers add advertiser id in query parameters like: &adv_ids[]=10&adv_ids[]=20'
+  /v2/smtp/send-email:
+    post:
+      summary: Send Emails Via SMTP Service
+      description: |-
+          This endpoint helps you send your email templates via api.
+          This api won't work if you haven't configure smtp in customize section.
+      tags:
+        - Network
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                template_name:
+                  type: string
+                  enum:
+                    - publisher_registration
+                    - advertiser_registration
+                    - team_member_registration
+                    - account_approve
+                    - account_rejected
+                    - account_ban
+                user_id:
+                  description: User Id - numeric or hash ID
+                  type: string
+                opts:
+                  type: object
+            examples:
+              example-1:
+                value:
+                  template_name: 'publisher_registration'
+                  user_id: 146
+                  opts: {
+                    "passowrd": "password"
+                  }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: 'Message sent successfully'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: false
+                    message: 'Message Sent Failed'
   '/v2/campaigns/{id}/targetings':
     parameters:
       - schema:
