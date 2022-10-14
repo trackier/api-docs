@@ -6755,7 +6755,7 @@ components:
             zipcode:
               type: string
         ref_by:
-          type: integer
+          type: string
         customFields:
           type: object
         bank:
@@ -6811,7 +6811,7 @@ components:
             - disabled
             - rejected
         ref_by:
-          type: integer
+          type: string
         region:
           type: object
           properties:
