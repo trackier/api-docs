@@ -302,6 +302,7 @@ paths:
                       phone: '8811576958'
                       login: '2017-10-28T06:27:06.000Z'
                       login_attempts: 1
+                      ref_by: 5ed39c2d6e827f70122891b4
                       manager_id: 5d25b773b6920d39cf195611
                       tier_id: 594400fa17c452060005e362
                       status: active
