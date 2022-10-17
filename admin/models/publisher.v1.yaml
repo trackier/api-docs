@@ -95,6 +95,9 @@ properties:
     type: string
   tier_id:
     type: string
+  ref_by:
+    type: string
+    example: 5c6e4af3b6920d6a02002f53
   manager_id:
     type: string
   hashId:
