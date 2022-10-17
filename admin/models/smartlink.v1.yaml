@@ -16,18 +16,6 @@ properties:
     type: array
     items:
       type: string
-  eoffers:
-    type: array
-    items:
-      type: string
-  ap:
-    type: array
-    items:
-      type: string
-  bp:
-    type: array
-    items:
-      type: string
   excludedOffers:
     type: array
     items:
