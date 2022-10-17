@@ -7801,7 +7801,7 @@ components:
           type: string
         description:
           type: string
-        smartLinkEvent:
+        event:
           type: string
           enum:
             - click
@@ -7882,7 +7882,7 @@ components:
             type: string
       required:
         - name
-        - smartLinkEvent
+        - event
         - model
         - type
       description: ''
