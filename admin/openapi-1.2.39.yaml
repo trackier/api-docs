@@ -3151,7 +3151,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Smartlink'
+              $ref: '#/components/schemas/SmartlinkCreate'
     get:
       summary: Get All Smartlinks
       tags:
@@ -3252,7 +3252,10 @@ paths:
       security:
         - API Key Param: []
       requestBody:
-       $ref: ./models/smartlink.v1.yaml
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartlinkEdit'
      
 
   /v2/reports/campaign:
@@ -7791,7 +7794,7 @@ components:
         - status
         - lpType
       description: ''
-    Smartlink:
+    SmartlinkCreate:
       title: Smartlink
       type: object
       x-tags:
@@ -7801,7 +7804,7 @@ components:
           type: string
         description:
           type: string
-        event:
+        smartLinkEvent:
           type: string
           enum:
             - click
@@ -7882,9 +7885,99 @@ components:
             type: string
       required:
         - name
-        - event
+        - smartLinkEvent
         - model
         - type
+      description: ''
+    SmartlinkEdit:
+      title: Smartlink
+      type: object
+      x-tags:
+        - Smartlink
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        smartLinkEvent:
+          type: string
+          enum:
+            - click
+            - impression
+        postback:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+        type:
+          type: string
+          enum:
+            - category 
+            - manual
+        model:
+          type: string
+          enum:
+            - cpa 
+            - cpc
+            - cpm
+            - cpi
+            - cps
+            - cpl
+        categories:
+          type: array
+          items:
+            type: string
+        advs:
+          type: array
+          items:
+            type: string
+        excludedOffers:
+          type: array
+          items:
+            type: string
+        blockedPubs:
+          type: array
+          items:
+            type: string
+        allowedPubs:
+          type: array
+          items:
+            type: string
+        campaigns:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              percentage:
+                type: integer
+        minp:
+          type: number
+        maxp:
+          type: number
+        targeting: 
+          type: object
+          properties:
+              city:
+                type: number
+              region:
+                type: number
+              os:
+                type: number
+              carrier:
+                type: number
+              device:
+                type: number
+              country:
+                type: number
+        appendUrl:
+          type: array
+          items:
+            type: string
       description: ''
     
     Pagination:
