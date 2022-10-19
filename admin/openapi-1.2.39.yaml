@@ -7882,7 +7882,12 @@ components:
         appendUrl:
           type: array
           items:
-            type: string
+            type: object
+            properties:
+              key:
+                  type: string
+              value:
+                  type: string
       required:
         - name
         - smartLinkEvent
@@ -7977,7 +7982,12 @@ components:
         appendUrl:
           type: array
           items:
-            type: string
+            type: object
+            properties:
+              key:
+                  type: string
+              value:
+                  type: string
       description: ''
     
     Pagination:
