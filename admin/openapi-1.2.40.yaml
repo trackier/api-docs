@@ -7804,7 +7804,7 @@ components:
           type: string
         description:
           type: string
-        smartLinkEvent:
+        event:
           type: string
           enum:
             - click
@@ -7861,9 +7861,9 @@ components:
               percentage:
                 type: integer
         minp:
-          type: number
+          type: float
         maxp:
-          type: number
+          type: float
         targeting: 
           type: object
           properties:
@@ -7890,7 +7890,7 @@ components:
                   type: string
       required:
         - name
-        - smartLinkEvent
+        - event
         - model
         - type
       description: ''
@@ -7904,7 +7904,7 @@ components:
           type: string
         description:
           type: string
-        smartLinkEvent:
+        event:
           type: string
           enum:
             - click
@@ -7961,9 +7961,9 @@ components:
               percentage:
                 type: integer
         minp:
-          type: number
+          type: float
         maxp:
-          type: number
+          type: float
         targeting: 
           type: object
           properties:
