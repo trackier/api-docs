@@ -1,0 +1,96 @@
+title: Smartlink model
+type: object
+description: Smartlink schema
+x-tags:
+  - Models
+properties:
+  name:
+    type: string
+  description:
+    type: string
+  advs:
+    type: array
+    items:
+      type: string
+  categories:
+    type: array
+    items:
+      type: string
+  excludedOffers:
+    type: array
+    items:
+      type: string
+  allowedPubs:
+    type: array
+    items:
+      type: string
+  blockedPubs:
+    type: array
+    items:
+      type: string
+  org_id:
+    type: string
+  id:
+    type: string
+  pb:
+    type: boolean
+  status:
+    type: string
+  appendUrl:
+    type: string
+  campaigns:
+    type: array
+    items:
+      id:
+        type: string
+      percentage:
+        type: number
+      num:
+        type: number
+      denum:
+        type: number
+  type:
+    type: string
+    enum:
+      - click
+      - impression
+  model:
+    type: string
+    enum:
+      - cpa
+      - cps
+      - cpi
+      - cpc
+      - cpm
+      - cpi
+  maxp:
+    type:
+      - number
+      - 'null'
+    minimum: 0
+  city_t:
+    type:
+      - number
+  os_t:
+    type:
+      - number
+  isp_t:
+    type:
+      - number
+  dv_t:
+    type:
+      - number
+  region_t:
+    type:
+      - number
+  country_t:
+    type:
+      - number
+    enum:
+      - 0
+      - 1
+  minp:
+    type:
+      - number
+      - 'null'
+    minimum: 0

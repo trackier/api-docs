@@ -3107,6 +3107,157 @@ paths:
         - API Key Param: []
       tags:
         - Manage Postbacks
+  /v2/smart-link:
+    post:
+      summary: Create Smartlink
+      operationId: post-v2-smartlink
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      postback:
+                        $ref: ./models/postback.v1.yaml
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Add publisher Smartlink
+      security:
+        - API Key Param: []
+      tags:
+        - Manage Smartlinks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartlinkCreate'
+    get:
+      summary: Get All Smartlinks
+      tags:
+        - Manage Smartlinks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  smartlink:
+                    type: array
+                    $ref: ./models/smartlink.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-smartlink
+      description: Find all smartlinks 
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+          description: ''
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit number of records to fetch
+  '/v2/smart-link/{id}':
+    delete:
+      summary: Delete smartlink by id
+      operationId: delete-v2-smartlink-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: This smartlink by id
+      security:
+        - API Key Param: []
+      tags:
+        - Manage Smartlinks
+    post:
+      summary: Edit Smartlink by Id
+      operationId: post-v2-smartlink-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  smartlink:
+                    $ref: ./models/smartlink.v1.yaml
+      description: Use this endpoint to update the smartlinks
+      tags:
+        - Manage Smartlinks
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartlinkEdit'
+     
+
   /v2/reports/campaign:
     get:
       summary: Campaign Report
@@ -7643,6 +7794,202 @@ components:
         - status
         - lpType
       description: ''
+    SmartlinkCreate:
+      title: Smartlink
+      type: object
+      x-tags:
+        - Smartlink
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        smartLinkEvent:
+          type: string
+          enum:
+            - click
+            - impression
+        postback:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+        type:
+          type: string
+          enum:
+            - category 
+            - manual
+        model:
+          type: string
+          enum:
+            - cpa 
+            - cpc
+            - cpm
+            - cpi
+            - cps
+            - cpl
+        categories:
+          type: array
+          items:
+            type: string
+        advs:
+          type: array
+          items:
+            type: string
+        excludedOffers:
+          type: array
+          items:
+            type: string
+        blockedPubs:
+          type: array
+          items:
+            type: string
+        allowedPubs:
+          type: array
+          items:
+            type: string
+        campaigns:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              percentage:
+                type: integer
+        minp:
+          type: number
+        maxp:
+          type: number
+        targeting: 
+          type: object
+          properties:
+              city:
+                type: number
+              region:
+                type: number
+              os:
+                type: number
+              carrier:
+                type: number
+              device:
+                type: number
+              country:
+                type: number
+        appendUrl:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                  type: string
+              value:
+                  type: string
+      required:
+        - name
+        - smartLinkEvent
+        - model
+        - type
+      description: ''
+    SmartlinkEdit:
+      title: Smartlink
+      type: object
+      x-tags:
+        - Smartlink
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        smartLinkEvent:
+          type: string
+          enum:
+            - click
+            - impression
+        postback:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - disabled
+        type:
+          type: string
+          enum:
+            - category 
+            - manual
+        model:
+          type: string
+          enum:
+            - cpa 
+            - cpc
+            - cpm
+            - cpi
+            - cps
+            - cpl
+        categories:
+          type: array
+          items:
+            type: string
+        advs:
+          type: array
+          items:
+            type: string
+        excludedOffers:
+          type: array
+          items:
+            type: string
+        blockedPubs:
+          type: array
+          items:
+            type: string
+        allowedPubs:
+          type: array
+          items:
+            type: string
+        campaigns:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              percentage:
+                type: integer
+        minp:
+          type: number
+        maxp:
+          type: number
+        targeting: 
+          type: object
+          properties:
+              city:
+                type: number
+              region:
+                type: number
+              os:
+                type: number
+              carrier:
+                type: number
+              device:
+                type: number
+              country:
+                type: number
+        appendUrl:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                  type: string
+              value:
+                  type: string
+      description: ''
+    
     Pagination:
       title: Pagination
       type: object
