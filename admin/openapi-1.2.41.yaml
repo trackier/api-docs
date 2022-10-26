@@ -6910,7 +6910,7 @@ components:
         customFields:
           type: object
           properties:
-            PAN:
+            pan:
               type: string
             skype_id:
               type: string
