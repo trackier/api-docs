@@ -6914,7 +6914,7 @@ components:
               type: string
             skype_id:
               type: string
-            Website:
+            website:
               type: string
         bank:
           type: object
