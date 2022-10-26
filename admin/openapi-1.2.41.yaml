@@ -6912,7 +6912,7 @@ components:
           properties:
             PAN:
               type: string
-            Skype Id:
+            skype_id:
               type: string
             Website:
               type: string
