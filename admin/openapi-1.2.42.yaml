@@ -3342,7 +3342,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
@@ -3437,7 +3437,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
@@ -3532,7 +3532,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
@@ -3624,7 +3624,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
@@ -3726,7 +3726,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: string
           in: query
@@ -3818,7 +3818,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: array
           in: query
@@ -3923,7 +3923,7 @@ paths:
             type: array
           in: query
           name: kpi
-          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
+          description: 'Allowed KPIs: uniqueClicks, rejectedClicks, clicks, grossClicks, approvedConversions, pendingConversions, cancelledConversions, rejectedConversions, extConversions, grossConversions, cr, impressions, campaign_payout, campaign_revenue, payout, revenue, profit, saleAmount, pendingPayout, pendingSaleAmount, extPayout, extSaleAmount, extRevenue, cancelledRevenue, rejectedRevenue, grossRevenue, grossProfit, grossSaleAmount, epc, ctr'
         - schema:
             type: array
           in: query
