@@ -7237,6 +7237,21 @@ components:
             - cpi
             - cpc
             - cpm
+        cpsRevPayParam:
+          type: string
+          enum:
+            - sub1
+            - sub2
+            - sub3
+            - sub4
+            - sub5
+            - sub6
+            - sub7
+            - sub8
+            - sub9
+            - sub10
+            - revenue
+            - sale_amount
         device:
           type: string
         defaultGoalName:
@@ -7490,6 +7505,21 @@ components:
             - cpi
             - cpc
             - cpm
+        cpsRevPayParam:
+          type: string
+          enum:
+            - sub1
+            - sub2
+            - sub3
+            - sub4
+            - sub5
+            - sub6
+            - sub7
+            - sub8
+            - sub9
+            - sub10
+            - revenue
+            - sale_amount
         device:
           type: string
         defaultGoalName:
