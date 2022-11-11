@@ -7237,7 +7237,7 @@ components:
             - cpi
             - cpc
             - cpm
-        cpsRevPayParam:
+        payoutCalParam:
           type: string
           enum:
             - sub1
@@ -7505,7 +7505,7 @@ components:
             - cpi
             - cpc
             - cpm
-        cpsRevPayParam:
+        payoutCalParam:
           type: string
           enum:
             - sub1

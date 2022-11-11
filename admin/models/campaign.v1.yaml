@@ -37,7 +37,7 @@ properties:
       - cps
       - cpm
       - cpc
-  cpsRevPayParam:
+  payoutCalParam:
     type: string
     enum:
       - sub1

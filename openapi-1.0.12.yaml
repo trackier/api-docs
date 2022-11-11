@@ -1161,7 +1161,7 @@ components:
             type: string
         commModel:
           type: string
-        cpsRevPayParam:
+        payoutCalParam:
           type: string
         geo:
           type: array
