@@ -1,0 +1,14 @@
+title: Product Model
+type: object
+description: Product Model
+x-tags:
+  - Models
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  brandId:
+    type: string
+  status:
+    type: string

@@ -24,6 +24,449 @@ info:
 servers:
   - url: 'https://api.trackier.com'
 paths:
+  /v2/products:
+    post:
+      summary: Create a product
+      tags:
+        - Igaming
+      operationId: set-v2-products
+      description: |-
+        Create a product
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                brandId:
+                  oneOf:
+                    - type: number
+                    - type: string
+                  description: Brand Id - numeric or hash ID
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - inactive
+                    - pending
+              required:
+                - name
+                - brandId
+                - status
+        description: schema to create a publisher
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  product:
+                    type: object
+                    $ref: ./models/product.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    get:
+      summary: Find all products
+      tags:
+        - Igaming
+      operationId: get-v2-products
+      description: |-
+        Find all products
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: 'Limit the number of records (default: 1)'
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limit the number of records (default: 50)'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product:
+                    type: array
+                    items:
+                      $ref: ./models/product.v1.yaml
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  /v2/products/{brandId}/{id}:
+    get:
+      summary: Find one product
+      tags:
+        - Igaming
+      operationId: get-v2-product
+      description: |-
+        Find one product
+      security:
+        - API Key Param: []
+      parameters:
+      - schema:
+          type: string
+        name: brandId
+        in: path
+        required: true
+        description: Brand Id - numeric or hash ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Product Id - numeric or hash ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  product:
+                    type: object
+                    $ref: ./models/product.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Edit one product
+      tags:
+        - Igaming
+      operationId: set-v2-product
+      description: |-
+        Edit one product
+      security:
+        - API Key Param: []
+      parameters:
+      - schema:
+          type: string
+        name: brandId
+        in: path
+        required: true
+        description: Brand Id - numeric or hash ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Product Id - numeric or hash ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - inactive
+                    - pending
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  product:
+                    type: object
+                    $ref: ./models/product.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete:
+      summary: Delete one product
+      tags:
+        - Igaming
+      operationId: delete-v2-product
+      description: |-
+        Delete one product
+      security:
+        - API Key Param: []
+      parameters:
+      - schema:
+          type: string
+        name: brandId
+        in: path
+        required: true
+        description: Brand Id - numeric or hash ID
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Product Id - numeric or hash ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  /v2/customers:
+    post:
+      summary: Save Customer
+      tags:
+        - Igaming
+      operationId: set-v2-Customer
+      description: |-
+        Save Customer
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                date:
+                  type: date
+                  format: YYYY-MM-DD
+                  example: '2022-01-01'
+                currency:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  description: 3 Letter Currency Code
+                productId:
+                  oneOf:
+                    - type: number
+                    - type: string
+                  description: Product Id - numeric or hash ID
+                brandId:
+                  oneOf:
+                    - type: number
+                    - type: string
+                  description: Brand Id - numeric or hash ID
+                trackingToken:
+                  type: string
+                  minLength: 24
+                  maxLength: 24
+                country:
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: 2 Letter Country Code
+                ip:
+                  type: string
+                coupon:
+                  type: string
+                customerName:
+                  type: string
+                  description: Customer user name
+              required:
+                - customerId
+                - date
+                - productId
+                - brandId
+                - trackingToken
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  id:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  /v2/activity:
+    post:
+      summary: Save Customer Activity
+      tags:
+        - Igaming
+      operationId: set-v2-activity
+      description: |-
+        Save Customer Activity
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  oneOf:
+                    - type: string
+                    - type: number
+                date:
+                  type: date
+                  format: YYYY-MM-DD
+                  example: '2022-01-01'
+                currency:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  description: 3 Letter Currency Code
+                productId:
+                  oneOf:
+                    - type: number
+                    - type: string
+                  description: Product Id - numeric or hash ID
+                brandId:
+                  oneOf:
+                    - type: number
+                    - type: string
+                  description: Brand Id - numeric or hash ID
+                bets:
+                  type: number
+                  minimum: 0
+                wins:
+                  type: number
+                  minimum: 0
+                deposits:
+                  type: number
+                  minimum: 0
+                bonuses:
+                  type: number
+                  minimum: 0
+                withdrawls:
+                  type: number
+                  minimum: 0
+                adjustments:
+                  type: number
+                  minimum: 0
+                chargebacks:
+                  type: number
+                  minimum: 0
+                fees:
+                  type: number
+                  minimum: 0
+                transactionId:
+                  type: string
+                  minLength: 0
+                  maxLength: 150
+              required:
+                - customerId
+                - date
+                - productId
+                - brandId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  id:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   /v2/publishers:
     get:
       summary: Find all publishers
@@ -8511,3 +8954,4 @@ tags:
   - name: Manage Publishers
   - name: Campaign Caps
   - name: Campaigns
+  - name: Igaming
