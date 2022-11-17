@@ -1394,6 +1394,418 @@ paths:
         - Manage Advertisers
       security:
         - API Key Param: []
+  '/v2/brands/{brandId}/subaccounts':
+    parameters:
+      - schema:
+          type: string
+        name: brandId
+        in: path
+        description: Brand ID in numeric or hash id format
+        required: true
+    get:
+      summary: Get All Sub Accounts of Brand
+      operationId: get-v2-brand-subaccount
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccounts:
+                    type: array
+                    items:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Create Sub Account for Brand
+      operationId: post-v2-brand-subaccount
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountCreate'
+        description: Schema To Create a Sub Account For Brand
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  '/v2/brands/{brandId}/subaccounts/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: brandId
+        in: path
+        description: Brand ID in numeric or hash id format
+        required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        description: Sub Account ID in numeric or hash id format
+        required: true
+    get:
+      summary: Find Sub Account of Brand By Id
+      operationId: brand-sub-account-findById
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccount:
+                      $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post:
+      summary: Edit Sub Account of Brand
+      operationId: brand-sub-account-edit
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Brand
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete:
+      summary: Delete Sub Account of Brand
+      operationId: brand-sub-account-delete
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub Account Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml                 
+  /v2/brands:
+    get:
+      summary: Find All Brands
+      tags:
+        - Igaming
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brands:
+                    type: array
+                    items:
+                      $ref: ./models/brand.v1.yaml
+                  lastId:
+                    type:
+                      - 'null'
+                      - integer
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: brand-findAll
+      description: |-
+        Get 1000 brands in a single request then to find the next set of results pass the lastId received in the body
+
+        To find brand using name,email,company or ids use filters param
+        - &filters[name]=Demo
+        - &filters[company]=Test
+        - &filters[ids][]=31&filters[ids][]=54
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: lastId
+        - schema:
+            type: array
+          in: query
+          name: filters
+          description: Filters param to apply search filter
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limit the number of records (default: 5000)'
+      security:
+        - API Key Param: []
+    post:
+      summary: Create a Brand
+      operationId: brand-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brand:
+                    $ref: ./models/brand.v1.yaml
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        description: ''
+      description: Create an brand
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+  '/v2/brands/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Find a single brand
+      tags:
+        - Igaming
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brand:
+                    $ref: ./models/brand.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: brand-findOne
+      description: Get a single brand
+      security:
+        - API Key Param: []
+    post:
+      summary: Update a brand
+      operationId: brand-edit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brand:
+                    $ref: ./models/brand.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserEdit'
+            examples: {}
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UserEdit'
+        description: ''
+      description: Edit a single brand
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete a brand
+      operationId: brand-delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: '{id}'
+      description: Delete an brand
+      tags:
+        - Igaming
+      security:
+        - API Key Param: []
   /v2/login:
     post:
       summary: Basic Login Endpoint
