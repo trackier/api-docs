@@ -6881,8 +6881,6 @@ components:
           type: string
         phone:
           type: string
-        country:
-          type: string
         status:
           type: string
           enum:
@@ -6896,6 +6894,8 @@ components:
             lang:
               type: string
             currency:
+              type: string
+            country:
               type: string
             address:
               type: string
