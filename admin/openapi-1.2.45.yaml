@@ -1369,14 +1369,14 @@ paths:
       description: |-
         Get Campaigns Timelines for a specified range of date.
 
-        - ?start=2022-09-01&end=2022-12-21&pageNo=1
+        - ?start=2022-09-01&end=2022-12-21&page=1
       security:
         - API Key Param: []
       parameters:
         - schema:
             type: integer
           in: query
-          name: pageNo
+          name: page
           example: 2
         - schema:
             type: integer
@@ -1416,10 +1416,10 @@ paths:
                         type: array
                         items:
                           $ref: ./models/campaign-timeline.v1.yaml
-                      pageNo: 
+                      page: 
                         type: integer
                 required:
-                  - pageNo
+                  - page
                   - changedCampaigns
                   - data
         '400':
