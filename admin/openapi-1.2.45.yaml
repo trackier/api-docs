@@ -1360,6 +1360,82 @@ paths:
       security:
         - API Key Param: []
       description: Delete thumbnail in a campaign with given id
+  /v2/campaigns/timelines:
+    get:
+      summary: Get Campaigns Timelines.
+      tags:
+        - Timelines
+      operationId: campaigns-timelines
+      description: |-
+        Get Campaigns Timelines for a specified range of date.
+
+        - ?start=2022-09-01&end=2022-12-21&page=1
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+          example: 2
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          example: 50
+          default: 100
+        - schema:
+            type: string
+          in: query
+          name: start
+          format: "YYYY-MM-DD"
+          example: "2022-09-01"
+          description: Start Date should be in UTC
+        - schema:
+            type: string
+          in: query
+          name: end
+          format: "YYYY-MM-DD"
+          example: "2022-09-01"
+          description: End Date should be in UTC
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      changedCampaigns:
+                        type: array
+                        items:
+                          $ref: ./models/campaign-timeline.v1.yaml
+                      page: 
+                        type: integer
+                required:
+                  - page
+                  - changedCampaigns
+                  - data
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   '/v2/campaigns/{id}/caps':
     parameters:
       - schema:

@@ -1,0 +1,16 @@
+title:  Campaign Timeline Model 
+type: object
+description: Campaign Timeline Model Schema
+x-tags:
+  - Models
+properties:
+  campaignId:
+    type: string
+  event:
+    type: string
+  created:
+    type: string
+required:
+  - campaignId
+  - event
+  - created
