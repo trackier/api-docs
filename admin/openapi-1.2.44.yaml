@@ -1364,7 +1364,6 @@ paths:
     get:
       summary: Get Campaigns Timelines.
       tags:
-        - Campaigns
         - Timelines
       operationId: campaigns-timelines
       description: |-
