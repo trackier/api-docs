@@ -1380,6 +1380,12 @@ paths:
           name: pageNo
           example: 2
         - schema:
+            type: integer
+          in: query
+          name: limit
+          example: 50
+          default: 100
+        - schema:
             type: string
           in: query
           name: start
