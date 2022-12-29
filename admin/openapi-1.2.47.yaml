@@ -7470,6 +7470,37 @@ components:
             - postback
             - iframe_https
             - image_https
+        subIdOverride:
+          type: object
+          properties:
+            erid:
+              type: string
+            p1:
+              type: string
+            p2:
+              type: string
+            p3:
+              type: string
+            p4:
+              type: string
+            p5:
+              type: string
+            p6:
+              type: string
+            p7:
+              type: string
+            p8:
+              type: string
+            p9:
+              type: string
+            p10:
+              type: string
+            app_name:
+              type: string
+            app_id:
+              type: string
+            cr_name:
+              type: string
         convTrackingDomain:
           type: string
         attributionWindow:
@@ -7740,6 +7771,37 @@ components:
             - postback
             - iframe_https
             - image_https
+        subIdOverride:
+          type: object
+          properties:
+            erid:
+              type: string
+            p1:
+              type: string
+            p2:
+              type: string
+            p3:
+              type: string
+            p4:
+              type: string
+            p5:
+              type: string
+            p6:
+              type: string
+            p7:
+              type: string
+            p8:
+              type: string
+            p9:
+              type: string
+            p10:
+              type: string
+            app_name:
+              type: string
+            app_id:
+              type: string
+            cr_name:
+              type: string
         convTrackingDomain:
           type: string
         attributionWindow:

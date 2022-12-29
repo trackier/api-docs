@@ -194,6 +194,11 @@ properties:
     type: array
     items:
       type: string
+  subIdOverride:
+    type: object
+    properties:
+      p3:
+        type: string
   convLcFlow:
     type: object
     properties:
