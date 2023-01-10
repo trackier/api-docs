@@ -24,7 +24,7 @@ info:
 servers:
   - url: 'https://api.trackier.com'
 paths:
-  /v2/campaigns/{campId}/sampling:
+  /v2/campaigns/{campId}/samplings:
     parameters:
       - schema:
           type: string
@@ -185,7 +185,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-  /v2/campaigns/{campId}/sampling/{id}:
+  /v2/campaigns/{campId}/samplings/{id}:
     parameters:
       - schema:
           type: string
