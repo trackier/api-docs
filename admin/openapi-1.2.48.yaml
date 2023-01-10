@@ -24,6 +24,349 @@ info:
 servers:
   - url: 'https://api.trackier.com'
 paths:
+  /v2/campaigns/{campId}/sampling:
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        description: Campaign Id
+        in: path
+        required: true
+    post:
+      summary: Create a samplings
+      operationId: create-v2-samplings
+      tags:
+        - Sampling
+      description: |-
+        Create a samplings
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - pubIds
+                - subId
+                - samplingWorking
+                - samplingGeo
+              type: object
+              properties:
+                pubIds:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: string
+                        enum:
+                          - ALL
+                    - type: array
+                      items:
+                        type: number
+                        description: Publisher Id
+                    - type: array
+                      items:
+                        type: string
+                        description: Publisher Hash Id
+                excludePubIds:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: number
+                        description: Publisher Id
+                    - type: array
+                      items:
+                        type: string
+                        description: Publisher Hash Id
+                  description: Only works when pubids array contains all
+                goalId:
+                  oneOf:
+                    - type: string
+                    - type: null
+                subId:
+                  type: string
+                  enum:
+                    - all
+                    - blacklist
+                    - whitelist
+                subIdsList:
+                  type: array
+                  items:
+                    type: string
+                samplingWorking:
+                  type: string
+                  enum:
+                    - fixed
+                    - combined
+                samplingGeo:
+                  type: string
+                  enum:
+                    - include
+                    - exclude
+                geos:
+                  type: array
+                  items:
+                    type: string 
+                samplingType:
+                  type: string
+                  enum:
+                    - fixed
+                    - dynamic
+                samplingValue:
+                  type: number
+                  description: Required when sampling type is fixed
+                minValue:
+                  type: number
+                  description: Required when sampling type is dynamic
+                maxValue:
+                  type: number
+                  description: Required when sampling type is dynamic
+        description: schema to create a sampling
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  sampling:
+                    type: array
+                    items:
+                      $ref: ./models/sampling.v1.yaml
+                  total:
+                    type: number
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    get:
+      summary: Find all samplings
+      operationId: get-v2-samplings
+      tags:
+        - Sampling
+      description: |-
+        Find all samplings
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  sampling:
+                    type: array
+                    items:
+                      $ref: ./models/sampling.v1.yaml
+                  total:
+                    type: number
+                  
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  /v2/campaigns/{campId}/sampling/{id}:
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        description: Campaign Id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: Id
+        in: path
+        required: true
+        description: sampling id
+    get:
+      summary: Get sampling by id
+      operationId: find-v2-sampling
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  sampling:
+                    type: object
+                    $ref: ./models/sampling.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - Sampling
+    post:
+      summary: Update sampling by id
+      operationId: update-v2-sampling
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  sampling:
+                    type: array
+                    items:
+                      $ref: ./models/sampling.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pubIds:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: string
+                        enum:
+                          - ALL
+                    - type: array
+                      items:
+                        type: number
+                        description: Publisher Id
+                    - type: array
+                      items:
+                        type: string
+                        description: Publisher Hash Id
+                excludePubIds:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: number
+                        description: Publisher Id
+                    - type: array
+                      items:
+                        type: string
+                        description: Publisher Hash Id
+                  description: Only works when pubids array contains all
+                goalId:
+                  oneOf:
+                    - type: string
+                    - type: null
+                subId:
+                  type: string
+                  enum:
+                    - all
+                    - blacklist
+                    - whitelist
+                subIdsList:
+                  type: array
+                  items:
+                    type: string
+                samplingWorking:
+                  type: string
+                  enum:
+                    - fixed
+                    - combined
+                samplingGeo:
+                  type: string
+                  enum:
+                    - include
+                    - exclude
+                geos:
+                  type: array
+                  items:
+                    type: string 
+                samplingType:
+                  type: string
+                  enum:
+                    - fixed
+                    - dynamic
+                samplingValue:
+                  type: number
+                  description: Required when sampling type is fixed
+                minValue:
+                  type: number
+                  description: Required when sampling type is dynamic
+                maxValue:
+                  type: number
+                  description: Required when sampling type is dynamic
+        description: schema to update a sampling
+      security:
+        - API Key Param: []
+      tags:
+        - Sampling
+    delete:
+      summary: Delete sampling by id
+      operationId: delete-v2-sampling
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  sampling:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      security:
+        - API Key Param: []
+      tags:
+        - Sampling
   /v2/publishers:
     get:
       summary: Find all publishers
