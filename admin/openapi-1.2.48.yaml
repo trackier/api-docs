@@ -264,21 +264,15 @@ paths:
             schema:
               type: object
               properties:
-                pubIds:
+                pubId:
                   oneOf:
                     - type: array
                       items:
                         type: string
                         enum:
                           - ALL
-                    - type: array
-                      items:
-                        type: number
-                        description: Publisher Id
-                    - type: array
-                      items:
-                        type: string
-                        description: Publisher Hash Id
+                    - type: string
+                    - type: number
                 excludePubIds:
                   oneOf:
                     - type: array
