@@ -48,11 +48,13 @@ paths:
           in: query
           name: pubId
           description: Publisher Id or Hash Id
+          required: true
         - schema:
             type: string
           in: query
           name: source
           description: Source
+          required: true
         - schema:
             type: string
             enum:
@@ -65,7 +67,7 @@ paths:
             type: string
             enum:
               - payout
-              - created_by
+              - id
           in: query
           name: sortBy
           description: Sort By
