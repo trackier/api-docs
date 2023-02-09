@@ -64,7 +64,7 @@ paths:
         - schema:
             type: string
             enum:
-              - reward
+              - payout
               - created_by
           in: query
           name: sortBy
