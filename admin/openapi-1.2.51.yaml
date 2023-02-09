@@ -94,6 +94,7 @@ paths:
           name: filters
           description: Filters
       description: |-
+        #### Note: This API endpoint requires a feature to be enable in your account. Please contact your account manager for more info.
         Find All Incent Offers
         - &filters[objective][]=cpi&filters[objective][]=cpa
         - &filters[geo][]=IN&filters[geo][]=US
