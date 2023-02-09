@@ -1,0 +1,173 @@
+title: Incent Offer model
+type: object
+description: Offer schema
+x-tags:
+  - Models
+properties:
+  id:
+    type: integer
+  hashId:
+    type: string
+  title: 
+    type: string
+  currency:
+    type: string
+  previewUrl:
+    type: string
+  model:
+    type: string
+    enum:
+    - cpi
+    - cpa
+    - cpc
+    - cps
+    - cpm
+    - cpl
+  device:
+    type: array
+    items:
+      type: string
+  flow:
+    type: array
+    items:
+      type: string
+  os:
+    type: array
+    items:
+      type: string
+  osVer:
+    type: object
+    properties:
+      android:
+        type: object
+        properties:
+          min:
+            type: string
+          max:
+            type: string
+      ios:
+        type: object
+        properties:
+          min:
+            type: string
+          max:
+            type: string
+  appId:
+    type: string
+  appName:
+    type: string
+  categories:
+    type: array
+    items:
+      type: string
+  goals:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        value:
+          type: string
+        payouts:
+          type: array
+          items:
+            type: object
+            properties:
+              goalId:
+                type: string
+              revenue:
+                type: number
+              payout:
+                type: number
+              coverage:
+                type: array
+                items:
+                  type: string
+              payoutType:
+                type: string
+                enum:
+                 - percentage
+                 - fixed
+  subIdsBlocked:
+    type: array
+    items:
+      type: string
+  subIdsAllowed:
+    type: array
+    items:
+      type: string
+  countries:
+    type: array
+    items:
+      type: string
+  isps:
+    type: array
+    items:
+      type: string
+  citiesInclude:
+    type: array
+    items:
+      type: string
+  citiesExclude:
+    type: array
+    items:
+      type: string
+  defaultGoal:
+    type: string
+  creatives:
+    type: array
+    items:
+      type: object
+      properties:
+        fileName:
+          type: string
+        dimensions:
+          type: array
+          items:
+            type: object
+            properties:
+              min:
+                type: string
+              max:
+                type: string
+        mimeType:
+          type: string
+        title:
+          type: string
+        fullUrl:
+          type: string
+        description:
+          type: string
+  payouts:
+    type: array
+    items:
+      type: object
+      properties:
+        payout:
+          type: number
+        revenue:
+          type: number
+        coverage:
+          type: array
+          items:
+            type: string
+        city:
+            type: array
+            items:
+              type: string
+        region:
+          type: array
+          items:
+            type: string
+        payoutType:
+          type: string
+          enum:
+          - percentage
+          - fixed
+  trackingLink:
+    type: string
+  impressionUrl:
+    type: string

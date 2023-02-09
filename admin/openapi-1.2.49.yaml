@@ -24,6 +24,242 @@ info:
 servers:
   - url: 'https://api.trackier.com'
 paths:
+  /v2/offers/incent:
+    get:
+      summary: Find all incent offers
+      operationId: get-v2-incent-offers
+      tags:
+        - Incent Offers
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Page Number
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: limit
+        - schema:
+            oneOf:
+             - type: integer
+             - type: string
+          in: query
+          name: pubId
+          description: Publisher Id or Hash Id
+        - schema:
+            type: string
+          in: query
+          name: source
+          description: Source
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+          in: query
+          name: order
+          description: Order By
+        - schema:
+            type: string
+            enum:
+              - reward
+              - created_by
+          in: query
+          name: sortBy
+          description: Sort By
+        - schema:
+            type: object
+            properties:
+              geo:
+                type: array
+                items:
+                  type: string 
+                description: Two Letter Country ISO Code in Blocks
+              objective:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - cpi
+                    - cpa
+                    - cpc
+                    - cps
+                    - cpm
+                    - cpl
+          in: query
+          name: filters
+          description: Filters
+      description: |-
+        Find All Incent Offers
+        - &filters[objective][]=cpi&filters[objective][]=cpa
+        - &filters[geo][]=IN&filters[geo][]=US
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: ./models/incent-offer.v1.yaml
+                  page:
+                    type: integer
+                  limit:
+                    type: integer
+                  total:
+                    type: integer
+                  count:
+                    type: integer
+                  availableFilters:
+                    type: object
+                    properties:
+                      geo:
+                        type: array
+                        items:
+                          type: string
+                      objective:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - cpi
+                            - cpa
+                            - cpc
+                            - cps
+                            - cpm
+                            - cpl
+                  appliedFilters:
+                    type: object
+                    properties:
+                      geo:
+                        type: array
+                        items:
+                          type: string
+                      objective:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - cpi
+                            - cpa
+                            - cpc
+                            - cps
+                            - cpm
+                            - cpl
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    campaigns:
+                      - id: 2099
+                        hashId: 63da0749cd195814190b6163
+                        title: AmericanSolarQuotes - US - 90% Rev Share
+                        description: "AmericanSolarQuotes&lt;br /&gt;&lt;br /&gt;\r\nPayable action: Valid
+                          quote&lt;br /&gt;&lt;br /&gt;\r\nTerms: US, 18+, non-incent&lt;br /&gt;&lt;br
+                          /&gt;\r\nSend times: Monday - Friday (no weekend activity)\r\n<br /><br />From:<br
+                          />- Home Eco Grants<br /><br />Subject:<br />- Save up to 80% on your energy bills
+                          with a free Solar Panels Grant<br />- Instant Eligibility Calculator for Government-Funded
+                          Solar Panels<br />- Check if your property qualifies for a free government energy
+                          efficiency grant!<br />- Get Free Solar Panels through government funding!"
+                        currency: USD
+                        previewUrl: https://solar.americahomequotes.com/
+                        model: cpa
+                        device:
+                        - all
+                        flow: []
+                        os:
+                        - all
+                        osVer:
+                        appId: idsa13442
+                        appName: app.trackier.com
+                        categories: []
+                        goals:
+                        - id: 63e3dfd379a7cc7cbf135e6d
+                          title: TEST GOAL
+                          value: test_goal
+                          payouts:
+                          - goalId: 63e3dfd379a7cc7cbf135e6d
+                            revenue: 3.03
+                            payout: 1.515
+                            coverage:
+                            - ALL
+                            payoutType: percentage
+                        - id: 63e3e0cd5a937e373d2f8467
+                          title: test pub specific
+                          value: test_pub_specific
+                          payouts:
+                          - goalId: 63e3e0cd5a937e373d2f8467
+                            revenue: 2
+                            payout: 1
+                            coverage:
+                            - ALL
+                            payoutType: fixed
+                        - id: 63e3e6ef5a937e373d2f846b
+                          title: test goal two payout
+                          value: test goal two payout
+                          payouts:
+                          - goalId: 63e3e6ef5a937e373d2f846b
+                            revenue: 2
+                            payout: 1
+                            coverage:
+                            - ALL
+                            payoutType: fixed
+                          - goalId: 63e3e6ef5a937e373d2f846b
+                            revenue: 20
+                            payout: 10
+                            coverage:
+                            - IN
+                            payoutType: fixed
+                        subIdsBlocked: []
+                        subIdsAllowed: []
+                        countries:
+                        - US
+                        isps:
+                        - all
+                        citiesInclude: []
+                        citiesExclude: []
+                        defaultGoal: Default
+                        creatives:
+                        - fileName: email_63da07493ac06.html
+                          dimensions: []
+                          mimeType: text/html
+                          title: AmericanSolarQuotes - US - 90% Rev Share
+                          fullUrl: https://static.vnative.co/images/email_63da07493ac06.html
+                          description: "Save up to 80% on your energy bills with a free Solar Panels Grant\r\nInstant
+                            Eligibility Calculator for Government-Funded Solar Panels\r\nCheck if your property
+                            qualifies for a free government energy efficiency grant!\r\nGet Free Solar Panels
+                            through government funding!\r\n"
+                        payouts:
+                        - payout: 63
+                          revenue: 70
+                          coverage:
+                          - US
+                          city: []
+                          region: []
+                          payoutType: percentage
+                        trackingLink: https://mpro.gotrackier.com/click?campaign_id=2099&pub_id=5&source=hellp
+                        impressionUrl: https://mpro.gotrackier.com/imp?campaign_id=2099&pub_id=5&source=hellp
+
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   /v2/campaigns/{campId}/samplings:
     parameters:
       - schema:
