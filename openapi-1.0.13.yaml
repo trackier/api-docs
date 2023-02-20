@@ -714,6 +714,11 @@ components:
           type: string
           nullable: true
           example: AppAttribution mobile app platform
+        kpi:
+          description: Campaign kpi
+          type: string
+          nullable: true
+          example: mobile app platform
         currency:
           description: <span class='description'>If currency is present then the payout shown by the API for that campaign is in that currency.</span>
                        <span class='description'>If no currency then it should be assumed as USD and accordingly payout is also in USD</span>
