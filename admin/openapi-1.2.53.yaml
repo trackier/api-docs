@@ -8479,6 +8479,10 @@ components:
           type: string
         type:
           type: string
+          enum:
+            - public
+            - private
+            - pub_specific
         payout_model:
           type: string
           enum:
@@ -8527,6 +8531,10 @@ components:
           type: string
         type:
           type: string
+          enum:
+            - public
+            - private
+            - pub_specific
         payout_model:
           type: string
           enum:
