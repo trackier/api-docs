@@ -8483,6 +8483,16 @@ components:
             - public
             - private
             - pub_specific
+        blacklistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        whitelistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        trackMultiConv:
+          type: integer
         payout_model:
           type: string
           enum:
@@ -8535,6 +8545,16 @@ components:
             - public
             - private
             - pub_specific
+        blacklistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        whitelistPostbackPubs:
+          type: array
+          items:
+            type: integer
+        trackMultiConv:
+          type: integer
         payout_model:
           type: string
           enum:
