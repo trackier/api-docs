@@ -73,7 +73,7 @@ tags:
     You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page.
     In the response body, the <code>pageToken</code> to access the next page is provided.
     The call will be as follows:
-    <br/>eg. <code>/v2/publisher/campaigns?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
+    <br/>eg. <code>/v2/publisher/coupons?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
     <br/>
     <br/>
     <h4>How do I know if there are more pages?</h4>
@@ -111,6 +111,8 @@ paths:
           Default Goal: Default event of the campaign
           
           *Note: There will be no goal value in default goal, only goal have the goal values*.
+
+          **Rate Limit: 5 req/sec**
       operationId: campaigns
       parameters:
         - in: query
@@ -299,6 +301,8 @@ paths:
           - List of grouping parameters can be found below
           - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
           - List of KPI can be found in query parameter section below
+
+          **Rate Limit: 200 req/min**
       responses:
         '200':
           description: OK
