@@ -91,6 +91,7 @@ x-tagGroups:
       - Campaign Request Access
       - Allowed Campaign Count
       - Performance Report
+      - Conversion Logs
       - Publisher Categories
   - name: Advertiser
     tags:
@@ -390,6 +391,222 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  '/v2/publishers/conversions':
+    get:
+      summary: Conversion Logs
+      tags:
+          - Conversion Logs
+      description: |-
+          Conversion Logs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        click_id:
+                          type: string
+                        source:
+                          type: integer
+                        elapsed_time:
+                          type: integer
+                        sale:
+                          type: integer
+                        ipaddr:
+                          type: integer
+                        click_ip:
+                          type: string
+                        city:
+                          type: string
+                        region:
+                          type: string
+                        isp:
+                          type: string
+                        p1:
+                          type: string 
+                        p2:
+                          type: string 
+                        p3:
+                          type: string 
+                        p4:
+                          type: string 
+                        p5:
+                          type: string 
+                        p6:
+                          type: string 
+                        p7:
+                          type: string 
+                        p8:
+                          type: string 
+                        p9:
+                          type: string 
+                        p10:
+                          type: string
+                        sub1:
+                          type: string 
+                        sub2:
+                          type: string
+                        sub3:
+                          type: string 
+                        sub4:
+                          type: string 
+                        sub5:
+                          type: string
+                        sub6:
+                          type: string 
+                        sub7:
+                          type: string
+                        sub8:
+                          type: string 
+                        sub9:
+                          type: string 
+                        sub10:
+                          type: string 
+                        os:
+                          type: string
+                        goal_id:
+                          type: string 
+                        txn_id:
+                          type: string 
+                        url_long_id:
+                          type: string 
+                        currency:
+                          type: string
+                        payout:
+                          type: integer
+                        revenue:
+                          type: integer
+                        app_name:
+                          type: string 
+                        cr_name:
+                          type: string 
+                        orig_sale_amount:
+                          type: integer
+                        orig_sale_currency:
+                          type: string
+                        country:
+                          type: string
+                        browser:
+                          type: string
+                        device:
+                          type: string
+                        created:
+                          type: string 
+                        status:
+                          type: string
+                        external_offer_id:
+                          type: string
+                        campaign_id:
+                          type: integer
+                        campaign_name:
+                          type: string 
+                        goal_name:
+                          type: string
+                        url_id:
+                          type: integer
+                        url_title:
+                          type: string
+              examples:
+                example-1:
+                  value:
+                    conversions:
+                      - click_id: 647945425c4d250355fd476a
+                        source: testery
+                        elapsed_time: 0
+                        sale: 0
+                        ipaddr: 45.92.117.171
+                        click_ip: 174.173.45.23
+                        city: Philadelphia
+                        region: Pennsylvania
+                        isp: Comcast Cable
+                        p1: 
+                        p2: 
+                        p3: 
+                        p4: 
+                        p5: 
+                        p6: 
+                        p7: 
+                        p8: 
+                        p9: 
+                        p10: 202306Y25JWP
+                        sub1: 
+                        sub2: 0
+                        sub3: 
+                        sub4: 
+                        sub5: US
+                        sub6: 
+                        sub7: English
+                        sub8: 
+                        sub9: 
+                        sub10: 
+                        os: Android 11.0
+                        goal_id: 
+                        txn_id: 
+                        url_long_id: 
+                        currency: USD
+                        payout: 0
+                        revenue: 0
+                        app_name: 
+                        cr_name: 
+                        orig_sale_amount: 0
+                        orig_sale_currency: USD
+                        country: US
+                        browser: Chrome 97
+                        device: mobile
+                        created: 2023-06-02T01:28:40.000Z
+                        status: approved
+                        external_offer_id: CM_Exmox_Android_US_10_TesterUp
+                        campaign_id: 2
+                        campaign_name: string
+                        goal_name: Install
+                        url_id: null
+                        url_title: Default
+                    pagination : 
+                        perPage: 100
+                        currentPage: 1
+                        total: 35788
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: '#/components/schemas/Error'
+      operationId: get-v2-network-pubConversions
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'No of records per page. Min: 100, Max: 1000'
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Current page number
+        - schema:
+            type: string
+          in: query
+          name: start
+          description: Report start date in YYYY-MM-DD format
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: end
+          description: Report end date in YYYY-MM-DD format
+          required: true
   '/v2/publishers/reports-kpi':
     get:
       summary: Performance Report GET KPI
