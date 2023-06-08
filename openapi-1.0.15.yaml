@@ -411,6 +411,8 @@ paths:
                     items:
                       type: object
                       properties:
+                        _id:
+                          type: string
                         click_id:
                           type: string
                         source:
@@ -423,6 +425,26 @@ paths:
                           type: string
                         isp:
                           type: string
+                        p1:
+                          type: string
+                        p2:
+                          type: string
+                        p3:
+                          type: string
+                        p4:
+                          type: string
+                        p5:
+                          type: string
+                        p6:
+                          type: string
+                        p7:
+                          type: string
+                        p8:
+                          type: string
+                        p9:
+                          type: string
+                        p10:
+                          type: string
                         os:
                           type: string
                         goal_id:
@@ -432,8 +454,6 @@ paths:
                         currency:
                           type: string
                         payout:
-                          type: integer
-                        orig_sale_amount:
                           type: integer
                         orig_sale_currency:
                           type: string
@@ -461,18 +481,28 @@ paths:
                 example-1:
                   value:
                     conversions:
-                      - click_id: 647945425c4d250355fd476a
+                      - _id: 789945425c4d250355fd58b
+                        click_id: 647945425c4d250355fd476a
                         source: testery
                         elapsed_time: 0
                         city: Philadelphia
                         region: Pennsylvania
                         isp: Comcast Cable
+                        p1: ""
+                        p2: ""
+                        p3: ""
+                        p4: ""
+                        p5: ""
+                        p6: ""
+                        p7: ""
+                        p8: ""
+                        p9: ""
+                        p10: ""
                         os: Android 11.0
                         goal_id: 
                         txn_id:
                         currency: USD
                         payout: 0
-                        orig_sale_amount: 0
                         orig_sale_currency: USD
                         country: US
                         browser: Chrome 97
