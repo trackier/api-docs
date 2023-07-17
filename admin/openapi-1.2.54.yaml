@@ -7452,6 +7452,8 @@ components:
                 type: string
               source:
                 type: string
+              click_time:
+                type: string
         fetchIpDetails:
           type: boolean
           description: Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP
