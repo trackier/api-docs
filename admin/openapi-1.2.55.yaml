@@ -1343,7 +1343,10 @@ paths:
 
         To see campaigns for a particular status use the filters query param
 
-        - &filters[status]=active&filters[objective][]=cpa&filters[objective][]=cpi
+        - &filters[status]=active&filters[objective][]=cpa
+        - &filters[category][]=travel&filters[visibility][]=public&filters[device][]=mobile
+        - &filters[os][]=android&filters[trafficChannels][]=Channel1
+        - &filters[status]=active&advertiser[]=10&orderBy=created&direction=desc
       security:
         - API Key Param: []
       parameters:
@@ -1352,11 +1355,37 @@ paths:
           in: query
           name: lastId
         - schema:
+            type: string
+            enum:
+              - created
+              - title
+          in: query
+          name: orderBy
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+          in: query
+          name: direction
+          description: Sorting Order <br>
+            - `asc` - Ascending, from A to Z <br>
+            - `desc` - Descending, from Z to A
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: advertiser
+          description: Advertiser ID in numeric or hash id format
+        - schema:
             type: object
             properties:
               status:
                 type: string
+                enum: ['active', 'pending', 'paused', 'disabled', 'expired', 'suspended']
               geo:
+                description: Two letter country iso code or ALL
                 type: array
                 items:
                   type: string
@@ -1364,13 +1393,32 @@ paths:
                 type: array
                 items:
                   type: string
-                  enum:
-                    - cpa
-                    - cpl
-                    - cpi
-                    - cps
-                    - cpc
-                    - cpm
+                  enum: ['cpa', 'cpl', 'cpi', 'cps', 'cpc', 'cpm']
+              category:
+                description: Catergories name
+                type: array
+                items:
+                  type: string
+              visibility:
+                type: array
+                items:
+                  type: string
+                  enum: ['private', 'permission', 'public']
+              device:
+                type: array
+                items:
+                  type: string
+                  enum: ['desktop', 'mobile', 'tablet']
+              os:
+                type: array
+                items:
+                  type: string
+                  enum: ['android', 'ios', 'windows', 'macOs']
+              trafficChannels:
+                type: array
+                description: Traffic channels name
+                items:
+                  type: string
           in: query
           name: filters
     post:
