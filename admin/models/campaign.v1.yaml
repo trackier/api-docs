@@ -272,6 +272,24 @@ properties:
     type: array
     items:
       type: string
+  accountManager:
+    type: object
+    properties: 
+      id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+  salesManager:
+    type: object
+    properties: 
+      id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
 required:
   - id
   - advertiserId
