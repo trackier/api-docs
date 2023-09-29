@@ -79,13 +79,26 @@ tags:
     <h4>How do I know if there are more pages?</h4>
     When the response doesn’t contain the coupon data in results, you know that you’ve reached the end.
     '
-  
+
+  - name: 'Deals'
+    description: '
+    <h4>GET the next page of results</h4>
+    You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page.
+    In the response body, the <code>pageToken</code> to access the next page is provided.
+    The call will be as follows:
+    <br/>eg. <code>/v2/publisher/deals?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
+    <br/>
+    <br/>
+    <h4>How do I know if there are more pages?</h4>
+    When the response doesn’t contain the deals data in results, you know that you’ve reached the end.
+    '
 
 x-tagGroups:
   - name: Publisher
     tags:
       - Campaign
       - Coupon Codes
+      - Deals
       - Publisher Profile
       - Publisher Profile Edit
       - Campaign Request Access
@@ -220,6 +233,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublisherCouponCodeData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  '/v2/publishers/deals':
+    get:
+      tags:
+        - Deals
+      summary: Fetch All Deals
+      description: Returns all deals for all campaigns
+      operationId: deals
+      parameters:
+        - in: query
+          name: pageToken
+          description: Token to traverse through paginated data (returns first page if not passed)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublisherDealData'
         '400':
           description: Invalid API Key
           content:
@@ -1170,19 +1210,7 @@ components:
           items:
             type: object
             properties:
-              _id:
-                type: string
-              adid:
-                type: string
               code:
-                type: string
-              title:
-                type: string
-              description:
-                type: string
-              startDate:
-                type: string
-              endDate:
                 type: string
               status:
                 type: string
@@ -1197,6 +1225,40 @@ components:
                   - generic
                   - exclusive
                   - one_time
+              campaign_name:
+                type: string
+              campaign_id:
+                type: number
+              created:
+                type: string
+                format: date-time
+        pageToken:
+          type: string
+          description: Token to access next page
+
+    PublisherDealData:
+      type: object
+      properties:
+        deals:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+                enum:
+                  - active
+              campaign_name:
+                type: string
+              campaign_id:
+                type: number
+              created:
+                type: string
+                format: date-time
         pageToken:
           type: string
           description: Token to access next page
