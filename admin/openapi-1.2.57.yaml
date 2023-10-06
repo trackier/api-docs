@@ -4333,6 +4333,7 @@ paths:
                         org_id: 58d24f4d17c4520e59658aba
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
+                        advetiser_long_id: 61d58eedfa2bf747d260358f
                         landing_page_long_id: 
                         source: 570_92_
                         ipaddr: 78.183.154.148
@@ -4386,12 +4387,15 @@ paths:
                         campaign_name: testing coupon code 
                         publisher_id: 2
                         publisher_name: Pied Piper
+                        advertiser_id: 121
+                        advertiser_name: AccessTrade
                         landing_page_id: null
                         landing_page_name: Default
                       - id: 6201b3792d8ef6035766a19c
                         org_id: 58d24f4d17c4520e59658aba
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
+                        advetiser_long_id: 61d58eedfa2bfe47d260358f
                         landing_page_long_id: 
                         source: 570_92_
                         ipaddr: 78.189.86.36
@@ -4445,6 +4449,8 @@ paths:
                         campaign_name: testing coupon code 
                         publisher_id: 2
                         publisher_name: Pied Piper
+                        advertiser_id: 121
+                        advertiser_name: AccessTrade
                         landing_page_id: null
                         landing_page_name: Default
                     pagination:
@@ -4492,7 +4498,7 @@ paths:
             type: array
           in: query
           name: fields
-          description: 'Allowed Fields parameters: id, source, ipaddr, ua, os, is_rejected, is_unique, city, region, isp, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, note, ro, gaid, idfa, app_id, app_name, android_id, creative_name, smart_link, payout, revenue, brand, conn, lat, long, pub_impression_id, device_lang, pub_campaign_id, sub_source, click_domain, release_order_id, country, browser, referer, device, created, campaign_id, campaign_long_id, campaign_name, publisher_id, publisher_long_id, publisher_name, landing_page_name, landing_page_id, landing_page_long_id'
+          description: 'Allowed Fields parameters: id, source, ipaddr, ua, os, is_rejected, is_unique, is_bot, city, region, isp, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, note, ro, gaid, idfa, app_id, app_name, android_id, creative_name, smart_link, payout, revenue, brand, conn, lat, long, pub_impression_id, device_lang, pub_campaign_id, sub_source, click_domain, release_order_id, country, browser, referer, device, created, campaign_id, campaign_long_id, campaign_name, publisher_id, publisher_long_id, publisher_name, advertiser_name, advertiser_id, landing_page_name, landing_page_id, landing_page_long_id'
         - schema:
             type: string
           in: query
