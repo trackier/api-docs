@@ -1723,6 +1723,68 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
+  '/v2/trackingLink/{campId}/{pubId}':
+    get:
+      summary: Generate campaign tracking link
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  url:
+                    type: string
+                  shortLink:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    url: 'http://demo.gotrackier.xyz/click?campaign_id=2201&pub_id=95&source=%7Byour-sub-aff-id%7D&p1=%7Byour-transaction-id%7D'
+                    networkUrl: 'http://demo.gotrackier.xyz/t/OTVfMjIwMQ=/?source=%7Byour-sub-aff-id%7D&p1=%7Byour-transaction-id%7D'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: 'campId'
+          required: true
+          description: Campaign Id - numeric or hash ID
+        - schema:
+            type: string
+          in: path
+          name: 'pubId'
+          required: true
+          description: Publisher Id - numeric or hash ID
+        - schema:
+            type: string
+          in: query
+          name: 'dlurl'
+          description: Deeplink Url
+        - schema:
+            type: string
+          in: query
+          name: 'domain'
+          description: Domain
+      description: Generate campaign tracking link
+      security:
+        - API Key Param: []
   '/v2/campaigns/{id}/caps':
     parameters:
       - schema:
