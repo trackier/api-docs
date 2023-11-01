@@ -43,8 +43,8 @@ paths:
           description: limit
         - schema:
             oneOf:
-             - type: integer
-             - type: string
+              - type: integer
+              - type: string
           in: query
           name: pubId
           description: Publisher Id or Hash Id
@@ -77,7 +77,7 @@ paths:
               geo:
                 type: array
                 items:
-                  type: string 
+                  type: string
                 description: Two Letter Country ISO Code in Blocks
               objective:
                 type: array
@@ -166,92 +166,82 @@ paths:
                       - id: 2099
                         hashId: 63da0749cd195814190b6163
                         title: AmericanSolarQuotes - US - 90% Rev Share
-                        description: "AmericanSolarQuotes&lt;br /&gt;&lt;br /&gt;\r\nPayable action: Valid
-                          quote&lt;br /&gt;&lt;br /&gt;\r\nTerms: US, 18+, non-incent&lt;br /&gt;&lt;br
-                          /&gt;\r\nSend times: Monday - Friday (no weekend activity)\r\n<br /><br />From:<br
-                          />- Home Eco Grants<br /><br />Subject:<br />- Save up to 80% on your energy bills
-                          with a free Solar Panels Grant<br />- Instant Eligibility Calculator for Government-Funded
-                          Solar Panels<br />- Check if your property qualifies for a free government energy
-                          efficiency grant!<br />- Get Free Solar Panels through government funding!"
+                        description: "AmericanSolarQuotes&lt;br /&gt;&lt;br /&gt;\r\nPayable action: Valid quote&lt;br /&gt;&lt;br /&gt;\r\nTerms: US, 18+, non-incent&lt;br /&gt;&lt;br /&gt;\r\nSend times: Monday - Friday (no weekend activity)\r\n<br /><br />From:<br />- Home Eco Grants<br /><br />Subject:<br />- Save up to 80% on your energy bills with a free Solar Panels Grant<br />- Instant Eligibility Calculator for Government-Funded Solar Panels<br />- Check if your property qualifies for a free government energy efficiency grant!<br />- Get Free Solar Panels through government funding!"
                         currency: USD
-                        previewUrl: https://solar.americahomequotes.com/
+                        previewUrl: 'https://solar.americahomequotes.com/'
                         model: cpa
                         device:
-                        - all
+                          - all
                         flow: []
                         os:
-                        - all
-                        osVer:
+                          - all
+                        osVer: null
                         appId: idsa13442
                         appName: app.trackier.com
                         categories: []
                         goals:
-                        - id: 63e3dfd379a7cc7cbf135e6d
-                          title: TEST GOAL
-                          value: test_goal
-                          payouts:
-                          - goalId: 63e3dfd379a7cc7cbf135e6d
-                            revenue: 3.03
-                            payout: 1.515
-                            coverage:
-                            - ALL
-                            payoutType: percentage
-                        - id: 63e3e0cd5a937e373d2f8467
-                          title: test pub specific
-                          value: test_pub_specific
-                          payouts:
-                          - goalId: 63e3e0cd5a937e373d2f8467
-                            revenue: 2
-                            payout: 1
-                            coverage:
-                            - ALL
-                            payoutType: fixed
-                        - id: 63e3e6ef5a937e373d2f846b
-                          title: test goal two payout
-                          value: test goal two payout
-                          payouts:
-                          - goalId: 63e3e6ef5a937e373d2f846b
-                            revenue: 2
-                            payout: 1
-                            coverage:
-                            - ALL
-                            payoutType: fixed
-                          - goalId: 63e3e6ef5a937e373d2f846b
-                            revenue: 20
-                            payout: 10
-                            coverage:
-                            - IN
-                            payoutType: fixed
+                          - id: 63e3dfd379a7cc7cbf135e6d
+                            title: TEST GOAL
+                            value: test_goal
+                            payouts:
+                              - goalId: 63e3dfd379a7cc7cbf135e6d
+                                revenue: 3.03
+                                payout: 1.515
+                                coverage:
+                                  - ALL
+                                payoutType: percentage
+                          - id: 63e3e0cd5a937e373d2f8467
+                            title: test pub specific
+                            value: test_pub_specific
+                            payouts:
+                              - goalId: 63e3e0cd5a937e373d2f8467
+                                revenue: 2
+                                payout: 1
+                                coverage:
+                                  - ALL
+                                payoutType: fixed
+                          - id: 63e3e6ef5a937e373d2f846b
+                            title: test goal two payout
+                            value: test goal two payout
+                            payouts:
+                              - goalId: 63e3e6ef5a937e373d2f846b
+                                revenue: 2
+                                payout: 1
+                                coverage:
+                                  - ALL
+                                payoutType: fixed
+                              - goalId: 63e3e6ef5a937e373d2f846b
+                                revenue: 20
+                                payout: 10
+                                coverage:
+                                  - IN
+                                payoutType: fixed
                         subIdsBlocked: []
                         subIdsAllowed: []
                         countries:
-                        - US
+                          - US
                         isps:
-                        - all
+                          - all
                         citiesInclude: []
                         citiesExclude: []
                         defaultGoal: Default
                         creatives:
-                        - fileName: email_63da07493ac06.html
-                          dimensions: []
-                          mimeType: text/html
-                          title: AmericanSolarQuotes - US - 90% Rev Share
-                          fullUrl: https://static.vnative.co/images/email_63da07493ac06.html
-                          description: "Save up to 80% on your energy bills with a free Solar Panels Grant\r\nInstant
-                            Eligibility Calculator for Government-Funded Solar Panels\r\nCheck if your property
-                            qualifies for a free government energy efficiency grant!\r\nGet Free Solar Panels
-                            through government funding!\r\n"
+                          - fileName: email_63da07493ac06.html
+                            dimensions: []
+                            mimeType: text/html
+                            title: AmericanSolarQuotes - US - 90% Rev Share
+                            fullUrl: 'https://static.vnative.co/images/email_63da07493ac06.html'
+                            description: "Save up to 80% on your energy bills with a free Solar Panels Grant\r\nInstant Eligibility Calculator for Government-Funded Solar Panels\r\nCheck if your property qualifies for a free government energy efficiency grant!\r\nGet Free Solar Panels through government funding!\r\n"
                         payouts:
-                        - payout: 63
-                          revenue: 70
-                          coverage:
-                          - US
-                          city: []
-                          region: []
-                          payoutType: percentage
-                        trackingLink: https://mpro.gotrackier.com/click?campaign_id=2099&pub_id=5&source=hellp
-                        impressionUrl: https://mpro.gotrackier.com/imp?campaign_id=2099&pub_id=5&source=hellp
-
+                          - payout: 63
+                            revenue: 70
+                            coverage:
+                              - US
+                            city: []
+                            region: []
+                            payoutType: percentage
+                        trackingLink: 'https://mpro.gotrackier.com/click?campaign_id=2099&pub_id=5&source=hellp'
+                        impressionUrl: 'https://mpro.gotrackier.com/imp?campaign_id=2099&pub_id=5&source=hellp'
         '400':
           description: Bad Request
           content:
@@ -471,7 +461,7 @@ paths:
                 example-1:
                   value:
                     success: true
-                    message: 'Publisher Removed!'
+                    message: Publisher Removed!
         '400':
           description: Bad Request
           content:
@@ -692,7 +682,7 @@ paths:
                   success:
                     type: boolean
                   subaccount:
-                      $ref: ./models/subaccount.v1.yaml
+                    $ref: ./models/subaccount.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -704,7 +694,234 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
+      x-internal: false
+    get - copy:
+      summary: Find Sub Account of Publisher By Id
+      operationId: publisher-sub-account-findById
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      x-internal: false
     post:
+      summary: Edit Sub Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post - copy 5:
+      summary: Edit Sub Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post - copy 4:
+      summary: Edit Sub Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post - copy 3:
+      summary: Edit Sub Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post - copy 2:
+      summary: Edit Sub Account of Publisher
+      operationId: publisher-sub-account-edit
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      requestBody:
+        description: Schema To Edit a Sub Account of Publisher
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/SubAccountEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  subaccount:
+                    $ref: ./models/subaccount.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    post - copy:
       summary: Edit Sub Account of Publisher
       operationId: publisher-sub-account-edit
       tags:
@@ -778,6 +995,150 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
+    delete - copy 3:
+      summary: Delete Sub Account of Publisher
+      operationId: publisher-sub-account-delete
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub Account Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete - copy 2:
+      summary: Delete Sub Account of Publisher
+      operationId: publisher-sub-account-delete
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub Account Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+    delete - copy:
+      summary: Delete Sub Account of Publisher
+      operationId: publisher-sub-account-delete
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Sub Account Deleted!
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+  '/v2/publishers/assign-manager/{id}':
+    post:
+      summary: Assign Manager
+      operationId: post-v2-publishers-assign-manager-id
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      x-stoplight:
+        id: 3jl9bb0dx4xey
+      parameters: []
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  x-stoplight:
+                    id: n7vg9va5s02gh
+                  description: |
+                    Publisher Ids
+                  items:
+                    x-stoplight:
+                      id: 0fuqvpe054lra
+                    type: string
+        description: ''
+      tags:
+        - Manage Publishers
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
   '/v2/advertisers/{advertiserId}/subaccounts':
     parameters:
       - schema:
@@ -889,7 +1250,7 @@ paths:
                   success:
                     type: boolean
                   subaccount:
-                      $ref: ./models/subaccount.v1.yaml
+                    $ref: ./models/subaccount.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -974,7 +1335,7 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml                 
+                      $ref: ./models/error.v1.yaml
   /v2/advertisers:
     get:
       summary: Find All Advertisers
@@ -1368,9 +1729,7 @@ paths:
               - desc
           in: query
           name: direction
-          description: Sorting Order <br>
-            - `asc` - Ascending, from A to Z <br>
-            - `desc` - Descending, from Z to A
+          description: 'Sorting Order <br> - `asc` - Ascending, from A to Z <br> - `desc` - Descending, from Z to A'
         - schema:
             type: array
             items:
@@ -1383,7 +1742,13 @@ paths:
             properties:
               status:
                 type: string
-                enum: ['active', 'pending', 'paused', 'disabled', 'expired', 'suspended']
+                enum:
+                  - active
+                  - pending
+                  - paused
+                  - disabled
+                  - expired
+                  - suspended
               geo:
                 description: Two letter country iso code or ALL
                 type: array
@@ -1393,7 +1758,13 @@ paths:
                 type: array
                 items:
                   type: string
-                  enum: ['cpa', 'cpl', 'cpi', 'cps', 'cpc', 'cpm']
+                  enum:
+                    - cpa
+                    - cpl
+                    - cpi
+                    - cps
+                    - cpc
+                    - cpm
               category:
                 description: Catergories name
                 type: array
@@ -1403,17 +1774,27 @@ paths:
                 type: array
                 items:
                   type: string
-                  enum: ['private', 'permission', 'public']
+                  enum:
+                    - private
+                    - permission
+                    - public
               device:
                 type: array
                 items:
                   type: string
-                  enum: ['desktop', 'mobile', 'tablet']
+                  enum:
+                    - desktop
+                    - mobile
+                    - tablet
               os:
                 type: array
                 items:
                   type: string
-                  enum: ['android', 'ios', 'windows', 'macOs']
+                  enum:
+                    - android
+                    - ios
+                    - windows
+                    - macOs
               trafficChannels:
                 type: array
                 description: Traffic channels name
@@ -1578,7 +1959,7 @@ paths:
     post:
       summary: Edit Campaign Thumbnail
       requestBody:
-        content: 
+        content:
           multipart/form-data:
             schema:
               type: object
@@ -1586,7 +1967,6 @@ paths:
                 image:
                   type: file
                   description: jpeg | gif | bmp | png | ico | tif
-                  
       responses:
         '200':
           description: OK
@@ -1647,6 +2027,176 @@ paths:
       security:
         - API Key Param: []
       description: Delete thumbnail in a campaign with given id
+  '/v2/campaigns/{id}/s2s-tracking':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        operationId: campaign-thumbnail-update
+        description: Campaign ID (Integer Id or hash ID)
+    post:
+      summary: Edit Campaign S2S Tracking Setting
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                serverSideClicks:
+                  type: integer
+                  x-stoplight:
+                    id: 3kd4gjs022msm
+                  format: int32
+                s2sPubSetting:
+                  x-stoplight:
+                    id: 6q0ohw0y3n7lr
+                  enum:
+                    - include
+                    - exclude
+                s2spubs:
+                  type: array
+                  x-stoplight:
+                    id: 7bzt35hte72ja
+                  description: |
+                    integer id or hash id
+                  items:
+                    x-stoplight:
+                      id: 7xca2iwwkvop4
+                    type: string
+                s2sRedirectUrl:
+                  type: string
+                  x-stoplight:
+                    id: 9hsiauc0fylc0
+                  description: url
+              required:
+                - serverSideClicks
+                - s2sPubSetting
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: ''
+      x-stoplight:
+        id: adsf21lgqfr50
+  '/v2/campaigns/{id}/impression-tracking':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        operationId: campaign-thumbnail-update
+        description: Campaign ID (Integer Id or hash ID)
+    post:
+      summary: Edit Campaign Impression Tracking Setting
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                allowImp:
+                  x-stoplight:
+                    id: qz7gwngmft8xy
+                  enum:
+                    - 0
+                    - 1
+                enableVta:
+                  x-stoplight:
+                    id: 36yd97q2bqpuw
+                  enum:
+                    - 0
+                    - 1
+                whitelistPubsVta:
+                  type: array
+                  description: |
+                    integer id or hash id
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 2agsl8zj6x93t
+                impressionUrl:
+                  type: string
+                  description: url
+                  x-stoplight:
+                    id: brq1o2d4ev5q8
+                serverSideImpression:
+                  x-stoplight:
+                    id: 49ei05obwxx2b
+                  enum:
+                    - 0
+                    - 1
+                specificPubs:
+                  x-stoplight:
+                    id: 6u4ub3dj6ut93
+                  enum:
+                    - include
+                    - exclude
+                s2sPubs:
+                  type: array
+                  x-stoplight:
+                    id: gzzi1qz1p0l47
+                  description: integer id or hash id
+                  items:
+                    x-stoplight:
+                      id: bb58hee4b25wg
+                    type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: ''
+      x-stoplight:
+        id: ortf12dkl390l
   /v2/campaigns/timelines:
     get:
       summary: Get Campaigns Timelines.
@@ -1675,15 +2225,15 @@ paths:
             type: string
           in: query
           name: start
-          format: "YYYY-MM-DD"
-          example: "2022-09-01"
+          format: YYYY-MM-DD
+          example: '2022-09-01'
           description: Start Date should be in UTC
         - schema:
             type: string
           in: query
           name: end
-          format: "YYYY-MM-DD"
-          example: "2022-09-01"
+          format: YYYY-MM-DD
+          example: '2022-09-01'
           description: End Date should be in UTC
       responses:
         '200':
@@ -1703,7 +2253,7 @@ paths:
                         type: array
                         items:
                           $ref: ./models/campaign-timeline.v1.yaml
-                      page: 
+                      page:
                         type: integer
                 required:
                   - page
@@ -1763,24 +2313,24 @@ paths:
         - schema:
             type: string
           in: path
-          name: 'campId'
+          name: campId
           required: true
           description: Campaign Id - numeric or hash ID
         - schema:
             type: string
           in: path
-          name: 'pubId'
+          name: pubId
           required: true
           description: Publisher Id - numeric or hash ID
         - schema:
             type: string
           in: query
-          name: 'dlurl'
+          name: dlurl
           description: Deeplink Url
         - schema:
             type: string
           in: query
-          name: 'domain'
+          name: domain
           description: Domain
       description: Generate campaign tracking link
       security:
@@ -2408,23 +2958,26 @@ paths:
                           type: number
                         description: ID's of Publisher
             example:
-              [
-                {
-                  goalId: default,
-                  blacklistPostbackPubs: [13, 14],
-                  whitelistPostbackPubs: [14, 15]
-                },
-                {
-                  goalId: 5f0be9f461770401a87a0016,
-                  blacklistPostbackPubs: [13, 14],
-                  whitelistPostbackPubs: [14, 15]
-                },
-                {
-                  goalId: 6202bcd5f42a00036d1e0755,
-                  blacklistPostbackPubs: ['all'],
-                  whitelistPostbackPubs: [14, 15]
-                }
-              ]
+              - goalId: default
+                blacklistPostbackPubs:
+                  - 13
+                  - 14
+                whitelistPostbackPubs:
+                  - 14
+                  - 15
+              - goalId: 5f0be9f461770401a87a0016
+                blacklistPostbackPubs:
+                  - 13
+                  - 14
+                whitelistPostbackPubs:
+                  - 14
+                  - 15
+              - goalId: 6202bcd5f42a00036d1e0755
+                blacklistPostbackPubs:
+                  - all
+                whitelistPostbackPubs:
+                  - 14
+                  - 15
       description: Edit Campaign PostBack Setting
       responses:
         '200':
@@ -2465,7 +3018,7 @@ paths:
                   categories:
                     type: array
                     items:
-                      $ref: './models/category.v1.yaml'
+                      $ref: ./models/category.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -2474,7 +3027,7 @@ paths:
                 type: object
                 properties:
                   errors:
-                    $ref: './models/error.v1.yaml'
+                    $ref: ./models/error.v1.yaml
   /v2/campaigns/status:
     post:
       summary: Bulk Campaign Status Change
@@ -2555,7 +3108,7 @@ paths:
                     $ref: ./models/error.v1.yaml
       tags:
         - Campaigns
-      description: Use this endpoint to change the status, visibility and currency of multiple campaigns in one request
+      description: 'Use this endpoint to change the status, visibility and currency of multiple campaigns in one request'
       security:
         - API Key Param: []
       requestBody:
@@ -2593,7 +3146,7 @@ paths:
               required:
                 - campaignIds
                 - fields
-  '/v2/invoices':
+  /v2/invoices:
     get:
       summary: Get Invoices List
       tags:
@@ -2611,33 +3164,46 @@ paths:
                     items:
                       $ref: ./models/invoices.v1.yaml
       parameters:
-      - schema:
-          type: string
-        name: start
-        in: path
-        required: true
-        description: Start Date (YYYY-MM-DD)
-      - schema:
-          type: string
-        name: end
-        in: path
-        required: true
-        description: End Date (YYYY-MM-DD)
-      - schema:
-          type: string
-          enum:
-          - publisher
-          - advertiser
-        name: utype
-        in: path
-        required: true
-        description: User Type
+        - schema:
+            type: string
+          name: start
+          in: path
+          required: true
+          description: Start Date (YYYY-MM-DD)
+        - schema:
+            type: string
+          name: end
+          in: path
+          required: true
+          description: End Date (YYYY-MM-DD)
+        - schema:
+            type: string
+            enum:
+              - publisher
+              - advertiser
+          name: utype
+          in: path
+          required: true
+          description: User Type
       operationId: get-v2-invoices-list
       security:
         - API Key Param: []
       requestBody: {}
       description: Get Invoices list for publisher or advertiser.
     post:
+      '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: string
+                errors:
+                  type: array
+                  items:
+                    $ref: ./models/error.v1.yaml
       summary: Create Invoice
       operationId: post-v2-invoices
       responses:
@@ -2652,19 +3218,6 @@ paths:
                     type: boolean
                   message:
                     type: string
-      '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: string
-                  errors:
-                    type: array
-                    items:
-                      $ref: ./models/error.v1.yaml
       tags:
         - Invoices
       requestBody:
@@ -2751,7 +3304,7 @@ paths:
         - API Key Param: []
       tags:
         - Invoices
-  '/v2/invoices/preview':
+  /v2/invoices/preview:
     parameters:
       - schema:
           type: string
@@ -2774,33 +3327,33 @@ paths:
       - schema:
           type: string
           enum:
-          - campaign
-          - date_wise
-          - month_wise
+            - campaign
+            - date_wise
+            - month_wise
         name: prefType
         in: path
         required: true
-        description: 'Preference Type'
+        description: Preference Type
       - schema:
           type: string
           enum:
-          - INR
-          - USD
-          - ...
+            - INR
+            - USD
+            - ...
         name: invCurrency
         in: path
         required: true
-        description: 'Invoice Currency'
+        description: Invoice Currency
       - schema:
           type: boolean
         name: skipZeroPayouts
         in: path
-        description: 'Skip Zero Payouts'
+        description: Skip Zero Payouts
       - schema:
           type: string
         name: payoutField
         in: path
-        description: 'Custom Payout Field Name'
+        description: Custom Payout Field Name
     get:
       summary: Get Invoice Preview
       tags:
@@ -3199,7 +3752,7 @@ paths:
                 properties:
                   success:
                     type: boolean
-                  message :
+                  message:
                     type: string
                   job:
                     type: object
@@ -3216,7 +3769,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                           type: string
+                            type: string
                       type:
                         type: string
                       created:
@@ -3236,7 +3789,7 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description:  Upload Bulk Conversion
+      description: Upload Bulk Conversion
       security:
         - API Key Param: []
       requestBody:
@@ -3245,6 +3798,78 @@ paths:
             schema:
               type: object
               $ref: '#/components/schemas/BulkConversionUpload'
+  /v2/editConv:
+    post:
+      summary: Conversion Status Change
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: |-
+        This endpoint should be used to change the status of conversion most which is a general use case for ecommerce or brands.
+
+        Either id, click_id or txn_id + date is required to update a conversion.
+      security:
+        - API Key Param: []
+      requestBody:
+        content: {}
+      x-stoplight:
+        id: yoc62j3l6hxdq
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: id
+          description: Trackier's Conversion ID
+        - schema:
+            type: string
+          in: query
+          name: click_id
+          description: Trackier's Click ID
+        - schema:
+            type: string
+          in: query
+          name: txn_id
+          description: Trackier's Transaction ID
+        - schema:
+            type: string
+            enum:
+              - approved
+              - pending
+              - cancelled
+              - rejected
+          in: query
+          name: status
+          description: Status of conversion
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: date
+          description: Date of conversion
+      operationId: ''
+    parameters: []
   /v2/jobs:
     get:
       summary: Find All Jobs
@@ -3257,12 +3882,12 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   jobs:
                     type: array
-                    items: 
+                    items:
                       $ref: ./models/job.v1.yaml
         '400':
           description: Bad Request
@@ -3278,7 +3903,7 @@ paths:
       description: Use this endpoint to fetch all jobs
       security:
         - API Key Param: []
-  /v2/jobs/:id:
+  '/v2/jobs/:id':
     get:
       summary: Find Job By Id
       tags:
@@ -3288,7 +3913,7 @@ paths:
           description: OK
           content:
             application/json:
-              schema: 
+              schema:
                 type: object
                 properties:
                   success:
@@ -3299,7 +3924,7 @@ paths:
                     type: array
                     items:
                       type: object
-                      properties: 
+                      properties:
                         message:
                           type: string
                         created:
@@ -3608,7 +4233,7 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       operationId: get-v2-smartlink
-      description: Find all smartlinks 
+      description: Find all smartlinks
       security:
         - API Key Param: []
       parameters:
@@ -3681,8 +4306,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SmartlinkEdit'
-     
-
   /v2/reports/campaign:
     get:
       summary: Campaign Report
@@ -4111,9 +4734,9 @@ paths:
                 example-1:
                   value:
                     records:
-                      - campaign_name: 'test'
+                      - campaign_name: test
                         campaign_id: 35
-                        goal_name: 'Default'
+                        goal_name: Default
                         goal_id: null
                         currency: USD
                         clicks: 1
@@ -4396,8 +5019,8 @@ paths:
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
                         advetiser_long_id: 61d58eedfa2bf747d260358f
-                        landing_page_long_id: 
-                        source: 570_92_
+                        landing_page_long_id: null
+                        source: '570_92_'
                         ipaddr: 78.183.154.148
                         country: TR
                         region: Ankara
@@ -4407,46 +5030,46 @@ paths:
                         browser: Chrome 81
                         os: Android 11.0
                         user_agent: Mozilla/5.0 (Linux; Android 11.0.0; LG G PRO 2 Build/F350K) AppleWebKit/537.36 (KHTML like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36
-                        referer: 
+                        referer: null
                         is_bot: 1
                         is_unique: 0
                         p1: 6201b34a5b427c000108e29c
-                        p2: 
-                        p3: 
-                        p4: 
-                        p5: 
-                        p6: 
-                        p7: 
-                        p8: 
-                        p9: 
-                        p10: 
-                        created: 2022-02-08 00:03:28
-                        note: 
-                        referrer_campaign: 
-                        gaid: 
-                        idfa: 
-                        app_id: 
-                        app_name: 
-                        android_id: 
-                        curr: 
-                        creative_name: 
-                        smart_link: 
+                        p2: null
+                        p3: null
+                        p4: null
+                        p5: null
+                        p6: null
+                        p7: null
+                        p8: null
+                        p9: null
+                        p10: null
+                        created: '2022-02-08 00:03:28'
+                        note: null
+                        referrer_campaign: null
+                        gaid: null
+                        idfa: null
+                        app_id: null
+                        app_name: null
+                        android_id: null
+                        curr: null
+                        creative_name: null
+                        smart_link: null
                         payout: 0
                         revenue: 0
                         is_rejected: 0
-                        brand: 
+                        brand: null
                         conn: Cable/DSL
                         lat: 39.9
                         long: 32.94
-                        pub_impression_id: 
-                        rr: 
+                        pub_impression_id: null
+                        rr: null
                         device_lang: tr
-                        pub_campaign_id: 
-                        sub_source: 
-                        click_domain: 
-                        release_order_id: 
+                        pub_campaign_id: null
+                        sub_source: null
+                        click_domain: null
+                        release_order_id: null
                         campaign_id: 21812
-                        campaign_name: testing coupon code 
+                        campaign_name: testing coupon code
                         publisher_id: 2
                         publisher_name: Pied Piper
                         advertiser_id: 121
@@ -4458,8 +5081,8 @@ paths:
                         campaign_long_id: 5ff8479d57b90d5907548486
                         publisher_long_id: 5df22a4db6920d5c773640a6
                         advetiser_long_id: 61d58eedfa2bfe47d260358f
-                        landing_page_long_id: 
-                        source: 570_92_
+                        landing_page_long_id: null
+                        source: '570_92_'
                         ipaddr: 78.189.86.36
                         country: TR
                         region: Izmir
@@ -4469,46 +5092,46 @@ paths:
                         browser: Safari 10
                         os: iOS 10.1
                         user_agent: Mozilla/5.0 (iPhone; CPU iPhone OS 10_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML like Gecko) Version/10.0 Mobile/14B72
-                        referer: 
+                        referer: null
                         is_bot: 1
                         is_unique: 0
                         p1: 6201b376808bd40001959394
-                        p2: 
-                        p3: 
-                        p4: 
-                        p5: 
-                        p6: 
-                        p7: 
-                        p8: 
-                        p9: 
-                        p10: 
-                        created: 2022-02-09 00:04:09
-                        note: 
-                        referrer_campaign: 
-                        gaid: 
-                        idfa: 
-                        app_id: 
-                        app_name: 
-                        android_id: 
-                        curr: 
-                        creative_name: 
-                        smart_link: 
+                        p2: null
+                        p3: null
+                        p4: null
+                        p5: null
+                        p6: null
+                        p7: null
+                        p8: null
+                        p9: null
+                        p10: null
+                        created: '2022-02-09 00:04:09'
+                        note: null
+                        referrer_campaign: null
+                        gaid: null
+                        idfa: null
+                        app_id: null
+                        app_name: null
+                        android_id: null
+                        curr: null
+                        creative_name: null
+                        smart_link: null
                         payout: 0
                         revenue: 0
                         is_rejected: 0
-                        brand: 
+                        brand: null
                         conn: Cable/DSL
                         lat: 38.44
                         long: 27.17
-                        pub_impression_id: 
-                        rr: 
+                        pub_impression_id: null
+                        rr: null
                         device_lang: tr
-                        pub_campaign_id: 
-                        sub_source: 
-                        click_domain: 
-                        release_order_id: 
+                        pub_campaign_id: null
+                        sub_source: null
+                        click_domain: null
+                        release_order_id: null
                         campaign_id: 21812
-                        campaign_name: testing coupon code 
+                        campaign_name: testing coupon code
                         publisher_id: 2
                         publisher_name: Pied Piper
                         advertiser_id: 121
@@ -4550,12 +5173,12 @@ paths:
             type: boolean
           in: query
           name: hasNextPage
-          description: 'if next page true else false'
+          description: if next page true else false
         - schema:
             type: string
           in: query
           name: pageToken
-          description: 'Provided in api for accessing next page'
+          description: Provided in api for accessing next page
         - schema:
             type: array
           in: query
@@ -4591,8 +5214,7 @@ paths:
       summary: Fraud Report
       tags:
         - Reports
-      description:
-        Fraud Report
+      description: Fraud Report
       responses:
         '200':
           description: OK
@@ -4616,9 +5238,9 @@ paths:
                           type: integer
                         ro:
                           type: integer
-                        goal_id: 
+                        goal_id:
                           type: integer
-                        sl: 
+                        sl:
                           type: string
                         url_id:
                           type: integer
@@ -4648,14 +5270,14 @@ paths:
                         payout: 2
                         revenue: 4
         '400':
-            description: Bad Request
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    errors:
-                      $ref: ./models/error.v1.yaml
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
       operationId: get-v2-reports-fraud
       parameters:
         - schema:
@@ -5413,14 +6035,14 @@ paths:
                     impressions:
                       - id: 6162d7e1410407033d19e50b
                         campaign_id: 21812
-                        campaign_name: testing coupon code 
+                        campaign_name: testing coupon code
                         publisher_id: 2
                         publisher_long_id: 57c6c75934243d930c8b4581
                         publisher_name: Pied Piper
                         advertiser_id: 3
                         advertiser_long_id: 57c4738434243dc57d8b456d
                         advertiser_name: Demo Advertiser
-                        source: 
+                        source: null
                         url_id: null
                         url_title: Default
                         ipaddr: 103.211.54.87
@@ -5432,11 +6054,11 @@ paths:
                         device: desktop
                         browser: Safari 15
                         p1: test3
-                        app_id: 
-                        app_name: 
-                        gaid: 
-                        idfa: 
-                        created: 2021-10-10T12:09:05.000Z
+                        app_id: null
+                        app_name: null
+                        gaid: null
+                        idfa: null
+                        created: '2021-10-10T12:09:05.000Z'
                     columns:
                       id: Impression ID
                       source: Source
@@ -5533,12 +6155,12 @@ paths:
             type: string
           in: query
           name: start
-          description: 'Start date in YYYY-MM-DD'
+          description: Start date in YYYY-MM-DD
         - schema:
             type: string
           in: query
           name: end
-          description: 'End date in YYYY-MM-DD'
+          description: End date in YYYY-MM-DD
         - schema:
             type: string
           in: query
@@ -5563,8 +6185,8 @@ paths:
     post:
       summary: Send Emails Via SMTP Service
       description: |-
-          This endpoint helps you send your email templates via api.
-          This api won't work if you haven't configure smtp in customize section.
+        This endpoint helps you send your email templates via api.
+        This api won't work if you haven't configure smtp in customize section.
       tags:
         - Network
       security:
@@ -5592,11 +6214,10 @@ paths:
             examples:
               example-1:
                 value:
-                  template_name: 'publisher_registration'
+                  template_name: publisher_registration
                   user_id: 146
-                  opts: {
-                    "passowrd": "password"
-                  }
+                  opts:
+                    passowrd: password
       responses:
         '200':
           description: OK
@@ -5613,7 +6234,7 @@ paths:
                 example-1:
                   value:
                     success: true
-                    message: 'Message sent successfully'
+                    message: Message sent successfully
         '400':
           description: Bad Request
           content:
@@ -5629,7 +6250,7 @@ paths:
                 example-1:
                   value:
                     success: false
-                    message: 'Message Sent Failed'
+                    message: Message Sent Failed
   '/v2/campaigns/{id}/targetings':
     parameters:
       - schema:
@@ -5932,7 +6553,7 @@ paths:
                   publisherIds:
                     - 2
                   excludedPubIds: []
-  '/v2/trackingDomains':
+  /v2/trackingDomains:
     post:
       summary: Create Tracking Domain
       operationId: post-v2-trackingDomains
@@ -6021,7 +6642,7 @@ paths:
         - Tracking Domain
       security:
         - API Key Param: []
-  '/v2/trackingDomains/:domain':
+  '/v2/trackingDomains/{domain}':
     parameters:
       - schema:
           type: string
@@ -6030,7 +6651,7 @@ paths:
         required: true
         description: Domain
     post:
-      summary: Create Tracking Domain
+      summary: Update Tracking Domain
       operationId: post-v2-trackingDomains-domain
       responses:
         '200':
@@ -6082,6 +6703,8 @@ paths:
                     oneOf:
                       - type: integer
                       - type: string
+      x-stoplight:
+        id: pnofqrai77pff
     delete:
       summary: Delete Tracking Domain
       operationId: delete-v2-trackingDomains-domain
@@ -6113,6 +6736,8 @@ paths:
         - Tracking Domain
       security:
         - API Key Param: []
+      x-stoplight:
+        id: v3xadnzbpszfw
   '/v2/campaigns/{campId}/targetings/{id}/rules/{ruleId}':
     parameters:
       - schema:
@@ -6276,7 +6901,7 @@ paths:
                         - '549_434_'
                         - 983393_3393u3i3_
         description: ''
-  '/v2/targetingdata/devices': 
+  /v2/targetingdata/devices:
     get:
       summary: Fetch All Devices
       operationId: get-v2-devices
@@ -6287,7 +6912,7 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   devices:
@@ -6302,13 +6927,13 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Devices
       tags:
         - Targeting Data
       security:
         - API Key Param: []
-  '/v2/targetingdata/os': 
+  /v2/targetingdata/os:
     get:
       summary: Fetch All Operating System
       operationId: get-v2-os
@@ -6319,7 +6944,7 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   os:
@@ -6334,13 +6959,13 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Operating System
       tags:
         - Targeting Data
       security:
         - API Key Param: []
-  '/v2/targetingdata/countries': 
+  /v2/targetingdata/countries:
     get:
       summary: Fetch All Countries
       operationId: get-v2-countries
@@ -6351,7 +6976,7 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   countries:
@@ -6366,13 +6991,13 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Countries
       tags:
         - Targeting Data
       security:
         - API Key Param: []
-  '/v2/targetingdata/regions': 
+  /v2/targetingdata/regions:
     get:
       summary: Fetch All Regions
       operationId: get-v2-regions
@@ -6383,12 +7008,12 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   regions:
                     type: array
-                    items: 
+                    items:
                       type: object
                       properties:
                         id:
@@ -6407,7 +7032,7 @@ paths:
                         currentPage:
                           type: number
                           example: 1
-                        perPage: 
+                        perPage:
                           type: number
                           example: 100
         '400':
@@ -6420,7 +7045,7 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Regions
       tags:
         - Targeting Data
@@ -6431,18 +7056,18 @@ paths:
             type: string
           in: query
           name: q
-          description: 'To filter the regions for name'
+          description: To filter the regions for name
         - schema:
             type: string
           in: query
           name: country
-          description: 'To filter the regions for country'
+          description: To filter the regions for country
         - schema:
             type: integer
           in: query
           name: page
-          description: 'Page number for pagination'
-  '/v2/targetingdata/cities': 
+          description: Page number for pagination
+  /v2/targetingdata/cities:
     get:
       summary: Fetch All Cities
       operationId: get-v2-cities
@@ -6453,12 +7078,12 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   cities:
                     type: array
-                    items: 
+                    items:
                       type: object
                       properties:
                         id:
@@ -6479,7 +7104,7 @@ paths:
                         currentPage:
                           type: number
                           example: 1
-                        perPage: 
+                        perPage:
                           type: number
                           example: 100
         '400':
@@ -6492,7 +7117,7 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Cities
       tags:
         - Targeting Data
@@ -6503,18 +7128,18 @@ paths:
             type: string
           in: query
           name: q
-          description: 'To filter the cities for name'
+          description: To filter the cities for name
         - schema:
             type: string
           in: query
           name: country
-          description: 'To filter the cities for country'
+          description: To filter the cities for country
         - schema:
             type: integer
           in: query
           name: page
-          description: 'Page number for pagination'
-  '/v2/targetingdata/isps': 
+          description: Page number for pagination
+  /v2/targetingdata/isps:
     get:
       summary: Fetch All Isps
       operationId: get-v2-isps
@@ -6525,12 +7150,12 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   success:
                     type: boolean
                   isps:
                     type: array
-                    items: 
+                    items:
                       type: object
                       properties:
                         id:
@@ -6551,7 +7176,7 @@ paths:
                         currentPage:
                           type: number
                           example: 1
-                        perPage: 
+                        perPage:
                           type: number
                           example: 100
         '400':
@@ -6564,7 +7189,7 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to fetch all Isps
       tags:
         - Targeting Data
@@ -6575,18 +7200,18 @@ paths:
             type: string
           in: query
           name: q
-          description: 'To filter the isps for name'
+          description: To filter the isps for name
         - schema:
             type: string
           in: query
           name: country
-          description: 'To filter the isps for country'
+          description: To filter the isps for country
         - schema:
             type: integer
           in: query
           name: page
-          description: 'Page number for pagination'
-  '/v2/categories':
+          description: Page number for pagination
+  /v2/categories:
     post:
       summary: Create Category
       operationId: post-v2-categories
@@ -6610,11 +7235,11 @@ paths:
                       name:
                         type: string
                       live:
-                        type: boolean  
+                        type: boolean
                       created:
                         type: string
                       org_id:
-                        type: string          
+                        type: string
         '400':
           description: Bad Request
           content:
@@ -6638,7 +7263,7 @@ paths:
               type: object
               properties:
                 name:
-                  type: string           
+                  type: string
     get:
       summary: Fetch All Categories
       operationId: get-v2-categories
@@ -6653,7 +7278,7 @@ paths:
                   categories:
                     type: array
                     items:
-                      $ref: ./models/categories.v1.yaml               
+                      $ref: ./models/categories.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -6699,9 +7324,9 @@ paths:
                       _id:
                         type: string
                       name:
-                        type: string  
+                        type: string
                       created:
-                        type: string              
+                        type: string
         '400':
           description: Bad Request
           content:
@@ -6725,7 +7350,7 @@ paths:
               type: object
               properties:
                 name:
-                  type: string             
+                  type: string
     get:
       summary: Fetch Category
       operationId: get-v2-categories-id
@@ -6742,7 +7367,7 @@ paths:
                   category:
                     type: array
                     items:
-                      $ref: ./models/categories.v1.yaml               
+                      $ref: ./models/categories.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -6758,7 +7383,7 @@ paths:
       tags:
         - Categories
       security:
-        - API Key Param: []                
+        - API Key Param: []
     delete:
       summary: Delete Category
       operationId: delete-v2-categories-id
@@ -6789,8 +7414,8 @@ paths:
       tags:
         - Categories
       security:
-        - API Key Param: [] 
-  '/v2/coupons': 
+        - API Key Param: []
+  /v2/coupons:
     get:
       summary: Fetch All Coupon Codes
       operationId: get-v2-coupons
@@ -6801,10 +7426,10 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   coupons:
                     type: array
-                    items: 
+                    items:
                       $ref: ./models/coupon.v1.yaml
         '400':
           description: Bad Request
@@ -6816,8 +7441,8 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml  
-      description: Use this endpoint to fetch all Categories
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Coupons
       tags:
         - Coupons
       security:
@@ -6825,7 +7450,7 @@ paths:
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
-      responses: 
+      responses:
         '200':
           description: OK
           content:
@@ -6895,7 +7520,7 @@ paths:
                   format: date
                 payouts:
                   type: array
-                  items: 
+                  items:
                     type: object
                     properties:
                       model:
@@ -6915,7 +7540,7 @@ paths:
                         type: integer
                       rules:
                         type: array
-                        items: 
+                        items:
                           type: object
                           properties:
                             variable:
@@ -6932,7 +7557,7 @@ paths:
                                 - sub8
                                 - sub9
                                 - sub10
-                            op: 
+                            op:
                               type: string
                               enum:
                                 - exact_match
@@ -6946,7 +7571,7 @@ paths:
                                 - less_than
                             values:
                               type: array
-                              items: 
+                              items:
                                 type: string
                     required:
                       - model
@@ -6955,7 +7580,7 @@ paths:
                       - revenue
                 futurePayouts:
                   type: array
-                  items: 
+                  items:
                     type: object
                     properties:
                       fromDate:
@@ -6978,7 +7603,7 @@ paths:
                         type: integer
                       rules:
                         type: array
-                        items: 
+                        items:
                           type: object
                           properties:
                             variable:
@@ -6995,7 +7620,7 @@ paths:
                                 - sub8
                                 - sub9
                                 - sub10
-                            op: 
+                            op:
                               type: string
                               enum:
                                 - exact_match
@@ -7009,7 +7634,7 @@ paths:
                                 - less_than
                             values:
                               type: array
-                              items: 
+                              items:
                                 type: string
                     required:
                       - fromDate
@@ -7033,7 +7658,7 @@ paths:
           description: OK
           content:
             application/json:
-              schema: 
+              schema:
                 type: object
                 properties:
                   coupon:
@@ -7059,7 +7684,7 @@ paths:
     post:
       summary: Edit Coupon Code
       operationId: post-v2-coupon-code
-      responses: 
+      responses:
         '200':
           description: OK
           content:
@@ -7129,7 +7754,7 @@ paths:
                   format: date
                 payouts:
                   type: array
-                  items: 
+                  items:
                     type: object
                     properties:
                       model:
@@ -7149,7 +7774,7 @@ paths:
                         type: integer
                       rules:
                         type: array
-                        items: 
+                        items:
                           type: object
                           properties:
                             variable:
@@ -7166,7 +7791,7 @@ paths:
                                 - sub8
                                 - sub9
                                 - sub10
-                            op: 
+                            op:
                               type: string
                               enum:
                                 - exact_match
@@ -7180,7 +7805,7 @@ paths:
                                 - less_than
                             values:
                               type: array
-                              items: 
+                              items:
                                 type: string
                     required:
                       - model
@@ -7189,7 +7814,7 @@ paths:
                       - revenue
                 futurePayouts:
                   type: array
-                  items: 
+                  items:
                     type: object
                     properties:
                       fromDate:
@@ -7212,7 +7837,7 @@ paths:
                         type: integer
                       rules:
                         type: array
-                        items: 
+                        items:
                           type: object
                           properties:
                             variable:
@@ -7229,7 +7854,7 @@ paths:
                                 - sub8
                                 - sub9
                                 - sub10
-                            op: 
+                            op:
                               type: string
                               enum:
                                 - exact_match
@@ -7243,7 +7868,7 @@ paths:
                                 - less_than
                             values:
                               type: array
-                              items: 
+                              items:
                                 type: string
                     required:
                       - fromDate
@@ -7257,17 +7882,17 @@ paths:
       responses:
         '200':
           description: OK
-          content: 
-           application/json:
-            schema:
-              type: object
-              properties:
-                success:
-                  type: boolean
-                message:
-                  type: string
-                coupon:
-                  $ref: ./models/coupon.v1.yaml
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  coupon:
+                    $ref: ./models/coupon.v1.yaml
         '400':
           description: Bad Request
           content:
@@ -7278,12 +7903,455 @@ paths:
                   errors:
                     type: array
                     items:
-                      $ref: ./models/error.v1.yaml    
+                      $ref: ./models/error.v1.yaml
       description: Use this endpoint to delete a coupon code
-      tags: 
+      tags:
         - Coupons
       security:
         - API Key Param: []
+  '/v2/advertisers/{advertiser_id}/caps':
+    get:
+      summary: Find All Advertiser Caps
+      operationId: get-v2-advertiser-caps
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Advertiser's Caps
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: 8mn5dmjab7mpk
+      tags:
+        - Advertiser Caps
+    post:
+      summary: Create Advertiser Cap
+      operationId: post-v2-create-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create a new advertiser's cap.
+      tags:
+        - Coupons
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - conversions
+                    - approvedConv
+                    - revenue
+                    - gross
+                pubCapType:
+                  x-stoplight:
+                    id: t1uhyrwtmd7zy
+                  default: group
+                  enum:
+                    - each
+                    - group
+                publishers:
+                  type: array
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 732h3xv06xh66
+                geo:
+                  type: array
+                  x-stoplight:
+                    id: visncovx5q7kd
+                  description: '[''ALL'']'
+                  items:
+                    x-stoplight:
+                      id: 05dycjh97wo2m
+                    type: string
+                    example: '[''ALL'']'
+                daily:
+                  type: integer
+                  x-stoplight:
+                    id: pxh859ggin5kf
+                  format: int32
+                monthly:
+                  type: integer
+                  x-stoplight:
+                    id: dppbygatl58q5
+                  format: int32
+                lifetime:
+                  type: integer
+                  x-stoplight:
+                    id: 6ju2c66q09xqy
+                  format: int32
+              required:
+                - type
+        description: ''
+      x-stoplight:
+        id: 1emvcc7f9t8x1
+    parameters:
+      - schema:
+          type: string
+        name: advertiser_id
+        in: path
+        required: true
+        description: Advertiser's Id
+  '/v2/advertisers/{advertiser_id}/caps/{cap_id}':
+    parameters:
+      - schema:
+          type: string
+        name: advertiser_id
+        in: path
+        required: true
+        description: Advertiser's Id
+      - schema:
+          type: string
+        name: cap_id
+        in: path
+        required: true
+        description: Cap's Id
+    get:
+      summary: Find an Advertiser Cap
+      operationId: get-v2-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch an advertiser's particular cap.
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: gn291pj7qu8py
+      tags:
+        - Advertiser Caps
+    post:
+      summary: Edit Advertiser Cap
+      operationId: post-v2-edit-advertiser-cap-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update an advertiser's cap.
+      tags:
+        - Advertiser Caps
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - conversions
+                    - approvedConv
+                    - revenue
+                    - gross
+                pubCapType:
+                  x-stoplight:
+                    id: ajxn53wwitxeo
+                  enum:
+                    - each
+                    - group
+                publishers:
+                  type: array
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 0ng86e5p177kn
+                geo:
+                  type: array
+                  x-stoplight:
+                    id: 7ljv5kj9bxzs2
+                  description: '[''ALL'']'
+                  items:
+                    x-stoplight:
+                      id: y5dnefpsvkwe7
+                    type: string
+                    example: '[''ALL'']'
+                daily:
+                  type: integer
+                  x-stoplight:
+                    id: h8wei2fxex8c1
+                  format: int32
+                monthly:
+                  type: integer
+                  x-stoplight:
+                    id: d4hb385kycfdq
+                  format: int32
+                lifetime:
+                  type: integer
+                  x-stoplight:
+                    id: snybjr415dsk5
+                  format: int32
+        description: ''
+      x-stoplight:
+        id: ge4medo2g3hi6
+    delete:
+      summary: Delete Advertiser Cap
+      operationId: delete-v2-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      x-stoplight:
+        id: 6lci0xp2amnyg
+      description: Use this endpoint to delete an adevrtiser's cap.
+      security:
+        - API Key Param: []
+  v2/accounts:
+    get:
+      summary: Find All Team Members
+      operationId: get-v2-team-members
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Team Members.
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: 8028ah65c4a0b
+      tags:
+        - Team Members
+    post:
+      summary: Add Team Member
+      operationId: post-v2-add-team-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to add team member.
+      tags:
+        - Team Members
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  x-stoplight:
+                    id: s7opu29c3gpza
+                email:
+                  x-stoplight:
+                    id: bv6g04lz4slki
+                  type: string
+                type:
+                  type: string
+                status:
+                  enum:
+                    - active
+                    - inactive
+              required:
+                - name
+                - email
+                - type
+                - status
+        description: ''
+      x-stoplight:
+        id: yx5h6qgkn6e4a
+    parameters: []
+  'v2/accounts/{account_id}':
+    get:
+      summary: Find Team Member
+      operationId: get-v2-team-member
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch a Team Member.
+      security:
+        - API Key Param: []
+      tags:
+        - Team Members
+      x-stoplight:
+        id: d4ztqwsoomrf7
+    post:
+      summary: Add Team Member
+      operationId: post-v2-edit-team-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to edit team member.
+      tags:
+        - Team Members
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                type:
+                  type: string
+                status:
+                  enum:
+                    - active
+                    - inactive
+        description: ''
+      x-stoplight:
+        id: b9j6318zuk8hp
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+        description: Account Id
 components:
   schemas:
     UserCreate:
@@ -7572,9 +8640,10 @@ components:
                 type: string
         fetchIpDetails:
           type: boolean
-          description: Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP
+          description: 'Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP'
       required:
         - data
+      x-internal: false
     SubAccountEdit:
       title: SubAccountEdit
       type: object
@@ -7899,12 +8968,12 @@ components:
               - geo
         startTime:
           type: string
-          format: "YYYY-MM-DDTHH:MM:ssZ"
-          example: "2020-01-01T10:30:00Z"
+          format: 'YYYY-MM-DDTHH:MM:ssZ'
+          example: '2020-01-01T10:30:00Z'
         endTime:
           type: string
-          format: "YYYY-MM-DD HH:MM:ssZ"
-          example: "2020-02-02T21:00:00Z"
+          format: 'YYYY-MM-DD HH:MM:ssZ'
+          example: '2020-02-02T21:00:00Z'
       required:
         - advertiserId
         - title
@@ -8198,12 +9267,12 @@ components:
               - geo
         startTime:
           type: string
-          format: "YYYY-MM-DDTHH:MM:ssZ"
-          example: "2020-01-01T10:30:00Z"
+          format: 'YYYY-MM-DDTHH:MM:ssZ'
+          example: '2020-01-01T10:30:00Z'
         endTime:
           type: string
-          format: "YYYY-MM-DD HH:MM:ssZ"
-          example: "2020-02-02T21:00:00Z"
+          format: 'YYYY-MM-DD HH:MM:ssZ'
+          example: '2020-02-02T21:00:00Z'
     Cap:
       title: Cap
       type: object
@@ -8352,12 +9421,12 @@ components:
         type:
           type: string
           enum:
-            - category 
+            - category
             - manual
         model:
           type: string
           enum:
-            - cpa 
+            - cpa
             - cpc
             - cpm
             - cpi
@@ -8396,30 +9465,30 @@ components:
           type: float
         maxp:
           type: float
-        targeting: 
+        targeting:
           type: object
           properties:
-              city:
-                type: number
-              region:
-                type: number
-              os:
-                type: number
-              carrier:
-                type: number
-              device:
-                type: number
-              country:
-                type: number
+            city:
+              type: number
+            region:
+              type: number
+            os:
+              type: number
+            carrier:
+              type: number
+            device:
+              type: number
+            country:
+              type: number
         appendUrl:
           type: array
           items:
             type: object
             properties:
               key:
-                  type: string
+                type: string
               value:
-                  type: string
+                type: string
       required:
         - name
         - event
@@ -8452,12 +9521,12 @@ components:
         type:
           type: string
           enum:
-            - category 
+            - category
             - manual
         model:
           type: string
           enum:
-            - cpa 
+            - cpa
             - cpc
             - cpm
             - cpi
@@ -8496,32 +9565,31 @@ components:
           type: float
         maxp:
           type: float
-        targeting: 
+        targeting:
           type: object
           properties:
-              city:
-                type: number
-              region:
-                type: number
-              os:
-                type: number
-              carrier:
-                type: number
-              device:
-                type: number
-              country:
-                type: number
+            city:
+              type: number
+            region:
+              type: number
+            os:
+              type: number
+            carrier:
+              type: number
+            device:
+              type: number
+            country:
+              type: number
         appendUrl:
           type: array
           items:
             type: object
             properties:
               key:
-                  type: string
+                type: string
               value:
-                  type: string
+                type: string
       description: ''
-    
     Pagination:
       title: Pagination
       type: object
