@@ -7962,8 +7962,6 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
       description: Use this endpoint to create a new advertiser's cap.
-      tags:
-        - Coupons
       security:
         - API Key Param: []
       requestBody:
@@ -8022,6 +8020,8 @@ paths:
         description: ''
       x-stoplight:
         id: 1emvcc7f9t8x1
+      tags:
+        - Advertiser Caps
     parameters:
       - schema:
           type: string
@@ -8183,7 +8183,9 @@ paths:
       description: Use this endpoint to delete an adevrtiser's cap.
       security:
         - API Key Param: []
-  v2/accounts:
+      tags:
+        - Advertiser Caps
+  /v2/accounts:
     get:
       summary: Find All Team Members
       operationId: get-v2-team-members
@@ -8269,7 +8271,7 @@ paths:
       x-stoplight:
         id: yx5h6qgkn6e4a
     parameters: []
-  'v2/accounts/{account_id}':
+  '/v2/accounts/{account_id}':
     get:
       summary: Find Team Member
       operationId: get-v2-team-member
@@ -8296,7 +8298,7 @@ paths:
       x-stoplight:
         id: d4ztqwsoomrf7
     post:
-      summary: Add Team Member
+      summary: Edit Team Member
       operationId: post-v2-edit-team-member
       responses:
         '200':
