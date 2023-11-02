@@ -8646,6 +8646,8 @@ components:
       required:
         - data
       x-internal: false
+      x-tags:
+        - Network
     SubAccountEdit:
       title: SubAccountEdit
       type: object
@@ -9400,8 +9402,6 @@ components:
     SmartlinkCreate:
       title: Smartlink
       type: object
-      x-tags:
-        - Smartlink
       properties:
         name:
           type: string
@@ -9497,11 +9497,11 @@ components:
         - model
         - type
       description: ''
+      x-tags:
+        - Manage Smartlinks
     SmartlinkEdit:
       title: Smartlink
       type: object
-      x-tags:
-        - Smartlink
       properties:
         name:
           type: string
@@ -9592,6 +9592,8 @@ components:
               value:
                 type: string
       description: ''
+      x-tags:
+        - Manage Smartlinks
     Pagination:
       title: Pagination
       type: object
@@ -10027,6 +10029,8 @@ components:
         - variable
         - logic
         - condition
+      x-tags:
+        - Campaign Targetings
     InvoicesCreate:
       title: Invoices
       type: object
@@ -10091,9 +10095,9 @@ components:
         - uType
         - title
         - invCurrency
-      x-tags:
-        - Invoices List
       description: Invoices Model
+      x-tags:
+        - Invoices
   securitySchemes:
     API Key Param:
       name: apiKey
