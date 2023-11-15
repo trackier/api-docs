@@ -271,3 +271,5 @@ properties:
     type:
       - string
       - 'null'
+x-tags:
+  - report-logs

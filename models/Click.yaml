@@ -1,8 +1,6 @@
 title: Click
 x-stoplight:
   id: kcfu1mcv6sbgz
-x-tags:
-  - click-log
 type: object
 properties:
   id:
@@ -242,3 +240,5 @@ required:
   - id
   - created
 description: Click schema for Trackier
+x-tags:
+  - report-logs
