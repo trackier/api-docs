@@ -92,7 +92,7 @@ properties:
   is_demo:
     type: boolean
   unsubscribe:
-    type: string
+    type: boolean
   tier_id:
     type: string
   ref_by:
