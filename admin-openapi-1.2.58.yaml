@@ -4830,6 +4830,74 @@ paths:
                       "nextPageToken": "eyJsYXN0VHMiOiIyMDIyLTAyLTA5IDAwOjA0OjA5IiwicGFnZVRva2VuX3NraXAiOjJ9",
                       "hasNextPage": true
                     }
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  clicks:
+                    type: array
+                    x-stoplight:
+                      id: k7c4cqm9psxh1
+                    items:
+                      $ref: ./models/Click.yaml
+              examples:
+                Example 1:
+                  value:
+                    clicks:
+                      - id: string
+                        org_id: string
+                        campaign_long_id: string
+                        publisher_long_id: string
+                        advertiser_long_id: string
+                        landing_page_long_id: string
+                        source: string
+                        ipaddr: string
+                        country: string
+                        region: string
+                        city: string
+                        isp: string
+                        device: string
+                        browser: string
+                        os: string
+                        user_agent: string
+                        referrer: string
+                        is_unique: 0
+                        p1: string
+                        p2: string
+                        p3: string
+                        p4: string
+                        p5: string
+                        p6: string
+                        p7: string
+                        p8: string
+                        p9: string
+                        p10: string
+                        created: '2019-08-24T14:15:22Z'
+                        note: string
+                        referrer_campaign: string
+                        gaid: string
+                        idfa: string
+                        app_id: string
+                        app_name: string
+                        creative_name: string
+                        payout: 0
+                        revenue: 0
+                        curr: string
+                        is_rejected: 0
+                        brand: string
+                        conn: string
+                        lat: 0
+                        long: 0
+                        device_lang: string
+                        click_domain: string
+                        campaign_id: 0
+                        campaign_name: string
+                        publisher_id: 0
+                        publisher_name: string
+                        advertiser_id: 0
+                        advertiser_name: string
+                        landing_page_id: string
+                        landing_page_name: string
         '400':
           description: Bad Request
           content:
@@ -5012,9 +5080,7 @@ paths:
                   conversions:
                     type: array
                     items:
-                      x-stoplight:
-                        id: 8pf6cb028txhn
-                      type: object
+                      $ref: ./models/Conversion.yaml
                   pagination:
                     type: object
                     properties:
@@ -5513,61 +5579,8 @@ paths:
                 properties:
                   impressions:
                     type: array
-                    properties:
-                      id:
-                        type: string
-                      campaign_id:
-                        type: integer
-                      campaign_long_id:
-                        type: string
-                      campaign_name:
-                        type: string
-                      publisher_id:
-                        type: integer
-                      publisher_long_id:
-                        type: string
-                      publisher_name:
-                        type: string
-                      advertiser_id:
-                        type: integer
-                      advertiser_long_id:
-                        type: string
-                      advertiser_name:
-                        type: string
-                      source:
-                        type: string
-                      ipaddr:
-                        type: string
-                      city:
-                        type: string
-                      region:
-                        type: string
-                      country:
-                        type: string
-                      isp:
-                        type: string
-                      os:
-                        type: string
-                      device:
-                        type: string
-                      browser:
-                        type: string
-                      p1:
-                        type: string
-                      app_id:
-                        type: string
-                      app_name:
-                        type: string
-                      gaid:
-                        type: string
-                      idfa:
-                        type: string
-                      url_id:
-                        type: string
-                      url_title:
-                        type: string
-                      created:
-                        type: string
+                    items:
+                      $ref: ./models/Impression.yaml
                   pagination:
                     type: object
                     properties:

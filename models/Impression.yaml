@@ -1,0 +1,202 @@
+type: object
+x-examples:
+  Example 1:
+    id: Impression ID
+    source: Source
+    ipaddr: IP
+    city: City
+    region: Region
+    isp: Carrier (ISP)
+    p1: P1
+    p2: P2
+    p3: P3
+    p4: P4
+    p5: P5
+    p6: P6
+    p7: P7
+    p8: P8
+    p9: P9
+    p10: P10
+    os: Operating System (OS)
+    referer: Referer
+    currency: Currency
+    payout: Payout
+    revenue: Revenue
+    gaid: GAID
+    idfa: IDFA
+    app_id: App ID
+    app_name: App Name
+    android_id: Android ID
+    cr_name: Creative Name
+    sl: Smart Link ID
+    brand: Device Brand
+    conn: Connection Type
+    ua: User Agent
+    lat: Latitude
+    long: Longitude
+    country: Country (GEO)
+    browser: Browser
+    device: Device
+    created: Created
+    advertiser_id: Advertiser ID
+    advertiser_long_id: Advertiser Long ID
+    advertiser_name: Advertiser Name
+    publisher_id: Publisher ID
+    publisher_long_id: Publisher Long ID
+    publisher_name: Publisher Name
+    publisher_company: Publisher Company
+    campaign_id: Campaign ID
+    campaign_long_id: Campaign Long ID
+    campaign_name: Campaign Name
+    external_offer_id: External Offer ID
+    url_id: Landing Page ID
+    url_long_id: Landing Page Long ID
+    url_title: Landing Page Title
+title: Impression
+description: Trackier Impression schema
+properties:
+  id:
+    type: string
+  source:
+    type:
+      - string
+      - 'null'
+  ipaddr:
+    type: string
+  city:
+    type: string
+  region:
+    type: string
+  isp:
+    type: string
+  p1:
+    type:
+      - string
+      - 'null'
+  p2:
+    type:
+      - string
+      - 'null'
+  p3:
+    type:
+      - string
+      - 'null'
+  p4:
+    type:
+      - string
+      - 'null'
+  p5:
+    type:
+      - string
+      - 'null'
+  p6:
+    type:
+      - string
+      - 'null'
+  p7:
+    type:
+      - string
+      - 'null'
+  p8:
+    type:
+      - string
+      - 'null'
+  p9:
+    type:
+      - string
+      - 'null'
+  p10:
+    type:
+      - string
+      - 'null'
+  os:
+    type: string
+  referer:
+    type: string
+  currency:
+    type: string
+  payout:
+    type: number
+  revenue:
+    type: number
+  gaid:
+    type:
+      - string
+      - 'null'
+  idfa:
+    type:
+      - string
+      - 'null'
+  app_id:
+    type:
+      - string
+      - 'null'
+  app_name:
+    type:
+      - string
+      - 'null'
+  android_id:
+    type:
+      - string
+      - 'null'
+  cr_name:
+    type:
+      - string
+      - 'null'
+  sl:
+    type:
+      - string
+      - 'null'
+  brand:
+    type: string
+  conn:
+    type: string
+  ua:
+    type: string
+  lat:
+    type: number
+  long:
+    type: number
+  country:
+    type: string
+  browser:
+    type: string
+  device:
+    type: string
+  created:
+    type: string
+    format: date-time
+  advertiser_id:
+    type: integer
+  advertiser_long_id:
+    type: string
+  advertiser_name:
+    type: string
+  publisher_id:
+    type: string
+  publisher_long_id:
+    type: string
+  publisher_name:
+    type: string
+  publisher_company:
+    type: string
+  campaign_id:
+    type: integer
+  campaign_long_id:
+    type: string
+  campaign_name:
+    type: string
+  external_offer_id:
+    type: string
+  url_id:
+    type:
+      - string
+      - 'null'
+  url_long_id:
+    type:
+      - string
+      - 'null'
+  url_title:
+    type:
+      - string
+      - 'null'

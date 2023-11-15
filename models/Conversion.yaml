@@ -1,0 +1,273 @@
+type: object
+x-examples:
+  Example 1:
+    id: Conversion ID
+    click_id: Click ID
+    source: Source
+    elapsed_time: Click to Conversion Time
+    click_time: Click Time
+    method: Conversion Method
+    ipaddr: Conversion IP
+    click_ip: Click IP
+    city: City
+    region: Region
+    isp: Carrier (ISP)
+    p1: P1
+    p2: P2
+    p3: P3
+    p4: P4
+    p5: P5
+    p6: P6
+    p7: P7
+    p8: P8
+    p9: P9
+    p10: P10
+    sub1: SUB1
+    sub2: SUB2
+    sub3: SUB3
+    sub4: SUB4
+    sub5: SUB5
+    sub6: SUB6
+    sub7: SUB7
+    sub8: SUB8
+    sub9: SUB9
+    sub10: SUB10
+    os: Operating System (OS)
+    txn_id: Txn ID
+    device_id: Device ID
+    note: Note
+    referer: Pixel Referer
+    click_ref: Click Referer
+    currency: Currency
+    payout: Payout
+    revenue: Revenue
+    sale: Sale Amount
+    gaid: GAID
+    idfa: IDFA
+    app_id: App ID
+    app_name: App Name
+    android_id: Android ID
+    cr_name: Creative Name
+    sl: Smart Link ID
+    brand: Device Brand
+    conn: Connection Type
+    click_ua: Click User Agent
+    lat: Latitude
+    long: Longitude
+    country: Country (GEO)
+    browser: Browser
+    device: Device
+    created: Created
+    status: Status
+    advertiser_id: Advertiser ID
+    advertiser_long_id: Advertiser Long ID
+    advertiser_name: Advertiser Name
+    advertiser_manager_id: Advertiser Manager ID
+    advertiser_manager_name: Advertiser Manager Name
+    publisher_id: Publisher ID
+    publisher_long_id: Publisher Long ID
+    publisher_name: Publisher Name
+    publisher_company: Publisher Company
+    publisher_manager_id: Publisher Manager ID
+    publisher_manager_name: Publisher Manager Name
+    campaign_id: Campaign ID
+    campaign_long_id: Campaign Long ID
+    campaign_name: Campaign Name
+    external_offer_id: External Offer ID
+    goal_id: Goal ID
+    goal_name: Goal Name
+    goal_value: Goal Value
+    url_id: Landing Page ID
+    url_long_id: Landing Page Long ID
+    url_title: Landing Page Title
+    coupon: Coupon Code
+    dl: Device Language
+    vta: View Through Attribution
+    user_id: External User ID
+description: Trackier Conversion Model
+title: Conversion
+properties:
+  id:
+    type: string
+  click_id:
+    type: string
+  source:
+    type:
+      - string
+      - 'null'
+  elapsed_time:
+    type: integer
+  click_time:
+    type: string
+  method:
+    type: string
+  ipaddr:
+    type: string
+  click_ip:
+    type: string
+  city:
+    type: string
+  region:
+    type: string
+  isp:
+    type: string
+  p1:
+    type: string
+  p2:
+    type: string
+  p3:
+    type: string
+  p4:
+    type: string
+  p5:
+    type: string
+  p6:
+    type: string
+  p7:
+    type: string
+  p8:
+    type: string
+  p9:
+    type: string
+  p10:
+    type: string
+  sub1:
+    type: string
+  sub2:
+    type: string
+  sub3:
+    type: string
+  sub4:
+    type: string
+  sub5:
+    type: string
+  sub6:
+    type: string
+  sub7:
+    type: string
+  sub8:
+    type: string
+  sub9:
+    type: string
+  sub10:
+    type: string
+  os:
+    type: string
+  txn_id:
+    type: string
+  device_id:
+    type: string
+  note:
+    type: string
+  referer:
+    type: string
+  click_ref:
+    type: string
+  currency:
+    type: string
+  payout:
+    type: number
+  revenue:
+    type: number
+  sale:
+    type: number
+  gaid:
+    type: string
+  idfa:
+    type: string
+  app_id:
+    type: string
+  app_name:
+    type: string
+  android_id:
+    type: string
+  cr_name:
+    type: string
+  sl:
+    type: string
+  brand:
+    type: string
+  conn:
+    type: string
+  click_ua:
+    type: string
+  lat:
+    type: number
+  long:
+    type: number
+  country:
+    type: string
+  browser:
+    type: string
+  device:
+    type: string
+  created:
+    type: string
+  status:
+    type: string
+  advertiser_id:
+    type: integer
+  advertiser_long_id:
+    type: string
+  advertiser_name:
+    type: string
+  advertiser_manager_id:
+    type: integer
+  advertiser_manager_name:
+    type: string
+  publisher_id:
+    type: integer
+  publisher_long_id:
+    type: string
+  publisher_name:
+    type: string
+  publisher_company:
+    type: string
+  publisher_manager_id:
+    type: integer
+  publisher_manager_name:
+    type: string
+  campaign_id:
+    type: integer
+  campaign_long_id:
+    type: string
+  campaign_name:
+    type: string
+  external_offer_id:
+    type: string
+  goal_id:
+    type:
+      - string
+      - 'null'
+  goal_name:
+    type:
+      - string
+      - 'null'
+  goal_value:
+    type:
+      - string
+      - 'null'
+  url_id:
+    type:
+      - integer
+      - 'null'
+  url_long_id:
+    type:
+      - string
+      - 'null'
+  url_title:
+    type:
+      - string
+      - 'null'
+  coupon:
+    type: string
+  dl:
+    type:
+      - string
+      - 'null'
+  vta:
+    type: integer
+  user_id:
+    type:
+      - string
+      - 'null'
