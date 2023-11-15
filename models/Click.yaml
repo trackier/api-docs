@@ -1,0 +1,244 @@
+title: Click
+x-stoplight:
+  id: kcfu1mcv6sbgz
+x-tags:
+  - click-log
+type: object
+properties:
+  id:
+    type: string
+    x-stoplight:
+      id: wqle1qq8lczmf
+  org_id:
+    type: string
+    x-stoplight:
+      id: 0syjbw2ex9qe2
+  campaign_long_id:
+    type: string
+    x-stoplight:
+      id: ucfxv765ovh5u
+  publisher_long_id:
+    type: string
+    x-stoplight:
+      id: u8tqh65jzba0u
+  advertiser_long_id:
+    type: string
+    x-stoplight:
+      id: 5ibk4ia0zbg4w
+  landing_page_long_id:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: pyesz17ml2fg3
+  source:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: jonqm2cpxp2n9
+  ipaddr:
+    type: string
+    x-stoplight:
+      id: x7m81vl3noifp
+  country:
+    type: string
+    x-stoplight:
+      id: 8qkwmbwajvotz
+  region:
+    type: string
+    x-stoplight:
+      id: kx74ofu6un8xd
+  city:
+    type: string
+    x-stoplight:
+      id: b9ctobuzwr8e8
+  isp:
+    type: string
+    x-stoplight:
+      id: t45mdfb3f4heq
+  device:
+    type: string
+    x-stoplight:
+      id: 9y104ojlifkk6
+  browser:
+    type: string
+    x-stoplight:
+      id: gptoi4eo8tzpx
+  os:
+    type: string
+    x-stoplight:
+      id: opvt7fv7wsyoc
+  user_agent:
+    type: string
+    x-stoplight:
+      id: 9j62v10breuy2
+  referrer:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: c8t714agrnps4
+  is_unique:
+    type: integer
+    x-stoplight:
+      id: h7sx8j6ugqpxg
+    minimum: 0
+    maximum: 1
+  p1:
+    type:
+      - string
+      - 'null'
+  p2:
+    type:
+      - string
+      - 'null'
+  p3:
+    type:
+      - string
+      - 'null'
+  p4:
+    type:
+      - string
+      - 'null'
+  p5:
+    type:
+      - string
+      - 'null'
+  p6:
+    type:
+      - string
+      - 'null'
+  p7:
+    type:
+      - string
+      - 'null'
+  p8:
+    type:
+      - string
+      - 'null'
+  p9:
+    type:
+      - string
+      - 'null'
+  p10:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: 0o1jdwpeg2xy4
+  created:
+    type: string
+    x-stoplight:
+      id: jgvgypu4ph6j9
+    format: date-time
+  note:
+    type: string
+    x-stoplight:
+      id: vao2092q2b9c8
+  referrer_campaign:
+    type: string
+    x-stoplight:
+      id: zdrog8vcou49p
+  gaid:
+    type: string
+    x-stoplight:
+      id: aox5lrds46q7j
+  idfa:
+    type: string
+    x-stoplight:
+      id: 2k3qvgk7r6bkq
+  app_id:
+    type: string
+    x-stoplight:
+      id: a5fa7g8k0bl6r
+  app_name:
+    type: string
+    x-stoplight:
+      id: ypdc1ont47vaf
+  creative_name:
+    type: string
+    x-stoplight:
+      id: fmnabqmah8j76
+  payout:
+    type: number
+    x-stoplight:
+      id: fc82oysexvmt7
+  revenue:
+    type: number
+    x-stoplight:
+      id: 0rfc1zxvaor51
+  curr:
+    type: string
+    x-stoplight:
+      id: ti1xdc4n1qefb
+  is_rejected:
+    type: integer
+    x-stoplight:
+      id: xx2jc9fv4726v
+    minimum: 0
+    maximum: 1
+  brand:
+    type: string
+    x-stoplight:
+      id: 9gfj38gtt7xz2
+  conn:
+    type: string
+    x-stoplight:
+      id: mtpruowhkouuv
+  lat:
+    type: number
+    x-stoplight:
+      id: 402uhm4nmwq4k
+  long:
+    type: number
+    x-stoplight:
+      id: gmw7k30e21si7
+  device_lang:
+    type: string
+    x-stoplight:
+      id: 87vf24d4p9d0y
+  click_domain:
+    type: string
+    x-stoplight:
+      id: w0909ldwkrbhc
+  campaign_id:
+    type: integer
+    x-stoplight:
+      id: 1b0er3boznqvv
+  campaign_name:
+    type: string
+    x-stoplight:
+      id: d95z87xnn7tfs
+  publisher_id:
+    type: integer
+    x-stoplight:
+      id: 0ccr6wrz1w2n9
+  publisher_name:
+    type: string
+    x-stoplight:
+      id: d97ilf4mbniht
+  advertiser_id:
+    type: integer
+    x-stoplight:
+      id: x9zqkj5b494vg
+  advertiser_name:
+    type: string
+    x-stoplight:
+      id: pa3jasq77twzm
+  landing_page_id:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: snuwbq40aeluk
+  landing_page_name:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: t4x1r5gcllr3l
+required:
+  - id
+  - created
+description: Click schema for Trackier
