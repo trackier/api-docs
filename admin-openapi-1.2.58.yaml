@@ -1655,6 +1655,176 @@ paths:
       security:
         - API Key Param: []
       description: Delete thumbnail in a campaign with given id
+  '/v2/campaigns/{id}/s2s-tracking':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        operationId: campaign-thumbnail-update
+        description: Campaign ID (Integer Id or hash ID)
+    post:
+      summary: Edit Campaign S2S Tracking Setting
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                serverSideClicks:
+                  type: integer
+                  x-stoplight:
+                    id: 3kd4gjs022msm
+                  format: int32
+                s2sPubSetting:
+                  x-stoplight:
+                    id: 6q0ohw0y3n7lr
+                  enum:
+                    - include
+                    - exclude
+                s2spubs:
+                  type: array
+                  x-stoplight:
+                    id: 7bzt35hte72ja
+                  description: |
+                    integer id or hash id
+                  items:
+                    x-stoplight:
+                      id: 7xca2iwwkvop4
+                    type: string
+                s2sRedirectUrl:
+                  type: string
+                  x-stoplight:
+                    id: 9hsiauc0fylc0
+                  description: url
+              required:
+                - serverSideClicks
+                - s2sPubSetting
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: ''
+      x-stoplight:
+        id: adsf21lgqfr50
+  '/v2/campaigns/{id}/impression-tracking':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        operationId: campaign-thumbnail-update
+        description: Campaign ID (Integer Id or hash ID)
+    post:
+      summary: Edit Campaign Impression Tracking Setting
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                allowImp:
+                  x-stoplight:
+                    id: qz7gwngmft8xy
+                  enum:
+                    - 0
+                    - 1
+                enableVta:
+                  x-stoplight:
+                    id: 36yd97q2bqpuw
+                  enum:
+                    - 0
+                    - 1
+                whitelistPubsVta:
+                  type: array
+                  description: |
+                    integer id or hash id
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 2agsl8zj6x93t
+                impressionUrl:
+                  type: string
+                  description: url
+                  x-stoplight:
+                    id: brq1o2d4ev5q8
+                serverSideImpression:
+                  x-stoplight:
+                    id: 49ei05obwxx2b
+                  enum:
+                    - 0
+                    - 1
+                specificPubs:
+                  x-stoplight:
+                    id: 6u4ub3dj6ut93
+                  enum:
+                    - include
+                    - exclude
+                s2sPubs:
+                  type: array
+                  x-stoplight:
+                    id: gzzi1qz1p0l47
+                  description: integer id or hash id
+                  items:
+                    x-stoplight:
+                      id: bb58hee4b25wg
+                    type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      description: ''
+      x-stoplight:
+        id: ortf12dkl390l
   /v2/campaigns/timelines:
     get:
       summary: Get Campaigns Timelines.
@@ -3396,6 +3566,282 @@ paths:
       description: Use this endpoint to fetch job
       security:
         - API Key Param: []
+  '/v2/advertisers/{advertiser_id}/caps':
+    get:
+      summary: Find All Advertiser Caps
+      operationId: get-v2-advertiser-caps
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Advertiser's Caps
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: 8mn5dmjab7mpk
+      tags:
+        - Advertiser Caps
+    post:
+      summary: Create Advertiser Cap
+      operationId: post-v2-create-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to create a new advertiser's cap.
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - conversions
+                    - approvedConv
+                    - revenue
+                    - gross
+                pubCapType:
+                  x-stoplight:
+                    id: t1uhyrwtmd7zy
+                  default: group
+                  enum:
+                    - each
+                    - group
+                publishers:
+                  type: array
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 732h3xv06xh66
+                geo:
+                  type: array
+                  x-stoplight:
+                    id: visncovx5q7kd
+                  description: '[''ALL'']'
+                  items:
+                    x-stoplight:
+                      id: 05dycjh97wo2m
+                    type: string
+                    example: '[''ALL'']'
+                daily:
+                  type: integer
+                  x-stoplight:
+                    id: pxh859ggin5kf
+                  format: int32
+                monthly:
+                  type: integer
+                  x-stoplight:
+                    id: dppbygatl58q5
+                  format: int32
+                lifetime:
+                  type: integer
+                  x-stoplight:
+                    id: 6ju2c66q09xqy
+                  format: int32
+              required:
+                - type
+        description: ''
+      x-stoplight:
+        id: 1emvcc7f9t8x1
+      tags:
+        - Advertiser Caps
+    parameters:
+      - schema:
+          type: string
+        name: advertiser_id
+        in: path
+        required: true
+        description: Advertiser's Id
+  '/v2/advertisers/{advertiser_id}/caps/{cap_id}':
+    parameters:
+      - schema:
+          type: string
+        name: advertiser_id
+        in: path
+        required: true
+        description: Advertiser's Id
+      - schema:
+          type: string
+        name: cap_id
+        in: path
+        required: true
+        description: Cap's Id
+    get:
+      summary: Find an Advertiser Cap
+      operationId: get-v2-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch an advertiser's particular cap.
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: gn291pj7qu8py
+      tags:
+        - Advertiser Caps
+    post:
+      summary: Edit Advertiser Cap
+      operationId: post-v2-edit-advertiser-cap-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to update an advertiser's cap.
+      tags:
+        - Advertiser Caps
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - conversions
+                    - approvedConv
+                    - revenue
+                    - gross
+                pubCapType:
+                  x-stoplight:
+                    id: ajxn53wwitxeo
+                  enum:
+                    - each
+                    - group
+                publishers:
+                  type: array
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: 0ng86e5p177kn
+                geo:
+                  type: array
+                  x-stoplight:
+                    id: 7ljv5kj9bxzs2
+                  description: '[''ALL'']'
+                  items:
+                    x-stoplight:
+                      id: y5dnefpsvkwe7
+                    type: string
+                    example: '[''ALL'']'
+                daily:
+                  type: integer
+                  x-stoplight:
+                    id: h8wei2fxex8c1
+                  format: int32
+                monthly:
+                  type: integer
+                  x-stoplight:
+                    id: d4hb385kycfdq
+                  format: int32
+                lifetime:
+                  type: integer
+                  x-stoplight:
+                    id: snybjr415dsk5
+                  format: int32
+        description: ''
+      x-stoplight:
+        id: ge4medo2g3hi6
+    delete:
+      summary: Delete Advertiser Cap
+      operationId: delete-v2-advertiser-cap
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      x-stoplight:
+        id: 6lci0xp2amnyg
+      description: Use this endpoint to delete an adevrtiser's cap.
+      security:
+        - API Key Param: []
+      tags:
+        - Advertiser Caps
   /v2/accounts:
     get:
       summary: Find All Team Members
@@ -6552,7 +6998,7 @@ paths:
         required: true
         description: Domain
     post:
-      summary: Create Tracking Domain
+      summary: Update Tracking Domain
       operationId: post-v2-trackingDomains-domain
       responses:
         '200':
