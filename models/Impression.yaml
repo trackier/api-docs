@@ -54,6 +54,8 @@ x-examples:
     url_title: Landing Page Title
 title: Impression
 description: Trackier Impression schema
+x-tags:
+  - report-logs
 properties:
   id:
     type: string
@@ -173,7 +175,7 @@ properties:
   advertiser_name:
     type: string
   publisher_id:
-    type: string
+    type: integer
   publisher_long_id:
     type: string
   publisher_name:
@@ -200,5 +202,3 @@ properties:
     type:
       - string
       - 'null'
-x-tags:
-  - report-logs

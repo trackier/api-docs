@@ -1732,10 +1732,9 @@ paths:
                     items:
                       $ref: ./models/error.v1.yaml
   '/v2/trackingLink/{campId}/{pubId}':
-    get:
-      summary: Generate campaign tracking link
-      tags:
-        - Campaigns
+    post:
+      summary: Generate Tracking Link
+      operationId: post-v2-trackingLink-campId-pubId
       responses:
         '200':
           description: OK
@@ -1743,56 +1742,50 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  success:
-                    type: boolean
-                  url:
-                    type: string
-                  shortLink:
-                    type: string
-              examples:
-                example-1:
-                  value:
-                    success: true
-                    url: 'http://demo.gotrackier.xyz/click?campaign_id=2201&pub_id=95&source=%7Byour-sub-aff-id%7D&p1=%7Byour-transaction-id%7D'
-                    networkUrl: 'http://demo.gotrackier.xyz/t/OTVfMjIwMQ=/?source=%7Byour-sub-aff-id%7D&p1=%7Byour-transaction-id%7D'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      $ref: ./models/error.v1.yaml
-      parameters:
-        - schema:
-            type: string
-          in: path
-          name: campId
-          required: true
-          description: Campaign Id - numeric or hash ID
-        - schema:
-            type: string
-          in: path
-          name: pubId
-          required: true
-          description: Publisher Id - numeric or hash ID
-        - schema:
-            type: string
-          in: query
-          name: dlurl
-          description: Deeplink Url
-        - schema:
-            type: string
-          in: query
-          name: domain
-          description: Domain
-      description: Generate campaign tracking link
+                properties: {}
+      x-stoplight:
+        id: 4g5bk7ihgc1i5
+      tags:
+        - Campaigns
       security:
         - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  x-stoplight:
+                    id: nqe5mzns1v98l
+                prl:
+                  type: string
+                  x-stoplight:
+                    id: t2g0hhic3qxhe
+                url_id:
+                  type: string
+                  x-stoplight:
+                    id: xkax8yspotbpg
+                random_url:
+                  x-stoplight:
+                    id: wza04ij5ymcbp
+                  enum:
+                    - true
+        description: ''
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+        description: Campaign ID
+      - schema:
+          type: string
+        name: pubId
+        in: path
+        required: true
+        description: Publisher ID
   '/v2/campaigns/{id}/caps':
     parameters:
       - schema:
@@ -3259,6 +3252,77 @@ paths:
             schema:
               type: object
               $ref: '#/components/schemas/BulkConversionUpload'
+  /v2/editConv:
+    post:
+      summary: Conversion Status Change
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: |-
+        This endpoint should be used to change the status of conversion most which is a general use case for ecommerce or brands.
+        Either id, click_id or txn_id + date is required to update a conversion.
+      security:
+        - API Key Param: []
+      requestBody:
+        content: {}
+      x-stoplight:
+        id: ag9jc94dh7bvf
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: id
+          description: Trackier's Conversion ID
+        - schema:
+            type: string
+          in: query
+          name: click_id
+          description: Trackier's Click ID
+        - schema:
+            type: string
+          in: query
+          name: txn_id
+          description: Trackier's Transaction ID
+        - schema:
+            type: string
+            enum:
+              - approved
+              - pending
+              - cancelled
+              - rejected
+          in: query
+          name: status
+          description: Status of conversion
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: date
+          description: Date of conversion
+      operationId: ''
+    parameters: []
   /v2/jobs:
     get:
       summary: Find All Jobs
@@ -3332,6 +3396,175 @@ paths:
       description: Use this endpoint to fetch job
       security:
         - API Key Param: []
+  /v2/accounts:
+    get:
+      summary: Find All Team Members
+      operationId: get-v2-team-members
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch all Team Members.
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: 8028ah65c4a0b
+      tags:
+        - Team Members
+    post:
+      summary: Add Team Member
+      operationId: post-v2-add-team-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to add team member.
+      tags:
+        - Team Members
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  x-stoplight:
+                    id: s7opu29c3gpza
+                email:
+                  x-stoplight:
+                    id: bv6g04lz4slki
+                  type: string
+                type:
+                  type: string
+                status:
+                  enum:
+                    - active
+                    - inactive
+              required:
+                - name
+                - email
+                - type
+                - status
+        description: ''
+      x-stoplight:
+        id: yx5h6qgkn6e4a
+    parameters: []
+  '/v2/accounts/{account_id}':
+    get:
+      summary: Find Team Member
+      operationId: get-v2-team-member
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to fetch a Team Member.
+      security:
+        - API Key Param: []
+      tags:
+        - Team Members
+      x-stoplight:
+        id: d4ztqwsoomrf7
+    post:
+      summary: Edit Team Member
+      operationId: post-v2-edit-team-member
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      description: Use this endpoint to edit team member.
+      tags:
+        - Team Members
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                type:
+                  type: string
+                status:
+                  enum:
+                    - active
+                    - inactive
+        description: ''
+      x-stoplight:
+        id: b9j6318zuk8hp
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+        description: Account Id
   /v2/postback:
     get:
       summary: Get All Postbacks
