@@ -8337,6 +8337,20 @@ paths:
       description: Use this endpoint to find conversion id using txn_id + date
       security:
         - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: txn_id
+          required: true
+          description: Transaction ID
+        - schema:
+            type: string
+            format: date
+          in: query
+          name: date
+          description: Date in YYYY-MM-DD format
+          required: true
 components:
   schemas:
     UserCreate:
