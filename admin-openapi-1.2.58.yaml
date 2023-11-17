@@ -8268,6 +8268,75 @@ paths:
         - API Key Param: []
       x-stoplight:
         id: 2tbjjsh0jcg7n
+  /v2/reports/findConv:
+    get:
+      summary: Find Conversion by txn_id
+      tags:
+        - reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    x-stoplight:
+                      id: w6c215jidajpq
+                  conversion:
+                    type: object
+                    x-stoplight:
+                      id: wo0cmo93ig0vd
+                    properties:
+                      id:
+                        type: string
+                        x-stoplight:
+                          id: 32bd23jkfonbo
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    conversion:
+                      id: 6555e84ff46971690067a2f7
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    x-stoplight:
+                      id: 1lhrt30bizfa3
+                    default: false
+                  errors:
+                    type: array
+                    x-stoplight:
+                      id: g0nuva2o6ftnh
+                    items:
+                      $ref: ./models/error.v1.yaml
+              examples:
+                Example 1:
+                  value:
+                    success: false
+                    errors:
+                      - message: 'No conversion found with txn_id: xxx and date: 2023-11-16'
+                        codeMsg: RESOURCE_NOT_FOUND
+                        code: '109'
+                        statusCode: 404
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-v2-reports-findConv
+      x-stoplight:
+        id: fibzvz3vlv40f
+      description: Use this endpoint to find conversion id using txn_id + date
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:
