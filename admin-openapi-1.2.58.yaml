@@ -5743,6 +5743,92 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+  /v2/reports/adjuststats:
+    parameters: []
+    post:
+      summary: Adjust Stats
+      operationId: post-v2-reports-adjuststats
+      responses:
+        '200':
+          description: OK
+      x-stoplight:
+        id: 3cdtzbwq6442w
+      tags:
+        - Reports
+      description: Adjust Stats
+      parameters: []
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  x-stoplight:
+                    id: ot1csjc9kwknv
+                  enum:
+                    - conversions
+                    - clicks
+                    - impressions
+                date:
+                  type: string
+                  x-stoplight:
+                    id: iuy9hxxinq3nr
+                  description: yyyy-mm-dd
+                publisherId:
+                  type: string
+                  x-stoplight:
+                    id: tkoviuxau0pt7
+                  description: Publisher's ID
+                campaignId:
+                  type: string
+                  x-stoplight:
+                    id: 8wpqzgm58gzep
+                  description: Campaign's ID
+                action:
+                  x-stoplight:
+                    id: j8gjqe8eopuj0
+                  enum:
+                    - add
+                    - remove
+                quantity:
+                  type: number
+                  x-stoplight:
+                    id: hnhq26uspoh6n
+                  minimum: 1
+                goal:
+                  type: string
+                  x-stoplight:
+                    id: 6ehxi668vv402
+                  description: Goal ID
+                country:
+                  type: string
+                  x-stoplight:
+                    id: c8vzfr161pwpi
+                currency:
+                  type: string
+                  x-stoplight:
+                    id: 6vwzzunknr7z3
+                payout:
+                  type: number
+                  x-stoplight:
+                    id: s4qnn9c2qji3r
+                  minimum: 0
+                revenue:
+                  type: number
+                  x-stoplight:
+                    id: 55spe3hp92e6y
+                  minimum: 0
+              required:
+                - type
+                - date
+                - publisherId
+                - campaignId
+                - action
+                - quantity
+        description: ''
   /v2/network/conversions:
     get:
       summary: Conversion Report Logs
