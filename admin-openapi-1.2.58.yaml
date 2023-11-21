@@ -5807,10 +5807,6 @@ paths:
                   type: string
                   x-stoplight:
                     id: c8vzfr161pwpi
-                currency:
-                  type: string
-                  x-stoplight:
-                    id: 6vwzzunknr7z3
                 payout:
                   type: number
                   x-stoplight:
