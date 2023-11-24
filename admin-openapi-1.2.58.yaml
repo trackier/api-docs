@@ -3493,6 +3493,9 @@ paths:
           description: Date of conversion
         - schema:
             type: boolean
+            enum:
+              - 'true'
+              - 'false'
           in: header
           name: is_multiple
           description: Use this header to update multiple conversions with same txn id and same date.
