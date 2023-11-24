@@ -3491,6 +3491,11 @@ paths:
           in: query
           name: date
           description: Date of conversion
+        - schema:
+            type: boolean
+          in: header
+          name: is_multiple
+          description: Use this header to update multiple conversions with same txn id and same date.
       operationId: ''
     parameters: []
   /v2/jobs:
