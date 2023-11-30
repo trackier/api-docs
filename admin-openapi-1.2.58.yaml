@@ -5790,6 +5790,11 @@ paths:
                   x-stoplight:
                     id: tkoviuxau0pt7
                   description: Publisher's ID
+                publisherRefId:
+                  type: string
+                  x-stoplight:
+                    id: gfvl0xjhn3efv
+                  description: Publisher's ID
                 campaignId:
                   type: string
                   x-stoplight:
@@ -5828,7 +5833,6 @@ paths:
               required:
                 - type
                 - date
-                - publisherId
                 - campaignId
                 - action
                 - quantity
