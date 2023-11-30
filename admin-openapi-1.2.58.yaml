@@ -5790,16 +5790,16 @@ paths:
                   x-stoplight:
                     id: tkoviuxau0pt7
                   description: Publisher's ID
-                publisherRefId:
-                  type: string
-                  x-stoplight:
-                    id: gfvl0xjhn3efv
-                  description: Publisher's ID
                 campaignId:
                   type: string
                   x-stoplight:
                     id: 8wpqzgm58gzep
                   description: Campaign's ID
+                publisherRefId:
+                  type: string
+                  x-stoplight:
+                    id: gfvl0xjhn3efv
+                  description: Publisher's Reference Id
                 action:
                   x-stoplight:
                     id: j8gjqe8eopuj0
