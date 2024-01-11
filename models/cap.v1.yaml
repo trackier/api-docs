@@ -34,6 +34,11 @@ properties:
       - pendingPayout
       - pendingRevenue
       - saleAmount
+      - netRevenue
+      - uniqueClicks
+      - clicks
+      - grossRevenue
+    description: '`clicks`: clicks excluding rejected clicks'
   daily:
     type:
       - number
