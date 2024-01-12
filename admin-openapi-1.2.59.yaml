@@ -2069,7 +2069,6 @@ paths:
         description: ''
       tags:
         - Campaign Caps
-        - Campaigns
       description: Edit a campaign cap
     delete:
       summary: Delete a Cap
