@@ -9390,6 +9390,11 @@ components:
             - pendingPayout
             - pendingRevenue
             - saleAmount
+            - netRevenue
+            - uniqueClicks
+            - clicks
+            - grossRevenue
+          description: '`clicks`: clicks excluding rejected clicks'
         goalId:
           type: string
         publisherIds:
