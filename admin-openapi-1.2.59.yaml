@@ -7877,6 +7877,19 @@ paths:
                     type: array
                     items:
                       $ref: ./models/coupon.v1.yaml
+                  pagination:
+                    type: object
+                    x-stoplight:
+                      id: gey67yrx8mg4f
+                    properties:
+                      perPage:
+                        type: number
+                        x-stoplight:
+                          id: sr4bwzidx187n
+                      currentPage:
+                        type: number
+                        x-stoplight:
+                          id: 2lu0vwkj2vtgc
         '400':
           description: Bad Request
           content:
@@ -7900,6 +7913,12 @@ paths:
           in: query
           name: page
           description: Specify the page number to paginate through results
+        - schema:
+            type: integer
+            example: '&limit=10'
+          in: query
+          name: limit
+          description: Limit the number of items returned per page
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
