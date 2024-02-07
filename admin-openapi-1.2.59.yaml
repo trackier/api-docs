@@ -7888,11 +7888,18 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to fetch all Categories
+      description: Use this endpoint to fetch all Coupon Codes.
       tags:
         - Coupons
       security:
         - API Key Param: []
+      parameters:
+        - schema:
+            type: integer
+            example: '&page=2'
+          in: query
+          name: page
+          description: Specify the page number to paginate through results
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
