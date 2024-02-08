@@ -7919,6 +7919,12 @@ paths:
           in: query
           name: limit
           description: Limit the number of items returned per page
+        - schema:
+            type: string
+            example: '&code=CC30'
+          in: query
+          name: code
+          description: To filter coupons with code
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
