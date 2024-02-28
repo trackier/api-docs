@@ -8674,6 +8674,8 @@ components:
       title: BulkConversionUpload
       type: object
       description: Schema to Upload Bulk Conversions
+      required:
+        - data
       properties:
         data:
           type: array
@@ -8762,11 +8764,16 @@ components:
                 type: string
               click_time:
                 type: string
+        firePostback:
+          type: string
+          enum:
+            - yes
+            - refire
         fetchIpDetails:
           type: boolean
           description: 'Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP'
-      required:
-        - data
+          x-stoplight:
+            id: em7bqiswcxyp4
     SubAccountEdit:
       title: SubAccountEdit
       type: object
