@@ -5651,6 +5651,11 @@ paths:
           in: query
           name: pub_ids
           description: 'To filter the report for particular publi add publisher id in query parameters like: &pub_ids[]=16&pub_ids[]=30'
+        - schema:
+            type: string
+          in: query
+          name: click_id
+          description: To see a specific log with click_id
   /v2/reports/fraud:
     get:
       summary: Fraud Report
@@ -8674,8 +8679,6 @@ components:
       title: BulkConversionUpload
       type: object
       description: Schema to Upload Bulk Conversions
-      required:
-        - data
       properties:
         data:
           type: array
@@ -8767,13 +8770,15 @@ components:
         firePostback:
           type: string
           enum:
-            - yes
+            - 'yes'
             - refire
         fetchIpDetails:
           type: boolean
           description: 'Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP'
           x-stoplight:
             id: em7bqiswcxyp4
+      required:
+        - data
     SubAccountEdit:
       title: SubAccountEdit
       type: object
