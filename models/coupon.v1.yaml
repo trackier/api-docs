@@ -33,10 +33,10 @@ properties:
     enum:
       - active
       - pending
-      - future
+      - expired
   type:
     type: string
-    enum: 
+    enum:
       - generic
       - exclusive
       - one_time
@@ -44,7 +44,7 @@ properties:
     type: array
     items:
       type: object
-      properties: 
+      properties:
         model:
           type: string
         currency:
