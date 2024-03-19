@@ -7895,6 +7895,10 @@ paths:
                         type: number
                         x-stoplight:
                           id: 2lu0vwkj2vtgc
+                      total:
+                        type: number
+                        x-stoplight:
+                          id: 7ho50gybwxxso
         '400':
           description: Bad Request
           content:
@@ -7917,19 +7921,25 @@ paths:
             example: '&page=2'
           in: query
           name: page
-          description: Specify the page number to paginate through results
+          description: Specify the page number to paginate through results.
         - schema:
             type: integer
             example: '&limit=10'
           in: query
           name: limit
-          description: Limit the number of items returned per page
+          description: Limit the number of items returned per page.
         - schema:
             type: string
             example: '&code=CC30'
           in: query
           name: code
-          description: To filter coupons with code
+          description: To filter coupons with code.
+        - schema:
+            type: string
+            example: '&status=pending'
+          in: query
+          name: status
+          description: To filter coupons with their status.
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
