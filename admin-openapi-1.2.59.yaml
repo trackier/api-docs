@@ -8848,7 +8848,13 @@ components:
                 - US
       x-tags:
         - Campaigns
-      description: ''
+      required:
+        - advertiserId
+        - title
+        - url
+        - currency
+        - convTracking
+        - payouts
       properties:
         advertiserId:
           oneOf:
@@ -9003,7 +9009,7 @@ components:
           maximum: 1
         redirectType:
           type: string
-          default: '302'
+          default: 302
           enum:
             - '302'
             - 302_hrf
@@ -9086,6 +9092,13 @@ components:
           maximum: 1
         overrideAppNameWithCsvValues:
           type: integer
+        overrideCreativeName:
+          type: string
+          x-stoplight:
+            id: kqatd2181dvab
+          enum:
+            - 'yes'
+            - 'no'
         blockedPubs:
           type: array
           items:
@@ -9096,6 +9109,10 @@ components:
           type: array
           items:
             type: object
+            required:
+              - payout
+              - revenue
+              - geo
             properties:
               payout:
                 type: number
@@ -9107,10 +9124,6 @@ components:
                 type: array
                 items:
                   type: string
-            required:
-              - payout
-              - revenue
-              - geo
         startTime:
           type: string
           format: 'YYYY-MM-DDTHH:MM:ssZ'
@@ -9119,13 +9132,6 @@ components:
           type: string
           format: 'YYYY-MM-DD HH:MM:ssZ'
           example: '2020-02-02T21:00:00Z'
-      required:
-        - advertiserId
-        - title
-        - url
-        - currency
-        - convTracking
-        - payouts
     CampaignEdit:
       title: Campaign
       type: object
@@ -9147,7 +9153,6 @@ components:
                 - US
       x-tags:
         - Campaigns
-      description: ''
       properties:
         advertiserId:
           oneOf:
@@ -9302,7 +9307,7 @@ components:
           maximum: 1
         redirectType:
           type: string
-          default: '302'
+          default: 302
           enum:
             - '302'
             - 302_hrf
@@ -9328,6 +9333,13 @@ components:
           type: string
         overrideAppNameWithCsvValues:
           type: integer
+        overrideCreativeName:
+          type: string
+          x-stoplight:
+            id: hvocd2m8mla6d
+          enum:
+            - 'yes'
+            - 'no'
         blacklistPostbackPubs:
           type: array
           items:
@@ -9395,6 +9407,10 @@ components:
           type: array
           items:
             type: object
+            required:
+              - payout
+              - revenue
+              - geo
             properties:
               payout:
                 type: number
@@ -9406,10 +9422,6 @@ components:
                 type: array
                 items:
                   type: string
-            required:
-              - payout
-              - revenue
-              - geo
         startTime:
           type: string
           format: 'YYYY-MM-DDTHH:MM:ssZ'

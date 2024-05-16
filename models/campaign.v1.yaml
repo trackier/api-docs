@@ -3,6 +3,12 @@ type: object
 description: Campaign Model
 x-tags:
   - Models
+required:
+  - id
+  - advertiserId
+  - hashId
+  - title
+  - url
 properties:
   id:
     type: integer
@@ -173,7 +179,15 @@ properties:
     default: 1
   overrideAppNameWithCsvValues:
     type: integer
-    default: Null
+    default: null
+  overrideCreativeName:
+    type: string
+    default: 'no'
+    x-stoplight:
+      id: d5qf7maglaglm
+    enum:
+      - 'yes'
+      - 'no'
   hops:
     type: integer
   convPending:
@@ -274,7 +288,7 @@ properties:
       type: string
   accountManager:
     type: object
-    properties: 
+    properties:
       id:
         type: string
       name:
@@ -283,16 +297,10 @@ properties:
         type: string
   salesManager:
     type: object
-    properties: 
+    properties:
       id:
         type: string
       name:
         type: string
       email:
         type: string
-required:
-  - id
-  - advertiserId
-  - hashId
-  - title
-  - url
