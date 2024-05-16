@@ -182,7 +182,6 @@ properties:
     default: null
   overrideCreativeName:
     type: string
-    default: 'no'
     x-stoplight:
       id: d5qf7maglaglm
     enum:
