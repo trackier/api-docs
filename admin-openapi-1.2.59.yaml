@@ -9086,6 +9086,11 @@ components:
           maximum: 1
         overrideAppNameWithCsvValues:
           type: integer
+        overrideCreativeName:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
         blockedPubs:
           type: array
           items:
@@ -9328,6 +9333,11 @@ components:
           type: string
         overrideAppNameWithCsvValues:
           type: integer
+        overrideCreativeName:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
         blacklistPostbackPubs:
           type: array
           items:
