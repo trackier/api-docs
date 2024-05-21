@@ -5132,6 +5132,7 @@ paths:
                         created: '2022-02-08 00:03:28'
                         note: null
                         referrer_campaign: null
+                        gclid: ''
                         gaid: null
                         idfa: null
                         app_id: null
