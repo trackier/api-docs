@@ -9444,6 +9444,13 @@ components:
           daily: '10'
           geo:
             - ALL
+      x-tags:
+        - Campaign Caps
+      description: Cap Model to create/edit cap
+      required:
+        - type
+        - visibility
+        - pubCapType
       properties:
         type:
           type: string
@@ -9487,10 +9494,13 @@ components:
               - type: integer
         daily:
           type: number
+          minimum: 1
         monthly:
           type: number
+          minimum: 1
         lifetime:
           type: number
+          minimum: 1
         geo:
           type: array
           items:
@@ -9500,14 +9510,6 @@ components:
           enum:
             - blank
             - fallback_link
-      required:
-        - type
-        - visibility
-        - pubCapType
-        - daily
-      x-tags:
-        - Campaign Caps
-      description: Cap Model to create/edit cap
     LandingPage:
       title: LandingPage
       type: object
