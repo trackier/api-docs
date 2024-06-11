@@ -6008,229 +6008,194 @@ paths:
               examples:
                 sample-conversion-log-resp:
                   value:
-                    conversions:
-                      - id: 5fc776b022098a06b16fdd4d
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:12:48.000Z'
-                      - id: 5fc77751b7dfd906ba282960
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:15:29.000Z'
-                      - id: 5fc7765222098a06b16fd357
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:11:14.000Z'
-                      - id: 5fc776a25f66d106a418a51b
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:12:34.000Z'
-                      - id: 5fc77aef5f66d106a4191a5f
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:30:55.000Z'
-                      - id: 5fc777d9b7dfd906ba2837c9
-                        click_id: 5fc775b41c37da0490305cd4
-                        campaign_id: 21607
-                        campaign_name: Test extra
-                        publisher_id: 2
-                        publisher_name: Pied Piper
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: Default
-                        url_id: null
-                        url_title: Default
-                        currency: INR
-                        payout: 0
-                        revenue: 0
-                        sale: 0
-                        status: approved
-                        click_time: '2020-12-02T11:08:36.000Z'
-                        created: '2020-12-02T11:17:45.000Z'
-                      - id: 5fd9c27530c60e07404dd402
-                        click_id: 5fd9ad3df29e1a282b6e5a58
-                        campaign_id: 16
-                        campaign_name: Traffic Arbitrage Book 2
-                        publisher_id: 31
-                        publisher_name: account
-                        advertiser_id: 3
-                        advertiser_name: Demo Advertiser
-                        goal_id: ''
-                        goal_name: CPA
-                        url_id: null
-                        url_title: Default
-                        currency: USD
-                        payout: 5.5
-                        revenue: 1.5
-                        sale: 0
-                        status: pending
-                        click_time: '2020-12-16T06:46:21.000Z'
-                        created: '2020-12-16T08:16:53.000Z'
-                        modified: '2020-12-16T08:17:30.000Z'
-                    columns:
-                      id: Conversion ID
-                      click_id: Click ID
-                      source: Source
-                      elapsed_time: Click to Conversion Time
-                      click_time: Click Time
-                      method: Conversion Method
-                      ipaddr: Conversion IP
-                      click_ip: Click IP
-                      city: City
-                      region: Region
-                      isp: Carrier (ISP)
-                      p1: P1
-                      p2: P2
-                      p3: P3
-                      p4: P4
-                      p5: P5
-                      p6: P6
-                      p7: P7
-                      p8: P8
-                      p9: P9
-                      p10: P10
-                      sub1: SUB1
-                      sub2: SUB2
-                      sub3: SUB3
-                      sub4: SUB4
-                      sub5: SUB5
-                      sub6: SUB6
-                      sub7: SUB7
-                      sub8: SUB8
-                      sub9: SUB9
-                      sub10: SUB10
-                      os: Operating System (OS)
-                      txn_id: Txn ID
-                      device_id: Device ID
-                      note: Note
-                      referer: Pixel Referer
-                      click_ref: Click Referer
-                      currency: Currency
-                      payout: Payout
-                      revenue: Revenue
-                      sale: Sale Amount
-                      gaid: GAID
-                      idfa: IDFA
-                      app_id: App ID
-                      app_name: App Name
-                      android_id: Android ID
-                      cr_name: Creative Name
-                      sl: Smart Link ID
-                      brand: Device Brand
-                      conn: Connection Type
-                      click_ua: Click User Agent
-                      lat: Latitude
-                      long: Longitude
-                      country: Country (GEO)
-                      browser: Browser
-                      device: Device
-                      created: Created
-                      status: Status
-                      advertiser_id: Advertiser ID
-                      advertiser_long_id: Advertiser Long ID
-                      advertiser_name: Advertiser Name
-                      advertiser_manager_id: Advertiser Manager ID
-                      advertiser_manager_name: Advertiser Manager Name
-                      publisher_id: Publisher ID
-                      publisher_long_id: Publisher Long ID
-                      publisher_name: Publisher Name
-                      publisher_company: Publisher Company
-                      publisher_manager_id: Publisher Manager ID
-                      publisher_manager_name: Publisher Manager Name
-                      campaign_id: Campaign ID
-                      campaign_long_id: Campaign Long ID
-                      campaign_name: Campaign Name
-                      external_offer_id: External Offer ID
-                      goal_id: Goal ID
-                      goal_name: Goal Name
-                      goal_value: Goal Value
-                      url_id: Landing Page ID
-                      url_long_id: Landing Page Long ID
-                      url_title: Landing Page Title
-                      coupon: Coupon Code
-                      dl: Device Language
-                      vta: View Through Attribution
-                      user_id: External User ID
+                    success: true
+                    logs:
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663df234427d5005192f60c2
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
+                        latency: 40 ms
+                        created: '2024-05-10T10:08:52.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663df23400783605108b8a68
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
+                        latency: 23 ms
+                        created: '2024-05-10T10:08:52.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663debe4e6ae2404c7865a0d
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
+                        latency: 26 ms
+                        created: '2024-05-10T09:41:56.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663debe4007836051088d0c1
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
+                        latency: 37 ms
+                        created: '2024-05-10T09:41:56.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663deb56e6ae2404c7861902
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
+                        latency: 38 ms
+                        created: '2024-05-10T09:39:35.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663deb560078360510889470
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
+                        latency: 42 ms
+                        created: '2024-05-10T09:39:34.000Z'
+                      - postback_id: 663de93b755e48264a4bf7b6
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 30240) nidhi senwal'
+                        conversion_id: 663de996427d5005192ba660
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
+                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
+                        latency: 45 ms
+                        created: '2024-05-10T09:32:06.000Z'
+                      - postback_id: 60ed64f7c1bb94678b68fbb4
+                        campaign: '(ID: 16) Traffic Arbitrage book'
+                        publisher: '(ID: 31) Test publisher'
+                        conversion_id: 663b61a6edab950970d8148c
+                        status: '400'
+                        attempts: 1
+                        full_url: 'https://demo.affise.com/postback?clickid=test'
+                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        latency: 47 ms
+                        created: '2024-05-08T11:27:34.000Z'
+                      - postback_id: 60ed64f7c1bb94678b68fbb4
+                        campaign: '(ID: 16) Traffic Arbitrage book'
+                        publisher: '(ID: 31) Test publisher'
+                        conversion_id: 663b61a5edab950970d81454
+                        status: '400'
+                        attempts: 1
+                        full_url: 'https://demo.affise.com/postback?clickid=test'
+                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        latency: 46 ms
+                        created: '2024-05-08T11:27:34.000Z'
+                      - postback_id: 60ed64f7c1bb94678b68fbb4
+                        campaign: '(ID: 16) Traffic Arbitrage book'
+                        publisher: '(ID: 31) Test publisher'
+                        conversion_id: 663b61a6edab950970d81479
+                        status: '400'
+                        attempts: 1
+                        full_url: 'https://demo.affise.com/postback?clickid=test'
+                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        latency: 32 ms
+                        created: '2024-05-08T11:27:34.000Z'
+                      - postback_id: 5f520cd09e043007c64e10a8
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 7) Sharique Khan'
+                        conversion_id: 663b4e6948fcf505900861a1
+                        status: '404'
+                        attempts: 1
+                        full_url: "https://requestbin.appattribution.io/1071q751?ck={transaction_id}&conversion=663b4e6948fcf505900861a1&foo=bar&date=2024-05-08 15:35:29&goal=\r\n"
+                        latency: 73 ms
+                        created: '2024-05-08T10:05:29.000Z'
+                      - postback_id: 65a50c3c3dad6e0ea91fa369
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 7) Sharique Khan'
+                        conversion_id: 663b4e6948fcf505900861a1
+                        status: '404'
+                        attempts: 1
+                        full_url: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
+                        resp_body: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
+                        latency: 75 ms
+                        created: '2024-05-08T10:05:29.000Z'
+                      - postback_id: 62442aed13954425a6009f48
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 7) Sharique Khan'
+                        conversion_id: 663b4e6948fcf505900861a1
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
+                        resp_body: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
+                        latency: 397 ms
+                        created: '2024-05-08T10:05:29.000Z'
+                      - postback_id: 60e2adffcc773a0ea87c0d18
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 7) Sharique Khan'
+                        conversion_id: 663b4e6948fcf505900861a1
+                        status: '500'
+                        attempts: 5
+                        full_url: 'https://aff.postback.com?sub1={transaction_id}'
+                        created: '2024-05-08T10:05:29.000Z'
+                      - postback_id: 65e6cab70db27d4a440d406a
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 2) Pied Piper'
+                        conversion_id: 663b4e31b6adda05fd9b07ca
+                        status: '500'
+                        attempts: 5
+                        full_url: 'https://demo.trackier.xyz/postback/add.html?type=publisher'
+                        created: '2024-05-08T10:04:35.000Z'
+                      - postback_id: 64abef8d0eba47616b752d11
+                        campaign: '(ID: 23600) test'
+                        publisher: '(ID: 2) Pied Piper'
+                        conversion_id: 663b4e31b6adda05fd9b07ca
+                        status: '500'
+                        attempts: 5
+                        full_url: 'www.trackier.acquisition,.hbiwediuw&subid={transaction_id}'
+                        created: '2024-05-08T10:04:33.000Z'
+                      - postback_id: 63ce6a32fc75a471b9713942
+                        campaign: '(ID: 23596) test-cpc-jio'
+                        publisher: '(ID: 5) Letmecoupons'
+                        conversion_id: 66322edb681e7b04f14e7a34
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        resp_body: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        latency: 37 ms
+                        created: '2024-05-01T12:00:28.000Z'
+                      - postback_id: 64bf7e7c1d567442e34b8ab8
+                        campaign: '(ID: 23596) test-cpc-jio'
+                        publisher: '(ID: 5) Letmecoupons'
+                        conversion_id: 66322edb681e7b04f14e7a34
+                        status: '404'
+                        attempts: 1
+                        full_url: 'https://requestbin.appattribution.io/1g2zhcv1?payout=0&click_id={transaction_id}'
+                        latency: 85 ms
+                        created: '2024-05-01T12:00:28.000Z'
+                      - postback_id: 63ce6a332362181b893268de
+                        campaign: '(ID: 23596) test-cpc-jio'
+                        publisher: '(ID: 5) Letmecoupons'
+                        conversion_id: 66322edb681e7b04f14e7a34
+                        status: '200'
+                        attempts: 1
+                        full_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        resp_body: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        latency: 40 ms
+                        created: '2024-05-01T12:00:28.000Z'
                     pagination:
-                      perPage: 100
-                      currentPage: 2
-                      total: 107
+                      perPage: 19
+                      currentPage: 1
+                      total: 19
         '400':
           description: Bad Request
           content:
