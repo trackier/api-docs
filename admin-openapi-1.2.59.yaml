@@ -6225,17 +6225,17 @@ paths:
         - schema:
             type: string
             example: '2024-01-01'
+            default: today
           in: query
           name: start
           description: Start Date in YYYY-MM-DD format
-          required: true
         - schema:
             type: string
             example: '2024-01-10'
+            default: today
           in: query
           name: end
           description: End Date in YYYY-MM-DD format
-          required: true
         - schema:
             type: array
           in: query
