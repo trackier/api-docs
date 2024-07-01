@@ -6018,8 +6018,8 @@ paths:
                         conversion_id: 663df234427d5005192f60c2
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2='
                         latency: 40 ms
                         created: '2024-05-10T10:08:52.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6028,8 +6028,8 @@ paths:
                         conversion_id: 663df23400783605108b8a68
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663df22c0647730344ed739d&security_token=4200528b323c151aee74&sub2=Registration'
                         latency: 23 ms
                         created: '2024-05-10T10:08:52.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6038,8 +6038,8 @@ paths:
                         conversion_id: 663debe4e6ae2404c7865a0d
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663debdb0143990344689379&security_token=4200528b323c151aee74&sub2=Registration'
                         latency: 26 ms
                         created: '2024-05-10T09:41:56.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6048,8 +6048,8 @@ paths:
                         conversion_id: 663debe4007836051088d0c1
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663debdcbfc32f0340f002a5&security_token=4200528b323c151aee74&sub2='
                         latency: 37 ms
                         created: '2024-05-10T09:41:56.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6058,8 +6058,8 @@ paths:
                         conversion_id: 663deb56e6ae2404c7861902
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2=Registration'
                         latency: 38 ms
                         created: '2024-05-10T09:39:35.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6068,8 +6068,8 @@ paths:
                         conversion_id: 663deb560078360510889470
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663deb46b198710345bf11cc&security_token=4200528b323c151aee74&sub2='
                         latency: 42 ms
                         created: '2024-05-10T09:39:34.000Z'
                       - postback_id: 663de93b755e48264a4bf7b6
@@ -6078,8 +6078,8 @@ paths:
                         conversion_id: 663de996427d5005192ba660
                         status: '200'
                         attempts: 1
-                        full_url: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
-                        resp_body: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
+                        request_url: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
+                        server_message: 'https://test33.trackier.co/acquisition?click_id=663de9875a9cd8034504ed4d&security_token=4200528b323c151aee74&sub2='
                         latency: 45 ms
                         created: '2024-05-10T09:32:06.000Z'
                       - postback_id: 60ed64f7c1bb94678b68fbb4
@@ -6088,8 +6088,8 @@ paths:
                         conversion_id: 663b61a6edab950970d8148c
                         status: '400'
                         attempts: 1
-                        full_url: 'https://demo.affise.com/postback?clickid=test'
-                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        request_url: 'https://demo.affise.com/postback?clickid=test'
+                        server_message: 'https://demo.affise.com/postback?clickid=test'
                         latency: 47 ms
                         created: '2024-05-08T11:27:34.000Z'
                       - postback_id: 60ed64f7c1bb94678b68fbb4
@@ -6098,8 +6098,8 @@ paths:
                         conversion_id: 663b61a5edab950970d81454
                         status: '400'
                         attempts: 1
-                        full_url: 'https://demo.affise.com/postback?clickid=test'
-                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        request_url: 'https://demo.affise.com/postback?clickid=test'
+                        server_message: 'https://demo.affise.com/postback?clickid=test'
                         latency: 46 ms
                         created: '2024-05-08T11:27:34.000Z'
                       - postback_id: 60ed64f7c1bb94678b68fbb4
@@ -6108,8 +6108,8 @@ paths:
                         conversion_id: 663b61a6edab950970d81479
                         status: '400'
                         attempts: 1
-                        full_url: 'https://demo.affise.com/postback?clickid=test'
-                        resp_body: 'https://demo.affise.com/postback?clickid=test'
+                        request_url: 'https://demo.affise.com/postback?clickid=test'
+                        server_message: 'https://demo.affise.com/postback?clickid=test'
                         latency: 32 ms
                         created: '2024-05-08T11:27:34.000Z'
                       - postback_id: 5f520cd09e043007c64e10a8
@@ -6118,7 +6118,7 @@ paths:
                         conversion_id: 663b4e6948fcf505900861a1
                         status: '404'
                         attempts: 1
-                        full_url: "https://requestbin.appattribution.io/1071q751?ck={transaction_id}&conversion=663b4e6948fcf505900861a1&foo=bar&date=2024-05-08 15:35:29&goal=\r\n"
+                        request_url: "https://requestbin.appattribution.io/1071q751?ck={transaction_id}&conversion=663b4e6948fcf505900861a1&foo=bar&date=2024-05-08 15:35:29&goal=\r\n"
                         latency: 73 ms
                         created: '2024-05-08T10:05:29.000Z'
                       - postback_id: 65a50c3c3dad6e0ea91fa369
@@ -6127,8 +6127,8 @@ paths:
                         conversion_id: 663b4e6948fcf505900861a1
                         status: '404'
                         attempts: 1
-                        full_url: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
-                        resp_body: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
+                        request_url: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
+                        server_message: 'https://requestbin.offersoptimize.com/15izkrb1?city=Noida&country=IN'
                         latency: 75 ms
                         created: '2024-05-08T10:05:29.000Z'
                       - postback_id: 62442aed13954425a6009f48
@@ -6137,8 +6137,8 @@ paths:
                         conversion_id: 663b4e6948fcf505900861a1
                         status: '200'
                         attempts: 1
-                        full_url: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
-                        resp_body: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
+                        request_url: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
+                        server_message: 'https://www.formula1.com/en?&click_id={transaction_id}&camp_id=23600'
                         latency: 397 ms
                         created: '2024-05-08T10:05:29.000Z'
                       - postback_id: 60e2adffcc773a0ea87c0d18
@@ -6147,7 +6147,7 @@ paths:
                         conversion_id: 663b4e6948fcf505900861a1
                         status: '500'
                         attempts: 5
-                        full_url: 'https://aff.postback.com?sub1={transaction_id}'
+                        request_url: 'https://aff.postback.com?sub1={transaction_id}'
                         created: '2024-05-08T10:05:29.000Z'
                       - postback_id: 65e6cab70db27d4a440d406a
                         campaign: '(ID: 23600) test'
@@ -6155,7 +6155,7 @@ paths:
                         conversion_id: 663b4e31b6adda05fd9b07ca
                         status: '500'
                         attempts: 5
-                        full_url: 'https://demo.trackier.xyz/postback/add.html?type=publisher'
+                        request_url: 'https://demo.trackier.xyz/postback/add.html?type=publisher'
                         created: '2024-05-08T10:04:35.000Z'
                       - postback_id: 64abef8d0eba47616b752d11
                         campaign: '(ID: 23600) test'
@@ -6163,7 +6163,7 @@ paths:
                         conversion_id: 663b4e31b6adda05fd9b07ca
                         status: '500'
                         attempts: 5
-                        full_url: 'www.trackier.acquisition,.hbiwediuw&subid={transaction_id}'
+                        request_url: 'www.trackier.acquisition,.hbiwediuw&subid={transaction_id}'
                         created: '2024-05-08T10:04:33.000Z'
                       - postback_id: 63ce6a32fc75a471b9713942
                         campaign: '(ID: 23596) test-cpc-jio'
@@ -6171,8 +6171,8 @@ paths:
                         conversion_id: 66322edb681e7b04f14e7a34
                         status: '200'
                         attempts: 1
-                        full_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
-                        resp_body: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        request_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        server_message: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
                         latency: 37 ms
                         created: '2024-05-01T12:00:28.000Z'
                       - postback_id: 64bf7e7c1d567442e34b8ab8
@@ -6181,7 +6181,7 @@ paths:
                         conversion_id: 66322edb681e7b04f14e7a34
                         status: '404'
                         attempts: 1
-                        full_url: 'https://requestbin.appattribution.io/1g2zhcv1?payout=0&click_id={transaction_id}'
+                        request_url: 'https://requestbin.appattribution.io/1g2zhcv1?payout=0&click_id={transaction_id}'
                         latency: 85 ms
                         created: '2024-05-01T12:00:28.000Z'
                       - postback_id: 63ce6a332362181b893268de
@@ -6190,8 +6190,8 @@ paths:
                         conversion_id: 66322edb681e7b04f14e7a34
                         status: '200'
                         attempts: 1
-                        full_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
-                        resp_body: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        request_url: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
+                        server_message: 'https://trackier51.trackier.co/acquisition?click_id={transaction_id}&security_token=c0078d0cb1b72219d85f'
                         latency: 40 ms
                         created: '2024-05-01T12:00:28.000Z'
                     pagination:
