@@ -5986,12 +5986,14 @@ paths:
                           type: string
                         attempts:
                           type: integer
-                        full_url:
+                        request_url:
                           type: string
-                          description: Request URL
-                        resp_body:
+                          x-stoplight:
+                            id: 4f6tw77pvxfvn
+                        server_message:
                           type: string
-                          description: Server Message
+                          x-stoplight:
+                            id: y259dgk9mqgmu
                         latency:
                           type: string
                         created:
