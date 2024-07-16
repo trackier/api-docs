@@ -560,8 +560,33 @@ paths:
             examples:
               example-1:
                 value:
-                  name: himanshu4
+                  username: string
+                  name: string
+                  email: user@example.com
+                  password: string
+                  company: string
+                  phone: string
                   status: active
+                  region:
+                    lang: string
+                    currency: string
+                    country: string
+                    address: string
+                    city: string
+                    state: string
+                    zipcode: string
+                  ref_by: string
+                  customFields:
+                    pan: string
+                    skype_id: string
+                    website: string
+                  bank:
+                    name: string
+                    ifsc: string
+                    account_no: string
+                    account_owner: string
+                  tags:
+                    - string
           application/xml:
             schema:
               type: object
@@ -8651,10 +8676,12 @@ paths:
                     - one_time
                 campaignId:
                   type: string
-                publisherId:
+                publisherIds:
                   type: array
                   items:
                     type: string
+                    x-stoplight:
+                      id: qvwdjwv04gw71
                 excludedPubIds:
                   type: array
                   items:
@@ -8671,6 +8698,11 @@ paths:
                   type: array
                   items:
                     type: object
+                    required:
+                      - model
+                      - currency
+                      - payout
+                      - revenue
                     properties:
                       model:
                         type: string
@@ -8722,15 +8754,16 @@ paths:
                               type: array
                               items:
                                 type: string
-                    required:
-                      - model
-                      - currency
-                      - payout
-                      - revenue
                 futurePayouts:
                   type: array
                   items:
                     type: object
+                    required:
+                      - fromDate
+                      - model
+                      - currency
+                      - payout
+                      - revenue
                     properties:
                       fromDate:
                         type: string
@@ -8785,12 +8818,6 @@ paths:
                               type: array
                               items:
                                 type: string
-                    required:
-                      - fromDate
-                      - model
-                      - currency
-                      - payout
-                      - revenue
       x-stoplight:
         id: g4rpsq6ctlz70
     delete:
@@ -9984,6 +10011,11 @@ components:
       type: object
       x-tags:
         - Smartlink
+      required:
+        - name
+        - event
+        - type
+        - model
       properties:
         name:
           type: string
@@ -10018,6 +10050,7 @@ components:
             - cpl
         categories:
           type: array
+          description: '''ALL'' to assign all categories.'
           items:
             type: string
         advs:
@@ -10025,6 +10058,10 @@ components:
           items:
             type: string
         excludedOffers:
+          type: array
+          items:
+            type: string
+        excludedOffers - copy:
           type: array
           items:
             type: string
@@ -10073,12 +10110,6 @@ components:
                 type: string
               value:
                 type: string
-      required:
-        - name
-        - event
-        - model
-        - type
-      description: ''
     SmartlinkEdit:
       title: Smartlink
       type: object
@@ -10118,6 +10149,7 @@ components:
             - cpl
         categories:
           type: array
+          description: '''ALL'' to assign all categories.'
           items:
             type: string
         advs:
@@ -10173,7 +10205,6 @@ components:
                 type: string
               value:
                 type: string
-      description: ''
     Pagination:
       title: Pagination
       type: object
@@ -10623,9 +10654,19 @@ components:
               revenue: 4
               geo:
                 - IN
+      x-tags:
+        - Invoices List
+      description: Invoices Model
+      required:
+        - user_id
+        - prefType
+        - start
+        - end
+        - invCurrency
       properties:
         user_id:
           type: string
+          description: Hash Id
         prefType:
           type: string
           enum:
@@ -10665,17 +10706,6 @@ components:
                 type: string
               amount:
                 type: number
-      required:
-        - user_id
-        - prefType
-        - start
-        - end
-        - uType
-        - title
-        - invCurrency
-      x-tags:
-        - Invoices List
-      description: Invoices Model
   securitySchemes:
     API Key Param:
       name: apiKey
