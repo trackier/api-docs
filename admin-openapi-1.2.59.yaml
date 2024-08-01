@@ -9579,6 +9579,10 @@ components:
           type: string
           format: 'YYYY-MM-DD HH:MM:ssZ'
           example: '2020-02-02T21:00:00Z'
+        enforceLpTargeting:
+          type: integer
+          x-stoplight:
+            id: pzfz86nutu3e5
     CampaignEdit:
       title: Campaign
       type: object
@@ -9877,6 +9881,10 @@ components:
           type: string
           format: 'YYYY-MM-DD HH:MM:ssZ'
           example: '2020-02-02T21:00:00Z'
+        enforceLpTargeting:
+          type: integer
+          x-stoplight:
+            id: 2vg67lm09rqs7
     Cap:
       title: Cap
       type: object

@@ -157,6 +157,9 @@ properties:
   allowSpilloverConv:
     type: integer
     default: 0
+  enforceLpTargeting:
+    type: integer
+    default: 0
   cancelFallbackConv:
     type: integer
   redirectType:
