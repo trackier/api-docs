@@ -5001,6 +5001,11 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+        - schema:
+            type: boolean
+          in: query
+          name: remove_zero_data
+          description: 'Setting this to "true" will remove all the rows where clicks = 0 and conversions = 0 (priority: grossConversions >> approvedConversions)'
   /v2/reports/subid:
     get:
       summary: SUBID Report
@@ -5111,6 +5116,11 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+        - schema:
+            type: boolean
+          in: query
+          description: 'Setting this to "true" will remove all the rows where clicks = 0 and conversions = 0 (priority: grossConversions >> approvedConversions)'
+          name: remove_zero_data
   /v2/reports/clicks:
     get:
       summary: Clicks Report
