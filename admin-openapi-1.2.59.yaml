@@ -10627,6 +10627,7 @@ components:
             - referer
             - ipaddr
             - conv_ip
+            - brand
         logic:
           type: string
           enum:
