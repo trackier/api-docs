@@ -11,6 +11,7 @@ info:
 
     # HTTP Status Code
     Review all global errors for the Trackier API so you can get back to work fast. <hr><b>401 - API Key Invalid</b> <br>Your API key may be invalid, or you’ve attempted to access the wrong data center. <br>The current request requires user authentication. For example, the user does not have the necessary credentials. <hr><b>403 - No permissions visit this resource</b> <br>You are not permitted to access this resource. <br>The request was a valid request, but the server is refusing to respond to it. For example, the user does not have the necessary permissions for the resource. <hr><b>404 - Resource Not Found</b> <br>The requested resource could not be found. <br>This error tells you a specific resource doesn’t exist. It’s possible that the resource has been moved or deleted, or that there’s a typo in your request.<hr><b>500 - Server error, Please contact administrator</b> <br>A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.Please contact Support for more information. <br>This error lets you know our servers have experienced a problem. Although this is rare, please contact support@trackier.com to let us know that you’ve encountered this error
+
     # Authentication
     Trackier API endpoints can be authenticated via:
       - Header: x-api-key
