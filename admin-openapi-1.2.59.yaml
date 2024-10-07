@@ -9594,6 +9594,26 @@ components:
           type: integer
           x-stoplight:
             id: pzfz86nutu3e5
+        duplicateClickAction:
+          type: string
+          x-stoplight:
+            id: dzsp86odtsqy3
+          enum:
+            - none
+            - blank
+            - fallback
+        uniqueClickSessionVariable:
+          type: string
+          x-stoplight:
+            id: 6evhnpz1q1jjx
+          enum:
+            - cookie
+            - ip
+            - gaid
+            - idfa
+            - gclid
+            - ip_gclid
+          default: cookie
     CampaignEdit:
       title: Campaign
       type: object
