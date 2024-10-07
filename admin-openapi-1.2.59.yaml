@@ -9916,6 +9916,26 @@ components:
           type: integer
           x-stoplight:
             id: 2vg67lm09rqs7
+        duplicateClickAction:
+          type: string
+          x-stoplight:
+            id: 25o0kola7d17j
+          enum:
+            - none
+            - blank
+            - fallback
+        uniqueClickSessionVariable:
+          type: string
+          x-stoplight:
+            id: gfd4xqc0kjg29
+          enum:
+            - cookie
+            - ip
+            - gaid
+            - idfa
+            - gclid
+            - ip_gclid
+          default: cookie
     Cap:
       title: Cap
       type: object
