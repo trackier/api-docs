@@ -306,3 +306,11 @@ properties:
         type: string
       email:
         type: string
+  duplicateClickAction:
+    type: string
+    x-stoplight:
+      id: 0qghapmfbjoqs
+  uniqueClickSessionVariable:
+    type: string
+    x-stoplight:
+      id: xg2jg1dcm7lzq
