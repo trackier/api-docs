@@ -2812,13 +2812,13 @@ paths:
           name: start
           in: query
           required: true
-          description: Start Date (YYYY-MM-DD)
+          description: YYYY-MM-DD
         - schema:
             type: string
           name: end
           in: query
           required: true
-          description: End Date (YYYY-MM-DD)
+          description: YYYY-MM-DD
         - schema:
             type: string
             enum:
@@ -2959,13 +2959,13 @@ paths:
         name: start
         in: query
         required: true
-        description: Start Date (YYYY-MM-DD)
+        description: YYYY-MM-DD
       - schema:
           type: string
         name: end
         in: query
         required: true
-        description: End Date (YYYY-MM-DD)
+        description: YYYY-MM-DD
       - schema:
           type: string
           enum:
@@ -2984,7 +2984,6 @@ paths:
             - ...
         name: invCurrency
         in: query
-        required: true
         description: Invoice Currency
       - schema:
           type: boolean
@@ -3029,6 +3028,7 @@ paths:
       description: Get Invoice Preview
       security:
         - API Key Param: []
+      parameters: []
   '/v2/publishers/{id}/transactions':
     get:
       summary: Transactions & Payments
@@ -10736,11 +10736,11 @@ components:
         start:
           type: string
           enum:
-            - Start Date (YYYY-MM-DD)
+            - YYYY-MM-DD
         end:
           type: string
           enum:
-            - End Date (YYYY-MM-DD)
+            - YYYY-MM-DD
         invCurrency:
           type: string
           enum:
