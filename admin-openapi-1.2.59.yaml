@@ -9614,6 +9614,25 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        deepLink:
+          type: boolean
+          enum:
+            - true
+            - false
+        hidePayoutFromPublishers:
+          type: string
+          enum:
+            - "'1'"
+            - "'0'"
+        appendUrl:
+          type: string
+        note: 
+          type: string
+        category:
+          type: array
+          description: array of Hash Ids
+          items:
+            type: string
     CampaignEdit:
       title: Campaign
       type: object
@@ -9936,6 +9955,23 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        deepLink:
+          type: boolean
+          enum:
+            - true
+            - false
+        hidePayoutFromPublishers:
+          type: string
+          enum:
+            - "'1'"
+            - "'0'"
+        appendUrl:
+          type: string
+        category:
+          type: array
+          description: array of Hash Ids
+          items:
+            type: string
     Cap:
       title: Cap
       type: object
