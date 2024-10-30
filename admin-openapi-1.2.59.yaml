@@ -9614,6 +9614,12 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        trafficChannels:
+          type: array
+          items:
+            type: string
+            x-stoplight:
+              id: zl79440mf44ie
         deepLink:
           type: boolean
           enum:
@@ -9622,11 +9628,11 @@ components:
         hidePayoutFromPublishers:
           type: string
           enum:
-            - "'1'"
-            - "'0'"
+            - '''1'''
+            - '''0'''
         appendUrl:
           type: string
-        note: 
+        note:
           type: string
         category:
           type: array
@@ -9955,6 +9961,12 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        trafficChannels:
+          type: array
+          items:
+            type: string
+            x-stoplight:
+              id: m39cdkhz5ttoo
         deepLink:
           type: boolean
           enum:
@@ -9963,8 +9975,8 @@ components:
         hidePayoutFromPublishers:
           type: string
           enum:
-            - "'1'"
-            - "'0'"
+            - '''1'''
+            - '''0'''
         appendUrl:
           type: string
         category:
