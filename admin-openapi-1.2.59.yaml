@@ -10073,6 +10073,7 @@ components:
           type: number
           minimum: 0
           maximum: 1
+          description: Per minute capping is allowed only if hourly cap is enabled.
         geo:
           type: array
           items:
