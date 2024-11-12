@@ -3,6 +3,30 @@ type: object
 description: Cap schema
 x-tags:
   - Models
+examples:
+  - _id: string
+    campaignId: string
+    goalId: string
+    publisherIds:
+      - string
+    pubCapType: each
+    landingPageIds:
+      - string
+    type: conversion
+    hourly: 0
+    daily: 0
+    monthly: 0
+    lifetime: 0
+    enablePerMinuteCap: 0
+    pauseResources: 1
+    visibility: public
+    created: string
+    modified: string
+    geo:
+      - string
+    redirect: blank
+required:
+  - campaignId
 properties:
   _id:
     type: string
@@ -39,6 +63,10 @@ properties:
       - clicks
       - grossRevenue
     description: '`clicks`: clicks excluding rejected clicks'
+  hourly:
+    type: number
+    x-stoplight:
+      id: o660g8g1g4q9j
   daily:
     type:
       - number
@@ -54,6 +82,12 @@ properties:
       - number
       - 'null'
     minimum: 0
+  enablePerMinuteCap:
+    type: number
+    x-stoplight:
+      id: zpu88o5fnezpl
+    minimum: 0
+    maximum: 1
   pauseResources:
     type: integer
     default: 1
@@ -75,5 +109,3 @@ properties:
     enum:
       - blank
       - fallback_link
-required:
-  - campaignId
