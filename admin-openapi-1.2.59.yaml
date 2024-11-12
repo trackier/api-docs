@@ -9989,14 +9989,22 @@ components:
       type: object
       x-examples:
         example-1:
-          type: conversion
-          visibility: public
+          type: click
+          goalId: string
           publisherIds:
-            - 31
+            - string
+          visibility: public
           pubCapType: each
-          daily: '10'
+          landingPageIds:
+            - string
+          hourly: 1
+          daily: 10
+          monthly: 100
+          lifetime: 1000
+          enablePerMinuteCap: 1
           geo:
-            - ALL
+            - string
+          redirect: blank
       x-tags:
         - Campaign Caps
       description: Cap Model to create/edit cap
@@ -10045,15 +10053,26 @@ components:
             oneOf:
               - type: string
               - type: integer
+        hourly:
+          type: number
+          x-stoplight:
+            id: xntnmqswn70ls
+          minimum: 0
         daily:
           type: number
-          minimum: 1
+          minimum: 0
         monthly:
           type: number
-          minimum: 1
+          minimum: 0
         lifetime:
           type: number
-          minimum: 1
+          minimum: 0
+        enablePerMinuteCap:
+          x-stoplight:
+            id: c21oq04eoa7l1
+          type: number
+          minimum: 0
+          maximum: 1
         geo:
           type: array
           items:
