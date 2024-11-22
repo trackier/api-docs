@@ -8957,6 +8957,164 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      fraudRules:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          scope:
+                            type: string
+                          publisherIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          excludedPublisherIds:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          advertiserIds:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          excludedAdvertiserIds:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          campaignIds:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          excludedCampaignIds:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          proxyCheck:
+                            type: integer
+                          dataCenterCheck:
+                            type: integer
+                          blacklistIpCheck:
+                            type: integer
+                          unknownDeviceCheck:
+                            type: integer
+                          ctitRule:
+                            type: integer
+                          ctit:
+                            type: object
+                            properties:
+                              goal:
+                                type: string
+                              seconds:
+                                type: string
+                              condition:
+                                type: string
+                              startTime:
+                                type: string
+                              endTime:
+                                type: string
+                              excludeGoals:
+                                type: string
+                          itetEnable:
+                            type: integer
+                          itet:
+                            type: object
+                            properties:
+                              installGoal:
+                                type: string
+                              eventGoal:
+                                type: string
+                              seconds:
+                                type: string
+                              condition:
+                                type: string
+                          cancelConversions:
+                            type: integer
+                          uniqueIpCheck:
+                            type: integer
+                          cancelUniqueIpConv:
+                            type: integer
+                          validateDeviceId:
+                            type: integer
+                          emptyDeviceId:
+                            type: integer
+                          ipsub:
+                            type: string
+                          uniqueIpGoal:
+                            type: string
+                          action:
+                            type: string
+                          uniqueIpClickLevel:
+                            type: integer
+                          uipvar:
+                            type: string
+                          uniqueConvSubId:
+                            type: integer
+                          uniqueConvSubIdVar:
+                            type: string
+                          cancelSubidConversion:
+                            type: integer
+                          googleClickValidator:
+                            type: integer
+                x-examples:
+                  Example 1:
+                    success: true
+                    data:
+                      fraudRules:
+                        name: string
+                        scope: click
+                        publisherIds:
+                          - null
+                        excludedPublisherIds: []
+                        advertiserIds: []
+                        excludedAdvertiserIds: []
+                        campaignIds: []
+                        excludedCampaignIds: []
+                        proxyCheck: 0
+                        dataCenterCheck: 0
+                        blacklistIpCheck: 0
+                        unknownDeviceCheck: 0
+                        ctitRule: 0
+                        ctit:
+                          goal: string
+                          seconds: string
+                          condition: lte
+                          startTime: '2019-08-24T14:15:22Z'
+                          endTime: '2019-08-24T14:15:22Z'
+                          excludeGoals: string
+                        itetEnable: 0
+                        itet:
+                          installGoal: string
+                          eventGoal: string
+                          seconds: string
+                          condition: lte
+                        cancelConversions: 0
+                        uniqueIpCheck: 0
+                        cancelUniqueIpConv: 0
+                        validateDeviceId: 0
+                        emptyDeviceId: 0
+                        ipsub: '''255.255.255.0'''
+                        uniqueIpGoal: string
+                        action: mark
+                        uniqueIpClickLevel: 0
+                        uipvar: ipaddr
+                        uniqueConvSubId: 0
+                        uniqueConvSubIdVar: p1
+                        cancelSubidConversion: 0
+                        googleClickValidator: 0
         '400':
           description: Bad Request
       operationId: get-v2-fraudrules
@@ -9529,7 +9687,169 @@ paths:
       summary: Get Fraud Rule
       tags:
         - Manage FraudRules
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      fraudRule:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          scope:
+                            type: string
+                          publisherIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          excludedPublisherIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          advertiserIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          excludedAdvertiserIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          campaignIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          excludedCampaignIds:
+                            type: array
+                            items:
+                              type: 'null'
+                          proxyCheck:
+                            type: integer
+                          dataCenterCheck:
+                            type: integer
+                          blacklistIpCheck:
+                            type: integer
+                          unknownDeviceCheck:
+                            type: integer
+                          ctitRule:
+                            type: integer
+                          ctit:
+                            type: object
+                            properties:
+                              goal:
+                                type: string
+                              seconds:
+                                type: string
+                              condition:
+                                type: string
+                              startTime:
+                                type: string
+                              endTime:
+                                type: string
+                              excludeGoals:
+                                type: string
+                          itetEnable:
+                            type: integer
+                          itet:
+                            type: object
+                            properties:
+                              installGoal:
+                                type: string
+                              eventGoal:
+                                type: string
+                              seconds:
+                                type: string
+                              condition:
+                                type: string
+                          cancelConversions:
+                            type: integer
+                          uniqueIpCheck:
+                            type: integer
+                          cancelUniqueIpConv:
+                            type: integer
+                          validateDeviceId:
+                            type: integer
+                          emptyDeviceId:
+                            type: integer
+                          ipsub:
+                            type: string
+                          uniqueIpGoal:
+                            type: string
+                          action:
+                            type: string
+                          uniqueIpClickLevel:
+                            type: integer
+                          uipvar:
+                            type: string
+                          uniqueConvSubId:
+                            type: integer
+                          uniqueConvSubIdVar:
+                            type: string
+                          cancelSubidConversion:
+                            type: integer
+                          googleClickValidator:
+                            type: integer
+                x-examples:
+                  Example 1:
+                    success: true
+                    data:
+                      fraudRule:
+                        name: string
+                        scope: click
+                        publisherIds:
+                          - null
+                        excludedPublisherIds:
+                          - null
+                        advertiserIds:
+                          - null
+                        excludedAdvertiserIds:
+                          - null
+                        campaignIds:
+                          - null
+                        excludedCampaignIds:
+                          - null
+                        proxyCheck: 0
+                        dataCenterCheck: 0
+                        blacklistIpCheck: 0
+                        unknownDeviceCheck: 0
+                        ctitRule: 0
+                        ctit:
+                          goal: string
+                          seconds: string
+                          condition: lte
+                          startTime: '2019-08-24T14:15:22Z'
+                          endTime: '2019-08-24T14:15:22Z'
+                          excludeGoals: string
+                        itetEnable: 0
+                        itet:
+                          installGoal: string
+                          eventGoal: string
+                          seconds: string
+                          condition: lte
+                        cancelConversions: 0
+                        uniqueIpCheck: 0
+                        cancelUniqueIpConv: 0
+                        validateDeviceId: 0
+                        emptyDeviceId: 0
+                        ipsub: '''255.255.255.0'''
+                        uniqueIpGoal: string
+                        action: mark
+                        uniqueIpClickLevel: 0
+                        uipvar: ipaddr
+                        uniqueConvSubId: 0
+                        uniqueConvSubIdVar: p1
+                        cancelSubidConversion: 0
+                        googleClickValidator: 0
+        '400':
+          description: Bad Request
       operationId: get-v2-fraudrules-id
       x-stoplight:
         id: 4fmzvpzearh7z
