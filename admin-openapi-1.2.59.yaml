@@ -8952,7 +8952,8 @@ paths:
   /v2/fraudrules:
     get:
       summary: Get all Fraud Rules
-      tags: []
+      tags:
+        - Manage FraudRules
       responses:
         '200':
           description: OK
@@ -8977,7 +8978,8 @@ paths:
           name: limit
     post:
       summary: Create Fraud Rule
-      tags: []
+      tags:
+        - Manage FraudRules
       responses:
         '200':
           description: OK
@@ -9525,7 +9527,8 @@ paths:
         required: true
     get:
       summary: Get Fraud Rule
-      tags: []
+      tags:
+        - Manage FraudRules
       responses: {}
       operationId: get-v2-fraudrules-id
       x-stoplight:
@@ -9535,7 +9538,8 @@ paths:
         - API Key Param: []
     patch:
       summary: Update Fraud Rule
-      tags: []
+      tags:
+        - Manage FraudRules
       responses: {}
       operationId: patch-v2-fraudrules-id
       x-stoplight:
@@ -9545,7 +9549,8 @@ paths:
         - API Key Param: []
     delete:
       summary: Delete Fraud Rule
-      tags: []
+      tags:
+        - Manage FraudRules
       responses: {}
       operationId: delete-v2-fraudrules-id
       x-stoplight:
