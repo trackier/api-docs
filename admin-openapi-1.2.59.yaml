@@ -8949,6 +8949,610 @@ paths:
           name: date
           description: Date in YYYY-MM-DD format
           required: true
+  /v2/fraudrules:
+    get:
+      summary: Get all Fraud Rules
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      operationId: get-v2-fraudrules
+      x-stoplight:
+        id: cw80sbp2ill0e
+      description: Use this endpoint to get all fraud rules
+      security:
+        - API Key Param: []
+      requestBody:
+        content: {}
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: limit
+    post:
+      summary: Create Fraud Rule
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    x-stoplight:
+                      id: ru0gn5a54rw6t
+                  message:
+                    type: string
+                    x-stoplight:
+                      id: uffrp2tlrcjr1
+                  fraudRule:
+                    type: object
+                    x-stoplight:
+                      id: r91en09zcqn7r
+                    properties:
+                      name:
+                        type: string
+                        x-stoplight:
+                          id: 94k8ge1efjpmy
+                      scope:
+                        type: string
+                        x-stoplight:
+                          id: f3glmzectdu6t
+                      status:
+                        type: string
+                        x-stoplight:
+                          id: 3eu4w7jwwhprs
+                      publisherIds:
+                        type: array
+                        x-stoplight:
+                          id: vlvx617dvf3ec
+                        items: {}
+                      excludedPublisherIds:
+                        type: array
+                        x-stoplight:
+                          id: q76s0yjsp3sb1
+                        items: {}
+                      advertiserIds:
+                        type: array
+                        x-stoplight:
+                          id: 5llhu5vr70y8v
+                        items: {}
+                      excludedAdvertiserIds:
+                        type: array
+                        x-stoplight:
+                          id: hahk6pzu771zn
+                        items: {}
+                      campaignIds:
+                        type: array
+                        x-stoplight:
+                          id: a1nwf28ko6ajp
+                        items: {}
+                      excludedCampaignIds:
+                        type: array
+                        x-stoplight:
+                          id: e1bvcz5ktmkpw
+                        items: {}
+                      proxyCheck:
+                        type: number
+                        x-stoplight:
+                          id: ejikj4s3xsnht
+                        minimum: 0
+                        maximum: 1
+                      dataCenterCheck:
+                        type: number
+                        x-stoplight:
+                          id: cpax4om1fx2ia
+                        minimum: 0
+                        maximum: 1
+                      blacklistIpCheck:
+                        type: number
+                        x-stoplight:
+                          id: f6p0mea2aq4zc
+                        minimum: 0
+                        maximum: 1
+                      unknownDeviceCheck:
+                        type: number
+                        x-stoplight:
+                          id: 763sfcaeoukoc
+                        minimum: 0
+                        maximum: 1
+                      ctitRule:
+                        type: number
+                        x-stoplight:
+                          id: zt36k21v5tz18
+                        minimum: 0
+                        maximum: 1
+                      ctit:
+                        type: object
+                        x-stoplight:
+                          id: 9gpy781n3dzlv
+                        properties:
+                          goal:
+                            type: string
+                            x-stoplight:
+                              id: dxqrok822jig3
+                          seconds:
+                            type: string
+                            x-stoplight:
+                              id: qzf46cz3q1m4y
+                          condition:
+                            type: string
+                            x-stoplight:
+                              id: 1hmemp516brks
+                          startTime:
+                            type: string
+                            x-stoplight:
+                              id: 32k0wrvof2fn6
+                          endTime:
+                            type: string
+                            x-stoplight:
+                              id: qzuoju0qm3jme
+                          excludeGoals:
+                            type: array
+                            x-stoplight:
+                              id: 14hirk9w2n7f7
+                            items: {}
+                      itetEnable:
+                        type: number
+                        x-stoplight:
+                          id: zqdf5kzp4mtbr
+                        minimum: 0
+                        maximum: 1
+                      itet:
+                        type: object
+                        x-stoplight:
+                          id: sjqiu67jmuk3z
+                        properties:
+                          installGoal:
+                            type: string
+                            x-stoplight:
+                              id: e6d9wou7ki0oi
+                          eventGoal:
+                            type: string
+                            x-stoplight:
+                              id: rgqydbim7s3zu
+                          seconds:
+                            type: string
+                            x-stoplight:
+                              id: 2lgukhxx88lth
+                          condition:
+                            type: string
+                            x-stoplight:
+                              id: 5og6h1kuj40g4
+                      cancelConversions:
+                        type: number
+                        x-stoplight:
+                          id: 7awm278gmhrwl
+                        minimum: 0
+                        maximum: 1
+                      uniqueIpCheck:
+                        type: number
+                        x-stoplight:
+                          id: ecz5xtra4n5jt
+                        minimum: 0
+                        maximum: 1
+                      cancelUniqueIpConv:
+                        type: number
+                        x-stoplight:
+                          id: m81ee9eutqdfh
+                        minimum: 0
+                        maximum: 1
+                      validateDeviceId:
+                        type: number
+                        x-stoplight:
+                          id: uftjw40r3ddzd
+                        minimum: 0
+                        maximum: 1
+                      emptyDeviceId:
+                        type: number
+                        x-stoplight:
+                          id: zhacbgr8juslo
+                        minimum: 0
+                        maximum: 1
+                      ipsub:
+                        x-stoplight:
+                          id: 5yw45jko3vav8
+                        enum:
+                          - 255.255.255.0
+                          - 255.255.255.255
+                      action:
+                        type: string
+                        x-stoplight:
+                          id: gnrvu1r4eyhzt
+                      uniqueIpClickLevel:
+                        type: number
+                        x-stoplight:
+                          id: nmh258eg75tab
+                        minimum: 0
+                        maximum: 1
+                      uipvar:
+                        type: string
+                        x-stoplight:
+                          id: ymimp42ix83nt
+                      uniqueConvSubId:
+                        type: number
+                        x-stoplight:
+                          id: k1htzwavge66u
+                        minimum: 0
+                        maximum: 1
+                      uniqueConvSubIdVar:
+                        x-stoplight:
+                          id: ffrmypwdeaequ
+                        enum:
+                          - p1
+                          - p2
+                          - p3
+                          - p4
+                          - p5
+                          - p6
+                          - p7
+                          - p8
+                          - p9
+                          - p10
+                      cancelSubidConversion:
+                        type: number
+                        x-stoplight:
+                          id: gjjl1138nhs57
+                        minimum: 0
+                        maximum: 1
+                      googleClickValidator:
+                        type: number
+                        x-stoplight:
+                          id: 1982fply1lj9q
+                        minimum: 0
+                        maximum: 1
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    message: string
+                    fraudRule:
+                      '': string
+        '400':
+          description: Bad Request
+      operationId: post-v2-fraudrules
+      x-stoplight:
+        id: yib0dgqlbwfob
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  x-stoplight:
+                    id: 30eyptl8egnnm
+                scope:
+                  x-stoplight:
+                    id: moxdoqyd8fvq9
+                  enum:
+                    - click
+                    - conversion
+                    - click_conversion
+                publisherIds:
+                  type: array
+                  x-stoplight:
+                    id: wltel3jrn64fs
+                  items: {}
+                excludedPublisherIds:
+                  type: array
+                  x-stoplight:
+                    id: r29o6jwedk2sr
+                  items: {}
+                advertiserIds:
+                  type: array
+                  x-stoplight:
+                    id: zjhkaeh5kvxfv
+                  items: {}
+                excludedAdvertiserIds:
+                  type: array
+                  x-stoplight:
+                    id: c5hf0o0qcmp7g
+                  items: {}
+                campaignIds:
+                  type: array
+                  x-stoplight:
+                    id: f818wxoiah4ee
+                  items: {}
+                excludedCampaignIds:
+                  type: array
+                  x-stoplight:
+                    id: odha3je302sb0
+                  items: {}
+                proxyCheck:
+                  type: number
+                  x-stoplight:
+                    id: i8xy681g9j35j
+                  minimum: 0
+                  maximum: 1
+                dataCenterCheck:
+                  type: number
+                  x-stoplight:
+                    id: b3yqtjoz8jzyc
+                  minimum: 0
+                  maximum: 1
+                blacklistIpCheck:
+                  type: number
+                  x-stoplight:
+                    id: ohot36bdyc7ln
+                  minimum: 0
+                  maximum: 1
+                unknownDeviceCheck:
+                  type: number
+                  x-stoplight:
+                    id: ulsg3h9h78ivt
+                  minimum: 0
+                  maximum: 1
+                ctitRule:
+                  type: number
+                  x-stoplight:
+                    id: u3fslar5y9jzk
+                  minimum: 0
+                  maximum: 1
+                ctit:
+                  type: object
+                  x-stoplight:
+                    id: wmif4go7zqkf3
+                  properties:
+                    goal:
+                      type: string
+                      x-stoplight:
+                        id: jbndpyka186q3
+                    seconds:
+                      type: string
+                      x-stoplight:
+                        id: 6yyc60s1dvre8
+                    condition:
+                      x-stoplight:
+                        id: 3dgrthnfwheqp
+                      enum:
+                        - lte
+                        - gte
+                    startTime:
+                      type: string
+                      x-stoplight:
+                        id: vz7dpkai5wqvf
+                      format: date-time
+                      pattern: 'YYYY-MM-DD HH:mm'
+                    endTime:
+                      type: string
+                      x-stoplight:
+                        id: n4wd3detg2v05
+                      format: date-time
+                      pattern: 'YYYY-MM-DD HH:mm'
+                    excludeGoals:
+                      type: array
+                      x-stoplight:
+                        id: yy0h3q3debc4i
+                      items: {}
+                itetEnable:
+                  type: number
+                  x-stoplight:
+                    id: qajpsj8ewsypf
+                  minimum: 0
+                  maximum: 1
+                itet:
+                  type: object
+                  x-stoplight:
+                    id: idhed4ap6yq16
+                  properties:
+                    installGoal:
+                      type: string
+                      x-stoplight:
+                        id: nqena3yg89sa3
+                    eventGoal:
+                      type: string
+                      x-stoplight:
+                        id: kitqq51gwxc2w
+                    seconds:
+                      type: string
+                      x-stoplight:
+                        id: uvnhm6kx2vcar
+                    condition:
+                      x-stoplight:
+                        id: 72yjjum8kvvs8
+                      enum:
+                        - lte
+                        - gte
+                cancelConversions:
+                  type: number
+                  x-stoplight:
+                    id: 944kty4c0rxx7
+                  minimum: 0
+                  maximum: 1
+                uniqueIpCheck:
+                  type: number
+                  x-stoplight:
+                    id: j9bz6kqtog7s9
+                  minimum: 0
+                  maximum: 1
+                cancelUniqueIpConv:
+                  type: number
+                  x-stoplight:
+                    id: cfqf5ydzra1gs
+                  minimum: 0
+                  maximum: 1
+                validateDeviceId:
+                  type: number
+                  x-stoplight:
+                    id: v7nt1ue11hb03
+                  minimum: 0
+                  maximum: 1
+                emptyDeviceId:
+                  type: number
+                  x-stoplight:
+                    id: u1kjama27kqsd
+                  minimum: 0
+                  maximum: 1
+                ipsub:
+                  x-stoplight:
+                    id: 2vcjxtta0lxco
+                  enum:
+                    - '''255.255.255.0'''
+                    - '''255.255.255.255'''
+                uniqueIpGoal:
+                  type: string
+                  x-stoplight:
+                    id: oju99kei85xdb
+                action:
+                  x-stoplight:
+                    id: pp9q9qdq5ug88
+                  enum:
+                    - mark
+                    - block
+                uniqueIpClickLevel:
+                  type: number
+                  x-stoplight:
+                    id: goqn6z2sjhcqs
+                  minimum: 0
+                  maximum: 1
+                uipvar:
+                  x-stoplight:
+                    id: qmip23berwivm
+                  enum:
+                    - ipaddr
+                    - click_ip
+                uniqueConvSubId:
+                  type: number
+                  x-stoplight:
+                    id: 10w4plfe9li2g
+                  minimum: 0
+                  maximum: 1
+                uniqueConvSubIdVar:
+                  x-stoplight:
+                    id: rz8w9r7i6xu5s
+                  enum:
+                    - p1
+                    - p2
+                    - p3
+                    - p4
+                    - p5
+                    - p6
+                    - p7
+                    - p8
+                    - p9
+                    - p10
+                cancelSubidConversion:
+                  type: number
+                  x-stoplight:
+                    id: potnjj5k1jqql
+                  minimum: 0
+                  maximum: 1
+                googleClickValidator:
+                  type: number
+                  x-stoplight:
+                    id: b8mf2us3tnflg
+                  minimum: 0
+                  maximum: 1
+            examples:
+              Example 1:
+                value:
+                  name: string
+                  scope: click
+                  publisherIds:
+                    - null
+                  excludedPublisherIds:
+                    - null
+                  advertiserIds:
+                    - null
+                  excludedAdvertiserIds:
+                    - null
+                  campaignIds:
+                    - null
+                  excludedCampaignIds:
+                    - null
+                  proxyCheck: 0
+                  dataCenterCheck: 0
+                  blacklistIpCheck: 0
+                  unknownDeviceCheck: 0
+                  ctitRule: 0
+                  ctit:
+                    goal: string
+                    seconds: string
+                    condition: lte
+                    startTime: '2019-08-24T14:15:22Z'
+                    endTime: '2019-08-24T14:15:22Z'
+                    excludeGoals: string
+                  itetEnable: 0
+                  itet:
+                    installGoal: string
+                    eventGoal: string
+                    seconds: string
+                    condition: lte
+                  cancelConversions: 0
+                  uniqueIpCheck: 0
+                  cancelUniqueIpConv: 0
+                  validateDeviceId: 0
+                  emptyDeviceId: 0
+                  ipsub: '''255.255.255.0'''
+                  uniqueIpGoal: string
+                  action: mark
+                  uniqueIpClickLevel: 0
+                  uipvar: ipaddr
+                  uniqueConvSubId: 0
+                  uniqueConvSubIdVar: p1
+                  cancelSubidConversion: 0
+                  googleClickValidator: 0
+        description: ''
+  '/v2/fraudrules/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get Fraud Rule
+      tags: []
+      responses: {}
+      operationId: get-v2-fraudrules-id
+      x-stoplight:
+        id: 4fmzvpzearh7z
+      description: Fetches fraud rule for provided id
+      security:
+        - API Key Param: []
+    patch:
+      summary: Update Fraud Rule
+      tags: []
+      responses: {}
+      operationId: patch-v2-fraudrules-id
+      x-stoplight:
+        id: 0b0ybcthq4vz6
+      description: updates provided fields for fraudrule
+      security:
+        - API Key Param: []
+    delete:
+      summary: Delete Fraud Rule
+      tags: []
+      responses: {}
+      operationId: delete-v2-fraudrules-id
+      x-stoplight:
+        id: bg4ygtf33ly7o
+      description: Deletes fraudrule for provided id
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:

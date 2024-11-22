@@ -1,0 +1,236 @@
+title: fraudrules
+x-stoplight:
+  id: z7arsxwu88i7e
+type: object
+required:
+  - name
+  - scope
+  - action
+properties:
+  _id:
+    type: string
+    x-stoplight:
+      id: bv4yfg6dvkvwu
+  name:
+    type: string
+    x-stoplight:
+      id: kyfywytqji74n
+  scope:
+    x-stoplight:
+      id: iflcfkgjaktjx
+    enum:
+      - click
+      - conversion
+      - click_conversion
+  publisherIds:
+    type: array
+    x-stoplight:
+      id: wh9ythhbcr553
+    items: {}
+  excludedPublisherIds:
+    type: array
+    x-stoplight:
+      id: 3hx9akczo4uhy
+    items: {}
+  advertiserIds:
+    type: array
+    x-stoplight:
+      id: dntpk03dehl1f
+    items: {}
+  excludedAdvertiserIds:
+    type: array
+    x-stoplight:
+      id: 98cb3ievh4jnj
+    items: {}
+  campaignIds:
+    type: array
+    x-stoplight:
+      id: fl6zu49frzd49
+    items: {}
+  excludedCampaignIds:
+    type: array
+    x-stoplight:
+      id: 4fywp3piwbd58
+    items: {}
+  proxyCheck:
+    type: number
+    x-stoplight:
+      id: jyelyusmdfsn2
+    minimum: 0
+    maximum: 1
+  dataCenterCheck:
+    type: number
+    x-stoplight:
+      id: dgqqgnzr3pcmf
+    minimum: 0
+    maximum: 1
+  blacklistIpCheck:
+    type: number
+    x-stoplight:
+      id: p85v3kpmbgbp0
+    minimum: 0
+    maximum: 1
+  unknownDeviceCheck:
+    type: number
+    x-stoplight:
+      id: 9yr2g5svi7xdy
+    minimum: 0
+    maximum: 1
+  ctitRule:
+    type: number
+    x-stoplight:
+      id: e9jf5ds0o7tpk
+    minimum: 0
+    maximum: 1
+  ctit:
+    type: object
+    x-stoplight:
+      id: ju1p6802loymo
+    properties:
+      goal:
+        type: string
+        x-stoplight:
+          id: fle7sggvpenmt
+      seconds:
+        type: string
+        x-stoplight:
+          id: qaegikt3yeldc
+      condition:
+        x-stoplight:
+          id: jcgftld3cli4p
+        enum:
+          - lte
+          - gte
+      startTime:
+        type: string
+        x-stoplight:
+          id: bhfbtewt0985i
+        format: date-time
+        pattern: 'YYYY-MM-DD HH:mm'
+      endTime:
+        type: string
+        x-stoplight:
+          id: 70prvermtfxeg
+        format: date-time
+        pattern: 'YYYY-MM-DD HH:mm'
+      excludeGoals:
+        type: string
+        x-stoplight:
+          id: 7lavrmjqgpfc0
+  itetEnable:
+    type: number
+    x-stoplight:
+      id: jhrbx6i8lmgda
+    minimum: 0
+    maximum: 1
+  itet:
+    type: object
+    x-stoplight:
+      id: 4pehbceg3tuid
+    properties:
+      installGoal:
+        type: string
+        x-stoplight:
+          id: f4ly2ofwxwbuq
+      eventGoal:
+        type: string
+        x-stoplight:
+          id: ispvhez6icg1w
+      seconds:
+        type: string
+        x-stoplight:
+          id: 2xwbtfnj3rca7
+      condition:
+        type: string
+        x-stoplight:
+          id: 1juf1aixo2t9o
+  cancelConversions:
+    type: number
+    x-stoplight:
+      id: iy91w980aro00
+    minimum: 0
+    maximum: 1
+  uniqueIpCheck:
+    type: number
+    x-stoplight:
+      id: gxkr25l529wlu
+    minimum: 0
+    maximum: 1
+  cancelUniqueIpConv:
+    type: number
+    x-stoplight:
+      id: kxde8601y81ct
+    minimum: 0
+    maximum: 1
+  validateDeviceId:
+    type: number
+    x-stoplight:
+      id: 48mni748tjyav
+    minimum: 0
+    maximum: 1
+  emptyDeviceId:
+    type: number
+    x-stoplight:
+      id: skbpm1yebon4s
+    minimum: 0
+    maximum: 1
+  ipsub:
+    x-stoplight:
+      id: hns0et91uv3j9
+    enum:
+      - 255.255.255.0
+      - 255.255.255.255
+  uniqueIpGoal:
+    type: string
+    x-stoplight:
+      id: 51f80kzoyed7n
+  action:
+    x-stoplight:
+      id: e9ve5xa5jive0
+    enum:
+      - mark
+      - block
+  uniqueIpClickLevel:
+    type: number
+    x-stoplight:
+      id: l4cre9pnwkfyq
+    minimum: 0
+    maximum: 1
+  uipvar:
+    x-stoplight:
+      id: km7uqzy3r3vfv
+    enum:
+      - ipaddr
+      - click_ip
+  uniqueConvSubId:
+    type: number
+    x-stoplight:
+      id: tpg2banlxkyj2
+    minimum: 0
+    maximum: 1
+  uniqueConvSubIdVar:
+    x-stoplight:
+      id: 3ggib851nvwcs
+    enum:
+      - p1
+      - p2
+      - p3
+      - p4
+      - p5
+      - p6
+      - p7
+      - p8
+      - p9
+      - p10
+  cancelSubidConversion:
+    type: number
+    x-stoplight:
+      id: 5sn6v1242uoum
+    minimum: 0
+    maximum: 1
+  googleClickValidator:
+    type: number
+    x-stoplight:
+      id: tfdt6dl6zo5ij
+    minimum: 0
+    maximum: 1

@@ -64,9 +64,11 @@ properties:
       - grossRevenue
     description: '`clicks`: clicks excluding rejected clicks'
   hourly:
-    type: number
     x-stoplight:
       id: o660g8g1g4q9j
+    type:
+      - number
+    minimum: 0
   daily:
     type:
       - number
