@@ -9964,6 +9964,7 @@ components:
           type: boolean
           x-stoplight:
             id: 2tsz28wgfwsyp
+          default: false
     UserEdit:
       title: UserEdit
       type: object
