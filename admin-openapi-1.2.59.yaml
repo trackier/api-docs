@@ -9892,6 +9892,10 @@ components:
       x-tags:
         - Manage Publishers
         - Manage Advertisers
+      required:
+        - name
+        - email
+        - password
       properties:
         username:
           type: string
@@ -9956,10 +9960,10 @@ components:
           type: array
           items:
             type: string
-      required:
-        - name
-        - email
-        - password
+        sendEmailOrNot:
+          type: boolean
+          x-stoplight:
+            id: 2tsz28wgfwsyp
     UserEdit:
       title: UserEdit
       type: object
