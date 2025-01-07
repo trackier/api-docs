@@ -10081,6 +10081,8 @@ components:
       title: BulkConversionUpload
       type: object
       description: Schema to Upload Bulk Conversions
+      required:
+        - data
       properties:
         data:
           type: array
@@ -10169,6 +10171,61 @@ components:
                 type: string
               click_time:
                 type: string
+              p1:
+                type: string
+                x-stoplight:
+                  id: uycsuvq3c00q5
+              p2:
+                type: string
+                x-stoplight:
+                  id: wl0pl1rr090kf
+              p3:
+                type: string
+                x-stoplight:
+                  id: rkqu1x4s2neel
+              p4:
+                type: string
+                x-stoplight:
+                  id: uli3wxlcn3fvw
+              p5:
+                type: string
+                x-stoplight:
+                  id: nlzsbw2ibz78o
+              p6:
+                type: string
+                x-stoplight:
+                  id: sozmbhc326di0
+              p7:
+                type: string
+                x-stoplight:
+                  id: acyzhzpvhxhdp
+              p8:
+                type: string
+                x-stoplight:
+                  id: norgq82aztsp0
+              p9:
+                type: string
+                x-stoplight:
+                  id: c5plcic34a6h8
+              p10:
+                type: string
+                x-stoplight:
+                  id: 2jntbn9zcy61r
+              coupon_code:
+                type: string
+                x-stoplight:
+                  id: 6do6r4e4f78v6
+                maxLength: 100
+              gaid:
+                type: string
+                x-stoplight:
+                  id: 4954xiq6t4dw6
+                maxLength: 36
+              idfa:
+                type: string
+                x-stoplight:
+                  id: 8wy89ebqxzh0b
+                maxLength: 36
         firePostback:
           type: string
           enum:
@@ -10179,8 +10236,6 @@ components:
           description: 'Set this value to true if you want system to fetch the IP data (city, region, country, isp, latitude and longitude) for the conversion based on the provided Click IP'
           x-stoplight:
             id: em7bqiswcxyp4
-      required:
-        - data
     SubAccountEdit:
       title: SubAccountEdit
       type: object
