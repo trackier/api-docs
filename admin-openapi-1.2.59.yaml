@@ -6492,6 +6492,18 @@ paths:
                         type: string
                       user_id:
                         type: string
+                      utmc:
+                        type: string
+                        x-stoplight:
+                          id: j88w2sf07lqj8
+                      utmd:
+                        type: string
+                        x-stoplight:
+                          id: djk4symxmafr4
+                      utms:
+                        type: string
+                        x-stoplight:
+                          id: pvv6zoyo6ntcc
               examples:
                 sample-conversion-log-resp:
                   value:
