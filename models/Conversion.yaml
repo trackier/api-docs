@@ -84,6 +84,9 @@ x-examples:
     dl: Device Language
     vta: View Through Attribution
     user_id: External User ID
+    utmc: UTM Campaign
+    utms: UTM Source
+    utmd: UTM Medium
 description: Trackier Conversion Model
 title: Conversion
 properties:
@@ -271,5 +274,11 @@ properties:
     type:
       - string
       - 'null'
+  utms:
+    type: string
+  utmd:
+    type: string
+  utmc:
+    type: string
 x-tags:
   - report-logs
