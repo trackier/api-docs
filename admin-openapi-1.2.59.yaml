@@ -8367,6 +8367,10 @@ paths:
                         type: number
                         x-stoplight:
                           id: 7ho50gybwxxso
+                  '':
+                    type: string
+                    x-stoplight:
+                      id: x8autewcbmlk8
         '400':
           description: Bad Request
           content:
@@ -8381,8 +8385,6 @@ paths:
       description: Use this endpoint to fetch all Coupon Codes.
       tags:
         - Coupons
-      security:
-        - API Key Param: []
       parameters:
         - schema:
             type: integer
@@ -8408,6 +8410,16 @@ paths:
           in: query
           name: status
           description: To filter coupons with their status.
+        - schema:
+            type: string
+          in: query
+          name: adid
+          description: To filter coupons with their campaign Id
+        - schema:
+            type: string
+          in: query
+          name: pids
+          description: To filter coupons with their publisher Id
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
