@@ -75,25 +75,27 @@ paths:
         - schema:
             type: object
             properties:
-              geo:
+              status:
+                type: string
+                enum:
+                  - active
+                  - pending
+                  - expired
+              code:
+                description: To filter coupon with their code
+                type: string
+              campaignIds:
+                description: To filter coupon with their campaignId or hashid
                 type: array
                 items:
                   type: string
-                description: Two Letter Country ISO Code in Blocks
-              objective:
+              publisherIds:
+                description: To filter coupon with their publisherIds or hashid
                 type: array
                 items:
                   type: string
-                  enum:
-                    - cpi
-                    - cpa
-                    - cpc
-                    - cps
-                    - cpm
-                    - cpl
           in: query
           name: filters
-          description: Filters
       description: |-
         #### Note: This API endpoint requires a feature to be enable in your account. Please contact your account manager for more info.
         Find All Incent Offers
@@ -8398,30 +8400,6 @@ paths:
           in: query
           name: limit
           description: Limit the number of items returned per page.
-        - schema:
-            type: string
-            example: '&code=CC30'
-          in: query
-          name: code
-          description: To filter coupons with code.
-        - schema:
-            type: string
-            example: '&status=pending'
-          in: query
-          name: status
-          description: To filter coupons with their status.
-        - schema:
-            type: string
-            example: '&campaignIds =123'
-          in: query
-          name: campaignIds
-          description: To filter coupons with their campaign Id
-        - schema:
-            type: string
-            example: '&publisherIds=123'
-          in: query
-          description: To filter coupons with their publisher Id
-          name: publisherIds
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
