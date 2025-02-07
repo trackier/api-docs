@@ -8412,16 +8412,16 @@ paths:
           description: To filter coupons with their status.
         - schema:
             type: string
-            example: '&adid=123'
+            example: '&campaignIds =123'
           in: query
-          name: adid
+          name: campaignIds
           description: To filter coupons with their campaign Id
         - schema:
             type: string
-            example: '&pids=123'
+            example: '&publisherIds=123'
           in: query
-          name: pids
           description: To filter coupons with their publisher Id
+          name: publisherIds
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
