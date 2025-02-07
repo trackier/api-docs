@@ -8696,6 +8696,8 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - campaignId
               properties:
                 code:
                   type: string
@@ -8713,8 +8715,17 @@ paths:
                     - one_time
                 campaignId:
                   type: string
+                  description: short id or long id
+                campaignIds:
+                  type: array
+                  description: short ids or long ids
+                  items:
+                    type: string
+                    x-stoplight:
+                      id: jaxvdwoa0onj9
                 publisherIds:
                   type: array
+                  description: short ids or long ids
                   items:
                     type: string
                     x-stoplight:
