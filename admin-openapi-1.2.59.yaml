@@ -8397,7 +8397,7 @@ paths:
                 type: array
                 items:
                   type: string
-            example: 'filters[campaignIds][]=1234&filters[campaignIds][]=5678&filters[publisherIds][]=99&filters[code]=TEST&filters[status]=active'
+            example: '&filters[code]=TEST&filters[status]=active&filters[campaignIds][]=24703&filters[campaignIds][]=24572&filters[publisherIds][]=30611'
           in: query
           name: filters
       security:
