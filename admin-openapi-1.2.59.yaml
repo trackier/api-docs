@@ -8377,7 +8377,6 @@ paths:
           name: limit
           description: Limit the number of items returned per page.
         - schema:
-            type: object
             properties:
               status:
                 type: string
@@ -8400,6 +8399,8 @@ paths:
                   type: string
           in: query
           name: filters
+      security:
+        - API Key Param: []
     post:
       summary: Create Coupon Code
       operationId: post-v2-coupons
