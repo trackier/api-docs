@@ -9903,7 +9903,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Find all campaign notes
+      summary: Find All Campaign Notes
       tags:
         - Campaigns
       responses:
@@ -10171,7 +10171,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Find all advertiser notes
+      summary: Find All Advertiser Notes
       tags:
         - Manage Advertisers
       responses:
