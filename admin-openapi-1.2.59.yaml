@@ -10037,7 +10037,8 @@ paths:
         required: true
     get:
       summary: Find all publisher notes
-      tags: []
+      tags:
+        - Manage Publishers
       responses:
         '200':
           description: ''
@@ -10126,7 +10127,8 @@ paths:
         id: 8ihwfmdqrp3fx
     post:
       summary: Create Publisher Notes
-      tags: []
+      tags:
+        - Manage Publishers
       responses:
         '200':
           description: ''
