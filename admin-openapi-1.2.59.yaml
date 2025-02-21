@@ -10036,7 +10036,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Find all publisher notes
+      summary: Find All Publisher Notes
       tags:
         - Manage Publishers
       responses:
@@ -10172,7 +10172,8 @@ paths:
         required: true
     get:
       summary: Find all advertiser notes
-      tags: []
+      tags:
+        - Manage Advertisers
       responses:
         '200':
           description: ''
@@ -10262,7 +10263,8 @@ paths:
         id: 96k3h9mg9zdid
     post:
       summary: Create Advertiser Notes
-      tags: []
+      tags:
+        - Manage Advertisers
       responses:
         '200':
           description: OK
@@ -10545,7 +10547,8 @@ paths:
         required: true
     get:
       summary: Find Advertiser Note
-      tags: []
+      tags:
+        - Manage Advertisers
       responses:
         '200':
           description: OK
@@ -10588,7 +10591,8 @@ paths:
         id: mwwwxibc5npiv
     delete:
       summary: Delete Advertiser Note
-      tags: []
+      tags:
+        - Manage Advertisers
       responses:
         '200':
           description: OK
