@@ -9895,6 +9895,782 @@ paths:
       description: Deletes fraudrule for provided id
       security:
         - API Key Param: []
+  '/v2/campaigns/{campId}/notes':
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+    get:
+      summary: Find all campaign notes
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        user_id:
+                          type: string
+                        created:
+                          type: string
+                        modified:
+                          type: string
+                        resourceId:
+                          type: string
+                        id:
+                          type: string
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    success: true
+                    notes:
+                      - message: This is a Note
+                        user_id: 57c4718434243dc47d8b456c
+                        created: '2025-02-21T09:13:52.908Z'
+                        modified: '2025-02-21T09:13:52.911Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b843d08aacc13e892d2268
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 2 added&amp;nbsp;&lt;/p&gt;'
+                        created: '2025-02-21T07:55:50.038Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83186f06db673670105a7
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 1&lt;/p&gt;'
+                        created: '2025-02-21T07:55:36.115Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83178f06db673670105a6
+                    pagination:
+                      perPage: 50
+                      currentPage: 1
+                      total: 3
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    notes:
+                      - message: string
+                        user_id: string
+                        created: string
+                        modified: string
+                        resourceId: string
+                        id: string
+                    pagination:
+                      perPage: 0
+                      currentPage: 0
+                      total: 0
+      operationId: get-v2-campaigns-campId-notes
+      x-stoplight:
+        id: ob75899gd8txe
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+    post:
+      summary: Create Campaign Notes
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note Created!
+      operationId: post-v2-campaigns-campId-notes
+      x-stoplight:
+        id: t5jcykn4e9vap
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is a Note
+  '/v2/publishers/{pubId}/notes':
+    parameters:
+      - schema:
+          type: string
+        name: pubId
+        in: path
+        required: true
+    get:
+      summary: Find all publisher notes
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        user_id:
+                          type: string
+                        created:
+                          type: string
+                        modified:
+                          type: string
+                        resourceId:
+                          type: string
+                        id:
+                          type: string
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    success: true
+                    notes:
+                      - message: This is a Note
+                        user_id: 57c4718434243dc47d8b456c
+                        created: '2025-02-21T09:13:52.908Z'
+                        modified: '2025-02-21T09:13:52.911Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b843d08aacc13e892d2268
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 2 added&amp;nbsp;&lt;/p&gt;'
+                        created: '2025-02-21T07:55:50.038Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83186f06db673670105a7
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 1&lt;/p&gt;'
+                        created: '2025-02-21T07:55:36.115Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83178f06db673670105a6
+                    pagination:
+                      perPage: 50
+                      currentPage: 1
+                      total: 3
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    notes:
+                      - message: string
+                        user_id: string
+                        created: string
+                        modified: string
+                        resourceId: string
+                        id: string
+                    pagination:
+                      perPage: 0
+                      currentPage: 0
+                      total: 0
+      operationId: get-v2-publishers-pubId-notes
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      x-stoplight:
+        id: 8ihwfmdqrp3fx
+    post:
+      summary: Create Publisher Notes
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note Created!
+              examples: {}
+      operationId: post-v2-publishers-pubId-notes
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is a Note For Publisher
+            examples: {}
+      x-stoplight:
+        id: 8mfzevvs22su2
+  '/v2/advertisers/{advId}/notes':
+    parameters:
+      - schema:
+          type: string
+        name: advId
+        in: path
+        required: true
+    get:
+      summary: Find all advertiser notes
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        user_id:
+                          type: string
+                        created:
+                          type: string
+                        modified:
+                          type: string
+                        resourceId:
+                          type: string
+                        id:
+                          type: string
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    success: true
+                    notes:
+                      - message: This is a Note
+                        user_id: 57c4718434243dc47d8b456c
+                        created: '2025-02-21T09:13:52.908Z'
+                        modified: '2025-02-21T09:13:52.911Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b843d08aacc13e892d2268
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 2 added&amp;nbsp;&lt;/p&gt;'
+                        created: '2025-02-21T07:55:50.038Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83186f06db673670105a7
+                      - user_id: 57c4718434243dc47d8b456c
+                        message: '&lt;p&gt;Note 1&lt;/p&gt;'
+                        created: '2025-02-21T07:55:36.115Z'
+                        resourceId: 67b6fc8be2018327460e7df9
+                        id: 67b83178f06db673670105a6
+                    pagination:
+                      perPage: 50
+                      currentPage: 1
+                      total: 3
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    notes:
+                      - message: string
+                        user_id: string
+                        created: string
+                        modified: string
+                        resourceId: string
+                        id: string
+                    pagination:
+                      perPage: 0
+                      currentPage: 0
+                      total: 0
+      operationId: get-v2-advertisers-advId-notes
+      security:
+        - {}
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      x-stoplight:
+        id: 96k3h9mg9zdid
+    post:
+      summary: Create Advertiser Notes
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note Created!
+              examples: {}
+      operationId: post-v2-advertisers-advId-notes
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is a Note For Publisher
+            examples: {}
+      x-stoplight:
+        id: bzg6wlcze780k
+  '/v2/campaigns/{campId}/notes/{noteId}':
+    parameters:
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: campId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+    get:
+      summary: Find Campaign Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      user_id:
+                        type: string
+                      created:
+                        type: string
+                      modified:
+                        type: string
+                      resourceId:
+                        type: string
+                      id:
+                        type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    data:
+                      message: This is a Note
+                      user_id: 57c4718434243dc47d8b456c
+                      created: '2025-02-21T09:13:52.908Z'
+                      modified: '2025-02-21T09:13:52.911Z'
+                      resourceId: 67b6fc8be2018327460e7df9
+                      id: 67b843d08aacc13e892d2268
+      operationId: get-v2-campaigns-campId-notes-noteId
+      x-stoplight:
+        id: xok8n0poy1znd
+      security:
+        - API Key Param: []
+    post:
+      summary: Update Campaign Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note updated successfully.
+      operationId: post-v2-campaigns-campId-notes-noteId
+      x-stoplight:
+        id: g2lzfkbaqlfpv
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is updated Message
+    delete:
+      summary: Delete Campaign Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note deleted successfully.
+      operationId: delete-v2-campaigns-campId-notes-noteId
+      x-stoplight:
+        id: khncgzll1yiks
+  '/v2/publishers/{pubId}/notes/{noteId}':
+    parameters:
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: pubId
+        in: path
+        required: true
+    get:
+      summary: Find Publisher Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      user_id:
+                        type: string
+                      created:
+                        type: string
+                      modified:
+                        type: string
+                      resourceId:
+                        type: string
+                      id:
+                        type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    data:
+                      message: This is a Note
+                      user_id: 57c4718434243dc47d8b456c
+                      created: '2025-02-21T09:13:52.908Z'
+                      modified: '2025-02-21T09:13:52.911Z'
+                      resourceId: 67b6fc8be2018327460e7df9
+                      id: 67b843d08aacc13e892d2268
+      operationId: get-v2-publishers-pubId-notes-noteId
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: oxu1y22f0fh3q
+    post:
+      summary: Update Publisher Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note updated successfully.
+      operationId: post-v2-publishers-pubId-notes-noteId
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is updated Message
+      x-stoplight:
+        id: riyxj8pc2ugwj
+    delete:
+      summary: Delete Publisher Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note deleted successfully.
+      operationId: delete-v2-publishers-pubId-notes-noteId
+      x-stoplight:
+        id: n7o6131sqrqgb
+  '/v2/advertisers/{advId}/notes/{noteId}':
+    parameters:
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: noteId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: advId
+        in: path
+        required: true
+    get:
+      summary: Find Advertiser Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      user_id:
+                        type: string
+                      created:
+                        type: string
+                      modified:
+                        type: string
+                      resourceId:
+                        type: string
+                      id:
+                        type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    data:
+                      message: This is a Note
+                      user_id: 57c4718434243dc47d8b456c
+                      created: '2025-02-21T09:13:52.908Z'
+                      modified: '2025-02-21T09:13:52.911Z'
+                      resourceId: 67b6fc8be2018327460e7df9
+                      id: 67b843d08aacc13e892d2268
+      operationId: get-v2-advertisers-advId-notes-noteId
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: mwwwxibc5npiv
+    post:
+      summary: Update Advertiser Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note updated successfully.
+      operationId: post-v2-advertisers-advId-notes-noteId
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              x-examples:
+                Example 1:
+                  message: This is updated Message
+      x-stoplight:
+        id: og5zssiv5fvlw
+    delete:
+      summary: Delete Advertiser Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Note deleted successfully.
+      operationId: delete-v2-advertisers-advId-notes-noteId
+      x-stoplight:
+        id: fs4k1cr36p0dx
 components:
   schemas:
     UserCreate:
