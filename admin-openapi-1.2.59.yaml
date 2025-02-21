@@ -10329,7 +10329,8 @@ paths:
         required: true
     get:
       summary: Find Campaign Note
-      tags: []
+      tags:
+        - Campaigns
       responses:
         '200':
           description: OK
@@ -10372,7 +10373,8 @@ paths:
         - API Key Param: []
     post:
       summary: Update Campaign Note
-      tags: []
+      tags:
+        - Campaigns
       responses:
         '200':
           description: OK
@@ -10407,7 +10409,8 @@ paths:
                   message: This is updated Message
     delete:
       summary: Delete Campaign Note
-      tags: []
+      tags:
+        - Campaigns
       responses:
         '200':
           description: OK
@@ -10451,7 +10454,8 @@ paths:
         required: true
     get:
       summary: Find Publisher Note
-      tags: []
+      tags:
+        - Manage Publishers
       responses:
         '200':
           description: OK
@@ -10492,44 +10496,10 @@ paths:
         - API Key Param: []
       x-stoplight:
         id: oxu1y22f0fh3q
-    post:
-      summary: Update Publisher Note
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
-                x-examples:
-                  Example 1:
-                    success: true
-                    message: Note updated successfully.
-      operationId: post-v2-publishers-pubId-notes-noteId
-      security:
-        - API Key Param: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                message:
-                  type: string
-              x-examples:
-                Example 1:
-                  message: This is updated Message
-      x-stoplight:
-        id: riyxj8pc2ugwj
     delete:
       summary: Delete Publisher Note
-      tags: []
+      tags:
+        - Manage Publishers
       responses:
         '200':
           description: OK
@@ -10614,41 +10584,6 @@ paths:
         - API Key Param: []
       x-stoplight:
         id: mwwwxibc5npiv
-    post:
-      summary: Update Advertiser Note
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
-                x-examples:
-                  Example 1:
-                    success: true
-                    message: Note updated successfully.
-      operationId: post-v2-advertisers-advId-notes-noteId
-      security:
-        - API Key Param: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                message:
-                  type: string
-              x-examples:
-                Example 1:
-                  message: This is updated Message
-      x-stoplight:
-        id: og5zssiv5fvlw
     delete:
       summary: Delete Advertiser Note
       tags: []
