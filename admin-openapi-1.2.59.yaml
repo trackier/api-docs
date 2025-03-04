@@ -12115,10 +12115,9 @@ components:
         goalId:
           type: string
         payoutModel:
-          type: string
           x-stoplight:
             id: n1pnj0rokngg5
-          readOnly: true
+          type: string
     GoalCreate:
       title: Goal
       type: object
