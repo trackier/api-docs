@@ -1,5 +1,8 @@
 title: Payout Model
 type: object
+x-tags:
+  - Models
+description: Payout Model
 properties:
   _id:
     type: string
@@ -70,6 +73,11 @@ properties:
     type: number
   created:
     type: string
-x-tags:
-  - Models
-description: Payout Model
+  payoutModel:
+    x-stoplight:
+      id: 2dv9d45clh1gu
+    enum:
+      - fixed
+      - revshare
+      - hybrid
+    readOnly: true
