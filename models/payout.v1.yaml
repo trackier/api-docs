@@ -80,4 +80,3 @@ properties:
       - fixed
       - revshare
       - hybrid
-    readOnly: true

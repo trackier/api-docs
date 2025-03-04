@@ -12117,7 +12117,11 @@ components:
         payoutModel:
           x-stoplight:
             id: n1pnj0rokngg5
-          type: string
+          enum:
+            - fixed
+            - revshare
+            - hybrid
+          readOnly: true
     GoalCreate:
       title: Goal
       type: object
