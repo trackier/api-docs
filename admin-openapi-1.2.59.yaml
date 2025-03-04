@@ -12075,6 +12075,12 @@ components:
     Payout:
       title: Payout
       type: object
+      x-tags:
+        - Payouts
+      required:
+        - payout
+        - revenue
+        - geo
       properties:
         payout:
           type: number
@@ -12108,13 +12114,11 @@ components:
             type: string
         goalId:
           type: string
-      required:
-        - payout
-        - revenue
-        - geo
-      x-tags:
-        - Payouts
-      description: ''
+        payoutModel:
+          type: string
+          x-stoplight:
+            id: n1pnj0rokngg5
+          readOnly: true
     GoalCreate:
       title: Goal
       type: object
