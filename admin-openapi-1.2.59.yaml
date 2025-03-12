@@ -11343,6 +11343,10 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        customFields:
+          type: object
+          x-stoplight:
+            id: iy8uavt6oxek4
         trafficChannels:
           type: array
           items:
@@ -11713,6 +11717,10 @@ components:
           description: array of Hash Ids
           items:
             type: string
+        customFields:
+          type: object
+          x-stoplight:
+            id: pj5z9vhbnzz1l
     Cap:
       title: Cap
       type: object

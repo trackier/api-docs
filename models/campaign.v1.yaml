@@ -314,3 +314,7 @@ properties:
     type: string
     x-stoplight:
       id: xg2jg1dcm7lzq
+  customFields:
+    type: object
+    x-stoplight:
+      id: mlizu1oasn5uw
