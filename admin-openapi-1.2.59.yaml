@@ -11372,6 +11372,10 @@ components:
           description: array of Hash Ids
           items:
             type: string
+        erid:
+          type: string
+          x-stoplight:
+            id: nz417p7y9lnhz
     CampaignEdit:
       title: Campaign
       type: object
@@ -11721,6 +11725,10 @@ components:
           type: object
           x-stoplight:
             id: pj5z9vhbnzz1l
+        erid:
+          type: string
+          x-stoplight:
+            id: gvdv7jzj6eiwg
     Cap:
       title: Cap
       type: object

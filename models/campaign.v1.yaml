@@ -318,3 +318,8 @@ properties:
     type: object
     x-stoplight:
       id: mlizu1oasn5uw
+  erid:
+    type: string
+    x-stoplight:
+      id: 29hm29f7tdu0r
+    maxLength: 100
