@@ -1308,6 +1308,8 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - campaigns
                 properties:
                   campaigns:
                     type: array
@@ -1316,8 +1318,10 @@ paths:
                   lastId:
                     type: integer
                     nullable: true
-                required:
-                  - campaigns
+                  '':
+                    type: string
+                    x-stoplight:
+                      id: 408q9p6vbjbka
         '400':
           description: Bad Request
           content:

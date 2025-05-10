@@ -74,6 +74,10 @@ properties:
       - paused
       - disabled
       - expired
+  tags:
+    type: array
+    items:
+      type: string
   os:
     type: array
     items:
