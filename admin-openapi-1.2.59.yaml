@@ -11582,12 +11582,12 @@ components:
                   type: string
         startTime:
           type: string
-          format: 'YYYY-MM-DDTHH:MM:ssZ'
-          example: '2020-01-01T10:30:00Z'
+          example: '2020-01-01 10:30:00'
+          format: 'YYYY-MM-DD hh:mm:ss'
         endTime:
           type: string
-          format: 'YYYY-MM-DD HH:MM:ssZ'
-          example: '2020-02-02T21:00:00Z'
+          example: '2020-02-02 21:00:00'
+          format: 'YYYY-MM-DD hh:mm:ss'
         enforceLpTargeting:
           type: integer
           x-stoplight:
@@ -11937,12 +11937,12 @@ components:
                   type: string
         startTime:
           type: string
-          format: 'YYYY-MM-DDTHH:MM:ssZ'
-          example: '2020-01-01T10:30:00Z'
+          example: '2020-01-01 10:30:00'
+          format: 'YYYY-MM-DD hh:mm:ss'
         endTime:
           type: string
-          format: 'YYYY-MM-DD HH:MM:ssZ'
-          example: '2020-02-02T21:00:00Z'
+          example: '2020-02-02 21:00:00'
+          format: 'YYYY-MM-DD hh:mm:ss'
         enforceLpTargeting:
           type: integer
           x-stoplight:
