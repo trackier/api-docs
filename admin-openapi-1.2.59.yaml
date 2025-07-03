@@ -8333,32 +8333,80 @@ paths:
             application/json:
               schema:
                 type: object
+                x-examples:
+                  Example 1:
+                    success: true
+                    deals:
+                      - id: 681b3d0e6087f1ca6c0858fe
+                        name: deal test 33
+                        url: ''
+                        campaign_id: 2180
+                        campaign_name: camp test 1 api
+                        inc_exc_pubs: ''
+                        publishers:
+                          - id: 281
+                            hashId: 68078990b35dc251760742e9
+                            name: testtt ppp
+                            company: testtt ppp
+                          - id: 282
+                            hashId: 68089b92621f6f09b30bd6b0
+                            name: test twentry three
+                          - id: 294
+                            hashId: 6808c93a621f6f09b30bd6f7
+                            name: qazwsxedc rfvtgbyhn
+                            company: qazwsxedc rfvtgbyhn
+                        start: ''
+                        end: ''
+                        status: active
+                        description: ''
+                        terms_conditions: ''
+                        created: '2025-05-07T10:59:26.000Z'
+                      - id: 68654fdd25ce1ca78500a750
+                        name: TEST
+                        url: 'htps://www.google.com'
+                        campaign_id: 2249
+                        campaign_name: camp test 2 api
+                        inc_exc_pubs: ''
+                        publishers:
+                          - id: 101
+                            hashId: 61d40af3fa2bf747d2603518
+                            name: testpubprecoro
+                            company: testpubprecoro
+                          - id: 128
+                            hashId: 61dbe586fc1748c7ff74fddf
+                            name: testpubnoti134
+                            company: testpubnoti1
+                          - id: 134
+                            hashId: 61dff215fa4598b6ff12a8ab
+                            name: pubfornoti
+                        start: ''
+                        end: ''
+                        status: active
+                        description: ''
+                        terms_conditions: ''
+                        created: '2025-07-02T15:27:25.371Z'
+                    pagination:
+                      perPage: 2
+                      currentPage: 1
+                      total: 2
                 properties:
+                  success:
+                    type: boolean
                   coupons:
                     type: array
+                    x-stoplight:
+                      id: 6s3kbujbiatau
                     items:
                       $ref: ./models/coupon.v1.yaml
                   pagination:
                     type: object
-                    x-stoplight:
-                      id: gey67yrx8mg4f
                     properties:
                       perPage:
-                        type: number
-                        x-stoplight:
-                          id: sr4bwzidx187n
+                        type: integer
                       currentPage:
-                        type: number
-                        x-stoplight:
-                          id: 2lu0vwkj2vtgc
+                        type: integer
                       total:
-                        type: number
-                        x-stoplight:
-                          id: 7ho50gybwxxso
-                  '':
-                    type: string
-                    x-stoplight:
-                      id: x8autewcbmlk8
+                        type: integer
         '400':
           description: Bad Request
           content:
@@ -10622,6 +10670,223 @@ paths:
       operationId: delete-v2-advertisers-advId-notes-noteId
       x-stoplight:
         id: fs4k1cr36p0dx
+  /v2/deals:
+    get:
+      summary: Fetch All Deals
+      tags:
+        - Deals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    success: true
+                    deals:
+                      - id: 681b3d0e6087f1ca6c0858fe
+                        name: deal test 33
+                        url: ''
+                        campaign_id: 2180
+                        campaign_name: camp test 1 api
+                        inc_exc_pubs: ''
+                        publishers:
+                          - id: 281
+                            hashId: 68078990b35dc251760742e9
+                            name: testtt ppp
+                            company: testtt ppp
+                          - id: 282
+                            hashId: 68089b92621f6f09b30bd6b0
+                            name: test twentry three
+                          - id: 294
+                            hashId: 6808c93a621f6f09b30bd6f7
+                            name: qazwsxedc rfvtgbyhn
+                            company: qazwsxedc rfvtgbyhn
+                        start: ''
+                        end: ''
+                        status: active
+                        description: ''
+                        terms_conditions: ''
+                        created: '2025-05-07T10:59:26.000Z'
+                      - id: 68654fdd25ce1ca78500a750
+                        name: TEST
+                        url: 'htps://www.google.com'
+                        campaign_id: 2249
+                        campaign_name: camp test 2 api
+                        inc_exc_pubs: ''
+                        publishers:
+                          - id: 101
+                            hashId: 61d40af3fa2bf747d2603518
+                            name: testpubprecoro
+                            company: testpubprecoro
+                          - id: 128
+                            hashId: 61dbe586fc1748c7ff74fddf
+                            name: testpubnoti134
+                            company: testpubnoti1
+                          - id: 134
+                            hashId: 61dff215fa4598b6ff12a8ab
+                            name: pubfornoti
+                        start: ''
+                        end: ''
+                        status: active
+                        description: ''
+                        terms_conditions: ''
+                        created: '2025-07-02T15:27:25.371Z'
+                    pagination:
+                      perPage: 2
+                      currentPage: 1
+                      total: 2
+                properties:
+                  success:
+                    type: boolean
+                  deals:
+                    type: array
+                    items:
+                      $ref: ./models/deal.yaml
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: integer
+                      currentPage:
+                        type: integer
+                      total:
+                        type: integer
+      operationId: get-v2-deals
+      x-stoplight:
+        id: 8zqtqznvu2t14
+      parameters:
+        - schema:
+            type: integer
+            default: 1000
+            example: '&limit=10'
+          in: query
+          name: limit
+        - schema:
+            type: integer
+            default: 1
+            example: '&page=2'
+          in: query
+          name: page
+        - schema:
+            type: string
+            example: '&name=test-deal'
+          in: query
+          name: name
+        - schema:
+            type: array
+            example: '&campaigns[]= 67d1a05edb6c060c5d8f8699'
+          in: query
+          name: campaigns
+        - schema:
+            type: array
+            example: '&publishers[]= 67d1a05edb6c060c5d8f8699'
+          in: query
+          name: publishers
+        - schema:
+            type: string
+            enum:
+              - active
+              - inactive
+              - pending
+              - expired
+            example: '&status=active'
+          in: query
+          name: status
+      description: Use this endpoint to fetch all deals.
+      security:
+        - API Key Param: []
+  '/v2/deals/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Fetch Deal
+      tags:
+        - Deals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    success: true
+                    deal:
+                      id: 681b3d0e6087f1ca6c0858fe
+                      name: deal test 33
+                      url: 'https://www.google.com'
+                      campaign_id: 2180
+                      campaign_name: camp test 1 api
+                      inc_exc_pubs: include
+                      publishers:
+                        - id: 281
+                          hashId: 68078990b35dc251760742e9
+                          name: testtt ppp
+                          company: testtt ppp
+                        - id: 282
+                          hashId: 68089b92621f6f09b30bd6b0
+                          name: test twentry three
+                        - id: 294
+                          hashId: 6808c93a621f6f09b30bd6f7
+                          name: qazwsxedc rfvtgbyhn
+                          company: qazwsxedc rfvtgbyhn
+                      start: '2025-07-17T00:00:00.000Z'
+                      end: '2025-07-24T00:00:00.000Z'
+                      status: pending
+                      description: deal description test
+                      terms_conditions: deal terms and conditions test
+                      created: '2025-05-07T10:59:26.000Z'
+                properties:
+                  success:
+                    type: boolean
+                  deal:
+                    $ref: ./models/deal.yaml
+      operationId: get-v2-deals-id
+      x-stoplight:
+        id: chirbsdkn9w8w
+      description: Use this endpoint to fetch deal by id.
+      security:
+        - API Key Param: []
+      parameters: []
+    delete:
+      summary: Delete Deal
+      tags:
+        - Deals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Deal Deleted
+      operationId: delete-v2-deals-id
+      x-stoplight:
+        id: 0j93fypq9s4zi
+      description: Use this endpoint to delete deal by id.
+      security:
+        - API Key Param: []
 components:
   schemas:
     UserCreate:

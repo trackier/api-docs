@@ -1,0 +1,68 @@
+type: object
+x-examples:
+  Example 1:
+    id: 681b3d0e6087f1ca6c0858fe
+    name: test-deal
+    url: 'https://www.example.com'
+    campaign_id: 2180
+    campaign_name: deal test campaign
+    inc_exc_pubs: include
+    publishers:
+      - id: 281
+        hashId: 68078990b35dc251760742e9
+        name: test pub
+        company: test pub company
+      - id: 282
+        hashId: 68089b92621f6f09b30bd6b0
+        name: test aff
+        company: test aff company
+      - id: 294
+        hashId: 6808c93a621f6f09b30bd6f7
+        name: abcdef
+        company: ghijkl
+    start: '2025-07-17T00:00:00.000Z'
+    end: '2025-07-24T00:00:00.000Z'
+    status: pending
+    description: deal description test
+    terms_conditions: deal terms and conditions test
+    created: '2025-05-07T10:59:26.000Z'
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  url:
+    type: string
+  campaign_id:
+    type: integer
+  campaign_name:
+    type: string
+  inc_exc_pubs:
+    type: string
+  publishers:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        hashId:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+  start:
+    type: string
+  end:
+    type: string
+  status:
+    type: string
+  description:
+    type: string
+  terms_conditions:
+    type: string
+  created:
+    type: string
+title: Deal
+description: Deal model
