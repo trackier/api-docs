@@ -40,6 +40,15 @@ properties:
       - generic
       - exclusive
       - one_time
+  created:
+    type: string
+    x-stoplight:
+      id: t836x5mib52li
+    format: date-time
+  createdBy:
+    type: string
+    x-stoplight:
+      id: 8r9p0s1897vih
   payouts:
     type: array
     items:

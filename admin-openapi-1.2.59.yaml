@@ -8455,9 +8455,24 @@ paths:
                 type: array
                 items:
                   type: string
-            example: '&filters[code]=TEST&filters[status]=active&filters[campaignIds][]=24703&filters[campaignIds][]=24572&filters[publisherIds][]=30611'
+              createdBefore:
+                description: To filter coupon based on their created date
+                type: string
+                format: date
+                example: 2025-01-15
+              createdAfter:
+                description: To filter coupon based on their created date
+                type: string
+                format: date
+                example: 2025-01-01
+              createdBy:
+                description: To filter coupon based on the user who created it. Short Id or Hash Id
+                type: string
+                example: 63e1e4efad61e76f83025990
+            example: '&filters[code]=TEST&filters[status]=active&filters[campaignIds][]=24703&filters[campaignIds][]=24572&filters[publisherIds][]=30611&filters[createdAfter]=2025-07-10&filters[createdBefore]=2025-07-11&filters[createdBy]=123'
           in: query
           name: filters
+          deprecated: false
       security:
         - API Key Param: []
     post:
