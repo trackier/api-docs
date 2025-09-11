@@ -11660,6 +11660,8 @@ components:
           type: string
           x-stoplight:
             id: nz417p7y9lnhz
+        strictAppName:
+          type: boolean
     CampaignEdit:
       title: Campaign
       type: object
@@ -12013,6 +12015,8 @@ components:
           type: string
           x-stoplight:
             id: gvdv7jzj6eiwg
+        strictAppName:
+          type: boolean
     Cap:
       title: Cap
       type: object
