@@ -324,6 +324,9 @@ properties:
       id: mlizu1oasn5uw
   erid:
     type: string
+  strictAppName:
+    type: boolean
+    description: used for csv app name
     x-stoplight:
       id: 29hm29f7tdu0r
     maxLength: 100
