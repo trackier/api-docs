@@ -3572,9 +3572,6 @@ paths:
               - couponCode
               - saleAmount
               - userAgent
-              - utms
-              - utmd
-              - utmc
               - url
               - created
               - requestIp
