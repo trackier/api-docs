@@ -3584,7 +3584,7 @@ paths:
       x-stoplight:
         id: sea6ydohmpp8q
     parameters: []
-  /v2/network/postbackllogs:
+  /v2/network/postbacklogs:
     get:
       summary: Debug Postback Logs
       tags:
