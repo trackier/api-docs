@@ -3368,6 +3368,826 @@ paths:
           name: page
           description: Page number for pagination
     parameters: []
+  /v2/network/pixellogs:
+    get:
+      summary: Pixel Logs
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    success: true
+                    logs:
+                      - error: NO_SESSION_ID
+                        created: '2025-09-29T08:47:23Z'
+                        click_id: ''
+                        url: 'https://track.techtrack.in/pixel?av=67763f6a567165286c71917b&sub10=ryze-fertin.myshopify.com&txn_id=RYZE113493&coupon_code=ryze7&shopify_shop_id=ryze-fertin.myshopify.com&sale_amount=301.6&__v=6.4&s=websdk&click_id='
+                      - error: NO_SESSION_ID
+                        created: '2025-09-29T08:47:22Z'
+                        click_id: ''
+                        url: 'https://cashkaro.gotrackier.com/pixel?av=67763f6a567165286c71917b&sub10=ryze-fertin.myshopify.com&txn_id=RYZE113493&coupon_code=ryze7&shopify_shop_id=ryze-fertin.myshopify.com&sale_amount=301.6&__v=6.4&s=websdk&click_id='
+                    error_list:
+                      - INVALID_GOAL_ID
+                      - INVALID_GOAL_VALUE
+                      - INVALID_CLICK_ID
+                      - DUPLICATE_CLICK_ID
+                      - CAMPAIGN_DISABLED
+                      - REQUIRED_PARAMS_NOT_PRESENT
+                      - REJECTED_PARAM_VALUE_MATCHED
+                      - NO_SESSION_ID
+                      - NO_CLICKS_FOR_SESSION
+                      - ORDER_DATE_IN_PAST
+                      - UTM_CAMPAIGN_MISMATCH
+                      - INVALID_COUPON_CODE
+                      - COUPON_CODE_INACTIVE
+                      - INVALID_COUPON_FOR_CAMPAIGN
+                      - FUTURE_COUPON_CODE
+                      - COUPON_CODE_EXPIRED
+                      - COUPON_NOT_ALLOWED_FOR_PUB
+                    selected_fields:
+                      - error
+                      - created
+                      - clickId
+                      - url
+                    page: 1
+                    limit: 100
+                    count: 4535656
+                    fields:
+                      - clickId
+                      - error
+                      - campaign
+                      - publisher
+                      - txnId
+                      - couponCode
+                      - saleAmount
+                      - userAgent
+                      - utms
+                      - utmd
+                      - utmc
+                      - url
+                      - created
+                      - requestIp
+                    filter:
+                      campaignIds: []
+                      advertiserIds:
+                        - '22'
+                      publisherIds: []
+                      clickIds: []
+                      error:
+                        - NO_SESSION_ID
+                properties:
+                  success:
+                    type: boolean
+                  logs:
+                    type: array
+                    items:
+                      type: object
+                  error_list:
+                    type: array
+                    items:
+                      type: string
+                  selected_fields:
+                    type: array
+                    items:
+                      type: string
+                  page:
+                    type: integer
+                  limit:
+                    type: integer
+                  count:
+                    type: integer
+                  fields:
+                    type: array
+                    items:
+                      type: string
+                  filter:
+                    type: object
+                    properties:
+                      campaignIds:
+                        type: array
+                        items:
+                          type: object
+                      advertiserIds:
+                        type: array
+                        items:
+                          type: string
+                      publisherIds:
+                        type: array
+                        items:
+                          type: object
+                      clickIds:
+                        type: array
+                        items:
+                          type: object
+                      error:
+                        type: array
+                        items:
+                          type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-pixel-logs
+      description: Get Pixel Logs
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+            example: '&start=2025-01-01 00:00:00'
+          in: query
+          name: start
+          description: 'Start date in YYYY-MM-DD HH:mm:ss format'
+        - schema:
+            type: string
+            example: '&end=2025-01-01 23:59:59'
+          in: query
+          name: end
+          description: 'End date in YYYY-MM-DD HH:mm:ss format'
+        - schema:
+            type: integer
+            example: '&limit=100'
+          in: query
+          name: limit
+          description: Limit of records per page
+        - schema:
+            type: integer
+            example: '&page=1'
+          in: query
+          name: page
+          description: Page number for pagination
+        - schema:
+            type: array
+            example: '&campaign_ids[]=123'
+          in: query
+          name: campaign_ids
+          description: List of campaign short or long ids.
+          explode: false
+        - schema:
+            type: array
+            example: '&advertiser_ids[]=789'
+          in: query
+          name: advertiser_ids
+          description: List of advertiser short or long ids
+        - schema:
+            type: array
+            example: '&publisher_ids[]=456'
+          in: query
+          name: publisher_ids
+          description: List of publisher short or long ids
+        - schema:
+            type: array
+            example: '&click_ids[]=507f1f77bcf86cd799439011'
+          in: query
+          name: click_ids
+          description: List of click ids
+        - schema:
+            type: array
+            example: '&errors[]=NO_SESSION_ID'
+          in: query
+          name: errors
+          description: List of errors
+        - schema:
+            type: array
+            example: '&fields[]=txnId'
+            enum:
+              - clickId
+              - error
+              - campaign
+              - publisher
+              - txnId
+              - couponCode
+              - saleAmount
+              - userAgent
+              - utms
+              - utmd
+              - utmc
+              - url
+              - created
+              - requestIp
+          in: query
+          name: fields
+          description: List of fields
+      x-stoplight:
+        id: sea6ydohmpp8q
+    parameters: []
+  /v2/network/postbackllogs:
+    get:
+      summary: Debug Postback Logs
+      tags:
+        - Network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    success: true
+                    logs:
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:54Z'
+                        click_id: CHKR20250921A381960014
+                        url: '/acquisition?click_id=CHKR20250921A381960014&security_token=383bcabc9646d508d87f&txn_id=FN6111708692_701048206006&sale_amount=4699&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_4699_ZOOM14__Existing_iOS_ARROW_Blazers+%26+Waistcoats_Western+Wear_Men&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:49Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=conscious-chemist.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#CC38078322
+                      - error: ''
+                        created: '2025-09-29T18:29:41Z'
+                        click_id: 68dabcd0d78633035641aea8
+                        url: /acquisition?click_id=68dabcd0d78633035641aea8&security_token=3d61766ebf932c00562e&sale_amount=17933&txn_id=12102645774&p2=591
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:32Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bombay-shaving.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BSC2002285909
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:27Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377799
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:25Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377798
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:20Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781682
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:13Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=babymarketstore.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#NM22226429648
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:09Z'
+                        click_id: CHKR20250922A382557212
+                        url: '/acquisition?click_id=CHKR20250922A382557212&security_token=383bcabc9646d508d87f&txn_id=FN5990704482_700324762013&sale_amount=1007.2&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_1007.2_GSTSAVING10__Existing_iOS_Styli_Jeans_Western+Wear_Men&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:09Z'
+                        click_id: CHKR20250922A382557212
+                        url: '/acquisition?click_id=CHKR20250922A382557212&security_token=383bcabc9646d508d87f&txn_id=FN5990704482_467204298004&sale_amount=1008.1&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_1008.1_GSTSAVING10__Existing_iOS_Styli_Jeans_Western+Wear_Men&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:09Z'
+                        click_id: CHKR20250922A382557212
+                        url: '/acquisition?click_id=CHKR20250922A382557212&security_token=383bcabc9646d508d87f&txn_id=FN5990704482_467204298003&sale_amount=1008.1&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_1008.1_GSTSAVING10__Existing_iOS_Styli_Jeans_Western+Wear_Men&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:06Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377797
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:29:00Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=sugar-cosmetics.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#2651558
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:59Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377796
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:54Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=sugar-cosmetics.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#2651557
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:54Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377795
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:54Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781681
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:52Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bombay-shaving.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BSC2002285908
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:50Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=strch-india.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=STRCH39072
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:49Z'
+                        click_id: CHKR20250929A384870300
+                        url: '/acquisition?click_id=CHKR20250929A384870300&security_token=383bcabc9646d508d87f&txn_id=FN2131700392_493716719&sale_amount=516.0699999999999&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_516.0699999999999_GLAM_beautyCatalog_Existing_Mobile_CETAPHIL_Face+Care_Personal+Care_Women&sub4=10'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:47Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377794
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:45Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781680
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:42Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=true-elements-5643.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=346500113613
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:25Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781679
+                      - error: ''
+                        created: '2025-09-29T18:28:22Z'
+                        click_id: 68dacf792276670345f51442
+                        url: /acquisition?security_token=78492e533d9a216c52a3
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:20Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=nuts-delish.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=KC287938
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:18Z'
+                        click_id: ENKR20250929A1644998325
+                        url: '/acquisition?click_id=ENKR20250929A1644998325&security_token=383bcabc9646d508d87f&txn_id=FN4431701045_494625302&sale_amount=1129.8&status=2&goal_value=New&sub2=3078341_{p1}&sub3=xyzdeal_affiliate_3078341_1129.8__beautyCatalog_New_Mobile_LAKME_Eyes_Makeup_Women&sub4=3'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:14Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377793
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:07Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781678
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:05Z'
+                        click_id: ENKR20250929A1644998325
+                        url: '/acquisition?click_id=ENKR20250929A1644998325&security_token=383bcabc9646d508d87f&txn_id=FN4431701045_494475023&sale_amount=1004.8&status=2&goal_value=New&sub2=3078341_{p1}&sub3=xyzdeal_affiliate_3078341_1004.8__beautyCatalog_New_Mobile_undefined_undefined_undefined_undefined&sub4=4'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:05Z'
+                        click_id: ENKR20250929A1644998325
+                        url: '/acquisition?click_id=ENKR20250929A1644998325&security_token=383bcabc9646d508d87f&txn_id=FN4431701045_494396193&sale_amount=980.8000000000001&status=2&goal_value=New&sub2=3078341_{p1}&sub3=xyzdeal_affiliate_3078341_980.8000000000001__beautyCatalog_New_Mobile_LAKME_Face+%26+Body_Makeup_Women&sub4=3'
+                      - error: ''
+                        created: '2025-09-29T18:28:04Z'
+                        click_id: 68dace97cc419d0343ab1ddb
+                        url: /acquisition?click_id=68dace97cc419d0343ab1ddb&sale_amount=12698.0&txn_id=RD68DACEBD0E714C17F6&security_token=77e3aa7f6f8db8e6a92c
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:03Z'
+                        click_id: CHKR20250929A384870978
+                        url: '/acquisition?click_id=CHKR20250929A384870978&security_token=383bcabc9646d508d87f&txn_id=FN9201706904_491437310&sale_amount=35.64&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_35.64_GLAM_beautyCatalog_Existing_Android_GATSBY_Hair+Styling_Hair+Care_Men&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:28:00Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781677
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:59Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=aqualogicaprod.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#711003781676
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:59Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bombay-shaving.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BSC2002285907
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:59Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=nuts-delish.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=KC287937
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:56Z'
+                        click_id: CHKR20250929A384870942
+                        url: '/acquisition?click_id=CHKR20250929A384870942&security_token=383bcabc9646d508d87f&txn_id=FN2730707455_702310339004&sale_amount=988&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_988_FREEDEL__Existing_iOS_Buda+Jeans+Co_Trousers+%26+Pants_Western+Wear_Men&sub4=1'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:56Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=www-krausjeans-com.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#69800
+                      - error: ''
+                        created: '2025-09-29T18:27:55Z'
+                        click_id: 68daceecd78633035650f9d5
+                        url: /acquisition?click_id=68daceecd78633035650f9d5&security_token=d33b0a14d20e6abad003&sale_amount=7320.0000&txn_id=1001457229&sub3=COD&sub4=
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:47Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bombay-shaving.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BSC2002285907
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:47Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=getcleevo-6699.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=#71324
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:45Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=bellavita1.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=BVO379246377792
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:41Z'
+                        click_id: CHKR20250929A384870978
+                        url: '/acquisition?click_id=CHKR20250929A384870978&security_token=383bcabc9646d508d87f&txn_id=FN9201706904_493618272&sale_amount=724&status=2&goal_value=Existing&sub2=CK_{p1}&sub3=xyzdeal_affiliate_CK_724_GLAM_beautyCatalog_Existing_Android_L%27Oreal+Paris_Shampoos+%26+Conditioner_Hair+Care_Women&sub4=0'
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250925A1637298769
+                        url: /acquisition?click_id=ENKR20250925A1637298769&security_token=f8e1b10a55df99540bc5&sale_amount=16381.26&txn_id=E1125092911485016180&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ''
+                        url: /webhook/shopify-order-create?org_id=6745abdd59baa3ba22059efc&shop_id=strch-india.myshopify.com&security_token=f8e1b10a55df99540bc5&host=cashkaro.trackier.co&txn_id=STRCH39071
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644946016
+                        url: /acquisition?click_id=ENKR20250929A1644946016&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911484016092&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644948252
+                        url: /acquisition?click_id=ENKR20250929A1644948252&security_token=f8e1b10a55df99540bc5&sale_amount=0.00&txn_id=E1125092911485016213&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644959996
+                        url: /acquisition?click_id=ENKR20250929A1644959996&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485016504&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644945130
+                        url: /acquisition?click_id=ENKR20250929A1644945130&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016071&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644639153
+                        url: /acquisition?click_id=ENKR20250929A1644639153&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911485015848&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644937912
+                        url: /acquisition?click_id=ENKR20250929A1644937912&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485016067&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250929A1644966614
+                        url: /acquisition?click_id=ENKR20250929A1644966614&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484016416&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:39Z'
+                        click_id: ENKR20250919A1610488604
+                        url: /acquisition?click_id=ENKR20250919A1610488604&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484016014&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644944111
+                        url: /acquisition?click_id=ENKR20250929A1644944111&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911484016009&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644977922
+                        url: /acquisition?click_id=ENKR20250929A1644977922&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016540&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644941753
+                        url: /acquisition?click_id=ENKR20250929A1644941753&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911484015983&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250925A1637298769
+                        url: /acquisition?click_id=ENKR20250925A1637298769&security_token=f8e1b10a55df99540bc5&sale_amount=16381.26&txn_id=E1125092911485015902&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644638815
+                        url: /acquisition?click_id=ENKR20250929A1644638815&security_token=f8e1b10a55df99540bc5&sale_amount=14759.00&txn_id=E1125092911484016337&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250921A381970999
+                        url: /acquisition?click_id=CHKR20250921A381970999&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016544&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644977814
+                        url: /acquisition?click_id=ENKR20250929A1644977814&security_token=f8e1b10a55df99540bc5&sale_amount=0.00&txn_id=E1125092911485016556&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644967921
+                        url: /acquisition?click_id=ENKR20250929A1644967921&security_token=f8e1b10a55df99540bc5&sale_amount=14759.00&txn_id=E1125092911484016377&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644942630
+                        url: /acquisition?click_id=ENKR20250929A1644942630&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911484016082&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250929A384857955
+                        url: /acquisition?click_id=CHKR20250929A384857955&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016146&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644941831
+                        url: /acquisition?click_id=ENKR20250929A1644941831&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911485015964&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644942893
+                        url: /acquisition?click_id=ENKR20250929A1644942893&security_token=f8e1b10a55df99540bc5&sale_amount=16849.00&txn_id=E1125092911485016159&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644978848
+                        url: /acquisition?click_id=ENKR20250929A1644978848&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016547&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644965336
+                        url: /acquisition?click_id=ENKR20250929A1644965336&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911485016372&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644967273
+                        url: /acquisition?click_id=ENKR20250929A1644967273&security_token=f8e1b10a55df99540bc5&sale_amount=14759.00&txn_id=E1125092911485016401&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250929A384857431
+                        url: /acquisition?click_id=CHKR20250929A384857431&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016018&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250929A384860205
+                        url: /acquisition?click_id=CHKR20250929A384860205&security_token=f8e1b10a55df99540bc5&sale_amount=16999.00&txn_id=E1125092911485016523&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644638815
+                        url: /acquisition?click_id=ENKR20250929A1644638815&security_token=f8e1b10a55df99540bc5&sale_amount=14759.00&txn_id=E1125092911485016250&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644943154
+                        url: /acquisition?click_id=ENKR20250929A1644943154&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484015977&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644968639
+                        url: /acquisition?click_id=ENKR20250929A1644968639&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484016393&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644966562
+                        url: /acquisition?click_id=ENKR20250929A1644966562&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016368&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644971878
+                        url: /acquisition?click_id=ENKR20250929A1644971878&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911484016319&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644939244
+                        url: /acquisition?click_id=ENKR20250929A1644939244&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484016000&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644948300
+                        url: /acquisition?click_id=ENKR20250929A1644948300&security_token=f8e1b10a55df99540bc5&sale_amount=16349.81&txn_id=E1125092911484016182&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644937912
+                        url: /acquisition?click_id=ENKR20250929A1644937912&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485015999&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250929A384858000
+                        url: /acquisition?click_id=CHKR20250929A384858000&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016118&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: CHKR20250921A381917192
+                        url: /acquisition?click_id=CHKR20250921A381917192&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485016199&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644941625
+                        url: /acquisition?click_id=ENKR20250929A1644941625&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911485015974&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644945475
+                        url: /acquisition?click_id=ENKR20250929A1644945475&security_token=f8e1b10a55df99540bc5&sale_amount=14759.00&txn_id=E1125092911485016248&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644938429
+                        url: /acquisition?click_id=ENKR20250929A1644938429&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911484015828&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:38Z'
+                        click_id: ENKR20250929A1644969229
+                        url: /acquisition?click_id=ENKR20250929A1644969229&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016448&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: CHKR20250929A384868853
+                        url: /acquisition?click_id=CHKR20250929A384868853&security_token=f8e1b10a55df99540bc5&sale_amount=12020.24&txn_id=E1125092911484016619&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644945475
+                        url: /acquisition?click_id=ENKR20250929A1644945475&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911484016333&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644942406
+                        url: /acquisition?click_id=ENKR20250929A1644942406&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911485015972&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: CHKR20250929A384862839
+                        url: /acquisition?click_id=CHKR20250929A384862839&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016433&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644945682
+                        url: /acquisition?click_id=ENKR20250929A1644945682&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016079&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644937995
+                        url: /acquisition?click_id=ENKR20250929A1644937995&security_token=f8e1b10a55df99540bc5&sale_amount=14999.00&txn_id=E1125092911484015892&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644942361
+                        url: /acquisition?click_id=ENKR20250929A1644942361&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485016000&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644948347
+                        url: /acquisition?click_id=ENKR20250929A1644948347&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016451&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644639153
+                        url: /acquisition?click_id=ENKR20250929A1644639153&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911484015870&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644968635
+                        url: /acquisition?click_id=ENKR20250929A1644968635&security_token=f8e1b10a55df99540bc5&sale_amount=16848.00&txn_id=E1125092911484016399&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644947828
+                        url: /acquisition?click_id=ENKR20250929A1644947828&security_token=f8e1b10a55df99540bc5&sale_amount=16749.00&txn_id=E1125092911485016188&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: CHKR20250929A384862151
+                        url: /acquisition?click_id=CHKR20250929A384862151&security_token=f8e1b10a55df99540bc5&sale_amount=0.00&txn_id=E1125092911485016405&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250926A1638671838
+                        url: /acquisition?click_id=ENKR20250926A1638671838&security_token=f8e1b10a55df99540bc5&sale_amount=19299.00&txn_id=E1125092911484016208&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644941625
+                        url: /acquisition?click_id=ENKR20250929A1644941625&security_token=f8e1b10a55df99540bc5&sale_amount=16899.00&txn_id=E1125092911485016132&goal_value=Sales
+                      - error: INVALID_CLICK_ID
+                        created: '2025-09-29T18:27:37Z'
+                        click_id: ENKR20250929A1644942191
+                        url: /acquisition?click_id=ENKR20250929A1644942191&security_token=f8e1b10a55df99540bc5&sale_amount=14909.00&txn_id=E1125092911484016339&goal_value=Sales
+                    error_list:
+                      - INVALID_GOAL_ID
+                      - INVALID_GOAL_VALUE
+                      - INVALID_CLICK_ID
+                      - DUPLICATE_CLICK_ID
+                      - CAMPAIGN_DISABLED
+                      - REQUIRED_PARAMS_NOT_PRESENT
+                      - REJECTED_PARAM_VALUE_MATCHED
+                      - INVALID_SECURITY_TOKEN
+                      - INVALID_COUPON_CODE
+                      - COUPON_CODE_INACTIVE
+                      - INVALID_COUPON_FOR_CAMPAIGN
+                      - FUTURE_COUPON_CODE
+                      - COUPON_CODE_EXPIRED
+                      - COUPON_NOT_ALLOWED_FOR_PUB
+                    selected_fields:
+                      - error
+                      - created
+                      - clickId
+                      - url
+                    page: 1
+                    limit: 100
+                    count: 6156056
+                    fields:
+                      - clickId
+                      - error
+                      - campaign
+                      - publisher
+                      - url
+                      - host
+                      - created
+                      - userAgent
+                      - requestIp
+                    filter:
+                      campaignIds: []
+                      advertiserIds: []
+                      publisherIds: []
+                      clickIds: []
+                      securityToken: []
+                      error: []
+                properties:
+                  success:
+                    type: boolean
+                  logs:
+                    type: array
+                    items:
+                      type: object
+                  error_list:
+                    type: array
+                    items:
+                      type: string
+                  selected_fields:
+                    type: array
+                    items:
+                      type: string
+                  page:
+                    type: integer
+                  limit:
+                    type: integer
+                  count:
+                    type: integer
+                  fields:
+                    type: array
+                    items:
+                      type: string
+                  filter:
+                    type: object
+                    properties:
+                      campaignIds:
+                        type: array
+                        items:
+                          type: object
+                      advertiserIds:
+                        type: array
+                        items:
+                          type: object
+                      publisherIds:
+                        type: array
+                        items:
+                          type: object
+                      clickIds:
+                        type: array
+                        items:
+                          type: object
+                      securityToken:
+                        type: array
+                        items:
+                          type: object
+                      error:
+                        type: array
+                        items:
+                          type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+      operationId: get-v2-postback-logs
+      description: Get Debug Postback Logs
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+            example: '&start=2025-01-01 00:00:00'
+          in: query
+          name: start
+          description: 'Start date in YYYY-MM-DD HH:mm:ss format'
+        - schema:
+            type: string
+            example: '&end=2025-01-01 23:59:59'
+          in: query
+          name: end
+          description: 'End date in YYYY-MM-DD HH:mm:ss format'
+        - schema:
+            type: integer
+            example: '&limit=100'
+          in: query
+          name: limit
+          description: Limit of records per page
+        - schema:
+            type: integer
+            example: '&page=1'
+          in: query
+          name: page
+          description: Page number for pagination
+        - schema:
+            type: array
+            example: '&campaign_ids[]=123'
+          in: query
+          name: campaign_ids
+          description: List of campaign short or long ids.
+          explode: false
+        - schema:
+            type: array
+            example: '&advertiser_ids[]=789'
+          in: query
+          name: advertiser_ids
+          description: List of advertiser short or long ids
+        - schema:
+            type: array
+            example: '&publisher_ids[]=456'
+          in: query
+          name: publisher_ids
+          description: List of publisher short or long ids
+        - schema:
+            type: array
+            example: '&click_ids[]=507f1f77bcf86cd799439011'
+          in: query
+          name: click_ids
+          description: List of click ids
+        - schema:
+            type: array
+            example: '&errors[]=NO_SESSION_ID'
+          in: query
+          name: errors
+          description: List of errors
+        - schema:
+            type: array
+            example: '&fields[]=txnId'
+            enum:
+              - clickId
+              - error
+              - campaign
+              - publisher
+              - userAgent
+              - url
+              - created
+              - requestIp
+              - host
+          in: query
+          name: fields
+          description: List of fields
+        - schema:
+            type: array
+            example: '&security_token[]=ed45xxxxxxxxxxxx3947'
+          in: query
+          name: security_token
+          description: List of Security Tokens
+      x-stoplight:
+        id: vyi93fjsckavw
+    parameters: []
   /v2/conversions/bulkUpload:
     post:
       summary: Bulk Conversion Upload
@@ -8459,12 +9279,12 @@ paths:
                 description: To filter coupon based on their created date
                 type: string
                 format: date
-                example: 2025-01-15
+                example: '2025-01-15'
               createdAfter:
                 description: To filter coupon based on their created date
                 type: string
                 format: date
-                example: 2025-01-01
+                example: '2025-01-01'
               createdBy:
                 description: To filter coupon based on the user who created it. Short Id or Hash Id
                 type: string
