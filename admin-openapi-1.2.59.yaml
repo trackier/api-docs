@@ -3417,7 +3417,7 @@ paths:
                       - url
                     page: 1
                     limit: 100
-                    count: 4535656
+                    count: 0
                     fields:
                       - clickId
                       - error
@@ -3434,13 +3434,12 @@ paths:
                       - created
                       - requestIp
                     filter:
-                      campaignIds: []
-                      advertiserIds:
+                      campaign_ids: []
+                      advertiser_ids:
                         - '22'
-                      publisherIds: []
-                      clickIds: []
-                      error:
-                        - NO_SESSION_ID
+                      publisher_ids: []
+                      click_ids: []
+                      errors: []
                 properties:
                   success:
                     type: boolean
@@ -3469,26 +3468,26 @@ paths:
                   filter:
                     type: object
                     properties:
-                      campaignIds:
+                      campaign_ids:
                         type: array
                         items:
                           type: object
-                      advertiserIds:
+                      advertiser_ids:
                         type: array
                         items:
                           type: string
-                      publisherIds:
+                      publisher_ids:
                         type: array
                         items:
                           type: object
-                      clickIds:
+                      click_ids:
                         type: array
                         items:
                           type: object
-                      error:
+                      errors:
                         type: array
                         items:
-                          type: string
+                          type: object
         '400':
           description: Bad Request
           content:
@@ -4019,7 +4018,6 @@ paths:
                       - url
                     page: 1
                     limit: 100
-                    count: 6156056
                     fields:
                       - clickId
                       - error
@@ -4031,12 +4029,12 @@ paths:
                       - userAgent
                       - requestIp
                     filter:
-                      campaignIds: []
-                      advertiserIds: []
-                      publisherIds: []
-                      clickIds: []
-                      securityToken: []
-                      error: []
+                      campaign_ids: []
+                      advertiser_ids: []
+                      publisher_ids: []
+                      click_ids: []
+                      security_token: []
+                      errors: []
                 properties:
                   success:
                     type: boolean
@@ -4056,8 +4054,6 @@ paths:
                     type: integer
                   limit:
                     type: integer
-                  count:
-                    type: integer
                   fields:
                     type: array
                     items:
@@ -4065,27 +4061,27 @@ paths:
                   filter:
                     type: object
                     properties:
-                      campaignIds:
+                      campaign_ids:
                         type: array
                         items:
                           type: object
-                      advertiserIds:
+                      advertiser_ids:
                         type: array
                         items:
                           type: object
-                      publisherIds:
+                      publisher_ids:
                         type: array
                         items:
                           type: object
-                      clickIds:
+                      click_ids:
                         type: array
                         items:
                           type: object
-                      securityToken:
+                      security_token:
                         type: array
                         items:
                           type: object
-                      error:
+                      errors:
                         type: array
                         items:
                           type: object
