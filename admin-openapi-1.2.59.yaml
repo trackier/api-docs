@@ -4052,6 +4052,8 @@ paths:
                     type: integer
                   limit:
                     type: integer
+                  count:
+                    type: integer
                   fields:
                     type: array
                     items:
