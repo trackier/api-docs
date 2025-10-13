@@ -318,6 +318,13 @@ properties:
     type: string
     x-stoplight:
       id: xg2jg1dcm7lzq
+  allowedTrackingLinkFormat:
+    x-stoplight:
+      id: wosmxn4odi6p4
+    enum:
+      - numeric_id
+      - unique_id
+      - both
   customFields:
     type: object
     x-stoplight:

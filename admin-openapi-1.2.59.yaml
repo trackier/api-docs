@@ -3459,8 +3459,6 @@ paths:
                     type: integer
                   limit:
                     type: integer
-                  count:
-                    type: integer
                   fields:
                     type: array
                     items:
@@ -12440,6 +12438,14 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        allowedTrackingLinkFormat:
+          type: string
+          x-stoplight:
+            id: uhrrb7e164ybj
+          enum:
+            - numeric_id
+            - unique_id
+            - both
         customFields:
           type: object
           x-stoplight:
@@ -12797,6 +12803,14 @@ components:
             - gclid
             - ip_gclid
           default: cookie
+        allowedTrackingLinkFormat:
+          type: string
+          x-stoplight:
+            id: samwulu5c7niv
+          enum:
+            - numeric_id
+            - unique_id
+            - both
         trafficChannels:
           type: array
           items:
