@@ -13431,6 +13431,8 @@ components:
           enum:
             - approved
             - pending
+            - cancelled
+            - rejected
         campaignId:
           oneOf:
             - type: string
@@ -13524,6 +13526,8 @@ components:
           enum:
             - approved
             - pending
+            - cancelled
+            - rejected
         campaignId:
           type: string
           enum:
