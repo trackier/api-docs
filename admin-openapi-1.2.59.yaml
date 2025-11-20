@@ -4677,7 +4677,56 @@ paths:
       responses:
         '200':
           description: OK
-          content: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        hashId:
+                          type: string
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        status:
+                          type: string
+                        type:
+                          type: string
+                        reportingManager:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            email:
+                              type: string
+                        created:
+                          type: string
+                        modified:
+                          type: string
+                x-examples:
+                  Example 1:
+                    accounts:
+                      - id: 802
+                        hashId: 679b6b7a451f6c6f0b1f2a72
+                        name: test_new_acc_mngr
+                        email: new@account.mngr
+                        status: active
+                        type: subadmin
+                        reportingManager:
+                          id: 799
+                          name: user7@example.com
+                          email: user7@example.com
+                        created: '2025-01-30T12:07:22.000Z'
+                        modified: '2025-11-11T12:12:55.000Z'
         '400':
           description: Bad Request
           content:
@@ -4763,7 +4812,54 @@ paths:
       responses:
         '200':
           description: OK
-          content: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      hashId:
+                        type: string
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      status:
+                        type: string
+                      type:
+                        type: string
+                      reportingManager:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          email:
+                            type: string
+                      created:
+                        type: string
+                      modified:
+                        type: string
+                x-examples:
+                  Example 1:
+                    account:
+                      id: 802
+                      hashId: 679b6b7a451f6c6f0b1f2a72
+                      name: test_new_acc_mngr
+                      email: new@account.mngr
+                      status: active
+                      type: subadmin
+                      reportingManager:
+                        id: 799
+                        name: user7@example.com
+                        email: user7@example.com
+                      created: '2025-01-30T12:07:22.000Z'
+                      modified: '2025-11-11T12:12:55.000Z'
         '400':
           description: Bad Request
           content:
