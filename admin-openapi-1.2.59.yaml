@@ -2706,6 +2706,110 @@ paths:
               required:
                 - campaignIds
                 - status
+  /v2/publishers/assign-managers:
+    post:
+      summary: Bulk Assign Managers
+      operationId: post-v2-bulk-assign-managers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  publishers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        managers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              email:
+                                type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Managers Assigned!
+                    publishers:
+                      - id: 345
+                        name: Naveads94
+                        email: naveads94@gmail.com
+                        managers:
+                          - id: 108
+                            name: newmemberfornoti
+                            email: newmemberfornoti@test.com
+                          - id: 364
+                            name: new afm test
+                            email: newafmtest@gmail.com
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    $ref: ./models/error.v1.yaml
+      description: Use this endpoint to bulk update publisher-manager assignments.
+      security:
+        - API Key Param: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                manager_ids:
+                  type: array
+                  items:
+                    type: string
+              x-examples:
+                Example 1:
+                  ids:
+                    - 345
+                    - 693fb7c1s6db1d03491efc55
+                  manager_ids:
+                    - 364
+                    - 108
+                    - 693fb7c16db1d303491efc55
+            examples:
+              Example 1:
+                value:
+                  ids:
+                    - 345
+                    - 693fb7c1s6db1d03491e8e78
+                  manager_ids:
+                    - 364
+                    - 108
+                    - 693fb7c16db1d303491ec5c5
+        description: 'Note: This operation will replace the existing managers of the publishers with the new managers provided. To avoid overwriting current assignments, please include the existing manager IDs along with the new manager IDs in the request.'
+      x-stoplight:
+        id: tzjsypdip1epq
+      tags:
+        - Manage Publishers
+    parameters: []
   /v2/campaigns/bulkEdit:
     post:
       summary: Bulk Campaign Edit
