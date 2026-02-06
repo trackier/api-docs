@@ -1435,6 +1435,11 @@ paths:
                 description: Traffic channels name
                 items:
                   type: string
+              customFields:
+                type: array
+                description: List of available custom field definitions for campaigns
+                items:
+                  type: string
           in: query
           name: filters
     post:
@@ -11114,6 +11119,67 @@ paths:
               x-examples:
                 Example 1:
                   message: This is a Note
+  '/v2/customfields/campaign':
+    get:
+      summary: Get Campaign Custom Fields
+      operationId: campaign-customfields-findAll
+      tags:
+        - Campaigns
+      description: >
+        Returns the list of custom fields that can be used to filter campaigns.
+        Each custom field includes its key, label, type and any allowed values.
+      security:
+        - API Key Param: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        label:
+                          type: string
+                        type:
+                          type: string
+                          description: Field input type (e.g. text, select)
+                        name:
+                          type: string
+                        required:
+                          type: boolean
+                        id:
+                          type: string
+                        hidden:
+                          type: boolean
+                        validation:
+                          nullable: true
+                        isConsent:
+                          type: boolean
+                        options:
+                          type: array
+                          items:
+                            type: string
+                        pub_hide:
+                          type: integer
+                          description: Visibility flag for publishers
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   '/v2/publishers/{pubId}/notes':
     parameters:
       - schema:
