@@ -5094,6 +5094,10 @@ paths:
           in: query
           name: limit
           description: Limit number of records to fetch
+        - schema:
+            type: boolean
+          in: query
+          name: enableFacebookview
     post:
       summary: Create Postback
       operationId: post-v2-postback
@@ -11119,15 +11123,14 @@ paths:
               x-examples:
                 Example 1:
                   message: This is a Note
-  '/v2/customfields/campaign':
+  /v2/customfields/campaign:
     get:
       summary: Get Campaign Custom Fields
       operationId: campaign-customfields-findAll
       tags:
         - Campaigns
-      description: >
-        Returns the list of custom fields that can be used to filter campaigns.
-        Each custom field includes its key, label, type and any allowed values.
+      description: |
+        Returns the list of custom fields that can be used to filter campaigns. Each custom field includes its key, label, type and any allowed values.
       security:
         - API Key Param: []
       responses:
@@ -11149,7 +11152,7 @@ paths:
                           type: string
                         type:
                           type: string
-                          description: Field input type (e.g. text, select)
+                          description: 'Field input type (e.g. text, select)'
                         name:
                           type: string
                         required:
