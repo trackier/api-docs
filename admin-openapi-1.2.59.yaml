@@ -5417,7 +5417,193 @@ paths:
         name: id
         in: path
         required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
         description: Smart link ID
+    get:
+      summary: Get Smartlink by Id
+      tags:
+        - Manage Smartlinks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  smartlink:
+                    type: object
+                    properties:
+                      advs:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      cats:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      eoffers:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      bp:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      _id:
+                        type: string
+                      org_id:
+                        type: string
+                      short_id:
+                        type: string
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      type:
+                        type: string
+                      pb:
+                        type: boolean
+                      campaigns:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            percentage:
+                              type: integer
+                            num:
+                              type: integer
+                            denom:
+                              type: integer
+                      status:
+                        type: string
+                      os_t:
+                        type: 'null'
+                      isp_t:
+                        type: 'null'
+                      dv_t:
+                        type: 'null'
+                      city_t:
+                        type: integer
+                      region_t:
+                        type: integer
+                      country_t:
+                        type: 'null'
+                      ap:
+                        type: array
+                        items:
+                          type: integer
+                      model:
+                        type: string
+                      created_by:
+                        type: string
+                      updated_by:
+                        type: string
+                      aurl:
+                        type: string
+                      created:
+                        type: string
+                      modified:
+                        type: string
+                      imp:
+                        type: integer
+                      id:
+                        type: string
+                      postback:
+                        type: boolean
+                      categories:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      excludedOffers:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      appendUrl:
+                        type: string
+                      allowedPubs:
+                        type: array
+                        items:
+                          type: integer
+                      blockedPubs:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                x-examples:
+                  Example 1:
+                    success: true
+                    smartlink:
+                      advs: []
+                      cats: []
+                      eoffers: []
+                      bp: []
+                      _id: 607d39e588216678ce6fd212
+                      org_id: 57c4718434243dc47d8b456b
+                      short_id: BDpIuqr
+                      name: Testing Smart Link
+                      description: Testing Smart Link
+                      type: manual
+                      pb: true
+                      campaigns:
+                        - id: 61bc2febdba2a9d6ff3ee4da
+                          percentage: 25
+                          num: 25
+                          denom: 100
+                        - id: 61b834874d96f893ff3a0e62
+                          percentage: 25
+                          num: 25
+                          denom: 100
+                        - id: 6095262cad585166500982fd
+                          percentage: 25
+                          num: 25
+                          denom: 100
+                        - id: 6095262cad585166500982fa
+                          percentage: 25
+                          num: 25
+                          denom: 100
+                      status: pending
+                      os_t: null
+                      isp_t: null
+                      dv_t: null
+                      city_t: 1
+                      region_t: 1
+                      country_t: null
+                      ap:
+                        - 5
+                      model: cpa
+                      created_by: 57c4718434243dc47d8b456c
+                      updated_by: 57c4718434243dc47d8b456c
+                      aurl: yesy=test
+                      created: '2021-04-19T08:05:57.000Z'
+                      modified: '2022-04-09T19:34:22.109Z'
+                      imp: 1
+                      id: 607d39e588216678ce6fd212
+                      postback: true
+                      categories: []
+                      excludedOffers: []
+                      appendUrl: yesy=test
+                      allowedPubs:
+                        - 5
+                      blockedPubs: []
+      operationId: get-v2-smart-link-id
+      x-stoplight:
+        id: mrdp8hm180x0f
+      description: Use this endpoint to fetch smartlink by `short_id` or `_id`.
   /v2/reports/campaign:
     get:
       summary: Campaign Report
@@ -11119,15 +11305,14 @@ paths:
               x-examples:
                 Example 1:
                   message: This is a Note
-  '/v2/customfields/campaign':
+  /v2/customfields/campaign:
     get:
       summary: Get Campaign Custom Fields
       operationId: campaign-customfields-findAll
       tags:
         - Campaigns
-      description: >
-        Returns the list of custom fields that can be used to filter campaigns.
-        Each custom field includes its key, label, type and any allowed values.
+      description: |
+        Returns the list of custom fields that can be used to filter campaigns. Each custom field includes its key, label, type and any allowed values.
       security:
         - API Key Param: []
       responses:
@@ -11149,7 +11334,7 @@ paths:
                           type: string
                         type:
                           type: string
-                          description: Field input type (e.g. text, select)
+                          description: 'Field input type (e.g. text, select)'
                         name:
                           type: string
                         required:
