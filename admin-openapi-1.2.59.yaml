@@ -7696,6 +7696,10 @@ paths:
                         type: string
                         x-stoplight:
                           id: pvv6zoyo6ntcc
+                      '':
+                        type: string
+                        x-stoplight:
+                          id: 5kzafyd2d3hw3
               examples:
                 sample-conversion-log-resp:
                   value:
@@ -7918,6 +7922,7 @@ paths:
                       dl: Device Language
                       vta: View Through Attribution
                       user_id: External User ID
+                      epcat: Product Category
                     pagination:
                       perPage: 100
                       currentPage: 2
