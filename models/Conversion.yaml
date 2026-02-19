@@ -89,6 +89,8 @@ x-examples:
     utmd: UTM Medium
 description: Trackier Conversion Model
 title: Conversion
+x-tags:
+  - report-logs
 properties:
   id:
     type: string
@@ -280,5 +282,7 @@ properties:
     type: string
   utmc:
     type: string
-x-tags:
-  - report-logs
+  epcat:
+    type: string
+    x-stoplight:
+      id: h5n0bqk3im1p2
