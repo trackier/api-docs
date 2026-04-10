@@ -1918,13 +1918,125 @@ paths:
     post:
       summary: Generate Tracking Link
       operationId: post-v2-trackingLink-campId-pubId
-      description: Generate a tracking link for a campaign and publisher.
+      description: |-
+        Generate a tracking link for a campaign and publisher. Supports both GET and POST methods.
+        - **GET**: Pass all parameters as query params.
+        - **POST**: Pass parameters in the JSON request body (supports advanced options like deeplink, pixels, landing page, tracking params, etc.).
       tags:
         - Campaigns
       security:
         - API Key Param: []
       x-stoplight:
         id: 4g5bk7ihgc1i5
+      parameters:
+        - schema:
+            type: string
+          name: domain
+          in: query
+          description: Override tracking domain (e.g. track.example.com)
+        - schema:
+            type: string
+          name: tracking_domain
+          in: query
+          description: 'Override tracking domain (e.g. track.example.com). Alias for domain.'
+        - schema:
+            type: string
+          name: deeplink
+          in: query
+          description: Deeplink appended as url=<value>
+        - schema:
+            type: boolean
+          name: encode_deeplink
+          in: query
+          description: URL-encode deeplink before appending
+        - schema:
+            type: string
+          name: url
+          in: query
+          description: Direct URL override (mutually exclusive with deeplink)
+        - schema:
+            type: boolean
+          name: google_ads
+          in: query
+          description: Enables Google Ads format
+        - schema:
+            type: boolean
+          name: force_transparent
+          in: query
+          description: Adds force_transparent=true to the tracking URL
+        - schema:
+            type: boolean
+          name: click_pixel
+          in: query
+          description: Returns a <script> click pixel in the response
+        - schema:
+            type: boolean
+          name: impression_pixel
+          in: query
+          description: Returns an <img> impression pixel in the response
+        - schema:
+            type: string
+          name: url_id
+          in: query
+          description: Landing page ID
+        - schema:
+            type: string
+            enum:
+              - '1'
+          name: random_url
+          in: query
+          description: '"1" enables random redirect'
+        - schema:
+            type: string
+          name: prl
+          in: query
+          description: Pre-lander ID
+        - schema:
+            type: string
+            enum:
+              - '1'
+          name: random_prl
+          in: query
+          description: '"1" enables random pre-lander'
+        - schema:
+            type: string
+            enum:
+              - '1'
+          name: lp_unilink
+          in: query
+          description: '"1" enables mobile unilink'
+        - schema:
+            type: string
+            enum:
+              - '1'
+          name: unilink
+          in: query
+          description: Alias for lp_unilink
+        - schema:
+            type: string
+          name: pub_group_id
+          in: query
+          description: Publisher group ID
+        - schema:
+            type: boolean
+          name: rfid
+          in: query
+          description: Appends publisher reference ID to the tracking URL
+        - schema:
+            type: string
+          name: source
+          in: query
+          description: Source value
+        - schema:
+            type: string
+          name: idfa
+          in: query
+          description: IDFA
+        - schema:
+            type: string
+          name: gaid
+          in: query
+          description: GAID
       requestBody:
         description: ''
         content:
@@ -2079,75 +2191,9 @@ paths:
                   click_pixel:
                     type: string
                     description: Click pixel script tag (present when click_pixel is true)
-                  imp_pixel:
-                    type: string
-                    description: Impression pixel img tag (present when impression_pixel is true)
                   impression_pixel:
                     type: string
                     description: Impression pixel URL (present when impression_pixel is true)
-              example:
-                success: true
-                url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
-                tracking_url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
-                shortLink: 'https://track.example.com/t/{shortLinkHash}/'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  error:
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                        description: |
-                          Error codes:
-                          - 106: Permission issue
-                          - 108: Internal error
-                          - 109: Resource not found
-                          - 115: Disabled by advertiser
-                      message:
-                        type: string
-    get:
-      summary: Generate Tracking Link
-      operationId: get-v2-trackingLink-campId-pubId
-      description: |-
-        Generate a basic tracking link for a campaign and publisher via GET request.
-        Note: All advanced options (deeplink, pixels, landing page, tracking params, etc.) are only supported via POST body. GET only supports the domain override query param.
-      tags:
-        - Campaigns
-      security:
-        - API Key Param: []
-      parameters:
-        - schema:
-            type: string
-          name: domain
-          in: query
-          description: Override tracking domain (e.g. track.example.com)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  url:
-                    type: string
-                    description: Generated tracking URL
-                  tracking_url:
-                    type: string
-                    description: Generated tracking URL (alias for url)
-                  shortLink:
-                    type: string
-                    description: Short link version of the tracking URL
               example:
                 success: true
                 url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
