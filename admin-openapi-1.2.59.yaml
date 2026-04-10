@@ -1918,6 +1918,142 @@ paths:
     post:
       summary: Generate Tracking Link
       operationId: post-v2-trackingLink-campId-pubId
+      description: Generate a tracking link for a campaign and publisher.
+      tags:
+        - Campaigns
+      security:
+        - API Key Param: []
+      x-stoplight:
+        id: 4g5bk7ihgc1i5
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tracking_domain:
+                  type: string
+                  description: 'Override tracking domain (e.g. track.example.com). Can also be passed as query param ?domain='
+                deeplink:
+                  type: string
+                  description: Deeplink appended as url=<value>
+                encode_deeplink:
+                  type: boolean
+                  description: URL-encode deeplink before appending
+                url:
+                  type: string
+                  description: Direct URL override (mutually exclusive with deeplink)
+                google_ads:
+                  type: boolean
+                  description: Enables Google Ads format
+                force_transparent:
+                  type: boolean
+                  description: Adds force_transparent=true to the tracking URL
+                click_pixel:
+                  type: boolean
+                  description: Returns a <script> click pixel in the response
+                impression_pixel:
+                  type: boolean
+                  description: Returns an <img> impression pixel in the response
+                url_id:
+                  type: string
+                  description: Landing page ID
+                random_url:
+                  type: string
+                  description: '"1" enables random redirect'
+                  enum:
+                    - '1'
+                prl:
+                  type: string
+                  description: Pre-lander ID
+                random_prl:
+                  type: string
+                  description: '"1" enables random pre-lander'
+                  enum:
+                    - '1'
+                lp_unilink:
+                  type: string
+                  description: '"1" enables mobile unilink'
+                  enum:
+                    - '1'
+                unilink:
+                  type: string
+                  description: Alias for lp_unilink
+                  enum:
+                    - '1'
+                pub_group_id:
+                  type: string
+                  description: Publisher group ID
+                rfid:
+                  type: boolean
+                  description: Appends publisher reference ID to the tracking URL
+                source:
+                  type: string
+                  description: Source value
+                idfa:
+                  type: string
+                  description: IDFA
+                gaid:
+                  type: string
+                  description: GAID
+                tracking_params:
+                  type: object
+                  description: 'Key-value tracking params. Allowed keys: source, gaid, idfa, app_name, app_id, creative_name, erid, pub_imp_id, pub_camp_id, sub_source, p1–p15. Extra (if enabled): ipaddr, user_agent'
+                  properties:
+                    source:
+                      type: string
+                    gaid:
+                      type: string
+                    idfa:
+                      type: string
+                    app_name:
+                      type: string
+                    app_id:
+                      type: string
+                    creative_name:
+                      type: string
+                    erid:
+                      type: string
+                    pub_imp_id:
+                      type: string
+                    pub_camp_id:
+                      type: string
+                    sub_source:
+                      type: string
+                    p1:
+                      type: string
+                    p2:
+                      type: string
+                    p3:
+                      type: string
+                    p4:
+                      type: string
+                    p5:
+                      type: string
+                    p6:
+                      type: string
+                    p7:
+                      type: string
+                    p8:
+                      type: string
+                    p9:
+                      type: string
+                    p10:
+                      type: string
+                    p11:
+                      type: string
+                    p12:
+                      type: string
+                    p13:
+                      type: string
+                    p14:
+                      type: string
+                    p15:
+                      type: string
+                subIds:
+                  type: object
+                  description: Backward compatible format for tracking params
       responses:
         '200':
           description: OK
@@ -1925,50 +2061,134 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
-      x-stoplight:
-        id: 4g5bk7ihgc1i5
+                properties:
+                  success:
+                    type: boolean
+                  url:
+                    type: string
+                    description: Generated tracking URL
+                  tracking_url:
+                    type: string
+                    description: Generated tracking URL (alias for url)
+                  shortLink:
+                    type: string
+                    description: Short link version of the tracking URL
+                  prl:
+                    type: string
+                    description: Raw click pixel URL (present when click_pixel is true)
+                  click_pixel:
+                    type: string
+                    description: Click pixel script tag (present when click_pixel is true)
+                  imp_pixel:
+                    type: string
+                    description: Impression pixel img tag (present when impression_pixel is true)
+                  impression_pixel:
+                    type: string
+                    description: Impression pixel URL (present when impression_pixel is true)
+              example:
+                success: true
+                url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
+                tracking_url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
+                shortLink: 'https://track.example.com/t/{shortLinkHash}/'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: |
+                          Error codes:
+                          - 106: Permission issue
+                          - 108: Internal error
+                          - 109: Resource not found
+                          - 115: Disabled by advertiser
+                      message:
+                        type: string
+    get:
+      summary: Generate Tracking Link
+      operationId: get-v2-trackingLink-campId-pubId
+      description: |-
+        Generate a basic tracking link for a campaign and publisher via GET request.
+        Note: All advanced options (deeplink, pixels, landing page, tracking params, etc.) are only supported via POST body. GET only supports the domain override query param.
       tags:
         - Campaigns
       security:
         - API Key Param: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  x-stoplight:
-                    id: nqe5mzns1v98l
-                prl:
-                  type: string
-                  x-stoplight:
-                    id: t2g0hhic3qxhe
-                url_id:
-                  type: string
-                  x-stoplight:
-                    id: xkax8yspotbpg
-                random_url:
-                  x-stoplight:
-                    id: wza04ij5ymcbp
-                  enum:
-                    - true
-        description: ''
+      parameters:
+        - schema:
+            type: string
+          name: domain
+          in: query
+          description: Override tracking domain (e.g. track.example.com)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  url:
+                    type: string
+                    description: Generated tracking URL
+                  tracking_url:
+                    type: string
+                    description: Generated tracking URL (alias for url)
+                  shortLink:
+                    type: string
+                    description: Short link version of the tracking URL
+              example:
+                success: true
+                url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
+                tracking_url: 'https://track.example.com/click?campaign_id={campId}&pub_id={pubId}'
+                shortLink: 'https://track.example.com/t/{shortLinkHash}/'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: |
+                          Error codes:
+                          - 106: Permission issue
+                          - 108: Internal error
+                          - 109: Resource not found
+                          - 115: Disabled by advertiser
+                      message:
+                        type: string
     parameters:
       - schema:
           type: string
         name: campId
         in: path
         required: true
-        description: Campaign ID
+        description: Campaign ID (display_id or hash_id)
       - schema:
           type: string
         name: pubId
         in: path
         required: true
-        description: Publisher ID
+        description: Publisher ID (display_id or hash_id)
   '/v2/campaigns/{id}/caps':
     parameters:
       - schema:
@@ -2883,8 +3103,72 @@ paths:
   /v2/invoices:
     get:
       summary: Get Invoices List
+      operationId: get-v2-invoices-list
+      description: |-
+        Fetch all invoices for the organization within a date range. Supports filtering by user, type, and status with pagination.
+
+        **Filtering Behavior:**
+        | user_id | utype | Result |
+        |---|---|---|
+        | No | No | Publisher invoices only (default) |
+        | No | Yes | Filtered by utype |
+        | Yes | No | All types for that user |
+        | Yes | Yes | Filtered by both |
       tags:
         - Invoices
+      security:
+        - API Key Param: []
+      parameters:
+        - schema:
+            type: string
+          name: start
+          in: query
+          required: true
+          description: Start date (YYYY-MM-DD)
+        - schema:
+            type: string
+          name: end
+          in: query
+          required: true
+          description: End date (YYYY-MM-DD)
+        - schema:
+            type: array
+            example: '&user_id[]=64ca291d116855f047093402'
+          name: user_id
+          in: query
+          description: Array of user IDs to filter results
+        - schema:
+            type: string
+            enum:
+              - publisher
+              - advertiser
+          name: utype
+          in: query
+          description: 'Filter by user type. Defaults to publisher if not provided.'
+        - schema:
+            type: string
+            enum:
+              - draft
+              - approved
+              - paid
+          name: status
+          in: query
+          description: Filter by invoice status
+        - schema:
+            type: number
+          name: page
+          in: query
+          description: Page number for paginated results
+        - schema:
+            type: number
+          name: limit
+          in: query
+          description: Number of records per page
+        - schema:
+            type: string
+          name: zone
+          in: query
+          description: Timezone for date filtering (e.g. Asia/Kolkata)
       responses:
         '200':
           description: OK
@@ -2893,36 +3177,68 @@ paths:
               schema:
                 type: object
                 properties:
+                  success:
+                    type: boolean
                   invoices:
                     type: array
                     items:
-                      $ref: ./models/invoices.v1.yaml
-      parameters:
-        - schema:
-            type: string
-          name: start
-          in: query
-          required: true
-          description: YYYY-MM-DD
-        - schema:
-            type: string
-          name: end
-          in: query
-          required: true
-          description: YYYY-MM-DD
-        - schema:
-            type: string
-            enum:
-              - publisher
-              - advertiser
-          name: utype
-          in: query
-          required: true
-          description: User Type
-      operationId: get-v2-invoices-list
-      security:
-        - API Key Param: []
-      description: Get Invoices list for publisher or advertiser.
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: Invoice display ID
+                        hash_id:
+                          type: string
+                          description: MongoDB object ID
+                        status:
+                          type: string
+                          description: draft / approved / paid
+                          enum:
+                            - draft
+                            - approved
+                            - paid
+                        item:
+                          type: string
+                          description: Associated user info
+                        item_id:
+                          type: string
+                          description: User hash ID
+                        from_date:
+                          type: string
+                          description: Period start date
+                        to_date:
+                          type: string
+                          description: Period end date
+                        currency:
+                          type: string
+                          description: Currency code
+                        amount:
+                          type: number
+                          description: Invoice total amount
+                        created:
+                          type: string
+                          description: Creation timestamp
+                  utype:
+                    type: string
+                    description: User type used for the query
+                    enum:
+                      - publisher
+                      - advertiser
+                  pagination:
+                    type: object
+                    properties:
+                      perPage:
+                        type: number
+                        description: Records per page
+                      currentPage:
+                        type: number
+                        description: Active page number
+                      count:
+                        type: number
+                        description: Filtered result count
+                      total:
+                        type: number
+                        description: Total invoices in org for this utype
     post:
       summary: Create Invoice
       operationId: post-v2-invoices
