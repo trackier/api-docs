@@ -6,24 +6,38 @@ x-tags:
 properties:
   id:
     type: number
+    description: Invoice display ID
   hash_id:
     type: string
+    description: MongoDB object ID
   status:
     type: string
+    description: 'draft / approved / paid'
+    enum:
+      - draft
+      - approved
+      - paid
   item:
     type: string
+    description: Associated user info
   item_id:
     type: string
+    description: User hash ID
   from_date:
     type: string
+    description: Period start date
   to_date:
     type: string
+    description: Period end date
   currency:
-    type: String
+    type: string
+    description: Currency code
   amount:
     type:
       - number
       - 'null'
     minimum: 0
+    description: Invoice total amount
   created:
     type: string
+    description: Creation timestamp
