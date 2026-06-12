@@ -1938,7 +1938,7 @@ paths:
             type: string
           name: tracking_domain
           in: query
-          description: 'Override tracking domain (e.g. track.example.com). Alias for domain.'
+          description: Override tracking domain (e.g. track.example.com). Alias for domain.
         - schema:
             type: string
           name: deeplink
@@ -2046,7 +2046,7 @@ paths:
               properties:
                 tracking_domain:
                   type: string
-                  description: 'Override tracking domain (e.g. track.example.com). Can also be passed as query param ?domain='
+                  description: Override tracking domain (e.g. track.example.com). Can also be passed as query param ?domain=
                 deeplink:
                   type: string
                   description: Deeplink appended as url=<value>
@@ -2308,7 +2308,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Cap'
-      description: Create cap for a campaign
+      description: |-
+        Create cap for a campaign
+
+        Note: Hourly caps are supported only for clicks and conversions.
   '/v2/campaigns/{id}/caps/{capId}':
     parameters:
       - schema:
@@ -3190,7 +3193,7 @@ paths:
               - advertiser
           name: utype
           in: query
-          description: 'Filter by user type. Defaults to publisher if not provided.'
+          description: Filter by user type. Defaults to publisher if not provided.
         - schema:
             type: string
             enum:
@@ -13708,6 +13711,7 @@ components:
             - uniqueClicks
             - clicks
             - grossRevenue
+            - impression
           description: '`clicks`: clicks excluding rejected clicks'
         goalId:
           type: string
