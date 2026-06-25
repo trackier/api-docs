@@ -2808,6 +2808,67 @@ paths:
       tags:
         - Campaign Goal
       description: Delete a campaign goal
+  '/v2/goals/{goalId}':
+    parameters:
+      - schema:
+          type: string
+        name: goalId
+        in: path
+        required: true
+        description: Goal ID
+    get:
+      summary: Get Goal by ID
+      operationId: get-v2-goals-goalId
+      tags:
+        - Campaign Goal
+      security:
+        - API Key Param: []
+      description: Get goal title and value by goalId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  goal:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      title:
+                        type: string
+                      value:
+                        type: string
+                      type:
+                        type: string
+                        enum:
+                          - public
+                          - private
+                          - pub_specific
+              examples:
+                sample:
+                  value:
+                    success: true
+                    goal:
+                      _id: 5ee5956021e2ad4c2d1ba01e
+                      title: Application approval page
+                      value: dengi3_page_step7
+                      type: public
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
   '/v2/campaigns/{campaignId}/postback-settings':
     parameters:
       - schema:
