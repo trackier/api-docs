@@ -284,5 +284,7 @@ properties:
     type: string
   epcat:
     type: string
+  is_postback_fired:
+    type: boolean
     x-stoplight:
       id: h5n0bqk3im1p2
