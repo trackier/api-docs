@@ -83,3 +83,12 @@ properties:
     type: string
     format: date-time
     example: '2020-02-24T12:03:08.610Z'
+  dcs:
+    x-stoplight:
+      id: mg8yp36gqu5u1
+    enum:
+      - null
+      - rejected
+      - cancelled
+      - approved
+      - pending

@@ -14091,6 +14091,15 @@ components:
               revenue: 4
               geo:
                 - IN
+      x-tags:
+        - Campaign Goal
+      description: Goal Model to create/edit goal
+      required:
+        - title
+        - value
+        - type
+        - payout_model
+        - payouts
       properties:
         title:
           type: string
@@ -14130,15 +14139,15 @@ components:
                 type: array
                 items:
                   type: string
-      required:
-        - title
-        - value
-        - type
-        - payout_model
-        - payouts
-      x-tags:
-        - Campaign Goal
-      description: Goal Model to create/edit goal
+        dcs:
+          x-stoplight:
+            id: bfb8xcaw2oz60
+          enum:
+            - null
+            - approved
+            - rejected
+            - cancelled
+            - pending
     GoalEdit:
       title: Goal
       type: object
@@ -14153,6 +14162,12 @@ components:
               revenue: 4
               geo:
                 - IN
+      x-tags:
+        - Campaign Goal
+      description: Goal Model to create/edit goal
+      required:
+        - title
+        - value
       properties:
         title:
           type: string
@@ -14192,12 +14207,15 @@ components:
                 type: array
                 items:
                   type: string
-      required:
-        - title
-        - value
-      x-tags:
-        - Campaign Goal
-      description: Goal Model to create/edit goal
+        dcs:
+          x-stoplight:
+            id: kfthnuxrrplbd
+          enum:
+            - null
+            - cancelled
+            - rejected
+            - approved
+            - pending
     PostbackCreate:
       title: PostbackCreate
       type: object
