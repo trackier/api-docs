@@ -9981,6 +9981,10 @@ paths:
                         type: integer
                       total:
                         type: integer
+                  direction:
+                    type: string
+                    x-stoplight:
+                      id: nzhau4647me6y
         '400':
           description: Bad Request
           content:
@@ -10047,6 +10051,11 @@ paths:
           in: query
           name: filters
           deprecated: false
+        - schema:
+            type: string
+          in: query
+          name: direction
+          description: 'Sorting Order <br> - `asc` - Ascending, from A to Z <br> - `desc` - Descending, from Z to A'
       security:
         - API Key Param: []
     post:
