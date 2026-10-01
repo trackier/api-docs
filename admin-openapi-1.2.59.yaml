@@ -273,7 +273,7 @@ paths:
       description: |-
         Find all publishers
 
-        To find publishers using name,email,company or ids use filters param
+        To find publishers using name, email, company or ids use filters param
         - &filters[name]=Demo
         - &filters[company]=Test
         - &filters[ids][]=31&filters[ids][]=54
@@ -13859,6 +13859,7 @@ components:
           enum:
             - category
             - manual
+            - tags
         model:
           type: string
           enum:
@@ -13930,6 +13931,7 @@ components:
                 type: string
               value:
                 type: string
+      description: ''
     SmartlinkEdit:
       title: Smartlink
       type: object
