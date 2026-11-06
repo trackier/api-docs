@@ -12,10 +12,12 @@ required:
 properties:
   id:
     type: integer
+    description: Campaign numeric (short) id
   advertiserId:
     type: string
   hashId:
     type: string
+    description: Campaign hash (long) id
   title:
     type: string
   description:
