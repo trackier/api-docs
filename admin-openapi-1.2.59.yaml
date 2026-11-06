@@ -273,10 +273,23 @@ paths:
       description: |-
         Find all publishers
 
-        To find publishers using name,email,company or ids use filters param
+        Publishers are returned newest first. Each publisher has both a numeric (short) `id` and a `hashId` (long id).
+
+        To find publishers using name, email, company or ids use filters param
         - &filters[name]=Demo
         - &filters[company]=Test
         - &filters[ids][]=31&filters[ids][]=54
+
+        To filter by status, tag or manager (each accepts multiple values)
+        - &filters[status][]=active&filters[status][]=pending
+        - &filters[tags][]=Influencer&filters[tags][]=Top Publisher
+        - &filters[manager][]=799&filters[manager][]=5d25b773b6920d39cf195611
+
+        Notes
+        - `filters[tags][]` matches the exact tag name (case sensitive, surrounding spaces ignored).
+        - `filters[manager][]` accepts manager ids in numeric or hash id format and matches publishers where that manager is the primary manager or an assigned manager.
+        - Assigned managers are returned in the `managers` array (`id`, `hash_id`, `name`, `email`). The listing does not return the flat `manager` object; use Find Publisher by ID if you need it.
+        - For large accounts, request smaller pages with `limit` and fetch the next page by sending the `lastId` from the previous response. This avoids request timeouts.
       security:
         - API Key Param: []
       parameters:
@@ -284,16 +297,50 @@ paths:
             type: integer
           in: query
           name: lastId
-          description: Last publisher id
+          description: Send the `lastId` from the previous response to fetch the next page
         - schema:
-            type: array
+            type: object
+            properties:
+              ids:
+                type: array
+                description: Publisher ids in numeric or hash id format
+                items:
+                  type: string
+              name:
+                type: string
+              email:
+                type: string
+              company:
+                type: string
+              status:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - active
+                    - pending
+                    - disabled
+                    - banned
+                    - rejected
+              tags:
+                type: array
+                description: Publisher tag names
+                items:
+                  type: string
+              manager:
+                type: array
+                description: Manager ids in numeric or hash id format
+                items:
+                  type: string
           in: query
           name: filters
         - schema:
             type: integer
+            minimum: 1
+            maximum: 5000
           in: query
           name: limit
-          description: 'Limit the number of records (default: 5000)'
+          description: 'Limit the number of records (default: 5000, max: 5000)'
     post:
       summary: Create a new publisher
       operationId: post-v2-publishers
@@ -323,9 +370,30 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
+              examples:
+                password-criteria-not-met:
+                  value:
+                    errors:
+                      - statusCode: 400
+                        code: '107'
+                        codeMsg: VALIDATION_ERROR
+                        message: 'Password criteria not met! Password must contain an uppercase letter and contain one of the symbols -@#$.&.'
       tags:
         - Manage Publishers
-      description: Create a new publisher
+      description: |-
+        Create a new publisher
+
+        Password criteria. The password must:
+        - be 8 to 16 characters long
+        - contain an uppercase letter
+        - contain a lowercase letter
+        - contain a number
+        - contain one of the symbols `-@#$.&`
+
+        If the password fails, the 400 response lists every rule it does not meet, for example:
+        `Password criteria not met! Password must contain an uppercase letter and contain one of the symbols -@#$.&.`
+
+        If another publisher already uses the email, the request fails with `Duplicate Email! Another user with ID: <id> exists with this email`.
       security:
         - API Key Param: []
       requestBody:
@@ -529,7 +597,12 @@ paths:
                       whitelistAdv: []
                       blockedSources:
                         - hemant_testing
-      description: Edit a publisher
+      description: |-
+        Edit a publisher
+
+        Only the fields sent in the request are updated. The publisher email is changed only when `email` is sent in the request; updating other details never changes it.
+
+        If `password` is sent, it must meet the same criteria as Create a new publisher (8 to 16 characters, an uppercase letter, a lowercase letter, a number and one of the symbols `-@#$.&`). The 400 response lists every rule the password does not meet.
       parameters: []
       requestBody:
         content:
@@ -575,6 +648,186 @@ paths:
         - Manage Publishers
       security:
         - API Key Param: []
+  /v2/publishers/bulk:
+    post:
+      summary: Bulk Create Publishers
+      operationId: post-v2-publishers-bulk
+      tags:
+        - Manage Publishers
+      security:
+        - API Key Param: []
+      description: |-
+        Create up to 10000 publishers in one request.
+
+        The request is validated first. If any record is invalid, nothing is imported and the 400 response lists every invalid record (by its position in the `publishers` array, starting at 1). A record is invalid when:
+        - a field is missing or has the wrong format (`email` is required)
+        - its email repeats another record in the same request
+        - its email already belongs to a user in your account
+        - its `password` does not meet the criteria: 8 to 16 characters, an uppercase letter, a lowercase letter, a number and one of the symbols `-@#$.&`
+
+        If the request is valid, the publishers are imported in the background and a job is returned immediately. Use Find Job By Id (`GET /v2/jobs/{id}`) with the returned `job.id` to track it:
+        - `job.status` moves from `pending` to `progress` to `finished`
+        - `job.result` has the `inserted` and `errors` counts
+        - `logs` has the reason for any record that could not be created (for example an invalid manager id)
+        - `publishers` lists the `id` and `hash_id` of each publisher created
+
+        Publishers created without a `password` get a random one. Custom fields are sent as `custom_<field name>`, for example `custom_skype_id`. Any other field is rejected.
+      requestBody:
+        description: Publishers to create
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - publishers
+              properties:
+                publishers:
+                  type: array
+                  minItems: 1
+                  maxItems: 10000
+                  items:
+                    type: object
+                    required:
+                      - email
+                    additionalProperties:
+                      type: string
+                      description: 'Custom fields only, sent as `custom_<field name>`'
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                      name:
+                        type: string
+                        description: Defaults to the email when not sent
+                      password:
+                        type: string
+                        description: '8 to 16 characters, with at least one uppercase letter, one lowercase letter, one number and one of the symbols -@#$.&'
+                      username:
+                        type: string
+                      company:
+                        type: string
+                      phone:
+                        type: string
+                      address:
+                        type: string
+                      city:
+                        type: string
+                      zipcode:
+                        type: string
+                      country:
+                        type: string
+                        description: Two letter country ISO code
+                      currency:
+                        type: string
+                        description: Three letter currency code
+                      status:
+                        type: string
+                        default: active
+                        enum:
+                          - active
+                          - pending
+                          - disabled
+                          - rejected
+                      signup_ip:
+                        type: string
+                      acc_manager_id:
+                        type: integer
+                        description: Numeric id of the account manager
+                      bdm:
+                        type: string
+                        description: Sales manager id
+                      csm:
+                        type: string
+                        description: Customer success manager id
+                      rfid:
+                        type: string
+                        description: Reference id (letters, numbers, - and _)
+                      tags:
+                        type: string
+                        description: Comma separated tag names
+                      blc:
+                        type: string
+                        description: Billing company name
+                      referred_by:
+                        type: string
+                        description: Id of the referring publisher
+                      bank_name:
+                        type: string
+                      bank_branch:
+                        type: string
+                      bank_ifsc:
+                        type: string
+                      bank_account_no:
+                        type: string
+                      bank_account_owner:
+                        type: string
+                      bank_routing_no:
+                        type: string
+                      bank_iban:
+                        type: string
+                      bank_country:
+                        type: string
+            examples:
+              example-1:
+                value:
+                  publishers:
+                    - email: pub.one@example.com
+                      name: Pub One
+                      password: Demo@1234
+                      company: Pub One Media
+                      country: IN
+                      currency: INR
+                      acc_manager_id: 799
+                      tags: 'Influencer,Top Publisher'
+                    - email: pub.two@example.com
+                      name: Pub Two
+                      status: pending
+                      custom_skype_id: pub.two
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  job:
+                    $ref: ./models/job.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    message: Job has been scheduled
+                    job:
+                      id: job_k3Xp9QaZ1
+                      status: pending
+                      type: job.publisher
+                      result:
+                        rows: 2
+                      created: '2026-11-06T10:15:00.000Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: ./models/error.v1.yaml
+              examples:
+                invalid-records:
+                  value:
+                    errors:
+                      - statusCode: 400
+                        code: '107'
+                        codeMsg: VALIDATION_ERROR
+                        message: '["Record: 2 repeats the email of record: 1!","Record: 3 email already exists with user ID: 42!"]'
   '/v2/publishers/{publisherId}/subaccounts':
     parameters:
       - schema:
@@ -1337,12 +1590,20 @@ paths:
       description: |-
         This endpoint will return the campaigns sorted based on the id. The limit of campaigns returned in one request is 1000. Send the lastId query parameter to fetch more campaigns
 
+        Each campaign has both a numeric (short) `id` and a `hashId` (long id).
+
         To see campaigns for a particular status use the filters query param
 
         - &filters[status]=active&filters[objective][]=cpa
         - &filters[category][]=travel&filters[visibility][]=public&filters[device][]=mobile
         - &filters[os][]=android&filters[trafficChannels][]=Channel1
         - &filters[status]=active&advertiser[]=10&orderBy=created&direction=desc
+        - &filters[tags][]=Influencer&filters[tags][]=Festive
+        - &filters[coupon_code]=SAVE10
+
+        Notes
+        - `filters[tags][]` matches the exact campaign tag name (case sensitive, surrounding spaces ignored).
+        - `filters[coupon_code]` returns every campaign the coupon code is linked to.
       security:
         - API Key Param: []
       parameters:
@@ -1440,6 +1701,14 @@ paths:
                 description: List of available custom field definitions for campaigns
                 items:
                   type: string
+              tags:
+                type: array
+                description: Campaign tag names
+                items:
+                  type: string
+              coupon_code:
+                type: string
+                description: Coupon code. Returns all campaigns linked to this coupon
           in: query
           name: filters
     post:
@@ -4845,8 +5114,9 @@ paths:
                     type: boolean
                   job:
                     $ref: ./models/job.v1.yaml
-                  log:
+                  logs:
                     type: array
+                    description: Messages logged while the job ran, including the reason each failed record was skipped
                     items:
                       type: object
                       properties:
@@ -4854,6 +5124,20 @@ paths:
                           type: string
                         created:
                           type: string
+                  publishers:
+                    type: array
+                    description: 'Publisher bulk import jobs (type `job.publisher`) only: the publishers created by the job'
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                        id:
+                          type: integer
+                          description: Publisher numeric (short) id
+                        hash_id:
+                          type: string
+                          description: Publisher hash (long) id
         '400':
           description: Bad Request
           content:
@@ -5186,6 +5470,15 @@ paths:
                           type: string
                         modified:
                           type: string
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      perPage:
+                        type: integer
+                      page:
+                        type: integer
                 x-examples:
                   Example 1:
                     accounts:
@@ -5201,6 +5494,10 @@ paths:
                           email: user7@example.com
                         created: '2025-01-30T12:07:22.000Z'
                         modified: '2025-11-11T12:12:55.000Z'
+                    pagination:
+                      totalCount: 1
+                      perPage: 1000
+                      page: 1
         '400':
           description: Bad Request
           content:
@@ -5212,7 +5509,26 @@ paths:
                     type: array
                     items:
                       $ref: ./models/error.v1.yaml
-      description: Use this endpoint to fetch all Team Members.
+      description: |-
+        Use this endpoint to fetch all Team Members.
+
+        Results are paginated. Use `page` and `limit` to fetch large teams in smaller requests, for example `?page=2&limit=200`. Without them, the first 1000 team members are returned.
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            default: 1
+          in: query
+          name: page
+          description: 'Page number (default: 1)'
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 1000
+          in: query
+          name: limit
+          description: 'Records per page (default: 1000, max: 1000)'
       security:
         - API Key Param: []
       x-stoplight:
@@ -6466,6 +6782,16 @@ paths:
         - List of grouping parameters can be found below
         - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
         - List of KPI can be found in query parameter section below
+
+        To filter by campaign tag:
+        - &camp_tags[]=Influencer&camp_tags[]=Festive
+
+        To show only rows that have conversions:
+        - &remove_zero_conversions=true
+
+        To page through a large report:
+        - &page=1&limit=500
+        - Paging is applied after grouping and row removal, and `pagination.totalCount` is the total number of rows in the report. Without `limit`, every row is returned.
       responses:
         '200':
           description: OK
@@ -6495,6 +6821,17 @@ paths:
                           type: number
                         profit:
                           type: number
+                  pagination:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                        description: Total rows in the report
+                      perPage:
+                        type: integer
+                        description: The limit sent, or totalCount when no limit was sent
+                      page:
+                        type: integer
               examples:
                 example-1:
                   value:
@@ -6507,6 +6844,10 @@ paths:
                         payout: 2
                         revenue: 4
                         profit: 2
+                    pagination:
+                      totalCount: 1
+                      perPage: 1
+                      page: 1
         '400':
           description: Bad Request
           content:
@@ -6554,10 +6895,36 @@ paths:
           name: end
           description: Report end date in YYYY-MM-DD format
         - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: camp_tags
+          description: 'Filter the report to campaigns that have any of these tags (exact tag name), like: &camp_tags[]=Influencer&camp_tags[]=Festive'
+        - schema:
             type: boolean
           in: query
           name: remove_zero_data
-          description: 'Setting this to "true" will remove all the rows where clicks = 0 and conversions = 0 (priority: grossConversions >> approvedConversions)'
+          description: 'Setting this to "true" removes every row where all the requested KPIs (the `kpi` param, or the default KPIs if none are sent) are 0'
+        - schema:
+            type: boolean
+          in: query
+          name: remove_zero_conversions
+          description: 'Setting this to "true" shows only rows that have conversions (grossConversions > 0, otherwise approvedConversions > 0)'
+        - schema:
+            type: integer
+            minimum: 1
+            default: 1
+          in: query
+          name: page
+          description: 'Page number, used with limit (default: 1)'
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 50000
+          in: query
+          name: limit
+          description: 'Rows per page (max: 50000). Without it, every row is returned'
       requestBody:
         content:
           application/json:
@@ -12555,7 +12922,7 @@ components:
         user create sample:
           name: Hemant
           email: hemant@gmail.com
-          password: '12345678'
+          password: 'Demo@1234'
       x-tags:
         - Manage Publishers
         - Manage Advertisers
@@ -12573,6 +12940,8 @@ components:
           format: email
         password:
           type: string
+          description: '8 to 16 characters, with at least one uppercase letter, one lowercase letter, one number and one of the symbols -@#$.&'
+          example: 'Demo@1234'
         company:
           type: string
         phone:

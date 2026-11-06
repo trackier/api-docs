@@ -40,6 +40,7 @@ x-tags:
 properties:
   id:
     type: integer
+    description: Publisher numeric (short) id
   modified:
     type: string
     format: date-time
@@ -100,8 +101,10 @@ properties:
     example: 5c6e4af3b6920d6a02002f53
   manager_id:
     type: string
+    description: Hash id of the primary manager
   hashId:
     type: string
+    description: Publisher hash (long) id
   meta:
     type: object
     properties:
@@ -155,11 +158,18 @@ properties:
         type: string
   managers:
     type: array
+    description: 'Account managers assigned to the publisher. Each manager is listed once, with both its numeric id and its hash id.'
     items:
       type: object
       properties:
         id:
           type: number
+          description: Manager numeric (short) id
+          example: 799
+        hash_id:
+          type: string
+          description: Manager hash (long) id
+          example: 5d25b773b6920d39cf195611
         name:
           type: string
         email:
