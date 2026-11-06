@@ -657,7 +657,7 @@ paths:
       security:
         - API Key Param: []
       description: |-
-        Create up to 10000 publishers in one request.
+        Create up to 500 publishers in one request. To add more, split them into batches of 500.
 
         The request is validated first. If any record is invalid, nothing is imported and the 400 response lists every invalid record (by its position in the `publishers` array, starting at 1). A record is invalid when:
         - a field is missing or has the wrong format (`email` is required)
@@ -684,7 +684,7 @@ paths:
                 publishers:
                   type: array
                   minItems: 1
-                  maxItems: 10000
+                  maxItems: 500
                   items:
                     type: object
                     required:
