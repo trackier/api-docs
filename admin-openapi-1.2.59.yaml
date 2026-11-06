@@ -288,7 +288,7 @@ paths:
         Notes
         - `filters[tags][]` matches the exact tag name (case sensitive, surrounding spaces ignored).
         - `filters[manager][]` accepts manager ids in numeric or hash id format and matches publishers where that manager is the primary manager or an assigned manager.
-        - Assigned managers are returned in the `managers` array (`id`, `hash_id`, `name`, `email`). The listing does not return the flat `manager` object; use Find Publisher by ID if you need it.
+        - Assigned managers are returned in the `managers` array (`id`, `hash_id`, `name`, `email`). The primary manager is also returned in the `manager` object, as before.
         - For large accounts, request smaller pages with `limit` and fetch the next page by sending the `lastId` from the previous response. This avoids request timeouts.
       security:
         - API Key Param: []
